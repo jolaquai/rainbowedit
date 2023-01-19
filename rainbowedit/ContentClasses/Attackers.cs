@@ -69,7 +69,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1500,
                 2360
@@ -116,7 +116,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 25,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1250,
                 2310
@@ -130,7 +130,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1500,
                 2360
@@ -191,7 +191,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1320,
                 2340
@@ -205,7 +205,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1330,
                 2200
@@ -280,7 +280,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1460,
                 2410
@@ -355,7 +355,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.Three,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1350,
                 2190
@@ -369,7 +369,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 7,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.None,
-                Weapon.Grip.Vertical,
+                Weapon.Grip.VerticalGrip,
                 true,
                 4090,
                 4580
@@ -491,7 +491,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 10,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical,
+                Weapon.Grip.VerticalGrip,
                 true,
                 1430,
                 2440
@@ -580,7 +580,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 100,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 6580,
                 7160
@@ -594,7 +594,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1430,
                 2260
@@ -716,7 +716,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1390,
                 2170
@@ -730,7 +730,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 50,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 2120,
                 3220
@@ -852,7 +852,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1430,
                 2230
@@ -866,7 +866,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.Three,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1380,
                 2400
@@ -913,7 +913,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 2000,
                 2300
@@ -927,7 +927,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 100,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 6320,
                 6320
@@ -988,7 +988,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1340,
                 2320
@@ -1063,7 +1063,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1140,
                 2010
@@ -1077,7 +1077,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 50,
                 Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1490,
                 2440
@@ -1152,7 +1152,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 80,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1300,
                 2180
@@ -1213,7 +1213,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 150,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 6180,
                 5430
@@ -1227,7 +1227,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1590,
                 2350
@@ -1274,7 +1274,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.Three,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1490,
                 2440
@@ -1288,7 +1288,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 2,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.None,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1160,
                 1430
@@ -1305,7 +1305,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 32,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.None,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1320,
                 2300
@@ -1363,7 +1363,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 50,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1550,
                 2330
@@ -1377,7 +1377,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.Three,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1350,
                 2190
@@ -1391,7 +1391,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 7,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.None,
-                Weapon.Grip.Vertical,
+                Weapon.Grip.VerticalGrip,
                 true,
                 4090,
                 4580
@@ -1465,7 +1465,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1510,
                 2460
@@ -1479,7 +1479,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 100,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 6580,
                 7160
@@ -1493,7 +1493,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 10,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.Suppressor,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1520,
                 2180
@@ -1568,7 +1568,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 10,
                 Weapon.Sight.Three,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1280,
                 2120
@@ -1582,7 +1582,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1530,
                 2400
@@ -1643,7 +1643,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1420,
                 2350
@@ -1704,7 +1704,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1380,
                 2290
@@ -1718,7 +1718,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 60,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 2030,
                 3560
@@ -1868,7 +1868,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 50,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 2120,
                 3220
@@ -1899,7 +1899,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 16,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1270,
                 2130
@@ -2032,7 +2032,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1420,
                 2350
@@ -2046,7 +2046,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1320,
                 2340
@@ -2093,7 +2093,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1430,
                 2260
@@ -2154,7 +2154,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 25,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1520,
                 2470
@@ -2229,7 +2229,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 25,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1250,
                 2310
@@ -2243,7 +2243,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.Three,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1380,
                 2400
@@ -2290,7 +2290,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1460,
                 2410
@@ -2304,7 +2304,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 50,
                 Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1490,
                 2440
@@ -2351,7 +2351,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 50,
                 Weapon.Sight.TwoPointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1470,
                 2240
@@ -2365,7 +2365,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 20,
                 Weapon.Sight.Three,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
-                Weapon.Grip.Vertical,
+                Weapon.Grip.VerticalGrip,
                 true,
                 1350,
                 2190
@@ -2426,7 +2426,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 30,
                 Weapon.Sight.Two,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
-                Weapon.Grip.Vertical | Weapon.Grip.Angled,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
                 1390,
                 2170
@@ -2440,7 +2440,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 7,
                 Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.None,
-                Weapon.Grip.Vertical,
+                Weapon.Grip.VerticalGrip,
                 true,
                 4090,
                 4580

@@ -1,4 +1,8 @@
-﻿namespace RainbowEdit;
+﻿using System.Linq;
+
+using RainbowEdit.Extensions;
+
+namespace RainbowEdit;
 
 public static class Game
 {
@@ -22,4 +26,5 @@ public static class Game
 
     public static readonly string LongestOperatorNickname = AtkDef.MaxBy(op => op.Nickname.Length).Nickname;
     public static readonly string LongestWeaponName = AtkDef.SelectMany(op => op.Primaries.Concat(op.Secondaries)).MaxBy(wep => wep.Name.Length).Name;
+    public static readonly string LongestGadgetName = Enum.GetValues<Weapon.Gadget>().Select(val => val.Stringify()).MaxBy(gadget => gadget.Length);
 }

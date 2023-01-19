@@ -8,18 +8,18 @@ public class WeaponConfiguration
     {
         get; private set;
     }
-    public Weapon.Sight Sight
+    public string Sight
     {
         get; private set;
-    } = Weapon.Sight.Invalid;
-    public Weapon.Barrel Barrel
+    }
+    public string Barrel
     {
         get; private set;
-    } = Weapon.Barrel.None;
-    public Weapon.Grip Grip
+    }
+    public string Grip
     {
         get; private set;
-    } = Weapon.Grip.None;
+    }
     public bool Underbarrel
     {
         get; private set;
@@ -37,15 +37,21 @@ public class WeaponConfiguration
 
         if (possibleSights.Any())
         {
-            Sight = possibleSights[ran.Next(possibleSights.Count)];
+            Weapon.Sight sight = possibleSights.Random();
+            Sight = sight switch
+            {
+                Weapon.Sight.NonMagnifying => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(),
+                Weapon.Sight.TwoPointFive => new List<string>() { "2.5x A", "2.5x B" }.Random(),
+                _ => sight.Stringify()
+            };
         }
         if (possibleBarrels.Any())
         {
-            Barrel = possibleBarrels[ran.Next(possibleBarrels.Count)];
+            Barrel = possibleBarrels.Random().Stringify();
         }
         if (possibleGrips.Any())
         {
-            Grip = possibleGrips[ran.Next(possibleGrips.Count)];
+            Grip = possibleGrips.Random().Stringify();
         }
         if (Source.Underbarrel)
         {
@@ -71,7 +77,7 @@ public class WeaponConfiguration
             return $"""
                 Name: {Source.Name}
                 Type: {Source.Type}
-                Sight: {(Source.Sights.HasFlag(Weapon.Sight.Other) ? "\u2014" : Sight.ToString())}
+                Sight: {(Source.Sights.HasFlag(Weapon.Sight.Other) ? "\u2014" : Sight)}
                 Barrel: {Barrel}
                 Laser: {(Source.Underbarrel ? (Underbarrel ? "Yes" : "No") : "\u2014")}
                 """;

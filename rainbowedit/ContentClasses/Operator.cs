@@ -85,6 +85,9 @@ public class Operator
 
     public LoadoutConfiguration GetRandomLoadout() => new(this);
 
+    public override string ToString() => Nickname.PadRight(Game.LongestOperatorNickname.Length + 4);
+    public static implicit operator string(Operator op) => op.ToString();
+
     public class OperatorAge
     {
         public int Day

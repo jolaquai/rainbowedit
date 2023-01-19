@@ -1,8 +1,11 @@
-﻿using RainbowEdit.Extensions;
+﻿using System.Reflection.PortableExecutable;
+using System.Text.RegularExpressions;
+
+using RainbowEdit.Extensions;
 
 namespace RainbowEdit;
 
-public class LoadoutConfiguration
+public partial class LoadoutConfiguration
 {
     public Operator Source
     {
@@ -40,7 +43,15 @@ public class LoadoutConfiguration
         Secondary = new(secondaries[ran.Next(secondaries.Count)]);
     }
 
-    public override string ToString() => $"""
+    public string ShortString()
+    {
+        int totalWidth = 4 + Game.LongestWeaponName.Length + Weapon.Resolve(Game.LongestWeaponName).Type.Stringify().Length;
+        return $"{{ {$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Game.LongestGadgetName.Length)} }}";
+    }
+
+    public override string ToString() => ShortString();
+    public static implicit operator string(LoadoutConfiguration config) => config.ShortString();
+    public string LongString() => $"""
         Operator: {Source.Nickname}
         Primary:
         {string.Join(Environment.NewLine, Primary.ToString().Split(Environment.NewLine).Select(str => $"    {str}"))}
@@ -48,6 +59,4 @@ public class LoadoutConfiguration
         {string.Join(Environment.NewLine, Secondary.ToString().Split(Environment.NewLine).Select(str => $"    {str}"))}
         Gadget: {Gadget}
         """;
-
-    public string ShortString() => $"{{ {Primary.Source.Name}, {Secondary.Source.Name}, {Gadget} }}";
 }

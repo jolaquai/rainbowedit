@@ -139,8 +139,8 @@ public class Weapon
     public enum Grip
     {
         None = 0,
-        Vertical = 1,
-        Angled = 2
+        VerticalGrip = 1,
+        AngledGrip = 2
     }
 
     [Flags]
@@ -197,6 +197,11 @@ public class Weapon
             }
         }
     }
+
+    public override string ToString() => Name;
+    public static implicit operator string(Weapon wep) => wep.ToString();
+
+    public static Weapon? Resolve(string name) => Game.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries)).First(wep => wep.Name.Contains(name, StringComparison.OrdinalIgnoreCase) || wep.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
     public WeaponConfiguration GetRandomConfiguration() => new(this);
 }
