@@ -1,4 +1,7 @@
-﻿using RainbowEdit;
+﻿using System.Data.Common;
+
+using RainbowEdit;
+using RainbowEdit.Extensions;
 
 namespace TestConsole;
 
@@ -13,9 +16,26 @@ public static class TestConsole
             Console.WriteLine(i == 0 ? "DEFENDERS" : "\r\nATTACKERS");
             Console.WriteLine("=========");
 
-            foreach (Operator op in opClass)
+            var data = opClass.SelectMany(op => op.Primaries.Concat(op.Secondaries).Where(wep => wep.Barrels.HasFlag(Weapon.Barrel.ExtendedBarrel)));
+
+            foreach (var wepGroup in data.DistinctBy(wep => wep.Name).OrderByDescending(wep => wep.Damage).Aggregate(new Dictionary<Weapon.WeaponType, IEnumerable<Weapon>>(), (seed, weapon) =>
             {
-                Console.WriteLine($"{op}{op.GetRandomLoadout()}");
+                if (seed.ContainsKey(weapon.Type))
+                {
+                    seed[weapon.Type] = seed[weapon.Type].Concat(new List<Weapon>() { weapon });
+                }
+                else
+                {
+                    seed[weapon.Type] = new List<Weapon>() { weapon };
+                }
+                return seed;
+            }))
+            {
+                Console.WriteLine();
+                string type = wepGroup.Key.Stringify().ToUpper();
+                Console.WriteLine(type);
+                Console.WriteLine(string.Join("", Enumerable.Repeat("*", type.Length)));
+                Console.WriteLine(string.Join("\r\n", wepGroup.Value.Select(wep => $"{wep.Name.PadRight(Game.LongestWeaponName.Length)} {{ Damage = {wep.Damage}, ExtendedBarrelDamage = {wep.ExtendedBarrelDamage} }}")));
             }
         }
     }

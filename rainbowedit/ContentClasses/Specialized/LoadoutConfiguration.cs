@@ -1,7 +1,4 @@
-﻿using System.Reflection.PortableExecutable;
-using System.Text.RegularExpressions;
-
-using RainbowEdit.Extensions;
+﻿using RainbowEdit.Extensions;
 
 namespace RainbowEdit;
 
