@@ -4,26 +4,11 @@ namespace RainbowEdit;
 
 public class WeaponConfiguration
 {
-    public Weapon Source
-    {
-        get; private set;
-    }
-    public string Sight
-    {
-        get; private set;
-    }
-    public string Barrel
-    {
-        get; private set;
-    }
-    public string Grip
-    {
-        get; private set;
-    }
-    public bool Underbarrel
-    {
-        get; private set;
-    }
+    public Weapon Source { get; private set; }
+    public string Sight { get; private set; }
+    public string Barrel { get; private set; }
+    public string Grip { get; private set; }
+    public bool Underbarrel { get; private set; }
 
     internal WeaponConfiguration(Weapon source)
     {

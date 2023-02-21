@@ -2,70 +2,22 @@
 
 public class Weapon
 {
-    public string Name
-    {
-        get; private set;
-    }
-    public WeaponType Type
-    {
-        get; private set;
-    }
-    public FiringMode FireMode
-    {
-        get; private set;
-    }
-    public int Damage
-    {
-        get; private set;
-    }
-    public int RoundsPerMinute
-    {
-        get; private set;
-    }
-    public int Capacity
-    {
-        get; private set;
-    }
-    public Sight Sights
-    {
-        get; private set;
-    }
-    public Barrel Barrels
-    {
-        get; private set;
-    }
-    public Grip Grips
-    {
-        get; private set;
-    }
-    public bool Underbarrel
-    {
-        get; private set;
-    }
-    public int SuppressedDamage
-    {
-        get; private set;
-    }
-    public int ExtendedBarrelDamage
-    {
-        get; private set;
-    }
-    public int DamagePerSecond
-    {
-        get; private set;
-    }
-    public TimeSpan ReloadTactical
-    {
-        get; private set;
-    }
-    public TimeSpan ReloadEmpty
-    {
-        get; private set;
-    }
-    public bool IsSecondary
-    {
-        get; private set;
-    } = false;
+    public string Name { get; private set; }
+    public WeaponType Type { get; private set; }
+    public FiringMode FireMode { get; private set; }
+    public int Damage { get; private set; }
+    public int RoundsPerMinute { get; private set; }
+    public int Capacity { get; private set; }
+    public Sight Sights { get; private set; }
+    public Barrel Barrels { get; private set; }
+    public Grip Grips { get; private set; }
+    public bool Underbarrel { get; private set; }
+    public int SuppressedDamage { get; private set; }
+    public int ExtendedBarrelDamage { get; private set; }
+    public int DamagePerSecond { get; private set; }
+    public TimeSpan ReloadTactical { get; private set; }
+    public TimeSpan ReloadEmpty { get; private set; }
+    public bool IsSecondary { get; private set; } = false;
 
     /// <summary>
     /// The multiplier that is applied to a weapon's base damage when equipping a <see cref="Barrel.Suppressor"/> on it. This is not defined anywhere and resulted from averaging the ratios from all weapons a <see cref="Barrel.Suppressor"/> can be equipped on (<c>suppressed_dmg / dmg</c>). Typically, using <c>0.84</c> yields a close enough approximate.

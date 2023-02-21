@@ -2474,7 +2474,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         new(5, 4, 39),
         3
     );
-    
+
     public readonly Operator Brava = new(
         "Brava",
         new List<Weapon>()

@@ -2,18 +2,9 @@
 
 public class OperatorAge
 {
-    public int Day
-    {
-        get; private set;
-    }
-    public int Month
-    {
-        get; private set;
-    }
-    public int Age
-    {
-        get; private set;
-    }
+    public int Day { get; private set; }
+    public int Month { get; private set; }
+    public int Age { get; private set; }
 
     internal OperatorAge(int day, int month, int age)
     {

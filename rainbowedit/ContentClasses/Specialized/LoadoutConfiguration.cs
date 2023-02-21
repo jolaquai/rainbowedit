@@ -4,22 +4,10 @@ namespace RainbowEdit;
 
 public partial class LoadoutConfiguration
 {
-    public Operator Source
-    {
-        get; private set;
-    }
-    public WeaponConfiguration Primary
-    {
-        get; private set;
-    }
-    public WeaponConfiguration Secondary
-    {
-        get; private set;
-    }
-    public Weapon.Gadget Gadget
-    {
-        get; set;
-    }
+    public Operator Source { get; private set; }
+    public WeaponConfiguration Primary { get; private set; }
+    public WeaponConfiguration Secondary { get; private set; }
+    public Weapon.Gadget Gadget { get; set; }
 
     internal LoadoutConfiguration(Operator source)
     {
