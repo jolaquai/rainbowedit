@@ -38,7 +38,8 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
             Flores,
             Osa,
             Sens,
-            Grim
+            Grim,
+            Brava
         };
     }
 
@@ -2471,6 +2472,81 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         89.8M,
         "Charlie Tho Keng Boon",
         new(5, 4, 39),
+        3
+    );
+    
+    public readonly Operator Brava = new(
+        "Brava",
+        new List<Weapon>()
+        {
+            new(
+                "PARA-308",
+                Weapon.WeaponType.AssaultRifle,
+                Weapon.FiringMode.FullAuto,
+                47,
+                650,
+                30,
+                Weapon.Sight.OnePointFive,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                true,
+                2000,
+                2300
+            ),
+            new(
+                "CAMRS",
+                Weapon.WeaponType.MarksmanRifle,
+                Weapon.FiringMode.SingleShot,
+                69,
+                450,
+                20,
+                Weapon.Sight.Three,
+                Weapon.Barrel.MuzzleBrake | Weapon.Barrel.Suppressor,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                true,
+                1460,
+                2290
+            )
+        },
+        new List<Weapon>()
+        {
+            new(
+                "Super Shorty",
+                Weapon.WeaponType.ShotgunShot,
+                Weapon.FiringMode.SingleShot,
+                35,
+                85,
+                3,
+                Weapon.Sight.NonMagnifying,
+                Weapon.Barrel.None,
+                Weapon.Grip.None,
+                true,
+                1300,
+                2450
+            ),
+            new(
+                "USP40",
+                Weapon.WeaponType.Handgun,
+                Weapon.FiringMode.SingleShot,
+                48,
+                550,
+                12,
+                Weapon.Sight.None,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
+                Weapon.Grip.None,
+                true,
+                1250,
+                1410
+            )
+        },
+        Weapon.Gadget.SmokeGrenade | Weapon.Gadget.Claymore,
+        "Kludge Drone",
+        "COT",
+        "Curitiba, Brazil",
+        170,
+        71M,
+        "Nayara Cardoso",
+        new(10, 1, 40),
         3
     );
 }
