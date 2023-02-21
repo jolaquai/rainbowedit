@@ -87,29 +87,4 @@ public class Operator
 
     public override string ToString() => Nickname.PadRight(Game.LongestOperatorNickname.Length + 4);
     public static implicit operator string(Operator op) => op.ToString();
-
-    public class OperatorAge
-    {
-        public int Day
-        {
-            get; private set;
-        }
-        public int Month
-        {
-            get; private set;
-        }
-        public int Age
-        {
-            get; private set;
-        }
-
-        internal OperatorAge(int day, int month, int age)
-        {
-            Day = day;
-            Month = month;
-            Age = age;
-        }
-
-        public static readonly OperatorAge Redacted = new(-1, -1, -1);
-    }
 }
