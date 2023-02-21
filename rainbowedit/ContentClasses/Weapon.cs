@@ -55,13 +55,21 @@ public class Weapon
     }
 
     /// <summary>
+    /// <para>
     /// Indicates which sights can be or are forcefully equipped on the weapon.
-    /// 
+    /// </para>
+    /// <para>
     /// As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
+    /// </para>
+    /// <para>
     /// However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
+    /// </para>
+    /// <para>
     /// Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
-    /// 
+    /// </para>
+    /// <para>
     /// As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="Sights"/> flags have been redefined to act as maximums. Use <see cref="Enum.HasFlag(Enum)"/> for any look-ups.
+    /// </para>
     /// </summary>
     public enum Sight
     {
@@ -72,8 +80,9 @@ public class Weapon
         Two = 15,
         TwoPointFive = 31,
         Three = 63,
-        SixTwelve = 127,
-        Other = 128
+        Four = 131,
+        FiveTwelve = 256,
+        Other = 512
     }
 
     [Flags]

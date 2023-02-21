@@ -70,7 +70,8 @@ public static partial class EnumExtensions
         Weapon.Sight.Two => "2x",
         Weapon.Sight.TwoPointFive => "2.5x",
         Weapon.Sight.Three => "3x",
-        Weapon.Sight.SixTwelve => "6x/12x",
+        Weapon.Sight.Four => "4x",
+        Weapon.Sight.FiveTwelve => "5x/12x",
         Weapon.Sight.Other => "Other"
     };
 }
