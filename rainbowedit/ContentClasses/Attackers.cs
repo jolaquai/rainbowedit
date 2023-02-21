@@ -1852,7 +1852,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         -1M,
         -1M,
         "[REDACTED]",
-        Operator.OperatorAge.Redacted,
+        OperatorAge.Redacted,
         2
     );
 
