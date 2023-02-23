@@ -18,9 +18,9 @@ public static class TestConsole
             Console.WriteLine(i == 0 ? "DEFENDERS" : "\r\nATTACKERS");
             Console.WriteLine("=========");
 
-            IEnumerable<Weapon> data = opClass.SelectMany(op => op.Primaries.Concat(op.Secondaries).Where(wep => wep.Barrels.HasFlag(Weapon.Barrel.ExtendedBarrel)));
+            IEnumerable<Weapon> data = opClass.SelectMany(op => op.Primaries.Concat(op.Secondaries).Where(wep => wep.Barrels.HasFlag(Barrel.ExtendedBarrel)));
 
-            foreach (KeyValuePair<WeaponType, IEnumerable<Weapon>> wepGroup in data.DistinctBy(wep => wep.Name).OrderByDescending(wep => wep.Damage).Aggregate(new Dictionary<Weapon.WeaponType, IEnumerable<Weapon>>(), (seed, weapon) =>
+            foreach (KeyValuePair<WeaponType, IEnumerable<Weapon>> wepGroup in data.DistinctBy(wep => wep.Name).OrderByDescending(wep => wep.Damage).Aggregate(new Dictionary<WeaponType, IEnumerable<Weapon>>(), (seed, weapon) =>
             {
                 if (seed.ContainsKey(weapon.Type))
                 {
