@@ -1,6 +1,9 @@
 ﻿namespace RainbowEdit;
 
-public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
+/// <summary>
+/// The <see cref="Attackers"/> in Siege.
+/// </summary>
+public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
 {
     internal Attackers()
     {
@@ -43,6 +46,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         };
     }
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Sledge"/>.
+    /// </summary>
     public readonly Operator Sledge = new(
         "Sledge",
         new List<Weapon>()
@@ -104,6 +110,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         1
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Thatcher"/>.
+    /// </summary>
     public readonly Operator Thatcher = new(
         "Thatcher",
         new List<Weapon>()
@@ -179,6 +188,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         1
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Ash"/>.
+    /// </summary>
     public readonly Operator Ash = new(
         "Ash",
         new List<Weapon>()
@@ -254,6 +266,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Thermite"/>.
+    /// </summary>
     public readonly Operator Thermite = new(
         "Thermite",
         new List<Weapon>()
@@ -329,6 +344,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Twitch"/>.
+    /// </summary>
     public readonly Operator Twitch = new(
         "Twitch",
         new List<Weapon>()
@@ -418,6 +436,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Montagne"/>.
+    /// </summary>
     public readonly Operator Montagne = new(
         "Montagne",
         new List<Weapon>()
@@ -479,6 +500,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         1
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Glaz"/>.
+    /// </summary>
     public readonly Operator Glaz = new(
         "Glaz",
         new List<Weapon>()
@@ -554,6 +578,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Fuze"/>.
+    /// </summary>
     public readonly Operator Fuze = new(
         "Fuze",
         new List<Weapon>()
@@ -643,6 +670,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         1
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Blitz"/>.
+    /// </summary>
     public readonly Operator Blitz = new(
         "Blitz",
         new List<Weapon>()
@@ -690,6 +720,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="IQ"/>.
+    /// </summary>
     public readonly Operator IQ = new(
         "IQ",
         new List<Weapon>()
@@ -765,6 +798,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Buck"/>.
+    /// </summary>
     public readonly Operator Buck = new(
         "Buck",
         new List<Weapon>()
@@ -840,6 +876,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Blackbeard"/>.
+    /// </summary>
     public readonly Operator Blackbeard = new(
         "Blackbeard",
         new List<Weapon>()
@@ -901,6 +940,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Capitao"/>.
+    /// </summary>
     public readonly Operator Capitao = new(
         "Capitão",
         new List<Weapon>()
@@ -976,6 +1018,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Hibana"/>.
+    /// </summary>
     public readonly Operator Hibana = new(
         "Hibana",
         new List<Weapon>()
@@ -1051,6 +1096,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Jackal"/>.
+    /// </summary>
     public readonly Operator Jackal = new(
         "Jackal",
         new List<Weapon>()
@@ -1140,6 +1188,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Ying"/>.
+    /// </summary>
     public readonly Operator Ying = new(
         "Ying",
         new List<Weapon>()
@@ -1201,6 +1252,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Zofia"/>.
+    /// </summary>
     public readonly Operator Zofia = new(
         "Zofia",
         new List<Weapon>()
@@ -1243,7 +1297,7 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
                 38,
                 550,
                 15,
-                Weapon.Sight.Other,
+                Weapon.Sight.NonMagnifying | Weapon.Sight.Other,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
                 Weapon.Grip.None,
                 true,
@@ -1262,6 +1316,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         1
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Dokkaebi"/>.
+    /// </summary>
     public readonly Operator Dokkaebi = new(
         "Dokkaebi",
         new List<Weapon>()
@@ -1351,6 +1408,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Lion"/>.
+    /// </summary>
     public readonly Operator Lion = new(
         "Lion",
         new List<Weapon>()
@@ -1453,6 +1513,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Finka"/>.
+    /// </summary>
     public readonly Operator Finka = new(
         "Finka",
         new List<Weapon>()
@@ -1556,6 +1619,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Maverick"/>.
+    /// </summary>
     public readonly Operator Maverick = new(
         "Maverick",
         new List<Weapon>()
@@ -1617,6 +1683,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Nomad"/>.
+    /// </summary>
     public readonly Operator Nomad = new(
         "Nomad",
         new List<Weapon>()
@@ -1692,6 +1761,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Gridlock"/>.
+    /// </summary>
     public readonly Operator Gridlock = new(
         "Gridlock",
         new List<Weapon>()
@@ -1781,6 +1853,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         1
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Nokk"/>.
+    /// </summary>
     public readonly Operator Nokk = new(
         "Nøkk",
         new List<Weapon>()
@@ -1856,6 +1931,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Amaru"/>.
+    /// </summary>
     public readonly Operator Amaru = new(
         "Amaru",
         new List<Weapon>()
@@ -1945,6 +2023,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Kali"/>.
+    /// </summary>
     public readonly Operator Kali = new(
         "Kali",
         new List<Weapon>()
@@ -2020,6 +2101,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Iana"/>.
+    /// </summary>
     public readonly Operator Iana = new(
         "Iana",
         new List<Weapon>()
@@ -2081,6 +2165,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Ace"/>.
+    /// </summary>
     public readonly Operator Ace = new(
         "Ace",
         new List<Weapon>()
@@ -2142,6 +2229,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Zero"/>.
+    /// </summary>
     public readonly Operator Zero = new(
         "Zero",
         new List<Weapon>()
@@ -2217,6 +2307,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Flores"/>.
+    /// </summary>
     public readonly Operator Flores = new(
         "Flores",
         new List<Weapon>()
@@ -2278,6 +2371,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         2
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Osa"/>.
+    /// </summary>
     public readonly Operator Osa = new(
         "Osa",
         new List<Weapon>()
@@ -2339,6 +2435,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         1
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Sens"/>.
+    /// </summary>
     public readonly Operator Sens = new(
         "Sens",
         new List<Weapon>()
@@ -2414,6 +2513,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Grim"/>.
+    /// </summary>
     public readonly Operator Grim = new(
         "Grim",
         new List<Weapon>()
@@ -2475,6 +2577,9 @@ public partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
         3
     );
 
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Brava"/>.
+    /// </summary>
     public readonly Operator Brava = new(
         "Brava",
         new List<Weapon>()

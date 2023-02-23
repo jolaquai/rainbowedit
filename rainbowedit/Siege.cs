@@ -1,10 +1,14 @@
-﻿using System.Linq;
-
-using RainbowEdit.Extensions;
+﻿using RainbowEdit.Extensions;
 
 namespace RainbowEdit;
 
-public static class Game
+#pragma warning disable CS8601 // Possible null reference assignment.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+
+/// <summary>
+/// Base class for all information accessible from the library.
+/// </summary>
+public static class Siege
 {
     /// <summary>
     /// Contains all Attackers from the game.
@@ -24,7 +28,16 @@ public static class Game
     /// </summary>
     public static readonly IEnumerable<Operator> DefAtk = Defenders.Concat(Attackers);
 
+    /// <summary>
+    /// The longest <see cref="Operator.Nickname"/> there is.
+    /// </summary>
     public static readonly string LongestOperatorNickname = AtkDef.MaxBy(op => op.Nickname.Length).Nickname;
+    /// <summary>
+    /// The longest <see cref="Weapon.Name"/> there is.
+    /// </summary>
     public static readonly string LongestWeaponName = AtkDef.SelectMany(op => op.Primaries.Concat(op.Secondaries)).MaxBy(wep => wep.Name.Length).Name;
+    /// <summary>
+    /// The longest <see cref="Weapon.Gadget"/> name there is.
+    /// </summary>
     public static readonly string LongestGadgetName = Enum.GetValues<Weapon.Gadget>().Select(val => val.Stringify()).MaxBy(gadget => gadget.Length);
 }

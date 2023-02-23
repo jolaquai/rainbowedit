@@ -1,0 +1,1418 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>rainbowedit</name>
+    </assembly>
+    <members>
+        <member name="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException">
+            <summary>
+            The exception that is thrown when a <see cref="T:RainbowEdit.Weapon"/> object is attmpted to be brought in connection with an <see cref="T:RainbowEdit.Operator"/> that it does not belong to.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Exceptions.WeaponOperatorMismatchException.#ctor(RainbowEdit.Weapon,RainbowEdit.Operator)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="weapon"/>.
+            </summary>
+            <param name="weapon">The <see cref="T:RainbowEdit.Weapon"/> that was attempted to be brought in connection with <paramref name="operator"/>.</param>
+            <param name="operator">The <see cref="T:RainbowEdit.Operator"/> that was targeted despite the <paramref name="weapon"/> not belonging to them.</param>
+        </member>
+        <member name="T:RainbowEdit.Extensions.EnumExtensions">
+            <summary>
+            Provides extensions for the <see cref="T:System.Enum"/> type and derived types.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.GetSetFlags``1(``0)">
+            <summary>
+            Gets a <see cref="T:System.Collections.Generic.List`1"/> of enum values typed <typeparamref name="T"/> that are set in a given <see cref="T:System.FlagsAttribute"/> enum instance.
+            </summary>
+            <typeparam name="T">The type of the enum.</typeparam>
+            <param name="source">The enum value to extract the set flags on.</param>
+            <returns>A list of individual <typeparamref name="T"/> values that are set in <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Gadget)">
+            <summary>
+            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Gadget"/> enum value.
+            </summary>
+            <param name="source">The enum value to stringify.</param>
+            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Gadget"/> enum value.</returns>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Barrel)">
+            <summary>
+            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Barrel"/> enum value.
+            </summary>
+            <param name="source">The enum value to stringify.</param>
+            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Barrel"/> enum value.</returns>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Grip)">
+            <summary>
+            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Grip"/> enum value.
+            </summary>
+            <param name="source">The enum value to stringify.</param>
+            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Grip"/> enum value.</returns>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.WeaponType)">
+            <summary>
+            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.WeaponType"/> enum value.
+            </summary>
+            <param name="source">The enum value to stringify.</param>
+            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.WeaponType"/> enum value.</returns>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.UppercaseLetterRegex">
+            <remarks>
+            Pattern explanation:<br/>
+            <code>
+            ○ Match a character in the set [A-Z].<br/>
+            </code>
+            </remarks>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Sight)">
+            <summary>
+            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Sight"/> enum value.
+            </summary>
+            <param name="source">The enum value to stringify.</param>
+            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Sight"/> enum value.</returns>
+        </member>
+        <member name="T:RainbowEdit.Extensions.IEnumerableExtensions">
+            <summary>
+            Provides extensions for the <see cref="T:System.Collections.Generic.IEnumerable`1"/> type and derived types.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Extensions.IEnumerableExtensions.Random``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns a random item from an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <typeparam name="T">The <see cref="T:System.Type"/> of the items in <paramref name="source"/>.</typeparam>
+            <param name="source">The sequence to choose an item from.</param>
+            <returns>A random item from <paramref name="source"/>.</returns>
+        </member>
+        <member name="T:RainbowEdit.Attackers">
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/> in Siege.
+            </summary>
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/> in Siege.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Attackers.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Attackers.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Attackers.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Attackers.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Attackers.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="P:RainbowEdit.Attackers.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:RainbowEdit.Attackers.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Sledge">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Sledge"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Thatcher">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Thatcher"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Ash">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Ash"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Thermite">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Thermite"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Twitch">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Twitch"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Montagne">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Montagne"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Glaz">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Glaz"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Fuze">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Fuze"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Blitz">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Blitz"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.IQ">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.IQ"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Buck">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Buck"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Blackbeard">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Blackbeard"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Capitao">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Capitao"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Hibana">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Hibana"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Jackal">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Jackal"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Ying">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Ying"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Zofia">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Zofia"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Dokkaebi">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Dokkaebi"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Lion">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Lion"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Finka">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Finka"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Maverick">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Maverick"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Nomad">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Nomad"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Gridlock">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Gridlock"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Nokk">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Nokk"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Amaru">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Amaru"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Kali">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Kali"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Iana">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Iana"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Ace">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Ace"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Zero">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Zero"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Flores">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Flores"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Osa">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Osa"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Sens">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Sens"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Grim">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Grim"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Brava">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Brava"/>.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Defenders">
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/> in Siege.
+            </summary>
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/> in Siege.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Defenders.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Defenders.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Defenders.MoveNext">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Defenders.Reset">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Defenders.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="P:RainbowEdit.Defenders.Current">
+            <inheritdoc/>
+        </member>
+        <member name="P:RainbowEdit.Defenders.System#Collections#IEnumerator#Current">
+            <inheritdoc/>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Smoke">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Smoke"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Mute">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Mute"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Castle">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Castle"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Pulse">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Pulse"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Doc">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Doc"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Rook">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Rook"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Kapkan">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Kapkan"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Tachanka">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Tachanka"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Jäger">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Jäger"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Bandit">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Bandit"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Frost">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Frost"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Valkyrie">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Valkyrie"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Caveira">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Caveira"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Echo">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Echo"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Mira">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Mira"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Lesion">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Lesion"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Ela">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Ela"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Vigil">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Vigil"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Maestro">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Maestro"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Alibi">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Alibi"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Clash">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Clash"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Kaid">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Kaid"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Mozzie">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Mozzie"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Warden">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Warden"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Goyo">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Goyo"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Wamai">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Wamai"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Oryx">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Oryx"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Melusi">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Melusi"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Aruni">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Aruni"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Thunderbird">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Thunderbird"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Thorn">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Thorn"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Azami">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Azami"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Solis">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Solis"/>.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Operator">
+            <summary>
+            An <see cref="T:RainbowEdit.Operator"/> in Siege.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.SPEED_3">
+            <summary>
+            The walking speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.SPEED_2">
+            <summary>
+            The walking speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.SPEED_1">
+            <summary>
+            The walking speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.SPEED_AIM">
+            <summary>
+            The walking speed of an <see cref="T:RainbowEdit.Operator"/> while aiming down sights.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Nickname">
+            <summary>
+            The nickname of the <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Primaries">
+            <summary>
+            A collection of <see cref="T:RainbowEdit.Weapon"/> objects, containing information about the primary weapons the <see cref="T:RainbowEdit.Operator"/> may use.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Secondaries">
+            <summary>
+            A collection of <see cref="T:RainbowEdit.Weapon"/> objects, containing information about the secondary weapons the <see cref="T:RainbowEdit.Operator"/> may use.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Gadgets">
+            <summary>
+            A combination of <see cref="T:RainbowEdit.Weapon.Gadget"/> values that specifies which gadgets the <see cref="T:RainbowEdit.Operator"/> may choose from.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.SpecialAbility">
+            <summary>
+            The name of the <see cref="T:RainbowEdit.Operator"/>'s special ability.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Organization">
+            <summary>
+            The name of the organization the <see cref="T:RainbowEdit.Operator"/> belongs to.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Birthplace">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/>'s birthplace.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Height">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/>'s height in whole and fractional centimeters.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Weight">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/>'s weight in whole and fractional kilograms.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.RealName">
+            <summary>
+            The in-game real name of the <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Age">
+            <summary>
+            An <see cref="T:RainbowEdit.OperatorAge"/> instance specifying the <see cref="T:RainbowEdit.Operator"/>'s day and month of birth and their age.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Speed">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/>'s speed rating.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.Health">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/>'s health rating.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.HP">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/>'s base health / HP value.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Operator.#ctor(System.String,System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},RainbowEdit.Weapon.Gadget,System.String,System.String,System.String,System.Decimal,System.Decimal,System.String,RainbowEdit.OperatorAge,System.Int32)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.Operator"/> object.
+            </summary>
+            <param name="nickname">The nickname of the <see cref="T:RainbowEdit.Operator"/>.</param>
+            <param name="primaries">A collection of <see cref="T:RainbowEdit.Weapon"/> objects, containing information about the primary weapons the <see cref="T:RainbowEdit.Operator"/> may use.</param>
+            <param name="secondaries">A collection of <see cref="T:RainbowEdit.Weapon"/> objects, containing information about the secondary weapons the <see cref="T:RainbowEdit.Operator"/> may use.</param>
+            <param name="gadgets">A combination of <see cref="T:RainbowEdit.Weapon.Gadget"/> values that specifies which gadgets the <see cref="T:RainbowEdit.Operator"/> may choose from.</param>
+            <param name="specialAbility">The name of the <see cref="T:RainbowEdit.Operator"/>'s special ability.</param>
+            <param name="organization">The name of the organization the <see cref="T:RainbowEdit.Operator"/> belongs to.</param>
+            <param name="birthplace">The <see cref="T:RainbowEdit.Operator"/>'s birthplace.</param>
+            <param name="height">The <see cref="T:RainbowEdit.Operator"/>'s height in whole and fractional centimeters.</param>
+            <param name="weight">The <see cref="T:RainbowEdit.Operator"/>'s weight in whole and fractional kilograms.</param>
+            <param name="realName">The in-game real name of the <see cref="T:RainbowEdit.Operator"/>.</param>
+            <param name="age">An <see cref="T:RainbowEdit.OperatorAge"/> instance specifying the <see cref="T:RainbowEdit.Operator"/>'s day and month of birth and their age.</param>
+            <param name="speed">The <see cref="T:RainbowEdit.Operator"/>'s speed rating.</param>
+        </member>
+        <member name="M:RainbowEdit.Operator.GetRandomLoadout">
+            <summary>
+            Creates a <see cref="T:RainbowEdit.LoadoutConfiguration"/> from all possible <see cref="P:RainbowEdit.Operator.Primaries"/>, <see cref="P:RainbowEdit.Operator.Secondaries"/> (and those two's respective <see cref="P:RainbowEdit.Weapon.Barrels"/>, <see cref="P:RainbowEdit.Weapon.Grips"/>, <see cref="P:RainbowEdit.Weapon.Sights"/> and <see cref="P:RainbowEdit.Weapon.Underbarrel"/> options) and <see cref="P:RainbowEdit.Operator.Gadgets"/> loadout combinations.
+            </summary>
+            <returns>A <see cref="T:RainbowEdit.LoadoutConfiguration"/> as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Operator.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Operator.op_Implicit(RainbowEdit.Operator)~System.String">
+            <inheritdoc/>
+        </member>
+        <member name="T:RainbowEdit.OperatorAge">
+            <summary>
+            Represents the age of an <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.OperatorAge.Day">
+            <summary>
+            The day of birth of the <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.OperatorAge.Month">
+            <summary>
+            The month of birth of the <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.OperatorAge.Age">
+            <summary>
+            The age of the <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.OperatorAge.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Instantiates an <see cref="T:RainbowEdit.OperatorAge"/> instance for the given data.
+            </summary>
+            <param name="day">The day of birth of the <see cref="T:RainbowEdit.Operator"/>.</param>
+            <param name="month">The month of birth of the <see cref="T:RainbowEdit.Operator"/>.</param>
+            <param name="age">The age of the <see cref="T:RainbowEdit.Operator"/>.</param>
+        </member>
+        <member name="M:RainbowEdit.OperatorAge.ToDateTime">
+            <summary>
+            Constructs a <see cref="T:System.DateTime"/> instance representing the current date of birth of the <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:RainbowEdit.OperatorAge.Redacted">
+            <summary>
+            Represents an <see cref="T:RainbowEdit.Operator"/>'s age when it is "redacted" or unavailable in-game for any other reason.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.LoadoutConfiguration">
+            <summary>
+            A single loadout configuration from all possible <see cref="P:RainbowEdit.Operator.Primaries"/>, <see cref="P:RainbowEdit.Operator.Secondaries"/> (and those two's respective <see cref="P:RainbowEdit.Weapon.Barrels"/>, <see cref="P:RainbowEdit.Weapon.Grips"/>, <see cref="P:RainbowEdit.Weapon.Sights"/> and <see cref="P:RainbowEdit.Weapon.Underbarrel"/> options) and <see cref="T:RainbowEdit.Weapon.Gadget"/> combinations.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.LoadoutConfiguration.Source">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> this configuration applies to.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.LoadoutConfiguration.Primary">
+            <summary>
+            A <see cref="T:RainbowEdit.WeaponConfiguration"/> detailing the primary <see cref="T:RainbowEdit.Weapon"/> and the attachments to use.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.LoadoutConfiguration.Secondary">
+            <summary>
+            A <see cref="T:RainbowEdit.WeaponConfiguration"/> detailing the secondary <see cref="T:RainbowEdit.Weapon"/> and the attachments to use.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.LoadoutConfiguration.Gadget">
+            <summary>
+            A <see cref="T:RainbowEdit.Weapon.Gadget"/> enum value identifying the <see cref="T:RainbowEdit.Weapon.Gadget"/> to use.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.LoadoutConfiguration.#ctor(RainbowEdit.Operator)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.LoadoutConfiguration"/> object from just an <see cref="T:RainbowEdit.Operator"/> to gather values from.
+            </summary>
+            <param name="source">The <see cref="T:RainbowEdit.Operator"/> to gather random values for this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance's properties from.</param>
+        </member>
+        <member name="M:RainbowEdit.LoadoutConfiguration.#ctor(RainbowEdit.Operator,RainbowEdit.Weapon.Gadget,RainbowEdit.Weapon,RainbowEdit.Weapon)">
+            <summary>
+            <para>
+            Instantiates a new <see cref="T:RainbowEdit.LoadoutConfiguration"/> object from an <see cref="T:RainbowEdit.Operator"/> and one each of their <see cref="P:RainbowEdit.Operator.Gadgets"/>, <see cref="P:RainbowEdit.Operator.Primaries"/> and <see cref="P:RainbowEdit.Operator.Secondaries"/>, the latter two of which are used to instantiate randomized <see cref="T:RainbowEdit.WeaponConfiguration"/>s.
+            </para>
+            <para>
+            A <see cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException"/> is thrown if the passed <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.
+            </para>
+            </summary>
+            <param name="source">The <see cref="T:RainbowEdit.Operator"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
+            <param name="gadget">The <see cref="T:RainbowEdit.Weapon.Gadget"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
+            <param name="primary">One of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Primaries"/>.</param>
+            <param name="secondary">One of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Secondaries"/>.</param>
+        </member>
+        <member name="M:RainbowEdit.LoadoutConfiguration.#ctor(RainbowEdit.Operator,RainbowEdit.Weapon.Gadget,RainbowEdit.WeaponConfiguration,RainbowEdit.WeaponConfiguration)">
+            <summary>
+            <para>
+            Instantiates a new fully customized <see cref="T:RainbowEdit.LoadoutConfiguration"/> object from an <see cref="T:RainbowEdit.Operator"/>, one of their <see cref="P:RainbowEdit.Operator.Gadgets"/> and one <see cref="T:RainbowEdit.WeaponConfiguration"/> identifying the <see cref="P:RainbowEdit.LoadoutConfiguration.Primary"/> and <see cref="P:RainbowEdit.LoadoutConfiguration.Secondary"/> respectively.
+            </para>
+            <para>
+            A <see cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException"/> is thrown if the passed <see cref="T:RainbowEdit.WeaponConfiguration"/>'s source <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.
+            </para>
+            </summary>
+            <param name="source">The <see cref="T:RainbowEdit.Operator"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
+            <param name="gadget">The <see cref="T:RainbowEdit.Weapon.Gadget"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
+            <param name="primaryConfig">A <see cref="T:RainbowEdit.WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Primaries"/>.</param>
+            <param name="secondaryConfig">A <see cref="T:RainbowEdit.WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Secondaries"/>.</param>
+        </member>
+        <member name="M:RainbowEdit.LoadoutConfiguration.ShortString">
+            <summary>
+            Constructs a short string identifying the components of this <see cref="T:RainbowEdit.LoadoutConfiguration"/>.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.LoadoutConfiguration.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.LoadoutConfiguration.op_Implicit(RainbowEdit.LoadoutConfiguration)~System.String">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.LoadoutConfiguration.LongString">
+            <summary>
+            Constructs a long string identifying the components of this <see cref="T:RainbowEdit.LoadoutConfiguration"/> in detail.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="T:RainbowEdit.WeaponConfiguration">
+            <summary>
+            A single weapon configuration from all possible <see cref="P:RainbowEdit.Weapon.Barrels"/>, <see cref="P:RainbowEdit.Weapon.Grips"/>, <see cref="P:RainbowEdit.Weapon.Sights"/> and <see cref="P:RainbowEdit.Weapon.Underbarrel"/> combinations.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.WeaponConfiguration.#ctor(RainbowEdit.Weapon)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.WeaponConfiguration"/> object from just a <see cref="T:RainbowEdit.Weapon"/> to gather values from.
+            </summary>
+            <param name="source">The <see cref="T:RainbowEdit.Weapon"/> to gather random values for this <see cref="T:RainbowEdit.WeaponConfiguration"/> instance's properties from.</param>
+        </member>
+        <member name="M:RainbowEdit.WeaponConfiguration.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:RainbowEdit.Weapon">
+            <summary>
+            An <see cref="T:RainbowEdit.Operator"/>-specific <see cref="T:RainbowEdit.Weapon"/> in Siege.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Name">
+            <summary>
+            The in-game name of the <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Type">
+            <summary>
+            The in-game <see cref="T:RainbowEdit.Weapon.WeaponType"/> of the <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.FireMode">
+            <summary>
+            The in-game <see cref="T:RainbowEdit.Weapon.FiringMode"/> the <see cref="T:RainbowEdit.Weapon"/> uses.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Damage">
+            <summary>
+            The damage this <see cref="T:RainbowEdit.Weapon"/> deals when <i>not</i> equipped with a <see cref="F:RainbowEdit.Weapon.Barrel.ExtendedBarrel"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.RoundsPerMinute">
+            <summary>
+            The rounds per minute this <see cref="T:RainbowEdit.Weapon"/> is capable of firing in-game.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Capacity">
+            <summary>
+            The in-game magazine capacity of this <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+            <remarks>
+            This does not include the single round chambered after cocking the <see cref="T:RainbowEdit.Weapon"/>.
+            </remarks>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Sights">
+            <summary>
+            A combination of <see cref="T:RainbowEdit.Weapon.Sight"/> values that specifies which sights may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Barrels">
+            <summary>
+            A combination of <see cref="T:RainbowEdit.Weapon.Barrel"/> values that specifies which barrel extensions may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Grips">
+            <summary>
+            A combination of <see cref="T:RainbowEdit.Weapon.Grip"/> values that specifies which grips may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Underbarrel">
+            <summary>
+            Whether an underbarrel laser may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.SuppressedDamage">
+            <summary>
+            The damage this <see cref="T:RainbowEdit.Weapon"/> deals when equipped with a <see cref="F:RainbowEdit.Weapon.Barrel.Suppressor"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.ExtendedBarrelDamage">
+            <summary>
+            The damage this <see cref="T:RainbowEdit.Weapon"/> deals when equipped with a <see cref="F:RainbowEdit.Weapon.Barrel.ExtendedBarrel"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.DamagePerSecond">
+            <summary>
+            The theoretical damage per second output of this <see cref="T:RainbowEdit.Weapon"/> during sustained fire.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.ReloadTactical">
+            <summary>
+            A <see cref="T:System.TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="T:RainbowEdit.Weapon"/> (a reload when there is a round chambered).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.ReloadEmpty">
+            <summary>
+            A <see cref="T:System.TimeSpan"/> instance that represents the amount of time it takes to perform an empty reload with this <see cref="T:RainbowEdit.Weapon"/> (a reload when there is no round chambered).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.IsSecondary">
+            <summary>
+            Whether this <see cref="T:RainbowEdit.Weapon"/> is a secondary weapon.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.SuppressedDamageMultiplier">
+            <summary>
+            The multiplier that is applied to a weapon's base damage when equipping a <see cref="F:RainbowEdit.Weapon.Barrel.Suppressor"/> on it. This is not defined anywhere and resulted from averaging the ratios from all weapons a <see cref="F:RainbowEdit.Weapon.Barrel.Suppressor"/> can be equipped on (<c>suppressed_dmg / dmg</c>). Typically, using <c>0.84</c> yields a close enough approximate. The calculated value is then rounded towards the nearest integer.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.ExtendedBarrelDamageMultiplier">
+            <summary>
+            The multiplier that is applied to a weapon's base damage when equipping an <see cref="F:RainbowEdit.Weapon.Barrel.ExtendedBarrel"/> on it. Defined as 15% on top of the <see cref="T:RainbowEdit.Weapon"/>'s base damage as part of the Y7S2 Designer's notes (https://store.steampowered.com/news/app/359550/view/5254045511872530857).
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Weapon.WeaponType">
+            <summary>
+            Identifies the type of a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.AssaultRifle">
+            <summary>
+            Identifies the Assaul Rifle weapon type.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.Handgun">
+            <summary>
+            Identifies the Handgun weapon type.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.LightMachineGun">
+            <summary>
+            Identifies the Light Machine Gun weapon type.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.MachinePistol">
+            <summary>
+            Identifies the Machine Pistol weapon type.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.MarksmanRifle">
+            <summary>
+            Identifies the Marksman Rifle weapon type.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.Shield">
+            <summary>
+            Identifies the Shield weapon type.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.ShotgunSlug">
+            <summary>
+            Identifies the Shotgun weapon type (for shotguns that fire slugs).
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.ShotgunShot">
+            <summary>
+            Identifies the Shotgun weapon type (for shotguns that fire shot).
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.Shotgun">
+            <summary>
+            Identifies the Shotgun weapon type (shorthand for an "any shotgun" filter).
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.SubmachineGun">
+            <summary>
+            Identifies the Submachine Gun weapon type.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.WeaponType.HandCannon">
+            <summary>
+            Identifies the Hand Cannon weapon type.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Weapon.FiringMode">
+            <summary>
+            Indicates which firing mode a <see cref="T:RainbowEdit.Weapon"/> uses.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.FiringMode.None">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.FiringMode.FullAuto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.FiringMode.SingleShot">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Weapon.Sight">
+            <summary>
+            <para>
+            Indicates which sights can be or are forcefully equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </para>
+            <para>
+            As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
+            </para>
+            <para>
+            However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
+            </para>
+            <para>
+            Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
+            </para>
+            <para>
+            As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="P:RainbowEdit.Weapon.Sights"/> flags have been redefined to act as maximums. Use <see cref="M:System.Enum.HasFlag(System.Enum)"/> for any look-ups.
+            </para>
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.Invalid">
+            <summary>
+            Generally unused. Indicates an invalid value in terms of a <see cref="T:RainbowEdit.WeaponConfiguration"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.None">
+            <summary>
+            Indicates that no sights can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.NonMagnifying">
+            <summary>
+            Indicates that no or at most any non-magnifying sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.OnePointFive">
+            <summary>
+            Indicates that no or at most a 1.5x sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.Two">
+            <summary>
+            Indicates that no or at most a 2x sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.TwoPointFive">
+            <summary>
+            Indicates that no or at most a 2.5x sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.Three">
+            <summary>
+            Indicates that no or at most a 3x sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.Four">
+            <summary>
+            Indicates that no or at most any non-magnifying sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>, which may then be magnified to 4x by <see cref="F:RainbowEdit.Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="F:RainbowEdit.Attackers.Glaz"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.FiveTwelve">
+            <summary>
+            Indicates that no sights can be equipped on a <see cref="T:RainbowEdit.Weapon"/>. This identifies <see cref="F:RainbowEdit.Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="F:RainbowEdit.Attackers.Kali"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.Other">
+            <summary>
+            Indicates that some other weird stuff is going on with the sights for a <see cref="T:RainbowEdit.Weapon"/>. This identifies, for example, <see cref="F:RainbowEdit.Defenders.Ela"/>'s and <see cref="F:RainbowEdit.Attackers.Zofia"/>'s <i>RG15</i> <see cref="F:RainbowEdit.Weapon.WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Weapon.Barrel">
+            <summary>
+            Indicates which barrel attachments can be or are forcefully equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Barrel.None">
+            <summary>
+            Indicates that no barrel attachments can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Barrel.Suppressor">
+            <summary>
+            Indicates that a suppressor can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Barrel.FlashHider">
+            <summary>
+            Indicates that a flash hider can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Barrel.Compensator">
+            <summary>
+            Indicates that a compensator can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Barrel.MuzzleBrake">
+            <summary>
+            Indicates that a muzzle brake can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Barrel.ExtendedBarrel">
+            <summary>
+            Indicates that an extended barrel can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Weapon.Grip">
+            <summary>
+            Indicates which grips can be or are forcefully equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Grip.None">
+            <summary>
+            Indicates that no grips can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Grip.VerticalGrip">
+            <summary>
+            Indicates that a vertical grip can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Grip.AngledGrip">
+            <summary>
+            Indicates that an angled grip can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Weapon.Gadget">
+            <summary>
+            Indicates which gadgets an <see cref="T:RainbowEdit.Operator"/> may choose from.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.FragGrenade">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose fragmentation grenades during loadout selection. This is unique to <see cref="T:RainbowEdit.Attackers" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.BreachCharge">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose breach charges grenade during loadout selection. This is unique to <see cref="T:RainbowEdit.Attackers" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.Claymore">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose claymores during loadout selection. This is unique to <see cref="T:RainbowEdit.Attackers" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.HardBreachCharge">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose hard-breach charges grenade during loadout selection. This is unique to <see cref="T:RainbowEdit.Attackers" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.SmokeGrenade">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose smoke grenades during loadout selection. This is unique to <see cref="T:RainbowEdit.Attackers" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.StunGrenade">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose stun grenades during loadout selection. This is unique to <see cref="T:RainbowEdit.Attackers" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.EmpGrenade">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose EMP grenades during loadout selection. This is unique to <see cref="T:RainbowEdit.Attackers" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.BarbedWire">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose barbed wire during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.DeployableShield">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose a deployable shield during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.NitroCell">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose a nitro cell during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.BulletproofCamera">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose a bulletproof camera during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.ProximityAlarm">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose proximity alarms during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.ImpactGrenade">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose impact grenades during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Weapon.#ctor(System.String,RainbowEdit.Weapon.WeaponType,RainbowEdit.Weapon.FiringMode,System.Int32,System.Int32,System.Int32,RainbowEdit.Weapon.Sight,RainbowEdit.Weapon.Barrel,RainbowEdit.Weapon.Grip,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.Weapon"/> object with the given data.
+            </summary>
+            <param name="name">The in-game name of the <see cref="T:RainbowEdit.Weapon"/>.</param>
+            <param name="type">The in-game <see cref="T:RainbowEdit.Weapon.WeaponType"/> of the <see cref="T:RainbowEdit.Weapon"/>.</param>
+            <param name="fireMode">The in-game <see cref="T:RainbowEdit.Weapon.FiringMode"/> the <see cref="T:RainbowEdit.Weapon"/> uses.</param>
+            <param name="damage">The damage this <see cref="T:RainbowEdit.Weapon"/> deals when <i>not</i> equipped with a <see cref="F:RainbowEdit.Weapon.Barrel.ExtendedBarrel"/>.</param>
+            <param name="roundsPerMinute">The rounds per minute this <see cref="T:RainbowEdit.Weapon"/> is capable of firing in-game.</param>
+            <param name="capacity">The in-game magazine capacity of this <see cref="T:RainbowEdit.Weapon"/>.</param>
+            <param name="sights">A combination of <see cref="T:RainbowEdit.Weapon.Sight"/> values that specifies which sights may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.</param>
+            <param name="barrels">A combination of <see cref="T:RainbowEdit.Weapon.Barrel"/> values that specifies which barrel extensions may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.</param>
+            <param name="grips">A combination of <see cref="T:RainbowEdit.Weapon.Grip"/> values that specifies which grips may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.</param>
+            <param name="underbarrel">Whether an underbarrel laser may be equipped on this <see cref="T:RainbowEdit.Weapon"/>.</param>
+            <param name="reloadTactical">A <see cref="T:System.TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="T:RainbowEdit.Weapon"/> (a reload when there is a round chambered).</param>
+            <param name="reloadEmpty">A <see cref="T:System.TimeSpan"/> instance that represents the amount of time it takes to perform an empty reload with this <see cref="T:RainbowEdit.Weapon"/> (a reload when there is no round chambered).</param>
+        </member>
+        <member name="M:RainbowEdit.Weapon.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Weapon.op_Implicit(RainbowEdit.Weapon)~System.String">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Weapon.Resolve(System.String)">
+            <summary>
+            Attempts to resolve a weapon name to the first <see cref="T:RainbowEdit.Weapon"/> object that is found while enumerating <see cref="F:RainbowEdit.Siege.DefAtk"/>.
+            </summary>
+            <param name="name">The weapon name to resolve to a <see cref="T:RainbowEdit.Weapon"/> object.</param>
+            <returns>A <see cref="T:RainbowEdit.Weapon"/> instance if one could be found with a matching name, otherwise <c>null</c>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Weapon.GetRandomConfiguration">
+            <summary>
+            Creates a <see cref="T:RainbowEdit.WeaponConfiguration"/> from all possible <see cref="P:RainbowEdit.Weapon.Barrels"/>, <see cref="P:RainbowEdit.Weapon.Grips"/>, <see cref="P:RainbowEdit.Weapon.Sights"/> and <see cref="P:RainbowEdit.Weapon.Underbarrel"/> options attachment combinations.
+            </summary>
+            <returns>A <see cref="T:RainbowEdit.WeaponConfiguration"/> as described.</returns>
+        </member>
+        <member name="T:RainbowEdit.Randomizers">
+            <summary>
+            A collection of methods that fetch random information or configurations from the model classes in <see cref="T:RainbowEdit.Siege"/>.
+            </summary>
+        </member>
+        <member name="T:RainbowEdit.Randomizers.Challenges">
+            <summary>
+            A collection of methods that generate random challenges in the style of <i>Ubisoft Connect</i> challenges.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Randomizers.Challenges.ChallengeObjectiveMultiplier">
+            <summary>
+            The factor that is used to calculate the amount of... things you have to do.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.WinRoundsWith">
+            <summary>
+            Constructs a string describing the challenge of winning rounds using two specific <see cref="T:RainbowEdit.Attackers"/> and <see cref="T:RainbowEdit.Defenders"/> each.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.WeaponTypeEliminations">
+            <summary>
+            Constructs a string describing the challenge of eliminating opponents using <see cref="T:RainbowEdit.Weapon"/>s of a specific <see cref="T:RainbowEdit.Weapon.WeaponType"/>.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.OrganizationActiveDuty">
+            <summary>
+            Constructs a string describing the challenge of winning rounds using <see cref="T:RainbowEdit.Operator"/>s belonging to a specific <see cref="P:RainbowEdit.Operator.Organization"/>.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.AntiProjectile">
+            <summary>
+            Constructs a string describing the challenge of destroying <see cref="T:RainbowEdit.Attackers"/>' projectiles or throwables using anti-projectile special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.AreaDenial">
+            <summary>
+            Constructs a string describing the challenge of damaging or performing area denial against opponents using suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.ChemicalBonds">
+            <summary>
+            Constructs a string describing the challenge of eliminating, putting in DBNO or damaging opponents using suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.DeployCams">
+            <summary>
+            Constructs a string describing the challenge of deploying cameras or suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.DestroyObservation">
+            <summary>
+            Constructs a string describing the challenge of destroying or rendering observation tools useless using suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Disorient">
+            <summary>
+            Constructs a string describing the challenge of disorienting opponents using suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.ExplosiveKills">
+            <summary>
+            Constructs a string describing the challenge of eliminating opponents using explosive gadgets or explosive special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.HardBreach">
+            <summary>
+            Constructs a string describing the challenge of breaching reinforcements ("hard-breaching") using suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Headshots">
+            <summary>
+            Constructs a string describing the challenge of eliminating opponents using headshots.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Heal">
+            <summary>
+            Constructs a string describing the challenge of healing or reviving teammates using suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Kills">
+            <summary>
+            Constructs a string describing the challenge of eliminating opponents.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Matches">
+            <summary>
+            Constructs a string describing the challenge of playing/winning Ranked/Unranked/Casual matches.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Reveal">
+            <summary>
+            Constructs a string describing the challenge of revealing opponents by scanning them in observation tools or pinging their special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Role">
+            <summary>
+            Constructs a string describing the challenge of winning rounds as a specific <see cref="T:RainbowEdit.Operator"/> class.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Stun">
+            <summary>
+            Constructs a string describing the challenge of stunning / blinding opponents using stun grenades or suitable special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Suppressed">
+            <summary>
+            Constructs a string describing the challenge of eliminating opponents using suppressed weapons.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.TechAttackAtk">
+            <summary>
+            Constructs a string describing the challenge of destroying, disabling or rendering <see cref="T:RainbowEdit.Defenders"/>' gadgets useless using suitable <see cref="T:RainbowEdit.Attackers"/>' special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.TechAttackDef">
+            <summary>
+            Constructs a string describing the challenge of destroying, disabling or rendering <see cref="T:RainbowEdit.Attackers"/>' gadgets useless using suitable <see cref="T:RainbowEdit.Defenders"/>' special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Trapper">
+            <summary>
+            Constructs a string describing the challenge of eliminating or putting in DBNO opponents using suitable trap-like special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.UnauthorizedAccess">
+            <summary>
+            Constructs a string describing the challenge of hacking <see cref="T:RainbowEdit.Attackers"/>' drones or <see cref="T:RainbowEdit.Defenders"/>' observation tools or special abilities.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.Challenges.Wallbangs">
+            <summary>
+            Constructs a string describing the challenge of eliminating opponents through penetrable surfaces.
+            </summary>
+            <returns>A string as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomOperator">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+            <returns>A random <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomOperator(System.Func{RainbowEdit.Operator,System.Boolean})">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> from a pool of <see cref="T:RainbowEdit.Operator"/>s defined by a <paramref name="filter"/> function.
+            </summary>
+            <param name="filter">The function that dictates which <see cref="T:RainbowEdit.Operator"/>s are in the pool of <see cref="T:RainbowEdit.Operator"/> to choose from.</param>
+            <returns>A random <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomDefender">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> from the <see cref="T:RainbowEdit.Defenders"/>.
+            </summary>
+            <returns>A random Defender's <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomDefender(System.Func{RainbowEdit.Operator,System.Boolean})">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> from a pool of <see cref="T:RainbowEdit.Defenders"/> defined by a <paramref name="filter"/> function.
+            </summary>
+            <param name="filter">The function that dictates which <see cref="T:RainbowEdit.Operator"/>s are in the pool of Defenders to choose from.</param>
+            <returns>A random Defender's <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomAttacker">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> from the <see cref="T:RainbowEdit.Attackers"/>.
+            </summary>
+            <returns>A random Attacker's <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomAttacker(System.Func{RainbowEdit.Operator,System.Boolean})">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> from a pool of <see cref="T:RainbowEdit.Attackers"/> defined by a <paramref name="filter"/> function.
+            </summary>
+            <param name="filter">The function that dictates which <see cref="T:RainbowEdit.Operator"/>s are in the pool of Attackers to choose from.</param>
+            <returns>A random Attacker's <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
+        <member name="T:RainbowEdit.Siege">
+            <summary>
+            Base class for all information accessible from the library.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Siege.Attackers">
+            <summary>
+            Contains all Attackers from the game.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Siege.Defenders">
+            <summary>
+            Contains all Defenders from the game.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Siege.AtkDef">
+            <summary>
+            Contains all Operators defined in <see cref="F:RainbowEdit.Siege.Attackers"/> and <see cref="F:RainbowEdit.Siege.Defenders"/>, concatenated in that order.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Siege.DefAtk">
+            <summary>
+            Contains all Operators defined in <see cref="F:RainbowEdit.Siege.Defenders"/> and <see cref="F:RainbowEdit.Siege.Attackers"/>, concatenated in that order.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Siege.LongestOperatorNickname">
+            <summary>
+            The longest <see cref="P:RainbowEdit.Operator.Nickname"/> there is.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Siege.LongestWeaponName">
+            <summary>
+            The longest <see cref="P:RainbowEdit.Weapon.Name"/> there is.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Siege.LongestGadgetName">
+            <summary>
+            The longest <see cref="T:RainbowEdit.Weapon.Gadget"/> name there is.
+            </summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0">
+            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the UppercaseLetterRegex method.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.Instance">
+            <summary>Cached, thread-safe singleton instance.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.#ctor">
+            <summary>Initializes the instance.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory">
+            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.CreateInstance">
+            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.Runner">
+            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
+            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+        </member>
+        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
+            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
+            <param name="inputSpan">The text being scanned by the regular expression.</param>
+            <returns>true if a possible match was found; false if no more matches are possible.</returns>
+        </member>
+        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
+            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
+            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
+        </member>
+        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
+            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
+        </member>
+    </members>
+</doc>

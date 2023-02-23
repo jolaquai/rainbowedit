@@ -2,8 +2,17 @@
 
 namespace RainbowEdit.Extensions;
 
+/// <summary>
+/// Provides extensions for the <see cref="Enum"/> type and derived types.
+/// </summary>
 public static partial class EnumExtensions
 {
+    /// <summary>
+    /// Gets a <see cref="List{T}"/> of enum values typed <typeparamref name="T"/> that are set in a given <see cref="FlagsAttribute"/> enum instance.
+    /// </summary>
+    /// <typeparam name="T">The type of the enum.</typeparam>
+    /// <param name="source">The enum value to extract the set flags on.</param>
+    /// <returns>A list of individual <typeparamref name="T"/> values that are set in <paramref name="source"/>.</returns>
     public static List<T> GetSetFlags<T>(this T source)
         where T : Enum
     {
@@ -18,6 +27,11 @@ public static partial class EnumExtensions
         return set;
     }
 
+    /// <summary>
+    /// Generates a string representation for this <see cref="Weapon.Gadget"/> enum value.
+    /// </summary>
+    /// <param name="source">The enum value to stringify.</param>
+    /// <returns>A string representing this <see cref="Weapon.Gadget"/> enum value.</returns>
     public static string Stringify(this Weapon.Gadget source)
     {
         string gadget = source.ToString();
@@ -28,6 +42,12 @@ public static partial class EnumExtensions
         }
         return gadget.Trim();
     }
+
+    /// <summary>
+    /// Generates a string representation for this <see cref="Weapon.Barrel"/> enum value.
+    /// </summary>
+    /// <param name="source">The enum value to stringify.</param>
+    /// <returns>A string representing this <see cref="Weapon.Barrel"/> enum value.</returns>
     public static string Stringify(this Weapon.Barrel source)
     {
         string barrel = source.ToString();
@@ -38,6 +58,12 @@ public static partial class EnumExtensions
         }
         return barrel.Trim();
     }
+
+    /// <summary>
+    /// Generates a string representation for this <see cref="Weapon.Grip"/> enum value.
+    /// </summary>
+    /// <param name="source">The enum value to stringify.</param>
+    /// <returns>A string representing this <see cref="Weapon.Grip"/> enum value.</returns>
     public static string Stringify(this Weapon.Grip source)
     {
         string grip = source.ToString();
@@ -48,6 +74,12 @@ public static partial class EnumExtensions
         }
         return grip.Trim();
     }
+
+    /// <summary>
+    /// Generates a string representation for this <see cref="Weapon.WeaponType"/> enum value.
+    /// </summary>
+    /// <param name="source">The enum value to stringify.</param>
+    /// <returns>A string representing this <see cref="Weapon.WeaponType"/> enum value.</returns>
     public static string Stringify(this Weapon.WeaponType source)
     {
         string type = source.ToString();
@@ -61,6 +93,11 @@ public static partial class EnumExtensions
     [GeneratedRegex("[A-Z]")]
     private static partial Regex UppercaseLetterRegex();
 
+    /// <summary>
+    /// Generates a string representation for this <see cref="Weapon.Sight"/> enum value.
+    /// </summary>
+    /// <param name="source">The enum value to stringify.</param>
+    /// <returns>A string representing this <see cref="Weapon.Sight"/> enum value.</returns>
     public static string Stringify(this Weapon.Sight source) => source switch
     {
         Weapon.Sight.Invalid => "Invalid",
@@ -72,15 +109,7 @@ public static partial class EnumExtensions
         Weapon.Sight.Three => "3x",
         Weapon.Sight.Four => "4x",
         Weapon.Sight.FiveTwelve => "5x/12x",
-        Weapon.Sight.Other => "Other"
+        Weapon.Sight.Other => "Other",
+        _ => throw new ArgumentException($"A string representation could not be generated the provided value {source}.", nameof(source))
     };
-}
-
-public static class IEnumerableExtensions
-{
-    public static T Random<T>(this IEnumerable<T> source)
-    {
-        List<T> enumerated = new(source);
-        return enumerated[new Random().Next(enumerated.Count)];
-    }
 }

@@ -2,14 +2,36 @@
 
 namespace RainbowEdit;
 
+/// <summary>
+/// A single weapon configuration from all possible <see cref="Weapon.Barrels"/>, <see cref="Weapon.Grips"/>, <see cref="Weapon.Sights"/> and <see cref="Weapon.Underbarrel"/> combinations.
+/// </summary>
 public class WeaponConfiguration
 {
+    ///<summary>
+    /// The <see cref="Weapon"/> this configuration applies to.
+    ///</summary>
     public Weapon Source { get; private set; }
+    /// <summary>
+    /// A string detailing the sight to use.
+    /// </summary>
     public string Sight { get; private set; }
+    /// <summary>
+    /// A string detailing the barrel attachment to use.
+    /// </summary>
     public string Barrel { get; private set; }
+    /// <summary>
+    /// A string detailing the grip to use.
+    /// </summary>
     public string Grip { get; private set; }
+    /// <summary>
+    /// Whether to use an underbarrel laser.
+    /// </summary>
     public bool Underbarrel { get; private set; }
 
+    /// <summary>
+    /// Instantiates a new <see cref="WeaponConfiguration"/> object from just a <see cref="Weapon"/> to gather values from.
+    /// </summary>
+    /// <param name="source">The <see cref="Weapon"/> to gather random values for this <see cref="WeaponConfiguration"/> instance's properties from.</param>
     internal WeaponConfiguration(Weapon source)
     {
         Source = source;
@@ -44,6 +66,7 @@ public class WeaponConfiguration
         }
     }
 
+    /// <inheritdoc/>
     public override string ToString()
     {
         if (!Source.IsSecondary)
