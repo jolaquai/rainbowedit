@@ -93,6 +93,11 @@
             The <see cref="T:RainbowEdit.Attackers"/> in Siege.
             </summary>
         </member>
+        <member name="P:RainbowEdit.Attackers.Operators">
+            <summary>
+            Returns a <see cref="T:System.Collections.Generic.List`1"/> of all <see cref="T:RainbowEdit.Operator"/>s in the <see cref="T:RainbowEdit.Attackers"/> class.
+            </summary>
+        </member>
         <member name="M:RainbowEdit.Attackers.GetEnumerator">
             <inheritdoc/>
         </member>
@@ -290,6 +295,11 @@
             </summary>
             <summary>
             The <see cref="T:RainbowEdit.Defenders"/> in Siege.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Defenders.Operators">
+            <summary>
+            Returns a <see cref="T:System.Collections.Generic.List`1"/> of all <see cref="T:RainbowEdit.Operator"/>s in the <see cref="T:RainbowEdit.Defenders"/> class.
             </summary>
         </member>
         <member name="M:RainbowEdit.Defenders.GetEnumerator">
@@ -1134,10 +1144,11 @@
             Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose impact grenades during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
             </summary>
         </member>
-        <member name="M:RainbowEdit.Weapon.#ctor(System.String,RainbowEdit.Weapon.WeaponType,RainbowEdit.Weapon.FiringMode,System.Int32,System.Int32,System.Int32,RainbowEdit.Weapon.Sight,RainbowEdit.Weapon.Barrel,RainbowEdit.Weapon.Grip,System.Boolean,System.Int32,System.Int32)">
+        <member name="M:RainbowEdit.Weapon.#ctor(RainbowEdit.Operator,System.String,RainbowEdit.Weapon.WeaponType,RainbowEdit.Weapon.FiringMode,System.Int32,System.Int32,System.Int32,RainbowEdit.Weapon.Sight,RainbowEdit.Weapon.Barrel,RainbowEdit.Weapon.Grip,System.Boolean,System.Int32,System.Int32)">
             <summary>
             Instantiates a new <see cref="T:RainbowEdit.Weapon"/> object with the given data.
             </summary>
+            <param name="source">The <see cref="T:RainbowEdit.Operator"/> this <see cref="T:RainbowEdit.Weapon"/> belongs to.</param>
             <param name="name">The in-game name of the <see cref="T:RainbowEdit.Weapon"/>.</param>
             <param name="type">The in-game <see cref="T:RainbowEdit.Weapon.WeaponType"/> of the <see cref="T:RainbowEdit.Weapon"/>.</param>
             <param name="fireMode">The in-game <see cref="T:RainbowEdit.Weapon.FiringMode"/> the <see cref="T:RainbowEdit.Weapon"/> uses.</param>
@@ -1375,22 +1386,22 @@
         </member>
         <member name="F:RainbowEdit.Siege.Attackers">
             <summary>
-            Contains all Attackers from the game.
+            Contains all <see cref="T:RainbowEdit.Attackers"/> from the game.
             </summary>
         </member>
         <member name="F:RainbowEdit.Siege.Defenders">
             <summary>
-            Contains all Defenders from the game.
+            Contains all <see cref="T:RainbowEdit.Defenders"/> from the game.
             </summary>
         </member>
         <member name="F:RainbowEdit.Siege.AtkDef">
             <summary>
-            Contains all Operators defined in <see cref="F:RainbowEdit.Siege.Attackers"/> and <see cref="F:RainbowEdit.Siege.Defenders"/>, concatenated in that order.
+            Contains all <see cref="T:RainbowEdit.Operator"/>s defined in <see cref="F:RainbowEdit.Siege.Attackers"/> and <see cref="F:RainbowEdit.Siege.Defenders"/>, concatenated in that order.
             </summary>
         </member>
         <member name="F:RainbowEdit.Siege.DefAtk">
             <summary>
-            Contains all Operators defined in <see cref="F:RainbowEdit.Siege.Defenders"/> and <see cref="F:RainbowEdit.Siege.Attackers"/>, concatenated in that order.
+            Contains all <see cref="T:RainbowEdit.Operator"/>s defined in <see cref="F:RainbowEdit.Siege.Defenders"/> and <see cref="F:RainbowEdit.Siege.Attackers"/>, concatenated in that order.
             </summary>
         </member>
         <member name="F:RainbowEdit.Siege.LongestOperatorNickname">

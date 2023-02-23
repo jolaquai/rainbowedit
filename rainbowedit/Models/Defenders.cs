@@ -5,7 +5,7 @@
 /// </summary>
 public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
 {
-    internal Defenders()
+    static Defenders()
     {
         _operators = new()
         {

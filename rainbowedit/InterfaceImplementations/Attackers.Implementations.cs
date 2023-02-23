@@ -7,7 +7,12 @@ namespace RainbowEdit;
 /// </summary>
 public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
 {
-    private readonly List<Operator> _operators = new();
+    private static readonly List<Operator> _operators = new();
+
+    /// <summary>
+    /// Returns a <see cref="List{T}"/> of all <see cref="Operator"/>s in the <see cref="Attackers"/> class.
+    /// </summary>
+    public static List<Operator> Operators => _operators.ToList();
 
     /// <inheritdoc/>
     public IEnumerator<Operator> GetEnumerator()

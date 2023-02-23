@@ -11,20 +11,20 @@ namespace RainbowEdit;
 public static class Siege
 {
     /// <summary>
-    /// Contains all Attackers from the game.
+    /// Contains all <see cref="RainbowEdit.Attackers"/> from the game.
     /// </summary>
-    public static readonly Attackers Attackers = new();
+    public static readonly List<Operator> Attackers = RainbowEdit.Attackers.Operators;
     /// <summary>
-    /// Contains all Defenders from the game.
+    /// Contains all <see cref="RainbowEdit.Defenders"/> from the game.
     /// </summary>
-    public static readonly Defenders Defenders = new();
+    public static readonly List<Operator> Defenders = RainbowEdit.Defenders.Operators;
 
     /// <summary>
-    /// Contains all Operators defined in <see cref="Attackers"/> and <see cref="Defenders"/>, concatenated in that order.
+    /// Contains all <see cref="Operator"/>s defined in <see cref="Attackers"/> and <see cref="Defenders"/>, concatenated in that order.
     /// </summary>
     public static readonly IEnumerable<Operator> AtkDef = Attackers.Concat(Defenders);
     /// <summary>
-    /// Contains all Operators defined in <see cref="Defenders"/> and <see cref="Attackers"/>, concatenated in that order.
+    /// Contains all <see cref="Operator"/>s defined in <see cref="Defenders"/> and <see cref="Attackers"/>, concatenated in that order.
     /// </summary>
     public static readonly IEnumerable<Operator> DefAtk = Defenders.Concat(Attackers);
 

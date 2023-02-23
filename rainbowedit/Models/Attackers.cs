@@ -5,7 +5,7 @@
 /// </summary>
 public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Operator>
 {
-    internal Attackers()
+    static Attackers()
     {
         _operators = new()
         {
