@@ -57,13 +57,14 @@ public class LoadoutConfiguration
     /// <param name="gadget">The <see cref="Weapon.Gadget"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="primary">One of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Primaries"/>.</param>
     /// <param name="secondary">One of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Secondaries"/>.</param>
+    /// <exception cref="WeaponOperatorMismatchException">Thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.</exception>
     public LoadoutConfiguration(Operator source, Weapon.Gadget gadget, Weapon primary, Weapon secondary)
     {
-        if (!source.Primaries.Contains(primary))
+        if (source != primary.Source)
         {
             throw new WeaponOperatorMismatchException(primary, source);
         }
-        if (!source.Secondaries.Contains(secondary))
+        if (source != secondary.Source)
         {
             throw new WeaponOperatorMismatchException(secondary, source);
         }
@@ -86,13 +87,14 @@ public class LoadoutConfiguration
     /// <param name="gadget">The <see cref="Weapon.Gadget"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="primaryConfig">A <see cref="WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Primaries"/>.</param>
     /// <param name="secondaryConfig">A <see cref="WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Secondaries"/>.</param>
+    /// <exception cref="WeaponOperatorMismatchException">Thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.</exception>
     public LoadoutConfiguration(Operator source, Weapon.Gadget gadget, WeaponConfiguration primaryConfig, WeaponConfiguration secondaryConfig)
     {
-        if (!source.Primaries.Contains(primaryConfig.Source))
+        if (source != primaryConfig.Source.Source)
         {
             throw new WeaponOperatorMismatchException(primaryConfig.Source, source);
         }
-        if (!source.Secondaries.Contains(secondaryConfig.Source))
+        if (source != secondaryConfig.Source.Source)
         {
             throw new WeaponOperatorMismatchException(secondaryConfig.Source, source);
         }

@@ -4,9 +4,27 @@
         <name>rainbowedit</name>
     </assembly>
     <members>
+        <member name="T:RainbowEdit.Exceptions.EnumStringificationException`1">
+            <summary>
+            The exception that is thrown when an enum value is attempted to be represented by a string that does not match it inside a <see cref="T:RainbowEdit.WeaponConfiguration"/>.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Exceptions.EnumStringificationException`1.#ctor(`0,System.String)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.Exceptions.EnumStringificationException`1"/> with a given <typeparamref name="TEnum"/> and <paramref name="string"/>.
+            </summary>
+            <param name="enum">The enum value of type <typeparamref name="TEnum"/> that was attempted to be represented by <paramref name="string"/>.</param>
+            <param name="string">The string representation that did not match the actual value of <paramref name="enum"/>.</param>
+        </member>
+        <member name="M:RainbowEdit.Exceptions.EnumStringificationException`1.#ctor(System.String)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.Exceptions.EnumStringificationException`1"/> with a given <paramref name="string"/>.
+            </summary>
+            <param name="string">The string representation that did not match any actual value <typeparamref name="TEnum"/> can have.</param>
+        </member>
         <member name="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException">
             <summary>
-            The exception that is thrown when a <see cref="T:RainbowEdit.Weapon"/> object is attmpted to be brought in connection with an <see cref="T:RainbowEdit.Operator"/> that it does not belong to.
+            The exception that is thrown when a <see cref="T:RainbowEdit.Weapon"/> object is attmpted to be brought in connection with an <see cref="T:RainbowEdit.Operator"/> that it does not belong to inside a <see cref="T:RainbowEdit.LoadoutConfiguration"/>.
             </summary>
         </member>
         <member name="M:RainbowEdit.Exceptions.WeaponOperatorMismatchException.#ctor(RainbowEdit.Weapon,RainbowEdit.Operator)">
@@ -695,6 +713,7 @@
             <param name="gadget">The <see cref="T:RainbowEdit.Weapon.Gadget"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
             <param name="primary">One of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Primaries"/>.</param>
             <param name="secondary">One of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Secondaries"/>.</param>
+            <exception cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException">Thrown if the passed <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.</exception>
         </member>
         <member name="M:RainbowEdit.LoadoutConfiguration.#ctor(RainbowEdit.Operator,RainbowEdit.Weapon.Gadget,RainbowEdit.WeaponConfiguration,RainbowEdit.WeaponConfiguration)">
             <summary>
@@ -709,6 +728,7 @@
             <param name="gadget">The <see cref="T:RainbowEdit.Weapon.Gadget"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
             <param name="primaryConfig">A <see cref="T:RainbowEdit.WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Primaries"/>.</param>
             <param name="secondaryConfig">A <see cref="T:RainbowEdit.WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Secondaries"/>.</param>
+            <exception cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException">Thrown if the passed <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.</exception>
         </member>
         <member name="M:RainbowEdit.LoadoutConfiguration.ShortString">
             <summary>
@@ -763,6 +783,32 @@
             Instantiates a new <see cref="T:RainbowEdit.WeaponConfiguration"/> object from just a <see cref="T:RainbowEdit.Weapon"/> to gather values from.
             </summary>
             <param name="source">The <see cref="T:RainbowEdit.Weapon"/> to gather random values for this <see cref="T:RainbowEdit.WeaponConfiguration"/> instance's properties from.</param>
+        </member>
+        <member name="M:RainbowEdit.WeaponConfiguration.#ctor(RainbowEdit.Weapon,RainbowEdit.Weapon.Sight,RainbowEdit.Weapon.Barrel,RainbowEdit.Weapon.Grip,System.Boolean)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.WeaponConfiguration"/> object from and one each of their <see cref="T:RainbowEdit.Weapon.Sight"/>s, <see cref="T:RainbowEdit.Weapon.Barrel"/>s and <see cref="T:RainbowEdit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:RainbowEdit.Weapon.Underbarrel"/> laser.
+            </summary>
+            <param name="source">The <see cref="T:RainbowEdit.Weapon"/> to gather random values for this <see cref="T:RainbowEdit.WeaponConfiguration"/> instance's properties from.</param>
+            <param name="sight">A <see cref="T:RainbowEdit.Weapon.Sight"/> enum value detailing the sight to use. If this is <see cref="F:RainbowEdit.Weapon.Sight.NonMagnifying"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>, a random one of its variants is chosen.</param>
+            <param name="barrel">A <see cref="T:RainbowEdit.Weapon.Barrel"/> enum value detailing the barrel attachment to use.</param>
+            <param name="grip">A <see cref="T:RainbowEdit.Weapon.Grip"/> enum value detailing the grip to use.</param>
+            <param name="underbarrel">Whether to use an underbarrel laser.</param>
+        </member>
+        <member name="M:RainbowEdit.WeaponConfiguration.#ctor(RainbowEdit.Weapon,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            <para>
+            Instantiates a new fully customized <see cref="T:RainbowEdit.WeaponConfiguration"/> object from a <see cref="T:RainbowEdit.Weapon"/> and string representations of one each of their <see cref="T:RainbowEdit.Weapon.Sight"/>s, <see cref="T:RainbowEdit.Weapon.Barrel"/>s and <see cref="T:RainbowEdit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:RainbowEdit.Weapon.Underbarrel"/> laser.
+            </para>
+            <para>
+            An <see cref="T:RainbowEdit.Exceptions.EnumStringificationException`1"/> is thrown if one of the strings passed does not match any possible string representations for that enum.
+            </para>
+            </summary>
+            <param name="source">The <see cref="T:RainbowEdit.Weapon"/> to assign to this <see cref="T:RainbowEdit.WeaponConfiguration"/> instance.</param>
+            <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Sight)" /> OR one of the sub-sight names for <see cref="F:RainbowEdit.Weapon.Sight.NonMagnifying"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>.</param>
+            <param name="barrel">A string detailing the barrel attachment to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Barrel)" />.</param>
+            <param name="grip">A string detailing the grip to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Grip)" />.</param>
+            <param name="underbarrel">Whether to use an underbarrel laser.</param>
+            <exception cref="T:RainbowEdit.Exceptions.EnumStringificationException`1">Thrown if one of the strings passed does not match any possible string representations for that enum.</exception>
         </member>
         <member name="M:RainbowEdit.WeaponConfiguration.ToString">
             <inheritdoc/>

@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using System.Threading.Channels;
 
 using RainbowEdit;
 using RainbowEdit.Extensions;
@@ -10,6 +11,11 @@ namespace TestConsole;
 public static class TestConsole
 {
     static void Main()
+    {
+        Console.WriteLine(new WeaponConfiguration(Attackers.Capitao.Primaries.First(), "Red Dot B", "Suppressor", "Vertical Grip", true));
+    }
+
+    static void Main2()
     {
         List<IEnumerable<Operator>> opClasses = new() { Siege.Defenders, Siege.Attackers };
         for (int i = 0; i < opClasses.Count; i++)

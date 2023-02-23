@@ -3,7 +3,7 @@
 namespace RainbowEdit.Exceptions;
 
 /// <summary>
-/// The exception that is thrown when a <see cref="RainbowEdit.Weapon"/> object is attmpted to be brought in connection with an <see cref="RainbowEdit.Operator"/> that it does not belong to.
+/// The exception that is thrown when a <see cref="RainbowEdit.Weapon"/> object is attmpted to be brought in connection with an <see cref="RainbowEdit.Operator"/> that it does not belong to inside a <see cref="LoadoutConfiguration"/>.
 /// </summary>
 internal class WeaponOperatorMismatchException : Exception
 {
