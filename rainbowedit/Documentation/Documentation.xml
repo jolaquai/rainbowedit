@@ -723,6 +723,31 @@
             A single weapon configuration from all possible <see cref="P:RainbowEdit.Weapon.Barrels"/>, <see cref="P:RainbowEdit.Weapon.Grips"/>, <see cref="P:RainbowEdit.Weapon.Sights"/> and <see cref="P:RainbowEdit.Weapon.Underbarrel"/> combinations.
             </summary>
         </member>
+        <member name="P:RainbowEdit.WeaponConfiguration.Source">
+            <summary>
+             The <see cref="T:RainbowEdit.Weapon"/> this configuration applies to.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.WeaponConfiguration.Sight">
+            <summary>
+            A string detailing the sight to use.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.WeaponConfiguration.Barrel">
+            <summary>
+            A string detailing the barrel attachment to use.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.WeaponConfiguration.Grip">
+            <summary>
+            A string detailing the grip to use.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.WeaponConfiguration.Underbarrel">
+            <summary>
+            Whether to use an underbarrel laser.
+            </summary>
+        </member>
         <member name="M:RainbowEdit.WeaponConfiguration.#ctor(RainbowEdit.Weapon)">
             <summary>
             Instantiates a new <see cref="T:RainbowEdit.WeaponConfiguration"/> object from just a <see cref="T:RainbowEdit.Weapon"/> to gather values from.
@@ -735,6 +760,11 @@
         <member name="T:RainbowEdit.Weapon">
             <summary>
             An <see cref="T:RainbowEdit.Operator"/>-specific <see cref="T:RainbowEdit.Weapon"/> in Siege.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Source">
+            <summary>
+             The <see cref="T:RainbowEdit.Operator"/> this <see cref="T:RainbowEdit.Weapon"/> belongs to.
             </summary>
         </member>
         <member name="P:RainbowEdit.Weapon.Name">

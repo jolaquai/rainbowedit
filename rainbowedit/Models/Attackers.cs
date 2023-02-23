@@ -49,11 +49,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Sledge"/>.
     /// </summary>
-    public readonly Operator Sledge = new(
+    public static readonly Operator Sledge = new(
         "Sledge",
         new List<Weapon>()
         {
             new(
+                Sledge,
                 "M590A1",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -68,6 +69,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 4510
             ),
             new(
+                Sledge,
                 "L85A2",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -85,6 +87,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Sledge,
                 "P226 MK 25",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -113,11 +116,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Thatcher"/>.
     /// </summary>
-    public readonly Operator Thatcher = new(
+    public static readonly Operator Thatcher = new(
         "Thatcher",
         new List<Weapon>()
         {
             new(
+                Thatcher,
                 "AR33",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -132,6 +136,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2310
             ),
             new(
+                Thatcher,
                 "L85A2",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -146,6 +151,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2360
             ),
             new(
+                Thatcher,
                 "M590A1",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -163,6 +169,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Thatcher,
                 "P226 MK 25",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -191,11 +198,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Ash"/>.
     /// </summary>
-    public readonly Operator Ash = new(
+    public static readonly Operator Ash = new(
         "Ash",
         new List<Weapon>()
         {
             new(
+                Ash,
                 "G36C",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -210,6 +218,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2340
             ),
             new(
+                Ash,
                 "R4-C",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -227,6 +236,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Ash,
                 "M45 Meusoc",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -241,6 +251,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1300
             ),
             new(
+                Ash,
                 "5.7 USG",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -269,11 +280,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Thermite"/>.
     /// </summary>
-    public readonly Operator Thermite = new(
+    public static readonly Operator Thermite = new(
         "Thermite",
         new List<Weapon>()
         {
             new(
+                Thermite,
                 "M1014",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -288,6 +300,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 5330
             ),
             new(
+                Thermite,
                 "556XI",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -305,6 +318,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Thermite,
                 "M45 Meusoc",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -319,6 +333,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1300
             ),
             new(
+                Thermite,
                 "5.7 USG",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -347,11 +362,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Twitch"/>.
     /// </summary>
-    public readonly Operator Twitch = new(
+    public static readonly Operator Twitch = new(
         "Twitch",
         new List<Weapon>()
         {
             new(
+                Twitch,
                 "F2",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -366,6 +382,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2320
             ),
             new(
+                Twitch,
                 "417",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -380,6 +397,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2190
             ),
             new(
+                Twitch,
                 "SG-CQB",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -397,6 +415,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Twitch,
                 "P9",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -411,6 +430,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1440
             ),
             new(
+                Twitch,
                 "LFP586",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -439,11 +459,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Montagne"/>.
     /// </summary>
-    public readonly Operator Montagne = new(
+    public static readonly Operator Montagne = new(
         "Montagne",
         new List<Weapon>()
         {
             new(
+                Montagne,
                 "Le Roc",
                 Weapon.WeaponType.Shield,
                 Weapon.FiringMode.None,
@@ -461,6 +482,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Montagne,
                 "P9",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -475,6 +497,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1440
             ),
             new(
+                Montagne,
                 "LFP586",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -503,11 +526,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Glaz"/>.
     /// </summary>
-    public readonly Operator Glaz = new(
+    public static readonly Operator Glaz = new(
         "Glaz",
         new List<Weapon>()
         {
             new(
+                Glaz,
                 "OTs-03",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -525,6 +549,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Glaz,
                 "PMM",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -539,6 +564,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1280
             ),
             new(
+                Glaz,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -553,6 +579,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 0
             ),
             new(
+                Glaz,
                 "Bearing 9",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
@@ -581,11 +608,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Fuze"/>.
     /// </summary>
-    public readonly Operator Fuze = new(
+    public static readonly Operator Fuze = new(
         "Fuze",
         new List<Weapon>()
         {
             new(
+                Fuze,
                 "Ballistic Shield",
                 Weapon.WeaponType.Shield,
                 Weapon.FiringMode.None,
@@ -600,6 +628,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 0
             ),
             new(
+                Fuze,
                 "6P41",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -614,6 +643,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 7160
             ),
             new(
+                Fuze,
                 "AK-12",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -631,6 +661,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Fuze,
                 "PMM",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -645,6 +676,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1280
             ),
             new(
+                Fuze,
                 "GSH-18",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -673,11 +705,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Blitz"/>.
     /// </summary>
-    public readonly Operator Blitz = new(
+    public static readonly Operator Blitz = new(
         "Blitz",
         new List<Weapon>()
         {
             new(
+                Blitz,
                 "G52-Tactical Shield",
                 Weapon.WeaponType.Shield,
                 Weapon.FiringMode.None,
@@ -695,6 +728,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Blitz,
                 "P12",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -723,11 +757,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="IQ"/>.
     /// </summary>
-    public readonly Operator IQ = new(
+    public static readonly Operator IQ = new(
         "IQ",
         new List<Weapon>()
         {
             new(
+                IQ,
                 "AUG A2",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -742,6 +777,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2340
             ),
             new(
+                IQ,
                 "552 Commando",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -756,6 +792,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2170
             ),
             new(
+                IQ,
                 "G8A1",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -773,6 +810,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                IQ,
                 "P12",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -801,11 +839,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Buck"/>.
     /// </summary>
-    public readonly Operator Buck = new(
+    public static readonly Operator Buck = new(
         "Buck",
         new List<Weapon>()
         {
             new(
+                Buck,
                 "C8-SFW",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -820,6 +859,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1540
             ),
             new(
+                Buck,
                 "CAMRS",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -837,6 +877,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Buck,
                 "MK1 9mm",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -851,6 +892,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1320
             ),
             new(
+                Buck,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -879,11 +921,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Blackbeard"/>.
     /// </summary>
-    public readonly Operator Blackbeard = new(
+    public static readonly Operator Blackbeard = new(
         "Blackbeard",
         new List<Weapon>()
         {
             new(
+                Blackbeard,
                 "MK17 CQB",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -898,6 +941,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2230
             ),
             new(
+                Blackbeard,
                 "SR-25",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -915,6 +959,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Blackbeard,
                 "D-50",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -943,11 +988,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Capitao"/>.
     /// </summary>
-    public readonly Operator Capitao = new(
+    public static readonly Operator Capitao = new(
         "Capitão",
         new List<Weapon>()
         {
             new(
+                Capitao,
                 "PARA-308",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -962,6 +1008,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2300
             ),
             new(
+                Capitao,
                 "M249",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -979,6 +1026,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Capitao,
                 "PRB92",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -993,6 +1041,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1590
             ),
             new(
+                Capitao,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -1021,11 +1070,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Hibana"/>.
     /// </summary>
-    public readonly Operator Hibana = new(
+    public static readonly Operator Hibana = new(
         "Hibana",
         new List<Weapon>()
         {
             new(
+                Hibana,
                 "TYPE-89",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1040,6 +1090,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2320
             ),
             new(
+                Hibana,
                 "Supernova",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1057,6 +1108,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Hibana,
                 "P229",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1071,6 +1123,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1450
             ),
             new(
+                Hibana,
                 "Bearing 9",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
@@ -1099,11 +1152,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Jackal"/>.
     /// </summary>
-    public readonly Operator Jackal = new(
+    public static readonly Operator Jackal = new(
         "Jackal",
         new List<Weapon>()
         {
             new(
+                Jackal,
                 "C7E",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1118,6 +1172,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2010
             ),
             new(
+                Jackal,
                 "PDW9",
                 Weapon.WeaponType.SubmachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -1132,6 +1187,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2440
             ),
             new(
+                Jackal,
                 "ITA12L",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1149,6 +1205,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Jackal,
                 "USP40",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1163,6 +1220,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1410
             ),
             new(
+                Jackal,
                 "ITA12S",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1191,11 +1249,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Ying"/>.
     /// </summary>
-    public readonly Operator Ying = new(
+    public static readonly Operator Ying = new(
         "Ying",
         new List<Weapon>()
         {
             new(
+                Ying,
                 "T-95 LSW",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -1210,6 +1269,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2180
             ),
             new(
+                Ying,
                 "SIX12",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1227,6 +1287,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Ying,
                 "Q-929",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1255,11 +1316,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Zofia"/>.
     /// </summary>
-    public readonly Operator Zofia = new(
+    public static readonly Operator Zofia = new(
         "Zofia",
         new List<Weapon>()
         {
             new(
+                Zofia,
                 "LMG-E",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -1274,6 +1336,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 5430
             ),
             new(
+                Zofia,
                 "M762",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1291,6 +1354,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Zofia,
                 "RG15",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1319,11 +1383,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Dokkaebi"/>.
     /// </summary>
-    public readonly Operator Dokkaebi = new(
+    public static readonly Operator Dokkaebi = new(
         "Dokkaebi",
         new List<Weapon>()
         {
             new(
+                Dokkaebi,
                 "Mk 14 EBR",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -1338,6 +1403,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2440
             ),
             new(
+                Dokkaebi,
                 "BOSG.12.2",
                 Weapon.WeaponType.ShotgunSlug,
                 Weapon.FiringMode.SingleShot,
@@ -1355,6 +1421,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Dokkaebi,
                 "SMG-12",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
@@ -1369,6 +1436,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2300
             ),
             new(
+                Dokkaebi,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -1383,6 +1451,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 0
             ),
             new(
+                Dokkaebi,
                 "C75 Auto",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
@@ -1411,11 +1480,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Lion"/>.
     /// </summary>
-    public readonly Operator Lion = new(
+    public static readonly Operator Lion = new(
         "Lion",
         new List<Weapon>()
         {
             new(
+                Lion,
                 "V308",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1430,6 +1500,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2330
             ),
             new(
+                Lion,
                 "417",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -1444,6 +1515,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2190
             ),
             new(
+                Lion,
                 "SG-CQB",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1461,6 +1533,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Lion,
                 "LFP586",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1475,6 +1548,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2540
             ),
             new(
+                Lion,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -1488,6 +1562,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 0,
                 0),
             new(
+                Lion,
                 "P9",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1516,11 +1591,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Finka"/>.
     /// </summary>
-    public readonly Operator Finka = new(
+    public static readonly Operator Finka = new(
         "Finka",
         new List<Weapon>()
         {
             new(
+                Finka,
                 "Spear .308",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1535,6 +1611,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2460
             ),
             new(
+                Finka,
                 "6P41",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -1549,6 +1626,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 7160
             ),
             new(
+                Finka,
                 "SASG-12",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1566,6 +1644,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Finka,
                 "PMM",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1580,6 +1659,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1280
             ),
             new(
+                Finka,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -1594,6 +1674,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 0
             ),
             new(
+                Finka,
                 "GSH-18",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1622,11 +1703,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Maverick"/>.
     /// </summary>
-    public readonly Operator Maverick = new(
+    public static readonly Operator Maverick = new(
         "Maverick",
         new List<Weapon>()
         {
             new(
+                Maverick,
                 "AR-15.50",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -1641,6 +1723,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2120
             ),
             new(
+                Maverick,
                 "M4",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1658,6 +1741,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Maverick,
                 "1911 TACOPS",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1686,11 +1770,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Nomad"/>.
     /// </summary>
-    public readonly Operator Nomad = new(
+    public static readonly Operator Nomad = new(
         "Nomad",
         new List<Weapon>()
         {
             new(
+                Nomad,
                 "AK-74M",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1705,6 +1790,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2440
             ),
             new(
+                Nomad,
                 "ARX200",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1722,6 +1808,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Nomad,
                 ".44 Mag Semi-Auto",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1736,6 +1823,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1280
             ),
             new(
+                Nomad,
                 "PRB92",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1764,11 +1852,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Gridlock"/>.
     /// </summary>
-    public readonly Operator Gridlock = new(
+    public static readonly Operator Gridlock = new(
         "Gridlock",
         new List<Weapon>()
         {
             new(
+                Gridlock,
                 "F90",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -1783,6 +1872,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2290
             ),
             new(
+                Gridlock,
                 "M249 SAW",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -1800,6 +1890,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Gridlock,
                 "Super Shorty",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1814,6 +1905,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2450
             ),
             new(
+                Gridlock,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -1828,6 +1920,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 0
             ),
             new(
+                Gridlock,
                 "SDP 9mm",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1856,11 +1949,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Nokk"/>.
     /// </summary>
-    public readonly Operator Nokk = new(
+    public static readonly Operator Nokk = new(
         "Nøkk",
         new List<Weapon>()
         {
             new(
+                Nokk,
                 "FMG-9",
                 Weapon.WeaponType.SubmachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -1875,6 +1969,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2210
             ),
             new(
+                Nokk,
                 "SIX12 SD",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1892,6 +1987,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Nokk,
                 "5.7 USG",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1906,6 +2002,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1490
             ),
             new(
+                Nokk,
                 "D-50",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1934,11 +2031,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Amaru"/>.
     /// </summary>
-    public readonly Operator Amaru = new(
+    public static readonly Operator Amaru = new(
         "Amaru",
         new List<Weapon>()
         {
             new(
+                Amaru,
                 "G8A1",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -1953,6 +2051,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 3220
             ),
             new(
+                Amaru,
                 "Supernova",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -1970,6 +2069,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Amaru,
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
@@ -1984,6 +2084,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2130
             ),
             new(
+                Amaru,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -1998,6 +2099,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 0
             ),
             new(
+                Amaru,
                 "ITA12S",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -2026,11 +2128,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Kali"/>.
     /// </summary>
-    public readonly Operator Kali = new(
+    public static readonly Operator Kali = new(
         "Kali",
         new List<Weapon>()
         {
             new(
+                Kali,
                 "CSRX 300",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -2048,6 +2151,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Kali,
                 "SPSMG9",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
@@ -2062,6 +2166,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1590
             ),
             new(
+                Kali,
                 "C75 Auto",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
@@ -2076,6 +2181,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2220
             ),
             new(
+                Kali,
                 "P226 MK 25",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2104,11 +2210,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Iana"/>.
     /// </summary>
-    public readonly Operator Iana = new(
+    public static readonly Operator Iana = new(
         "Iana",
         new List<Weapon>()
         {
             new(
+                Iana,
                 "ARX200",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2123,6 +2230,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2350
             ),
             new(
+                Iana,
                 "G36C",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2140,6 +2248,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Iana,
                 "MK1 9mm",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2168,11 +2277,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Ace"/>.
     /// </summary>
-    public readonly Operator Ace = new(
+    public static readonly Operator Ace = new(
         "Ace",
         new List<Weapon>()
         {
             new(
+                Ace,
                 "AK-12",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2187,6 +2297,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2260
             ),
             new(
+                Ace,
                 "M1014",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -2204,6 +2315,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Ace,
                 "P9",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2232,11 +2344,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Zero"/>.
     /// </summary>
-    public readonly Operator Zero = new(
+    public static readonly Operator Zero = new(
         "Zero",
         new List<Weapon>()
         {
             new(
+                Zero,
                 "SC3000K",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2251,6 +2364,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2470
             ),
             new(
+                Zero,
                 "MP7",
                 Weapon.WeaponType.SubmachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -2268,6 +2382,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Zero,
                 "5.7 USG",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2282,6 +2397,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1490
             ),
             new(
+                Zero,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -2310,11 +2426,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Flores"/>.
     /// </summary>
-    public readonly Operator Flores = new(
+    public static readonly Operator Flores = new(
         "Flores",
         new List<Weapon>()
         {
             new(
+                Flores,
                 "AR33",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2329,6 +2446,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2310
             ),
             new(
+                Flores,
                 "SR-25",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -2346,6 +2464,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Flores,
                 "GSH-18",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2374,11 +2493,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Osa"/>.
     /// </summary>
-    public readonly Operator Osa = new(
+    public static readonly Operator Osa = new(
         "Osa",
         new List<Weapon>()
         {
             new(
+                Osa,
                 "556XI",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2393,6 +2513,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2410
             ),
             new(
+                Osa,
                 "PDW9",
                 Weapon.WeaponType.SubmachineGun,
                 Weapon.FiringMode.FullAuto,
@@ -2410,6 +2531,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Osa,
                 "PMM",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2438,11 +2560,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Sens"/>.
     /// </summary>
-    public readonly Operator Sens = new(
+    public static readonly Operator Sens = new(
         "Sens",
         new List<Weapon>()
         {
             new(
+                Sens,
                 "POF-9",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2457,6 +2580,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2240
             ),
             new(
+                Sens,
                 "417",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -2474,6 +2598,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Sens,
                 "SDP 9mm",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2488,6 +2613,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1450
             ),
             new(
+                Sens,
                 "GONNE-6",
                 Weapon.WeaponType.HandCannon,
                 Weapon.FiringMode.SingleShot,
@@ -2516,11 +2642,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Grim"/>.
     /// </summary>
-    public readonly Operator Grim = new(
+    public static readonly Operator Grim = new(
         "Grim",
         new List<Weapon>()
         {
             new(
+                Grim,
                 "552 Commando",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2535,6 +2662,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2170
             ),
             new(
+                Grim,
                 "SG-CQB",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -2552,6 +2680,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Grim,
                 "P229",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -2580,11 +2709,12 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Brava"/>.
     /// </summary>
-    public readonly Operator Brava = new(
+    public static readonly Operator Brava = new(
         "Brava",
         new List<Weapon>()
         {
             new(
+                Brava,
                 "PARA-308",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
@@ -2599,6 +2729,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2300
             ),
             new(
+                Brava,
                 "CAMRS",
                 Weapon.WeaponType.MarksmanRifle,
                 Weapon.FiringMode.SingleShot,
@@ -2616,6 +2747,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new List<Weapon>()
         {
             new(
+                Brava,
                 "Super Shorty",
                 Weapon.WeaponType.ShotgunShot,
                 Weapon.FiringMode.SingleShot,
@@ -2630,6 +2762,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 2450
             ),
             new(
+                Brava,
                 "USP40",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,

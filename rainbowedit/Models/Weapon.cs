@@ -5,6 +5,10 @@
 /// </summary>
 public class Weapon
 {
+    ///<summary>
+    /// The <see cref="Operator"/> this <see cref="Weapon"/> belongs to.
+    ///</summary>
+    public Operator Source { get; private set; }
     /// <summary>
     /// The in-game name of the <see cref="Weapon"/>.
     /// </summary>
@@ -331,6 +335,7 @@ public class Weapon
     /// <summary>
     /// Instantiates a new <see cref="Weapon"/> object with the given data.
     /// </summary>
+    /// <param name="source">The <see cref="Operator"/> this <see cref="Weapon"/> belongs to.</param>
     /// <param name="name">The in-game name of the <see cref="Weapon"/>.</param>
     /// <param name="type">The in-game <see cref="WeaponType"/> of the <see cref="Weapon"/>.</param>
     /// <param name="fireMode">The in-game <see cref="FiringMode"/> the <see cref="Weapon"/> uses.</param>
@@ -343,8 +348,9 @@ public class Weapon
     /// <param name="underbarrel">Whether an underbarrel laser may be equipped on this <see cref="Weapon"/>.</param>
     /// <param name="reloadTactical">A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="Weapon"/> (a reload when there is a round chambered).</param>
     /// <param name="reloadEmpty">A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform an empty reload with this <see cref="Weapon"/> (a reload when there is no round chambered).</param>
-    internal Weapon(string name, WeaponType type, FiringMode fireMode, int damage, int roundsPerMinute, int capacity, Sight sights, Barrel barrels, Grip grips, bool underbarrel, int reloadTactical, int reloadEmpty)
+    internal Weapon(Operator source, string name, WeaponType type, FiringMode fireMode, int damage, int roundsPerMinute, int capacity, Sight sights, Barrel barrels, Grip grips, bool underbarrel, int reloadTactical, int reloadEmpty)
     {
+        Source = source;
         Name = name;
         Type = type;
         FireMode = fireMode;
