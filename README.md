@@ -30,8 +30,7 @@ However, if there is something you feel is missing and deserves to be in it, fee
 - Stay up-to-date on your pull requests:
   - You may be asked for more information (your pull request will be labeled <span style="color: #D876E3">`waiting-for-info`</span> and <span style="color: #FBCA04">`on-hold`</span>) or to change specific details about your additions / implementations (your pull request will be labeled just <span style="color: #FBCA04">`on-hold`</span>).
   - If you don't respond (or at least update your pull requests with more commits that match what was requested) within a reasonable timeframe, your pull request will be rejected and labeled as such (<span style="color: #CCCCCC">`rejected`</span>).
-  - You may label your pull request <span style="color: #008672">`help-wanted`</span> to let potential helpers know you need help with your pull request.<a href="#footnote-1"><span id="footnote-1-ref">^1^</span></a>
-
+  - You may label your pull request <span style="color: #008672">`help-wanted`</span> to let potential helpers know you need help with your pull request.<a href="#footnote-1"><span id="footnote-1-ref">[1]</span></a>
 
 # Footnotes
-^1^ <a href="#footnote-1-ref"><span id="footnote-1">↑</span></a> A pull request may NOT be labeled <span style="color: #D876E3">`waiting-for-info`</span> and <span style="color: #008672">`help-wanted`</span> in that specific order. This is to prevent "out-sourcing" finding a solution to a situation you've gotten yourself into. I'm serious, this will get your pull request insta-<span style="color: #CCCCCC">`rejected`</span>.
+<a href="#footnote-1-ref"><span id="footnote-1">1</span></a> A pull request may NOT be labeled <span style="color: #D876E3">`waiting-for-info`</span> and <span style="color: #008672">`help-wanted`</span> in that specific order. This is to prevent "out-sourcing" finding a solution to a situation you've gotten yourself into. I'm serious, this will get your pull request insta-<span style="color: #CCCCCC">`rejected`</span>.
