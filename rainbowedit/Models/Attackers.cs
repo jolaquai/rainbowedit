@@ -44,7 +44,18 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
             Grim,
             Brava
         };
+
+        // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
+        foreach (Operator op in _operators)
+        {
+            foreach (Weapon wep in op.Primaries.Concat(op.Secondaries))
+            {
+                wep.Source = op;
+            }
+        }
     }
+
+#pragma warning disable CS8604 // Possible null reference argument.
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Sledge"/>.
@@ -2787,4 +2798,6 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new(10, 1, 40),
         3
     );
+
+#pragma warning restore CS8604 // Possible null reference argument.
 }

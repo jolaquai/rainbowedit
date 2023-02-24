@@ -43,7 +43,18 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
             Azami,
             Solis
         };
+
+        // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
+        foreach (Operator op in _operators)
+        {
+            foreach (Weapon wep in op.Primaries.Concat(op.Secondaries))
+            {
+                wep.Source = op;
+            }
+        }
     }
+
+#pragma warning disable CS8604 // Possible null reference argument.
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Smoke"/>.
@@ -2645,4 +2656,6 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         new(18, 9, 37),
         2
     );
+
+#pragma warning restore CS8604 // Possible null reference argument.
 }

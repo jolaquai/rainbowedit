@@ -8,7 +8,7 @@ public class Weapon
     ///<summary>
     /// The <see cref="Operator"/> this <see cref="Weapon"/> belongs to.
     ///</summary>
-    public Operator Source { get; private set; }
+    public Operator Source { get; internal set; }
     /// <summary>
     /// The in-game name of the <see cref="Weapon"/>.
     /// </summary>
