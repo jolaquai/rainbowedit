@@ -129,6 +129,6 @@ public class LoadoutConfiguration
         {string.Join(Environment.NewLine, Primary.ToString().Split(Environment.NewLine).Select(str => $"    {str}"))}
         Secondary:
         {string.Join(Environment.NewLine, Secondary.ToString().Split(Environment.NewLine).Select(str => $"    {str}"))}
-        Gadget: {Gadget}
+        Gadget: {Gadget.Stringify()}
         """;
 }
