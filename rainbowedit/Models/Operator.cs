@@ -110,7 +110,13 @@ public class Operator
         Speed = speed;
 
         Health = 4 - Speed;
-        HP = 100 + (10 * (Health - 1));
+        HP = Health switch
+        {
+            1 => 100,
+            2 => 110,
+            3 => 125,
+            _ => throw new ArgumentException($"Invalid 'Speed' rating '{Speed}' resulted in unexpected Health rating '{Health}' for new Operator.", nameof(speed))
+        };
     }
 
     /// <summary>
