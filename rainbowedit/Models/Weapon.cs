@@ -91,71 +91,73 @@ public class Weapon
     /// <summary>
     /// Identifies the type of a <see cref="Weapon"/>.
     /// </summary>
+    [Flags]
     public enum WeaponType
     {
         /// <summary>
         /// Identifies the Assaul Rifle weapon type.
         /// </summary>
-        AssaultRifle,
+        AssaultRifle = 1,
         /// <summary>
         /// Identifies the Handgun weapon type.
         /// </summary>
-        Handgun,
+        Handgun = 2,
         /// <summary>
         /// Identifies the Light Machine Gun weapon type.
         /// </summary>
-        LightMachineGun,
+        LightMachineGun = 4,
         /// <summary>
         /// Identifies the Machine Pistol weapon type.
         /// </summary>
-        MachinePistol,
+        MachinePistol = 8,
         /// <summary>
         /// Identifies the Marksman Rifle weapon type.
         /// </summary>
-        MarksmanRifle,
+        MarksmanRifle = 16,
         /// <summary>
         /// Identifies the Shield weapon type.
         /// </summary>
-        Shield,
+        Shield = 32,
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire slugs).
         /// </summary>
-        ShotgunSlug,
+        ShotgunSlug = 64,
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire shot).
         /// </summary>
-        ShotgunShot,
+        ShotgunShot = 128,
         /// <summary>
         /// Identifies the Shotgun weapon type (shorthand for an "any shotgun" filter).
         /// </summary>
-        Shotgun = ShotgunShot + ShotgunSlug,
+        Shotgun = ShotgunShot | ShotgunSlug,
         /// <summary>
         /// Identifies the Submachine Gun weapon type.
         /// </summary>
-        SubmachineGun,
+        SubmachineGun = 256,
         /// <summary>
         /// Identifies the Hand Cannon weapon type.
         /// </summary>
-        HandCannon
+        HandCannon = 512
     }
 
     /// <summary>
     /// Indicates which firing mode a <see cref="Weapon"/> uses.
     /// </summary>
+    [Flags]
     public enum FiringMode
     {
         /// <summary>
         /// 
         /// </summary>
-        None,
+        None = 0,
         /// <summary>
         /// 
         /// </summary>
-        FullAuto,
+        FullAuto = 1,
         /// <summary>
         /// 
         /// </summary>
-        SingleShot
+        SingleShot = 2
     }
 
     /// <summary>
