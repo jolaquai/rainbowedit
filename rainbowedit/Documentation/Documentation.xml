@@ -4,6 +4,26 @@
         <name>rainbowedit</name>
     </assembly>
     <members>
+        <member name="T:rainbowedit.Examples">
+            <summary>
+            A number of examples you can use to get the hang of how the library works or what you could do with it.
+            </summary>
+        </member>
+        <member name="M:rainbowedit.Examples.ShotsToKill(RainbowEdit.Operator,RainbowEdit.WeaponConfiguration,System.Boolean)">
+            <summary>
+            Calculates the shots it takes to kill an <paramref name="operator"/> using a given <paramref name="weaponConfig"/>, optionally considering the <c>20</c> extra HP one of <see cref="F:RainbowEdit.Defenders.Rook"/>'s <i>Armor Plates</i> gives.
+            </summary>
+            <param name="operator">The <see cref="T:RainbowEdit.Operator"/> to calculate the shots to kill for.</param>
+            <param name="weaponConfig">The <see cref="T:RainbowEdit.WeaponConfiguration"/> that is used to shoot the <paramref name="operator"/>.</param>
+            <param name="armorPlate">Whether to consider the <c>20</c> extra HP one of <see cref="F:RainbowEdit.Defenders.Rook"/>'s <i>Armor Plates</i> gives.</param>
+            <returns></returns>
+        </member>
+        <member name="M:rainbowedit.Examples.OperatorsByWeaponType">
+            <summary>
+            Groups all <see cref="T:RainbowEdit.Operator"/>s in the order of <see cref="F:RainbowEdit.Siege.DefAtk"/> by which <see cref="T:RainbowEdit.Weapon.WeaponType"/>s they have access to.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> where the keys are <see cref="T:RainbowEdit.Weapon.WeaponType"/> enum values and the values are a collection of <see cref="T:RainbowEdit.Operator"/> objects.</returns>
+        </member>
         <member name="T:RainbowEdit.Exceptions.EnumStringificationException`1">
             <summary>
             The exception that is thrown when an enum value is attempted to be represented by a string that does not match it inside a <see cref="T:RainbowEdit.WeaponConfiguration"/>.
@@ -41,11 +61,28 @@
         </member>
         <member name="M:RainbowEdit.Extensions.EnumExtensions.GetSetFlags``1(``0)">
             <summary>
-            Gets a <see cref="T:System.Collections.Generic.List`1"/> of enum values typed <typeparamref name="T"/> that are set in a given <see cref="T:System.FlagsAttribute"/> enum instance.
+            Compiles a <see cref="T:System.Collections.Generic.List`1"/> of enum values typed <typeparamref name="T"/> that are set in a given <see cref="T:System.FlagsAttribute"/> enum instance.
             </summary>
             <typeparam name="T">The type of the enum.</typeparam>
             <param name="source">The enum value to extract the set flags on.</param>
             <returns>A list of individual <typeparamref name="T"/> values that are set in <paramref name="source"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.HasValue``1(``0)">
+            <summary>
+            Determines if an enum value <paramref name="source"/> of <typeparamref name="T"/> has a non-zero value.
+            </summary>
+            <typeparam name="T">The type of the enum.</typeparam>
+            <param name="source">The enum value to test.</param>
+            <returns>A value indicating whether <paramref name="source"/> has a non-zero value.</returns>
+        </member>
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.HasValue``1(``0,``0)">
+            <summary>
+            Determines if an enum value <paramref name="source"/> of <typeparamref name="T"/> has at least one value that another <paramref name="value"/> also has. May not work correctly with non-<see cref="T:System.FlagsAttribute"/> enums.
+            </summary>
+            <typeparam name="T">The type of the enum.</typeparam>
+            <param name="source">The enum value to test.</param>
+            <param name="value">An enum value that is checked against.</param>
+            <returns>A value indicating whether <paramref name="source"/> has at least one value that <paramref name="value"/> also has.</returns>
         </member>
         <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Gadget)">
             <summary>

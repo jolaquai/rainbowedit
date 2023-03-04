@@ -45,7 +45,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
             Brava
         };
 
-        // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
+        // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of the instantiation of the Weapons, those Operator references are null
         foreach (Operator op in _operators)
         {
             foreach (Weapon wep in op.Primaries.Concat(op.Secondaries))

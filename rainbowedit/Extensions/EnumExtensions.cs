@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Data.Common;
+using System.Text.RegularExpressions;
 
 namespace RainbowEdit.Extensions;
 
@@ -8,7 +9,7 @@ namespace RainbowEdit.Extensions;
 public static partial class EnumExtensions
 {
     /// <summary>
-    /// Gets a <see cref="List{T}"/> of enum values typed <typeparamref name="T"/> that are set in a given <see cref="FlagsAttribute"/> enum instance.
+    /// Compiles a <see cref="List{T}"/> of enum values typed <typeparamref name="T"/> that are set in a given <see cref="FlagsAttribute"/> enum instance.
     /// </summary>
     /// <typeparam name="T">The type of the enum.</typeparam>
     /// <param name="source">The enum value to extract the set flags on.</param>
@@ -26,6 +27,25 @@ public static partial class EnumExtensions
         }
         return set;
     }
+
+    /// <summary>
+    /// Determines if an enum value <paramref name="source"/> of <typeparamref name="T"/> has a non-zero value.
+    /// </summary>
+    /// <typeparam name="T">The type of the enum.</typeparam>
+    /// <param name="source">The enum value to test.</param>
+    /// <returns>A value indicating whether <paramref name="source"/> has a non-zero value.</returns>
+    public static bool HasValue<T>(this T source)
+        where T : Enum => source.GetSetFlags().Any();
+
+    /// <summary>
+    /// Determines if an enum value <paramref name="source"/> of <typeparamref name="T"/> has at least one value that another <paramref name="value"/> also has. May not work correctly with non-<see cref="FlagsAttribute"/> enums.
+    /// </summary>
+    /// <typeparam name="T">The type of the enum.</typeparam>
+    /// <param name="source">The enum value to test.</param>
+    /// <param name="value">An enum value that is checked against.</param>
+    /// <returns>A value indicating whether <paramref name="source"/> has at least one value that <paramref name="value"/> also has.</returns>
+    public static bool HasValue<T>(this T source, T value)
+        where T : Enum => source.GetSetFlags().Intersect(value.GetSetFlags()).Any();
 
     /// <summary>
     /// Generates a string representation for this <see cref="Weapon.Gadget"/> enum value.
