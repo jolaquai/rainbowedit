@@ -16,4 +16,24 @@ public static class IEnumerableExtensions
         List<T> enumerated = new(source);
         return enumerated[new Random().Next(enumerated.Count)];
     }
+
+    /// <summary>
+    /// Determines whether a sequence contains a specified element by using a specified comparer function.
+    /// </summary>
+    /// <typeparam name="T">The type of the elements of <paramref name="source"/>.</typeparam>
+    /// <param name="source">The sequence to search.</param>
+    /// <param name="value">The value to locate in the sequence.</param>
+    /// <param name="comparer">The function that compares elements and ultimately determines whether <paramref name="source"/> contains <paramref name="value"/>.</param>
+    /// <returns>A value indicating whether <paramref name="source"/> contains <paramref name="value"/>.</returns>
+    public static bool Contains<T>(this IEnumerable<T> source, T value, Func<T, T, bool> comparer)
+    {
+        foreach (T item in source)
+        {
+            if (comparer(item, value))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
