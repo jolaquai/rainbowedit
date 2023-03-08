@@ -55,7 +55,7 @@ public class Weapon
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.Suppressor"/>.
     /// </summary>
-    [Obsolete($"{nameof(SuppressedDamage)} has been obsoleted by the ${nameof(Barrel.Suppressor)} rework in Y7S3, use {nameof(Damage)} instead.")]
+    [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to always be equal to {nameof(Damage)}, use that instead.")]
     public int SuppressedDamage { get; private set; }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.ExtendedBarrel"/>.
@@ -81,7 +81,7 @@ public class Weapon
     /// <summary>
     /// The multiplier that is applied to a weapon's base damage when equipping a <see cref="Barrel.Suppressor"/> on it. This is not defined anywhere and resulted from averaging the ratios from all weapons a <see cref="Barrel.Suppressor"/> can be equipped on (<c>suppressed_dmg / dmg</c>). Typically, using <c>0.84</c> yields a close enough approximate. The calculated value is then rounded towards the nearest integer.
     /// </summary>
-    [Obsolete($"{nameof(SuppressedDamage)} has been obsoleted by the ${nameof(Barrel.Suppressor)} rework in Y7S3. This is kept for compatibility reasons and is now defined as `1M`.")]
+    [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to be redefined to `1M`. Do not reference this to perform calculations as they are no-ops.", true)]
     public const decimal SuppressedDamageMultiplier = 1M; // 0.837697879481015
     /// <summary>
     /// The multiplier that is applied to a weapon's base damage when equipping an <see cref="Barrel.ExtendedBarrel"/> on it. Defined as 15% on top of the <see cref="Weapon"/>'s base damage as part of the Y7S2 Designer's notes (https://store.steampowered.com/news/app/359550/view/5254045511872530857).
@@ -372,7 +372,8 @@ public class Weapon
             IsSecondary = true;
         }
 
-        SuppressedDamage = (int)Math.Round(Barrels.HasFlag(Barrel.Suppressor) ? Damage * SuppressedDamageMultiplier : 0);
+        //SuppressedDamage = (int)Math.Round(Barrels.HasFlag(Barrel.Suppressor) ? Damage * SuppressedDamageMultiplier : 0);
+        SuppressedDamage = (int)(Barrels.HasFlag(Barrel.Suppressor) ? Damage : 0);
         ExtendedBarrelDamage = (int)Math.Round(Barrels.HasFlag(Barrel.ExtendedBarrel) ? Damage * ExtendedBarrelDamageMultiplier : 0);
         if (!Type.HasFlag(WeaponType.Shield))
         {

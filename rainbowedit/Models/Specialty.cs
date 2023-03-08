@@ -51,7 +51,6 @@ public class Specialty
         /// <summary>
         /// Instantiates a new <see cref="Challenge" /> with the specified name, description, and reward.
         /// </summary>
-        /// <param name="name">The name of the challenge.</param>
         /// <param name="description">The description of the challenge.</param>
         /// <param name="reward">The reward for completing the challenge.</param>
         internal Challenge(string description, string reward)

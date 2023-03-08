@@ -24,6 +24,56 @@
             </summary>
             <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> where the keys are <see cref="T:RainbowEdit.Weapon.WeaponType"/> enum values and the values are a collection of <see cref="T:RainbowEdit.Operator"/> objects.</returns>
         </member>
+        <member name="T:rainbowedit.Models.Specialty">
+            <summary>
+            Represents a <see cref="T:rainbowedit.Models.Specialty"/>, introduced in Y8S1. 
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Models.Specialty.Name">
+            <summary>
+            The name of this <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Models.Specialty.Reward">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> reward for completing all three of this <see cref="T:rainbowedit.Models.Specialty"/>'s <see cref="P:rainbowedit.Models.Specialty.Challenges"/>.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Models.Specialty.Challenges">
+            <summary>
+            A list of <see cref="T:rainbowedit.Models.Specialty.Challenge"/>s to be completed to unlock rewards and finally the <see cref="P:rainbowedit.Models.Specialty.Reward"/> <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+        </member>
+        <member name="M:rainbowedit.Models.Specialty.#ctor(System.String,RainbowEdit.Operator,System.Collections.Generic.List{rainbowedit.Models.Specialty.Challenge})">
+            <summary>
+            Instantiates a new <see cref="T:rainbowedit.Models.Specialty"/> with a specified name, <see cref="T:RainbowEdit.Operator"/> reward, and list of <see cref="P:rainbowedit.Models.Specialty.Challenges"/>.
+            </summary>
+            <param name="name">The name of the <see cref="T:rainbowedit.Models.Specialty"/>.</param>
+            <param name="reward">The <see cref="T:RainbowEdit.Operator"/> reward for completing all three of this <see cref="T:rainbowedit.Models.Specialty"/>'s <paramref name="challenges"/>.</param>
+            <param name="challenges">The list of challenges for this <see cref="T:rainbowedit.Models.Specialty"/>.</param>
+        </member>
+        <member name="T:rainbowedit.Models.Specialty.Challenge">
+            <summary>
+            Represents one of the three challenges of a <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Models.Specialty.Challenge.Description">
+            <summary>
+            The description of the <see cref="T:rainbowedit.Models.Specialty.Challenge" />.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Models.Specialty.Challenge.Reward">
+            <summary>
+            The reward for completing the <see cref="T:rainbowedit.Models.Specialty.Challenge" />.
+            </summary>
+        </member>
+        <member name="M:rainbowedit.Models.Specialty.Challenge.#ctor(System.String,System.String)">
+            <summary>
+            Instantiates a new <see cref="T:rainbowedit.Models.Specialty.Challenge" /> with the specified name, description, and reward.
+            </summary>
+            <param name="description">The description of the challenge.</param>
+            <param name="reward">The reward for completing the challenge.</param>
+        </member>
         <member name="T:RainbowEdit.Exceptions.EnumStringificationException`1">
             <summary>
             The exception that is thrown when an enum value is attempted to be represented by a string that does not match it inside a <see cref="T:RainbowEdit.WeaponConfiguration"/>.
@@ -140,6 +190,16 @@
             <param name="source">The sequence to choose an item from.</param>
             <returns>A random item from <paramref name="source"/>.</returns>
         </member>
+        <member name="M:RainbowEdit.Extensions.IEnumerableExtensions.Contains``1(System.Collections.Generic.IEnumerable{``0},``0,System.Func{``0,``0,System.Boolean})">
+            <summary>
+            Selects 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="item"></param>
+            <param name="comparer"></param>
+            <returns></returns>
+        </member>
         <member name="T:RainbowEdit.Attackers">
             <summary>
             The <see cref="T:RainbowEdit.Attackers"/> in Siege.
@@ -173,6 +233,36 @@
         </member>
         <member name="P:RainbowEdit.Attackers.System#Collections#IEnumerator#Current">
             <inheritdoc/>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Breach">
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/>' <see cref="F:RainbowEdit.Attackers.Breach"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Support">
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/>' <see cref="F:RainbowEdit.Attackers.Support"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.FrontLine">
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/>' <see cref="F:RainbowEdit.Attackers.FrontLine"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Intel">
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/>' <see cref="F:RainbowEdit.Attackers.Intel"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.AntiGadget">
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/>' <see cref="F:RainbowEdit.Attackers.AntiGadget"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.MapControl">
+            <summary>
+            The <see cref="T:RainbowEdit.Attackers"/>' <see cref="F:RainbowEdit.Attackers.MapControl"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
         </member>
         <member name="F:RainbowEdit.Attackers.Sledge">
             <summary>
@@ -344,6 +434,18 @@
             The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Attackers.Brava"/>.
             </summary>
         </member>
+        <member name="M:RainbowEdit.Attackers.GetPersonalSpecialtyChallengeSet(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Compiles specific challenges from all <see cref="T:RainbowEdit.Attackers"/>' specialties into a collection.
+            </summary>
+            <param name="breach">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Attackers.Breach" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Attackers.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="frontline">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Attackers.FrontLine" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Attackers.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Attackers.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="mapcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Attackers.MapControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <returns>A</returns>
+        </member>
         <member name="T:RainbowEdit.Defenders">
             <summary>
             The <see cref="T:RainbowEdit.Defenders"/> in Siege.
@@ -377,6 +479,36 @@
         </member>
         <member name="P:RainbowEdit.Defenders.System#Collections#IEnumerator#Current">
             <inheritdoc/>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Trapper">
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/>' <see cref="F:RainbowEdit.Defenders.Trapper"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Support">
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/>' <see cref="F:RainbowEdit.Defenders.Support"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.AntiEntry">
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/>' <see cref="F:RainbowEdit.Defenders.AntiEntry"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Intel">
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/>' <see cref="F:RainbowEdit.Defenders.Intel"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.AntiGadget">
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/>' <see cref="F:RainbowEdit.Defenders.AntiGadget"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.CrowdControl">
+            <summary>
+            The <see cref="T:RainbowEdit.Defenders"/>' <see cref="F:RainbowEdit.Defenders.CrowdControl"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
         </member>
         <member name="F:RainbowEdit.Defenders.Smoke">
             <summary>
@@ -543,6 +675,18 @@
             The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Solis"/>.
             </summary>
         </member>
+        <member name="M:RainbowEdit.Defenders.GetPersonalSpecialtyChallengeSet(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Compiles specific challenges from all <see cref="T:RainbowEdit.Defenders"/>' specialties into a collection.
+            </summary>
+            <param name="trapper">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Defenders.Trapper" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Defenders.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antientry">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Defenders.AntiEntry" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Defenders.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Defenders.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="crowdcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:RainbowEdit.Defenders.CrowdControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <returns>A</returns>
+        </member>
         <member name="T:RainbowEdit.Operator">
             <summary>
             An <see cref="T:RainbowEdit.Operator"/> in Siege.
@@ -593,6 +737,11 @@
             The name of the <see cref="T:RainbowEdit.Operator"/>'s special ability.
             </summary>
         </member>
+        <member name="P:RainbowEdit.Operator.Specialties">
+            <summary>
+            A collection of <see cref="T:rainbowedit.Models.Specialty"/> objects representing the <see cref="T:RainbowEdit.Operator"/>'s assigned specialties.
+            </summary>
+        </member>
         <member name="P:RainbowEdit.Operator.Organization">
             <summary>
             The name of the organization the <see cref="T:RainbowEdit.Operator"/> belongs to.
@@ -638,7 +787,7 @@
             The <see cref="T:RainbowEdit.Operator"/>'s base health / HP value.
             </summary>
         </member>
-        <member name="M:RainbowEdit.Operator.#ctor(System.String,System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},RainbowEdit.Weapon.Gadget,System.String,System.String,System.String,System.Decimal,System.Decimal,System.String,RainbowEdit.OperatorAge,System.Int32)">
+        <member name="M:RainbowEdit.Operator.#ctor(System.String,System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},RainbowEdit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,RainbowEdit.OperatorAge,System.Int32)">
             <summary>
             Instantiates a new <see cref="T:RainbowEdit.Operator"/> object.
             </summary>
@@ -647,6 +796,7 @@
             <param name="secondaries">A collection of <see cref="T:RainbowEdit.Weapon"/> objects, containing information about the secondary weapons the <see cref="T:RainbowEdit.Operator"/> may use.</param>
             <param name="gadgets">A combination of <see cref="T:RainbowEdit.Weapon.Gadget"/> values that specifies which gadgets the <see cref="T:RainbowEdit.Operator"/> may choose from.</param>
             <param name="specialAbility">The name of the <see cref="T:RainbowEdit.Operator"/>'s special ability.</param>
+            <param name="specialties">A collection of <see cref="T:rainbowedit.Models.Specialty"/> objects representing the <see cref="T:RainbowEdit.Operator"/>'s assigned specialties.</param>
             <param name="organization">The name of the organization the <see cref="T:RainbowEdit.Operator"/> belongs to.</param>
             <param name="birthplace">The <see cref="T:RainbowEdit.Operator"/>'s birthplace.</param>
             <param name="height">The <see cref="T:RainbowEdit.Operator"/>'s height in whole and fractional centimeters.</param>

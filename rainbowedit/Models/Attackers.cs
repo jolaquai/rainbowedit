@@ -47,7 +47,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
             Brava
         };
 
-        // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of the instantiation of the Weapons, those Operator references are null
+        // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
         foreach (Operator op in _operators)
         {
             foreach (Weapon wep in op.Primaries.Concat(op.Secondaries))
@@ -55,7 +55,98 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 wep.Source = op;
             }
         }
+
+        #region Specialties
+        // Same as above
+        Breach = new(
+            "Breach",
+            Hibana,
+            new()
+            {
+                new("Destroy 0 barricades or hatches.", "Renown 250"),
+                new("Breach 0 reinforced surfaces.", "3-Days Renown Booster 1x"),
+                new("Score 125 points by breaching reinforced surfaces.", "Beginner Pack 3x")
+            }
+        );
+        Support = new(
+            "Support",
+            Montagne,
+            new()
+            {
+                new("Play 1 times as a Support Attacker.", "Beginner Pack 1x"),
+                new("Revive 5 teammates.", "Beginner Pack 2x"),
+                new("Win by defusing bombs 1 times.", "Beginner Pack 3x")
+            }
+        );
+        FrontLine = new(
+            "Front-Line",
+            Ash,
+            new()
+            {
+                new("Get 5 eliminations or assists.", "Beginner Pack 1x"),
+                new("Blind 2 opponents.", "Renown 500"),
+                new("Eliminate 5 opponents with explosives as an Attacker.", "7-Days Renown Booster 1x")
+            }
+        );
+        Intel = new(
+            "Intel",
+            Twitch,
+            new()
+            {
+                new("Scan and identify 7 Defenders as an Attacker.", "1-Day Renown Booster 1x"),
+                new("Find the bomb as an Attacker 1 times without your drone being destroyed during the Preparation Phase.", "1-Day Battle Point Booster 2x"),
+                new("Get 5 Opponents Scan Assists.", "Renown 750")
+            }
+        );
+        AntiGadget = new(
+            "Anti-Gadget",
+            Fuze,
+            new()
+            {
+                new("Destroy 5 trap devices as an Attacker.", "1-Day Battle Point Booster 1x"),
+                new("Destroy 5 Observation Tools as an Attacker.", "1-Day Battle Point Booster 2x"),
+                new("Deactivate 2 electronic devices as an Attacker.", "1-Day Battle Point Booster 3x")
+            }
+        );
+        MapControl = new(
+            "Map Control",
+            Lion,
+            new()
+            {
+                new("Walk or sprint 500 meters as an Attacker.", "Renown 250"),
+                new("Get 5 headshots.", "3-Days Renown Booster 1x"),
+                new("Eliminate 2 opponents through breakable surfaces.", "1-Day Battle Point Booster 3x")
+            }
+        );
+        #endregion
     }
+
+    #region Specialties
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="Breach"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Breach;
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="Support"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Support;
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="FrontLine"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty FrontLine;
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="Intel"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Intel;
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty AntiGadget;
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="MapControl"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty MapControl;
+    #endregion
 
 #pragma warning disable CS8604 // Possible null reference argument.
 
@@ -2973,84 +3064,45 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
 
 #pragma warning restore CS8604 // Possible null reference argument.
 
-    #region Specialties
     /// <summary>
-    /// The <see cref="Attackers"/>' <see cref="Breach"/> <see cref="Specialty"/>.
+    /// Compiles specific challenges from all <see cref="Attackers"/>' specialties into a collection.
     /// </summary>
-    public static readonly Specialty Breach = new(
-         "Breach",
-         Hibana,
-         new()
-         {
-                new("Destroy 0 barricades or hatches.", "Renown 250"),
-                new("Breach 0 reinforced surfaces.", "3-Days Renown Booster 1x"),
-                new("Score 125 points by breaching reinforced surfaces.", "Beginner Pack 3x")
-         }
-    );
-    /// <summary>
-    /// The <see cref="Attackers"/>' <see cref="Support"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty Support = new(
-         "Breach",
-         Montagne,
-         new()
-         {
-                new("Play 1 times as a Support Attacker.", "Beginner Pack 1x"),
-                new("Revive 5 teammates.", "Beginner Pack 2x"),
-                new("Win by defusing bombs 1 times.", "Beginner Pack 3x")
-         }
-    );
-    /// <summary>
-    /// The <see cref="Attackers"/>' <see cref="FrontLine"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty FrontLine = new(
-         "Breach",
-         Ash,
-         new()
-         {
-                new("Get 5 eliminations or assists.", "Beginner Pack 1x"),
-                new("Blind 2 opponents.", "Renown 500"),
-                new("Eliminate 5 opponents with explosives as an Attacker.", "7-Days Renown Booster 1x")
-         }
-    );
-    /// <summary>
-    /// The <see cref="Attackers"/>' <see cref="Intel"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty Intel = new(
-         "Breach",
-         Twitch,
-         new()
-         {
-                new("Scan and identify 7 Defenders as an Attacker.", "1-Day Renown Booster 1x"),
-                new("Find the bomb as an Attacker 1 times without your drone being destroyed during the Preparation Phase.", "1-Day Battle Point Booster 2x"),
-                new("Get 5 Opponents Scan Assists.", "Renown 750")
-         }
-    );
-    /// <summary>
-    /// The <see cref="Attackers"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty AntiGadget = new(
-         "Breach",
-         Fuze,
-         new()
-         {
-                new("Destroy 5 trap devices as an Attacker.", "1-Day Battle Point Booster 1x"),
-                new("Destroy 5 Observation Tools as an Attacker.", "1-Day Battle Point Booster 2x"),
-                new("Deactivate 2 electronic devices as an Attacker.", "1-Day Battle Point Booster 3x")
-         }
-    );
-    /// <summary>
-    /// The <see cref="Attackers"/>' <see cref="MapControl"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty MapControl = new(
-         "Breach",
-         Lion,
-         new()
-         {
-                new("Walk or sprint 500 meters as an Attacker.", "Renown 250"),
-                new("Get 5 headshots.", "3-Days Renown Booster 1x"),
-                new("Eliminate 2 opponents through breakable surfaces.", "1-Day Battle Point Booster 3x")
-         }
-    );
-    #endregion
+    /// <param name="breach">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Breach" /> <see cref="Specialty" />.</param>
+    /// <param name="support">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Support" /> <see cref="Specialty" />.</param>
+    /// <param name="frontline">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="FrontLine" /> <see cref="Specialty" />.</param>
+    /// <param name="intel">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Intel" /> <see cref="Specialty" />.</param>
+    /// <param name="antigadget">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AntiGadget" /> <see cref="Specialty" />.</param>
+    /// <param name="mapcontrol">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="MapControl" /> <see cref="Specialty" />.</param>
+    /// <returns>A</returns>
+    public static Dictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(int breach, int support, int frontline, int intel, int antigadget, int mapcontrol)
+    {
+        Dictionary<Specialty, string> challenges = new();
+
+        if (breach is >= 1 and <= 3)
+        {
+            challenges.Add(Breach, $"{Breach.Name,-13} -> {Breach.Challenges[breach - 1].Description}");
+        }
+        if (support is >= 1 and <= 3)
+        {
+            challenges.Add(Support, $"{Support.Name,-13} -> {Support.Challenges[support - 1].Description}");
+        }
+        if (frontline is >= 1 and <= 3)
+        {
+            challenges.Add(FrontLine, $"{FrontLine.Name,-13} -> {FrontLine.Challenges[frontline - 1].Description}");
+        }
+        if (intel is >= 1 and <= 3)
+        {
+            challenges.Add(Intel, $"{Intel.Name,-13} -> {Intel.Challenges[intel - 1].Description}");
+        }
+        if (antigadget is >= 1 and <= 3)
+        {
+            challenges.Add(AntiGadget, $"{AntiGadget.Name,-13} -> {AntiGadget.Challenges[antigadget - 1].Description}");
+        }
+        if (mapcontrol is >= 1 and <= 3)
+        {
+            challenges.Add(MapControl, $"{MapControl.Name,-13} -> {MapControl.Challenges[mapcontrol - 1].Description}");
+        }
+
+        return challenges;
+    }
 }
