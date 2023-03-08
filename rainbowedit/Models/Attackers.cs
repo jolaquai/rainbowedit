@@ -1,4 +1,6 @@
-﻿namespace RainbowEdit;
+﻿using rainbowedit.Models;
+
+namespace RainbowEdit;
 
 /// <summary>
 /// The <see cref="Attackers"/> in Siege.
@@ -57,6 +59,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
 
 #pragma warning disable CS8604 // Possible null reference argument.
 
+    #region Attacker instances
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Sledge"/>.
     /// </summary>
@@ -115,6 +118,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.FragGrenade | Weapon.Gadget.StunGrenade | Weapon.Gadget.EmpGrenade,
         "Tactical Breaching Hammer \"The Caber\"",
+        new List<Specialty>()
+        {
+            Breach,
+            AntiGadget
+        },
         "SAS",
         "John O'Groats, Scotland",
         192,
@@ -197,6 +205,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
         "EG Mk 0-EMP Grenade",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Support
+        },
         "SAS",
         "Bideford, England",
         180,
@@ -279,6 +292,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
         "M120 CREM Breaching Rounds",
+        new List<Specialty>()
+        {
+            Breach,
+            FrontLine
+        },
         "FBI SWAT",
         "Jerusalem, Israel",
         170,
@@ -361,6 +379,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade,
         "Brimstone BC-3 Exothermic Charges",
+        new List<Specialty>()
+        {
+            Breach,
+            Support
+        },
         "FBI SWAT",
         "Plano, Texas",
         178,
@@ -458,6 +481,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.Claymore | Weapon.Gadget.SmokeGrenade,
         "RSD Model 1 - Shock Drone",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Intel
+        },
         "GIGN",
         "Nancy, France",
         168,
@@ -525,6 +553,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.HardBreachCharge | Weapon.Gadget.SmokeGrenade | Weapon.Gadget.EmpGrenade,
         "Extendable Shield \"Le Roc\"",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "GIGN",
         "Bordeaux, France",
         190,
@@ -607,6 +640,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.FragGrenade | Weapon.Gadget.Claymore,
         "HDS Flip Sight OTs-03 MARKSMAN Rifle",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "SPETSNAZ",
         "Vladivostok, Russia",
         178,
@@ -704,6 +742,10 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.BreachCharge | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.SmokeGrenade,
         "APM-6 Cluster Charge \"Matryoshka\"",
+        new List<Specialty>()
+        {
+            AntiGadget
+        },
         "SPETSNAZ",
         "Samarkand, Uzbekistan",
         180,
@@ -756,6 +798,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.BreachCharge,
         "G52-Tactical Light Shield",
+        new List<Specialty>()
+        {
+            FrontLine,
+            MapControl
+        },
         "GSG 9",
         "Bremen, Germany",
         175,
@@ -838,6 +885,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
         "Electronics Detector RED Mk III \"Spectre\"",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "GSG 9",
         "Leipzig, Germany",
         175,
@@ -920,6 +972,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.StunGrenade | Weapon.Gadget.HardBreachCharge,
         "Skeleton Key SK 4-12",
+        new List<Specialty>()
+        {
+            Breach,
+            Support
+        },
         "JTF2",
         "Montréal, Quebec",
         178,
@@ -987,6 +1044,10 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.Claymore | Weapon.Gadget.StunGrenade | Weapon.Gadget.EmpGrenade,
         "TARS Mk 0-Transparent Armored Rifle Shield",
+        new List<Specialty>()
+        {
+            Support
+        },
         "NAVY SEAL",
         "Bellevue, Washington",
         180,
@@ -1069,6 +1130,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.Claymore | Weapon.Gadget.HardBreachCharge,
         "Tactical Crossbow TAC Mk0",
+        new List<Specialty>()
+        {
+            FrontLine,
+            MapControl
+        },
         "BOPE",
         "Nova Iguaçu, Brazil",
         183,
@@ -1151,6 +1217,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.StunGrenade | Weapon.Gadget.BreachCharge,
         "X-KAIROS Grenade Launcher",
+        new List<Specialty>()
+        {
+            Breach,
+            FrontLine
+        },
         "SAT",
         "Tokyo, Japan (Suginami-ki)",
         173,
@@ -1248,6 +1319,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.Claymore | Weapon.Gadget.SmokeGrenade,
         "Eyenox Model III",
+        new List<Specialty>()
+        {
+            Intel,
+            MapControl
+        },
         "GEO",
         "Ceuta, Spain",
         190,
@@ -1315,6 +1391,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.HardBreachCharge | Weapon.Gadget.SmokeGrenade,
         "Candela Cluster Charges",
+        new List<Specialty>()
+        {
+            FrontLine,
+            MapControl
+        },
         "SDU",
         "Hong Kong, Central",
         160,
@@ -1382,6 +1463,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
         "KS79 Lifeline",
+        new List<Specialty>()
+        {
+            Breach,
+            AntiGadget
+        },
         "GROM",
         "Wrocław, Poland",
         179,
@@ -1479,6 +1565,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade | Weapon.Gadget.EmpGrenade,
         "Logic Bomb",
+        new List<Specialty>()
+        {
+            Intel,
+            MapControl
+        },
         "707th SMB",
         "Seoul, South Korea",
         180,
@@ -1590,6 +1681,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.StunGrenade | Weapon.Gadget.Claymore | Weapon.Gadget.EmpGrenade,
         "EE-ONE-D Scanning Drone",
+        new List<Specialty>()
+        {
+            Intel,
+            MapControl
+        },
         "CBRN THREAT UNIT",
         "Toulouse, France",
         185,
@@ -1702,6 +1798,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade,
         "Adrenal Surge",
+        new List<Specialty>()
+        {
+            FrontLine,
+            Support
+        },
         "CBRN THREAT UNIT",
         "Gomel, Belarus",
         171,
@@ -1769,6 +1870,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.StunGrenade | Weapon.Gadget.Claymore,
         "Breaching Torch",
+        new List<Specialty>()
+        {
+            Breach,
+            FrontLine
+        },
         "GSUTR",
         "Boston, Massachusetts",
         180,
@@ -1851,6 +1957,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.StunGrenade | Weapon.Gadget.BreachCharge,
         "Airjab Launcher",
+        new List<Specialty>()
+        {
+            FrontLine,
+            MapControl
+        },
         "GIGR",
         "Marrakesh, Morocco",
         171,
@@ -1948,6 +2059,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.BreachCharge | Weapon.Gadget.EmpGrenade,
         "Trax Stingers",
+        new List<Specialty>()
+        {
+            Support,
+            MapControl
+        },
         "SASR",
         "Longreach, Central Queensland, Australia",
         177,
@@ -2030,6 +2146,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.FragGrenade | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.EmpGrenade,
         "HEL Presence Reduction",
+        new List<Specialty>()
+        {
+            FrontLine,
+            MapControl
+        },
         "JAEGER CORPS",
         "[REDACTED]",
         -1M,
@@ -2127,6 +2248,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.HardBreachCharge | Weapon.Gadget.StunGrenade,
         "Garra Hook",
+        new List<Specialty>()
+        {
+            FrontLine,
+            MapControl
+        },
         "APCA",
         "Cojata, Peru",
         189,
@@ -2209,6 +2335,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.Claymore | Weapon.Gadget.BreachCharge,
         "Low Velocity (LV) Explosive Lance",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Support
+        },
         "NIGHTHAVEN",
         "Amreli, India",
         170,
@@ -2276,6 +2407,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.FragGrenade | Weapon.Gadget.SmokeGrenade,
         "Gemini Replicator",
+        new List<Specialty>()
+        {
+            FrontLine,
+            Intel
+        },
         "REU",
         "Katwijk, Netherlands",
         157,
@@ -2343,6 +2479,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
         "S.E.L.M.A. Aqua Breacher",
+        new List<Specialty>()
+        {
+            Breach,
+            AntiGadget
+        },
         "NIGHTHAVEN",
         "Lærdalsøyri, Norway",
         187,
@@ -2425,6 +2566,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.HardBreachCharge | Weapon.Gadget.Claymore,
         "ARGUS Launcher",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Intel
+        },
         "ROS",
         "Baltimore, Maryland",
         178,
@@ -2492,6 +2638,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.StunGrenade | Weapon.Gadget.Claymore,
         "RCE-Ratero Charge",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Intel
+        },
         "UNAFFILIATED",
         "Buenos Aires, Argentina",
         181,
@@ -2559,6 +2710,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.Claymore | Weapon.Gadget.EmpGrenade,
         "Talon-8 Clear Shield",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "NIGHTHAVEN",
         "Split, Croatia",
         180,
@@ -2641,6 +2797,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.HardBreachCharge | Weapon.Gadget.Claymore,
         "R.O.U. Projector System",
+        new List<Specialty>()
+        {
+            Support,
+            MapControl
+        },
         "SFG",
         "Brussels, Belgium",
         178,
@@ -2708,6 +2869,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
         "Kawan Hive Launcher",
+        new List<Specialty>()
+        {
+            FrontLine,
+            MapControl
+        },
         "NIGHTHAVEN",
         "Jurong, Singapore",
         179,
@@ -2790,6 +2956,11 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         },
         Weapon.Gadget.SmokeGrenade | Weapon.Gadget.Claymore,
         "Kludge Drone",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Intel
+        },
         "COT",
         "Curitiba, Brazil",
         170,
@@ -2798,6 +2969,88 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         new(10, 1, 40),
         3
     );
+    #endregion
 
 #pragma warning restore CS8604 // Possible null reference argument.
+
+    #region Specialties
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="Breach"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Breach = new(
+         "Breach",
+         Hibana,
+         new()
+         {
+                new("Destroy 0 barricades or hatches.", "Renown 250"),
+                new("Breach 0 reinforced surfaces.", "3-Days Renown Booster 1x"),
+                new("Score 125 points by breaching reinforced surfaces.", "Beginner Pack 3x")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="Support"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Support = new(
+         "Breach",
+         Montagne,
+         new()
+         {
+                new("Play 1 times as a Support Attacker.", "Beginner Pack 1x"),
+                new("Revive 5 teammates.", "Beginner Pack 2x"),
+                new("Win by defusing bombs 1 times.", "Beginner Pack 3x")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="FrontLine"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty FrontLine = new(
+         "Breach",
+         Ash,
+         new()
+         {
+                new("Get 5 eliminations or assists.", "Beginner Pack 1x"),
+                new("Blind 2 opponents.", "Renown 500"),
+                new("Eliminate 5 opponents with explosives as an Attacker.", "7-Days Renown Booster 1x")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="Intel"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Intel = new(
+         "Breach",
+         Twitch,
+         new()
+         {
+                new("Scan and identify 7 Defenders as an Attacker.", "1-Day Renown Booster 1x"),
+                new("Find the bomb as an Attacker 1 times without your drone being destroyed during the Preparation Phase.", "1-Day Battle Point Booster 2x"),
+                new("Get 5 Opponents Scan Assists.", "Renown 750")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty AntiGadget = new(
+         "Breach",
+         Fuze,
+         new()
+         {
+                new("Destroy 5 trap devices as an Attacker.", "1-Day Battle Point Booster 1x"),
+                new("Destroy 5 Observation Tools as an Attacker.", "1-Day Battle Point Booster 2x"),
+                new("Deactivate 2 electronic devices as an Attacker.", "1-Day Battle Point Booster 3x")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Attackers"/>' <see cref="MapControl"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty MapControl = new(
+         "Breach",
+         Lion,
+         new()
+         {
+                new("Walk or sprint 500 meters as an Attacker.", "Renown 250"),
+                new("Get 5 headshots.", "3-Days Renown Booster 1x"),
+                new("Eliminate 2 opponents through breakable surfaces.", "1-Day Battle Point Booster 3x")
+         }
+    );
+    #endregion
 }

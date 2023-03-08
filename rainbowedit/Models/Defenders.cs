@@ -1,4 +1,6 @@
-﻿namespace RainbowEdit;
+﻿using rainbowedit.Models;
+
+namespace RainbowEdit;
 
 /// <summary>
 /// The <see cref="Defenders"/> in Siege.
@@ -56,6 +58,7 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
 
 #pragma warning disable CS8604 // Possible null reference argument.
 
+    #region Defender instances
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Smoke"/>.
     /// </summary>
@@ -129,6 +132,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield,
         "Compound Z8 Grenades",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Trapper
+        },
         "SAS",
         "London, England (King's Cross)",
         173,
@@ -211,6 +219,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.NitroCell | Weapon.Gadget.BulletproofCamera,
         "\"Moni\" GC90 Signal Disruptor",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            CrowdControl
+        },
         "SAS",
         "York, England",
         185,
@@ -308,6 +321,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ProximityAlarm,
         "UTP1-Universal Tactical Panel",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Support
+        },
         "FBI SWAT",
         "Sherman Oaks, California",
         185,
@@ -390,6 +408,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
         "HB-5 Cardiac Sensor",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "FBI SWAT",
         "Goldsboro, North Carolina",
         188,
@@ -502,6 +525,10 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
         "MPD-0 STIM PISTOL",
+        new List<Specialty>()
+        {
+            Support
+        },
         "GIGN",
         "Paris, France",
         177,
@@ -599,6 +626,10 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ImpactGrenade,
         "R1N \"Rhino\" Armor - Armor Pack",
+        new List<Specialty>()
+        {
+            Support
+        },
         "GIGN",
         "Tours, France",
         175,
@@ -681,6 +712,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
         "EDD Mk II Tripwires",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Trapper
+        },
         "SPETSNAZ",
         "Kovrov, Russia",
         180,
@@ -778,6 +814,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield,
         "Shumikha Grenade Launcher",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            CrowdControl
+        },
         "SPETSNAZ",
         "Saint Petersburg, Russia",
         183,
@@ -845,6 +886,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
         "ADS-Mk IV \"Magpie\" Automated Defense System",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Support
+        },
         "GSG 9",
         "Düsseldorf, Germany",
         180,
@@ -912,6 +958,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
         "CED-1 Crude Electrical Device \"Shock Wires\"",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            AntiGadget
+        },
         "GSG 9",
         "Berlin, Germany",
         180,
@@ -994,6 +1045,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.DeployableShield,
         "Sterling Mk2 LHT leg-hold trap (Welcome Mat)",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Trapper
+        },
         "JTF2",
         "Vancouver, British Columbia",
         172,
@@ -1061,6 +1117,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
         "Gyro Cam Mk2 \"Black Eye\"",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "NAVY SEAL",
         "Oceanside, California",
         170,
@@ -1128,6 +1189,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm,
         "Silent Step",
+        new List<Specialty>()
+        {
+            Intel,
+            CrowdControl
+        },
         "BOPE",
         "Rinópolis, Brazil",
         177,
@@ -1210,6 +1276,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
         "Yokai Hovering Drone",
+        new List<Specialty>()
+        {
+            Intel,
+            CrowdControl
+        },
         "SAT",
         "Suginami, Tokyo, Japan",
         180,
@@ -1292,6 +1363,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.NitroCell,
         "Black Mirror",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "GEO",
         "Madrid, Spain",
         165,
@@ -1359,6 +1435,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
         "Gu Mines",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Trapper
+        },
         "SDU",
         "Hong Kong, Junk Bay (Tseung Kwan O)",
         174,
@@ -1426,6 +1507,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield,
         "GRZMOT Mine",
+        new List<Specialty>()
+        {
+            CrowdControl,
+            Trapper
+        },
         "GROM",
         "Wrocław, Poland",
         173,
@@ -1508,6 +1594,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "ERC-7 Electronic Rendering Cloak",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            CrowdControl
+        },
         "707TH SMB",
         "[REDACTED]",
         173,
@@ -1590,6 +1681,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade,
         "Compact Laser Emplacement Mk V \"Evil Eye\"",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Intel
+        },
         "GIS",
         "Rome, Italy",
         185,
@@ -1672,6 +1768,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
         "Prisma",
+        new List<Specialty>()
+        {
+            Intel,
+            Trapper
+        },
         "GIS",
         "Tripoli, Libya",
         171,
@@ -1754,6 +1855,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade,
         "Crowd Control Electric Shield",
+        new List<Specialty>()
+        {
+            Intel,
+            CrowdControl
+        },
         "GSUTR",
         "London, England",
         179,
@@ -1836,6 +1942,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.NitroCell | Weapon.Gadget.BarbedWire,
         "Rtila Electroclaw",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            AntiGadget
+        },
         "GIGR",
         "Aroumd, Morocco",
         195,
@@ -1903,6 +2014,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
         "Pest Launcher",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Intel
+        },
         "SASR",
         "Portland, Australia",
         162,
@@ -1985,6 +2101,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.DeployableShield | Weapon.Gadget.NitroCell,
         "Glance Smart Glasses",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Intel
+        },
         "SECRET SERVICE",
         "Louisville, Kentucky",
         183,
@@ -2052,6 +2173,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.NitroCell,
         "Volcán Canister",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Trapper
+        },
         "FUERZAS ESPECIALES",
         "Culiacán Rosales, Mexico",
         171,
@@ -2134,6 +2260,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm,
         "Magnetic Neutralizing Electronic Targeting (Mag-NET) System",
+        new List<Specialty>()
+        {
+            AntiGadget,
+            Trapper
+        },
         "NIGHTHAVEN",
         "Lamu, Kenya",
         187,
@@ -2216,6 +2347,10 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ProximityAlarm,
         "Remah Dash",
+        new List<Specialty>()
+        {
+            Support
+        },
         "[UNAFFILIATED]",
         "Azraq, Jordan",
         195,
@@ -2283,6 +2418,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "Banshee Sonic Defense",
+        new List<Specialty>()
+        {
+            Intel,
+            CrowdControl
+        },
         "INKABA TASK FORCE",
         "Louwsburg, South Africa",
         172,
@@ -2350,6 +2490,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera,
         "Surya Gate",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            AntiGadget
+        },
         "NIGHTHAVEN",
         "Ta Phraya District, Thailand",
         160,
@@ -2432,6 +2577,10 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
         "Kóna Healing Station",
+        new List<Specialty>()
+        {
+            Support
+        },
         "STAR-NET AVIATION",
         "Nakoda Territories",
         172,
@@ -2514,6 +2663,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.DeployableShield | Weapon.Gadget.BarbedWire,
         "Razorbloom Shell",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Trapper
+        },
         "EMERGENCY RESPONSE UNIT",
         "County Kildare, Ireland",
         188,
@@ -2581,6 +2735,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BarbedWire,
         "Kiba Barrier",
+        new List<Specialty>()
+        {
+            AntiEntry,
+            Support
+        },
         "UNAFFILIATED",
         "Kyoto, Japan",
         164,
@@ -2648,6 +2807,11 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         },
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
         "SPEC-IO Electro-Sensor",
+        new List<Specialty>()
+        {
+            Intel,
+            Support
+        },
         "AFEAU",
         "Zipaquirá, Colombia",
         166,
@@ -2656,6 +2820,88 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         new(18, 9, 37),
         2
     );
+    #endregion
 
 #pragma warning restore CS8604 // Possible null reference argument.
+
+    #region Specialties
+    /// <summary>
+    /// The <see cref="Defenders"/>' <see cref="Trapper"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Trapper = new(
+         "Trapper",
+         Ela,
+         new()
+         {
+                new("Deploy 0 trap devices.", "1-Day Renown Booster 1x"),
+                new("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
+                new("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Defenders"/>' <see cref="Support"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Support = new(
+         "Support",
+         Rook,
+         new()
+         {
+            new("Play 1 times as a Support Defender.", "1-Day Renown Booster 1x"),
+            new("Reach the Action Phase as a Defender 2 times without either bomb site being discovered.", "3-Days Renown Booster 1x"),
+            new("Heal 2 teammates.", "7-Days Renown Booster")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Defenders"/>' <see cref="AntiEntry"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty AntiEntry = new(
+         "Anti-Entry",
+         Castle,
+         new()
+         {
+            new("Barricade 5 doors or windows.", "Renown 250"),
+            new("Reinforce 5 surfaces.", "Renown 500"),
+            new("Deploy 5 anti-entry devices that electrify utility or interfere wih electronics.", "Renown 750")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Defenders"/>' <see cref="Intel"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty Intel = new(
+         "Intel",
+         Valkyrie,
+         new()
+         {
+            new("Scan and identify 7 Attackers as a Defender.", "Beginner Pack 1x"),
+            new("Deploy 5 Observation Tools as a Defender.", "Renown 500"),
+            new("Detect 1 opponents with Proximity Alarms that you deployed.", "7-Days Renown Booster 1x")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Defenders"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty AntiGadget = new(
+         "Anti-Gadget",
+         Jäger,
+         new()
+         {
+            new("Destroy 2 Attacker drones as a Defender.", "Renown 250"),
+            new("Destroy 5 Attacker devices as a Defender.", "1-Day Battle Point Booster 2x"),
+            new("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
+         }
+    );
+    /// <summary>
+    /// The <see cref="Defenders"/>' <see cref="CrowdControl"/> <see cref="Specialty"/>.
+    /// </summary>
+    public static readonly Specialty CrowdControl = new(
+         "Crowd Control",
+         Tachanka,
+         new()
+         {
+            new("Deploy 5 Barbed Wire.", "1-Day Battle Point Booster 1x"),
+            new("Deactivate 2 electronic devices using the Bulletproof Camera EMP.", "3-Days Renown Booster 1x"),
+            new("Disorient 2 opponents.", "Renown 750")
+         }
+    );
+    #endregion
 }

@@ -1,4 +1,6 @@
-﻿namespace RainbowEdit;
+﻿using rainbowedit.Models;
+
+namespace RainbowEdit;
 
 /// <summary>
 /// An <see cref="Operator"/> in Siege.
@@ -42,6 +44,10 @@ public class Operator
     /// The name of the <see cref="Operator"/>'s special ability.
     /// </summary>
     public string SpecialAbility { get; private set; }
+    /// <summary>
+    /// A collection of <see cref="Specialty"/> objects representing the <see cref="Operator"/>'s assigned specialties.
+    /// </summary>
+    public IEnumerable<Specialty> Specialties { get; private set; }
     /// <summary>
     /// The name of the organization the <see cref="Operator"/> belongs to.
     /// </summary>
@@ -87,6 +93,7 @@ public class Operator
     /// <param name="secondaries">A collection of <see cref="Weapon"/> objects, containing information about the secondary weapons the <see cref="Operator"/> may use.</param>
     /// <param name="gadgets">A combination of <see cref="Weapon.Gadget"/> values that specifies which gadgets the <see cref="Operator"/> may choose from.</param>
     /// <param name="specialAbility">The name of the <see cref="Operator"/>'s special ability.</param>
+    /// <param name="specialties">A collection of <see cref="Specialty"/> objects representing the <see cref="Operator"/>'s assigned specialties.</param>
     /// <param name="organization">The name of the organization the <see cref="Operator"/> belongs to.</param>
     /// <param name="birthplace">The <see cref="Operator"/>'s birthplace.</param>
     /// <param name="height">The <see cref="Operator"/>'s height in whole and fractional centimeters.</param>
@@ -94,13 +101,14 @@ public class Operator
     /// <param name="realName">The in-game real name of the <see cref="Operator"/>.</param>
     /// <param name="age">An <see cref="OperatorAge"/> instance specifying the <see cref="Operator"/>'s day and month of birth and their age.</param>
     /// <param name="speed">The <see cref="Operator"/>'s speed rating.</param>
-    internal Operator(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed)
+    internal Operator(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, IEnumerable<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed)
     {
         Nickname = nickname;
         Primaries = primaries;
         Secondaries = secondaries;
         Gadgets = gadgets;
         SpecialAbility = specialAbility;
+        Specialties = specialties;
         Organization = organization;
         Birthplace = birthplace;
         Height = height;
