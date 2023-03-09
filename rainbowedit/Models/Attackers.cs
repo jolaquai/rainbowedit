@@ -56,96 +56,94 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
             }
         }
 
-        #region Specialties
         // Same as above
-        Breach = new(
-            "Breach",
-            Hibana,
-            new()
-            {
-                new("Destroy 0 barricades or hatches.", "Renown 250"),
-                new("Breach 0 reinforced surfaces.", "3-Days Renown Booster 1x"),
-                new("Score 125 points by breaching reinforced surfaces.", "Beginner Pack 3x")
-            }
-        );
-        Support = new(
-            "Support",
-            Montagne,
-            new()
-            {
-                new("Play 1 times as a Support Attacker.", "Beginner Pack 1x"),
-                new("Revive 5 teammates.", "Beginner Pack 2x"),
-                new("Win by defusing bombs 1 times.", "Beginner Pack 3x")
-            }
-        );
-        FrontLine = new(
-            "Front-Line",
-            Ash,
-            new()
-            {
-                new("Get 5 eliminations or assists.", "Beginner Pack 1x"),
-                new("Blind 2 opponents.", "Renown 500"),
-                new("Eliminate 5 opponents with explosives as an Attacker.", "7-Days Renown Booster 1x")
-            }
-        );
-        Intel = new(
-            "Intel",
-            Twitch,
-            new()
-            {
-                new("Scan and identify 7 Defenders as an Attacker.", "1-Day Renown Booster 1x"),
-                new("Find the bomb as an Attacker 1 times without your drone being destroyed during the Preparation Phase.", "1-Day Battle Point Booster 2x"),
-                new("Get 5 Opponents Scan Assists.", "Renown 750")
-            }
-        );
-        AntiGadget = new(
-            "Anti-Gadget",
-            Fuze,
-            new()
-            {
-                new("Destroy 5 trap devices as an Attacker.", "1-Day Battle Point Booster 1x"),
-                new("Destroy 5 Observation Tools as an Attacker.", "1-Day Battle Point Booster 2x"),
-                new("Deactivate 2 electronic devices as an Attacker.", "1-Day Battle Point Booster 3x")
-            }
-        );
-        MapControl = new(
-            "Map Control",
-            Lion,
-            new()
-            {
-                new("Walk or sprint 500 meters as an Attacker.", "Renown 250"),
-                new("Get 5 headshots.", "3-Days Renown Booster 1x"),
-                new("Eliminate 2 opponents through breakable surfaces.", "1-Day Battle Point Booster 3x")
-            }
-        );
-        #endregion
+        Breach.Reward = Hibana;
+        Support.Reward = Montagne;
+        FrontLine.Reward = Ash;
+        Intel.Reward = Twitch;
+        AntiGadget.Reward = Fuze;
+        MapControl.Reward = Lion;
     }
 
     #region Specialties
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="Breach"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Breach;
+    public static readonly Specialty Breach = new(
+        "Breach",
+        Hibana,
+        new()
+        {
+            new("Destroy 0 barricades or hatches.", "Renown 250"),
+            new("Breach 0 reinforced surfaces.", "3-Days Renown Booster 1x"),
+            new("Score 125 points by breaching reinforced surfaces.", "Beginner Pack 3x")
+        }
+    );
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="Support"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Support;
+    public static readonly Specialty Support = new(
+        "Support",
+        Montagne,
+        new()
+        {
+            new("Play 1 times as a Support Attacker.", "Beginner Pack 1x"),
+            new("Revive 5 teammates.", "Beginner Pack 2x"),
+            new("Win by defusing bombs 1 times.", "Beginner Pack 3x")
+        }
+    );
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="FrontLine"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty FrontLine;
+    public static readonly Specialty FrontLine = new(
+        "Front-Line",
+        Ash,
+        new()
+        {
+            new("Get 5 eliminations or assists.", "Beginner Pack 1x"),
+            new("Blind 2 opponents.", "Renown 500"),
+            new("Eliminate 5 opponents with explosives as an Attacker.", "7-Days Renown Booster 1x")
+        }
+    );
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="Intel"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Intel;
+    public static readonly Specialty Intel = new(
+        "Intel",
+        Twitch,
+        new()
+        {
+            new("Scan and identify 7 Defenders as an Attacker.", "1-Day Renown Booster 1x"),
+            new("Find the bomb as an Attacker 1 times without your drone being destroyed during the Preparation Phase.", "1-Day Battle Point Booster 2x"),
+            new("Get 5 Opponents Scan Assists.", "Renown 750")
+        }
+    );
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty AntiGadget;
+    public static readonly Specialty AntiGadget = new(
+        "Anti-Gadget",
+        Fuze,
+        new()
+        {
+            new("Destroy 5 trap devices as an Attacker.", "1-Day Battle Point Booster 1x"),
+            new("Destroy 5 Observation Tools as an Attacker.", "1-Day Battle Point Booster 2x"),
+            new("Deactivate 2 electronic devices as an Attacker.", "1-Day Battle Point Booster 3x")
+        }
+    );
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="MapControl"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty MapControl;
+    public static readonly Specialty MapControl = new(
+        "Map Control",
+        Lion,
+        new()
+        {
+            new("Walk or sprint 500 meters as an Attacker.", "Renown 250"),
+            new("Get 5 headshots.", "3-Days Renown Booster 1x"),
+            new("Eliminate 2 opponents through breakable surfaces.", "1-Day Battle Point Booster 3x")
+        }
+    );
     #endregion
 
 #pragma warning disable CS8604 // Possible null reference argument.

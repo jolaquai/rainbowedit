@@ -55,96 +55,94 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
             }
         }
 
-        #region Specialties
         // Same as above
-        Trapper = new(
-             "Trapper",
-             Ela,
-             new()
-             {
-                new("Deploy 0 trap devices.", "1-Day Renown Booster 1x"),
-                new("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
-                new("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
-             }
-        );
-        Support = new(
-            "Support",
-            Rook,
-            new()
-            {
-                new("Play 1 times as a Support Defender.", "1-Day Renown Booster 1x"),
-                new("Reach the Action Phase as a Defender 2 times without either bomb site being discovered.", "3-Days Renown Booster 1x"),
-                new("Heal 2 teammates.", "7-Days Renown Booster")
-            }
-        );
-        AntiEntry = new(
-            "Anti-Entry",
-            Castle,
-            new()
-            {
-                new("Barricade 5 doors or windows.", "Renown 250"),
-                new("Reinforce 5 surfaces.", "Renown 500"),
-                new("Deploy 5 anti-entry devices that electrify utility or interfere wih electronics.", "Renown 750")
-            }
-        );
-        Intel = new(
-            "Intel",
-            Valkyrie,
-            new()
-            {
-                new("Scan and identify 7 Attackers as a Defender.", "Beginner Pack 1x"),
-                new("Deploy 5 Observation Tools as a Defender.", "Renown 500"),
-                new("Detect 1 opponents with Proximity Alarms that you deployed.", "7-Days Renown Booster 1x")
-            }
-        );
-        AntiGadget = new(
-            "Anti-Gadget",
-            Jäger,
-            new()
-            {
-                new("Destroy 2 Attacker drones as a Defender.", "Renown 250"),
-                new("Destroy 5 Attacker devices as a Defender.", "1-Day Battle Point Booster 2x"),
-                new("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
-            }
-        );
-        CrowdControl = new(
-            "Crowd Control",
-            Tachanka,
-            new()
-            {
-                new("Deploy 5 Barbed Wire.", "1-Day Battle Point Booster 1x"),
-                new("Deactivate 2 electronic devices using the Bulletproof Camera EMP.", "3-Days Renown Booster 1x"),
-                new("Disorient 2 opponents.", "Renown 750")
-            }
-        );
-        #endregion
+        Trapper.Reward = Ela;
+        Support.Reward = Rook;
+        AntiEntry.Reward = Castle;
+        Intel.Reward = Valkyrie;
+        AntiGadget.Reward = Jäger;
+        CrowdControl.Reward = Tachanka;
     }
 
     #region Specialties
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Trapper"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Trapper;
+    public static readonly Specialty Trapper = new(
+        "Trapper",
+        Ela,
+        new()
+        {
+            new("Deploy 0 trap devices.", "1-Day Renown Booster 1x"),
+            new("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
+            new("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
+        }
+    );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Support"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Support;
+    public static readonly Specialty Support = new(
+        "Support",
+        Rook,
+        new()
+        {
+            new("Play 1 times as a Support Defender.", "1-Day Renown Booster 1x"),
+            new("Reach the Action Phase as a Defender 2 times without either bomb site being discovered.", "3-Days Renown Booster 1x"),
+            new("Heal 2 teammates.", "7-Days Renown Booster")
+        }
+    );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="AntiEntry"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty AntiEntry;
+    public static readonly Specialty AntiEntry = new(
+        "Anti-Entry",
+        Castle,
+        new()
+        {
+            new("Barricade 5 doors or windows.", "Renown 250"),
+            new("Reinforce 5 surfaces.", "Renown 500"),
+            new("Deploy 5 anti-entry devices that electrify utility or interfere wih electronics.", "Renown 750")
+        }
+    );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Intel"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Intel;
+    public static readonly Specialty Intel = new(
+        "Intel",
+        Valkyrie,
+        new()
+        {
+            new("Scan and identify 7 Attackers as a Defender.", "Beginner Pack 1x"),
+            new("Deploy 5 Observation Tools as a Defender.", "Renown 500"),
+            new("Detect 1 opponents with Proximity Alarms that you deployed.", "7-Days Renown Booster 1x")
+        }
+    );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty AntiGadget;
+    public static readonly Specialty AntiGadget = new(
+        "Anti-Gadget",
+        Jäger,
+        new()
+        {
+            new("Destroy 2 Attacker drones as a Defender.", "Renown 250"),
+            new("Destroy 5 Attacker devices as a Defender.", "1-Day Battle Point Booster 2x"),
+            new("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
+        }
+    );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="CrowdControl"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty CrowdControl;
+    public static readonly Specialty CrowdControl = new(
+        "Crowd Control",
+        Tachanka,
+        new()
+        {
+            new("Deploy 5 Barbed Wire.", "1-Day Battle Point Booster 1x"),
+            new("Deactivate 2 electronic devices using the Bulletproof Camera EMP.", "3-Days Renown Booster 1x"),
+            new("Disorient 2 opponents.", "Renown 750")
+        }
+    );
     #endregion
 
 #pragma warning disable CS8604 // Possible null reference argument.

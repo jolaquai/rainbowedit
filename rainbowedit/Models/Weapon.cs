@@ -55,7 +55,7 @@ public class Weapon
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.Suppressor"/>.
     /// </summary>
-    [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to always be equal to {nameof(Damage)}, use that instead.")]
+    [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to always be equal to {nameof(Damage)} or 0 (if no {nameof(Barrel.Suppressor)} can be equipped on the weapon), use that instead.")]
     public int SuppressedDamage { get; private set; }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.ExtendedBarrel"/>.
@@ -95,7 +95,7 @@ public class Weapon
     public enum WeaponType
     {
         /// <summary>
-        /// Identifies the Assaul Rifle weapon type.
+        /// Identifies the Assault Rifle weapon type.
         /// </summary>
         AssaultRifle = 1,
         /// <summary>
@@ -373,7 +373,7 @@ public class Weapon
         }
 
         //SuppressedDamage = (int)Math.Round(Barrels.HasFlag(Barrel.Suppressor) ? Damage * SuppressedDamageMultiplier : 0);
-        SuppressedDamage = (int)(Barrels.HasFlag(Barrel.Suppressor) ? Damage : 0);
+        SuppressedDamage = Barrels.HasFlag(Barrel.Suppressor) ? Damage : 0;
         ExtendedBarrelDamage = (int)Math.Round(Barrels.HasFlag(Barrel.ExtendedBarrel) ? Damage * ExtendedBarrelDamageMultiplier : 0);
         if (!Type.HasFlag(WeaponType.Shield))
         {

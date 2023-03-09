@@ -14,7 +14,7 @@ public class Specialty
     /// <summary>
     /// The <see cref="Operator"/> reward for completing all three of this <see cref="Specialty"/>'s <see cref="Challenges"/>.
     /// </summary>
-    public Operator Reward { get; private set; }
+    public Operator Reward { get; set; }
     /// <summary>
     /// A list of <see cref="Challenge"/>s to be completed to unlock rewards and finally the <see cref="Reward"/> <see cref="Operator"/>.
     /// </summary>
