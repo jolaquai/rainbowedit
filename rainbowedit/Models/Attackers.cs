@@ -74,8 +74,8 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         Hibana,
         new()
         {
-            new("Destroy 0 barricades or hatches.", "Renown 250"),
-            new("Breach 0 reinforced surfaces.", "3-Days Renown Booster 1x"),
+            new("Destroy 5 barricades or hatches.", "Renown 250"),
+            new("Breach 2 reinforced surfaces.", "3-Days Renown Booster 1x"),
             new("Score 125 points by breaching reinforced surfaces.", "Beginner Pack 3x")
         }
     );

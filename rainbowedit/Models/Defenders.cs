@@ -73,7 +73,7 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         Ela,
         new()
         {
-            new("Deploy 0 trap devices.", "1-Day Renown Booster 1x"),
+            new("Deploy 5 trap devices.", "1-Day Renown Booster 1x"),
             new("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
             new("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
         }

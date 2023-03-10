@@ -1110,7 +1110,7 @@
         </member>
         <member name="F:RainbowEdit.Weapon.WeaponType.AssaultRifle">
             <summary>
-            Identifies the Assaul Rifle weapon type.
+            Identifies the Assault Rifle weapon type.
             </summary>
         </member>
         <member name="F:RainbowEdit.Weapon.WeaponType.Handgun">
