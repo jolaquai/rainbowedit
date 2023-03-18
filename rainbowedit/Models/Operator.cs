@@ -65,43 +65,43 @@ public class Operator
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_HEAVY_PRONE = 0.655172414M;
+        public const decimal SPEED_3_HEAVY_PRONE_AIM = 0.655172414M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_LIGHT_PRONE = 0.689655172M;
+        public const decimal SPEED_3_LIGHT_PRONE_AIM = 0.689655172M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_HEAVY_SLOWCROUCH = 1.01876676M;
+        public const decimal SPEED_3_HEAVY_SLOWCROUCH_AIM = 1.01876676M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_LIGHT_SLOWCROUCH = 1.07770845M;
+        public const decimal SPEED_3_LIGHT_SLOWCROUCH_AIM = 1.07770845M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_HEAVY_SLOWWALK = 1.2247529M;
+        public const decimal SPEED_3_HEAVY_SLOWWALK_AIM = 1.2247529M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_LIGHT_SLOWWALK = 1.29626471M;
+        public const decimal SPEED_3_LIGHT_SLOWWALK_AIM = 1.29626471M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_HEAVY_CROUCH = 1.57219694M;
+        public const decimal SPEED_3_HEAVY_CROUCH_AIM = 1.57219694M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_LIGHT_CROUCH = 1.65289256M;
+        public const decimal SPEED_3_LIGHT_CROUCH_AIM = 1.65289256M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_HEAVY_WALK = 2.25653207M;
+        public const decimal SPEED_3_HEAVY_WALK_AIM = 2.25653207M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 3 <see cref="Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_3_AIM_LIGHT_WALK = 2.38993711M;
+        public const decimal SPEED_3_LIGHT_WALK_AIM = 2.38993711M;
         #endregion
 
         #region Speed 2 (gathered using Thermite)
@@ -157,43 +157,43 @@ public class Operator
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_HEAVY_PRONE = -1M;
+        public const decimal SPEED_2_HEAVY_PRONE_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_LIGHT_PRONE = -1M;
+        public const decimal SPEED_2_LIGHT_PRONE_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_HEAVY_SLOWCROUCH = -1M;
+        public const decimal SPEED_2_HEAVY_SLOWCROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_LIGHT_SLOWCROUCH = -1M;
+        public const decimal SPEED_2_LIGHT_SLOWCROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_HEAVY_SLOWWALK = -1M;
+        public const decimal SPEED_2_HEAVY_SLOWWALK_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_LIGHT_SLOWWALK = -1M;
+        public const decimal SPEED_2_LIGHT_SLOWWALK_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_HEAVY_CROUCH = -1M;
+        public const decimal SPEED_2_HEAVY_CROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_LIGHT_CROUCH = -1M;
+        public const decimal SPEED_2_LIGHT_CROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_HEAVY_WALK = -1M;
+        public const decimal SPEED_2_HEAVY_WALK_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 2 <see cref="Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_2_AIM_LIGHT_WALK = -1M;
+        public const decimal SPEED_2_LIGHT_WALK_AIM = -1M;
         #endregion
 
         #region Speed 1 (gathered using Gridlock, who else would be better suited as a Speed 1 example)
@@ -249,43 +249,43 @@ public class Operator
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_HEAVY_PRONE = -1M;
+        public const decimal SPEED_1_HEAVY_PRONE_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_LIGHT_PRONE = -1M;
+        public const decimal SPEED_1_LIGHT_PRONE_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_HEAVY_SLOWCROUCH = -1M;
+        public const decimal SPEED_1_HEAVY_SLOWCROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_LIGHT_SLOWCROUCH = -1M;
+        public const decimal SPEED_1_LIGHT_SLOWCROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_HEAVY_SLOWWALK = -1M;
+        public const decimal SPEED_1_HEAVY_SLOWWALK_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_LIGHT_SLOWWALK = -1M;
+        public const decimal SPEED_1_LIGHT_SLOWWALK_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_HEAVY_CROUCH = -1M;
+        public const decimal SPEED_1_HEAVY_CROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_LIGHT_CROUCH = -1M;
+        public const decimal SPEED_1_LIGHT_CROUCH_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_HEAVY_WALK = -1M;
+        public const decimal SPEED_1_HEAVY_WALK_AIM = -1M;
         /// <summary>
         /// The speed of a <see cref="Speed"/> 1 <see cref="Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
         /// </summary>
-        public const decimal SPEED_1_AIM_LIGHT_WALK = -1M;
+        public const decimal SPEED_1_LIGHT_WALK_AIM = -1M;
         #endregion
     }
 
