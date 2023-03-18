@@ -692,24 +692,339 @@
             An <see cref="T:RainbowEdit.Operator"/> in Siege.
             </summary>
         </member>
-        <member name="F:RainbowEdit.Operator.SPEED_3">
+        <member name="T:RainbowEdit.Operator.OperatorSpeed">
             <summary>
-            The walking speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/>.
+            A series of constants containing the different movement speeds of an <see cref="T:RainbowEdit.Operator"/> in in-game meters per second.
             </summary>
         </member>
-        <member name="F:RainbowEdit.Operator.SPEED_2">
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_PRONE">
             <summary>
-            The walking speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/>.
+            The prone speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
             </summary>
         </member>
-        <member name="F:RainbowEdit.Operator.SPEED_1">
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_LIGHT_PRONE">
             <summary>
-            The walking speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/>.
+            The prone speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
             </summary>
         </member>
-        <member name="F:RainbowEdit.Operator.SPEED_AIM">
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_SLOWCROUCH">
             <summary>
-            The walking speed of an <see cref="T:RainbowEdit.Operator"/> while aiming down sights.
+            The slow-crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_LIGHT_SLOWCROUCH">
+            <summary>
+            The slow-crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_SLOWWALK">
+            <summary>
+            The slow-walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_LIGHT_SLOWWALK">
+            <summary>
+            The slow-walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_CROUCH">
+            <summary>
+            The crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_LIGHT_CROUCH">
+            <summary>
+            The crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_WALK">
+            <summary>
+            The walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_LIGHT_WALK">
+            <summary>
+            The walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_RUN">
+            <summary>
+            The run speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_LIGHT_RUN">
+            <summary>
+            The run speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_HEAVY_PRONE">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_LIGHT_PRONE">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_HEAVY_SLOWCROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_LIGHT_SLOWCROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_HEAVY_SLOWWALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_LIGHT_SLOWWALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_HEAVY_CROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_LIGHT_CROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_HEAVY_WALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_AIM_LIGHT_WALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 3 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_HEAVY_PRONE">
+            <summary>
+            The prone speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_LIGHT_PRONE">
+            <summary>
+            The prone speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_HEAVY_SLOWCROUCH">
+            <summary>
+            The slow-crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_LIGHT_SLOWCROUCH">
+            <summary>
+            The slow-crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_HEAVY_SLOWWALK">
+            <summary>
+            The slow-walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_LIGHT_SLOWWALK">
+            <summary>
+            The slow-walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_HEAVY_CROUCH">
+            <summary>
+            The crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_LIGHT_CROUCH">
+            <summary>
+            The crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_HEAVY_WALK">
+            <summary>
+            The walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_LIGHT_WALK">
+            <summary>
+            The walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_HEAVY_RUN">
+            <summary>
+            The run speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_LIGHT_RUN">
+            <summary>
+            The run speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_HEAVY_PRONE">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_LIGHT_PRONE">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_HEAVY_SLOWCROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_LIGHT_SLOWCROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_HEAVY_SLOWWALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_LIGHT_SLOWWALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_HEAVY_CROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_LIGHT_CROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_HEAVY_WALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_2_AIM_LIGHT_WALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 2 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_HEAVY_PRONE">
+            <summary>
+            The prone speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_LIGHT_PRONE">
+            <summary>
+            The prone speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_HEAVY_SLOWCROUCH">
+            <summary>
+            The slow-crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_LIGHT_SLOWCROUCH">
+            <summary>
+            The slow-crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_HEAVY_SLOWWALK">
+            <summary>
+            The slow-walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_LIGHT_SLOWWALK">
+            <summary>
+            The slow-walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_HEAVY_CROUCH">
+            <summary>
+            The crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_LIGHT_CROUCH">
+            <summary>
+            The crouch speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_HEAVY_WALK">
+            <summary>
+            The walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_LIGHT_WALK">
+            <summary>
+            The walk speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_HEAVY_RUN">
+            <summary>
+            The run speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_LIGHT_RUN">
+            <summary>
+            The run speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_HEAVY_PRONE">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_LIGHT_PRONE">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_HEAVY_SLOWCROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_LIGHT_SLOWCROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_HEAVY_SLOWWALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_LIGHT_SLOWWALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_HEAVY_CROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_LIGHT_CROUCH">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_HEAVY_WALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_1_AIM_LIGHT_WALK">
+            <summary>
+            The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
             </summary>
         </member>
         <member name="P:RainbowEdit.Operator.Nickname">
