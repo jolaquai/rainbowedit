@@ -65,6 +65,8 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         MapControl.Reward = Lion;
     }
 
+#pragma warning disable CS8604 // Possible null reference argument.
+
     #region Specialties
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="Breach"/> <see cref="Specialty"/>.
@@ -145,8 +147,6 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         }
     );
     #endregion
-
-#pragma warning disable CS8604 // Possible null reference argument.
 
     #region Attacker instances
     /// <summary>

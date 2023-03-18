@@ -64,6 +64,8 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         CrowdControl.Reward = Tachanka;
     }
 
+#pragma warning disable CS8604 // Possible null reference argument.
+
     #region Specialties
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Trapper"/> <see cref="Specialty"/>.
@@ -144,8 +146,6 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
         }
     );
     #endregion
-
-#pragma warning disable CS8604 // Possible null reference argument.
 
     #region Defender instances
     /// <summary>
