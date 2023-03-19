@@ -66,7 +66,7 @@ public class Weapon
     /// </summary>
     public int DamagePerSecond { get; private set; }
     /// <summary>
-    /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="Weapon"/> (a reload when there is a round chambered).
+    /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="Weapon"/> (a reload when there is a round chambered). For weapons that cannot be in this state (such as revolvers), this is generally equal to <see cref="ReloadEmpty"/>.
     /// </summary>
     public TimeSpan ReloadTactical { get; private set; }
     /// <summary>
