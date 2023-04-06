@@ -84,9 +84,10 @@ public class Weapon
     [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to be redefined to `1M`. Do not reference this to perform calculations as they are no-ops.", true)]
     public const decimal SuppressedDamageMultiplier = 1M; // 0.837697879481015
     /// <summary>
-    /// The multiplier that is applied to a weapon's base damage when equipping an <see cref="Barrel.ExtendedBarrel"/> on it. Defined as 15% on top of the <see cref="Weapon"/>'s base damage as part of the Y7S2 Designer's notes (https://store.steampowered.com/news/app/359550/view/5254045511872530857).
+    /// <para>The multiplier that is applied to a weapon's base damage when equipping an <see cref="Barrel.ExtendedBarrel"/> on it. Defined as 15% on top of the <see cref="Weapon"/>'s base damage as part of the Y7S2 Designer's notes (https://store.steampowered.com/news/app/359550/view/5254045511872530857).</para>
+    /// <para>As of Y8S1.2, this has been changed to 12% on top of a <see cref="Weapon"/>'s base damage.</para>
     /// </summary>
-    public const decimal ExtendedBarrelDamageMultiplier = 1.15M;
+    public const decimal ExtendedBarrelDamageMultiplier = 1.12M;
 
     /// <summary>
     /// Identifies the type of a <see cref="Weapon"/>.
