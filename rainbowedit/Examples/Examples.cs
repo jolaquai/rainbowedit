@@ -17,7 +17,7 @@ public static class Examples
     /// <returns></returns>
     public static int ShotsToKill(Operator @operator, WeaponConfiguration weaponConfig, bool armorPlate = false)
     {
-        int damage = weaponConfig.Barrel == Weapon.Barrel.ExtendedBarrel.Stringify() ? weaponConfig.Source.ExtendedBarrelDamage : weaponConfig.Source.Damage;
+        var damage = weaponConfig.Barrel == Weapon.Barrel.ExtendedBarrel.Stringify() ? weaponConfig.Source.ExtendedBarrelDamage : weaponConfig.Source.Damage;
 
         return (int)Math.Ceiling((@operator.HP + (armorPlate ? 20 : 0)) / (double)damage);
     }
@@ -29,7 +29,7 @@ public static class Examples
     public static Dictionary<Weapon.WeaponType, IEnumerable<Operator>> OperatorsByWeaponType()
     {
         Dictionary<Weapon.WeaponType, IEnumerable<Operator>> ret = new();
-        foreach (Weapon.WeaponType @enum in Enum.GetValues<Weapon.WeaponType>())
+        foreach (var @enum in Enum.GetValues<Weapon.WeaponType>())
         {
             ret.Add(@enum, Siege.DefAtk.Where(op => op.Primaries.Concat(op.Secondaries).Any(wep => wep.Type == @enum)));
         }

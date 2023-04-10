@@ -1,6 +1,8 @@
 ﻿using System.Data.Common;
 using System.Text.RegularExpressions;
 
+using rainbowedit.Helpers;
+
 namespace RainbowEdit.Extensions;
 
 /// <summary>
@@ -54,9 +56,9 @@ public static partial class EnumExtensions
     /// <returns>A string representing this <see cref="Weapon.Gadget"/> enum value.</returns>
     public static string Stringify(this Weapon.Gadget source)
     {
-        string gadget = source.ToString();
-        MatchCollection matches = UppercaseLetterRegex().Matches(gadget, 1);
-        foreach (Match match in matches.Cast<Match>())
+        var gadget = source.ToString();
+        var matches = UppercaseLetterRegex().Matches(gadget, 1);
+        foreach (var match in matches.Cast<Match>())
         {
             gadget = gadget.Replace(match.Value, ' ' + match.Value);
         }
@@ -70,9 +72,9 @@ public static partial class EnumExtensions
     /// <returns>A string representing this <see cref="Weapon.Barrel"/> enum value.</returns>
     public static string Stringify(this Weapon.Barrel source)
     {
-        string barrel = source.ToString();
-        MatchCollection matches = UppercaseLetterRegex().Matches(barrel, 1);
-        foreach (Match match in matches.Cast<Match>())
+        var barrel = source.ToString();
+        var matches = UppercaseLetterRegex().Matches(barrel, 1);
+        foreach (var match in matches.Cast<Match>())
         {
             barrel = barrel.Replace(match.Value, ' ' + match.Value);
         }
@@ -86,9 +88,9 @@ public static partial class EnumExtensions
     /// <returns>A string representing this <see cref="Weapon.Grip"/> enum value.</returns>
     public static string Stringify(this Weapon.Grip source)
     {
-        string grip = source.ToString();
-        MatchCollection matches = UppercaseLetterRegex().Matches(grip, 1);
-        foreach (Match match in matches.Cast<Match>())
+        var grip = source.ToString();
+        var matches = UppercaseLetterRegex().Matches(grip, 1);
+        foreach (var match in matches.Cast<Match>())
         {
             grip = grip.Replace(match.Value, ' ' + match.Value);
         }
@@ -102,9 +104,9 @@ public static partial class EnumExtensions
     /// <returns>A string representing this <see cref="Weapon.WeaponType"/> enum value.</returns>
     public static string Stringify(this Weapon.WeaponType source)
     {
-        string type = source.ToString();
-        MatchCollection matches = UppercaseLetterRegex().Matches(type, 1);
-        foreach (Match match in matches.Cast<Match>())
+        var type = source.ToString();
+        var matches = UppercaseLetterRegex().Matches(type, 1);
+        foreach (var match in matches.Cast<Match>())
         {
             type = type.Replace(match.Value, ' ' + match.Value);
         }
@@ -121,8 +123,8 @@ public static partial class EnumExtensions
     public static string Stringify(this Weapon.Sight source) => source switch
     {
         Weapon.Sight.Invalid => "Invalid",
-        Weapon.Sight.NonMagnifying => "Non-magnifying",
         Weapon.Sight.None => "None",
+        Weapon.Sight.One => "1x",
         Weapon.Sight.OnePointFive => "1.5x",
         Weapon.Sight.Two => "2x",
         Weapon.Sight.TwoPointFive => "2.5x",
@@ -130,6 +132,15 @@ public static partial class EnumExtensions
         Weapon.Sight.Four => "4x",
         Weapon.Sight.FiveTwelve => "5x/12x",
         Weapon.Sight.Other => "Other",
-        _ => throw new ArgumentException($"A string representation could not be generated the provided value {source}.", nameof(source))
+        _ => new Func<string>(() =>
+        {
+            var op = (int)source & ~(int)Weapon.Sight.Other;
+            return Enum.GetValues<Weapon.Sight>()
+                .Reverse()
+                .Remove(Weapon.Sight.Invalid)
+                .First(enumVal => (op & (int)enumVal) == (int)enumVal)
+                .Stringify();
+        })()
+        //_ => throw new ArgumentException($"A string representation could not be generated the provided value {source}.", nameof(source))
     };
 }

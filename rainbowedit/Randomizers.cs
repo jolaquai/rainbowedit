@@ -23,7 +23,7 @@ public static class Randomizers
         /// <returns>A string as described.</returns>
         public static string WinRoundsWith()
         {
-            string s = "Win {0} rounds with {1}, {2}, {3} or {4}.";
+            var s = "Win {0} rounds with {1}, {2}, {3} or {4}.";
             List<Operator> operators = new()
             {
                 GetRandomAttacker()
@@ -46,8 +46,8 @@ public static class Randomizers
         /// <returns>A string as described.</returns>
         public static string OrganizationActiveDuty()
         {
-            string org = Siege.AtkDef.Select(op => op.Organization).Random();
-            List<string> ops = Siege.AtkDef.Where(op => op.Organization == org).Select(op => op.Nickname).ToList();
+            var org = Siege.AtkDef.Select(op => op.Organization).Random();
+            var ops = Siege.AtkDef.Where(op => op.Organization == org).Select(op => op.Nickname).ToList();
 
             if (ops.Count == 1)
             {
@@ -55,7 +55,7 @@ public static class Randomizers
             }
             else
             {
-                string joined = string.Join(", ", ops.Take(new Range(0, ops.Count - 1)));
+                var joined = string.Join(", ", ops.Take(new Range(0, ops.Count - 1)));
                 return $"{org} Active Duty: Win {new Random().Next(1, 3) * ChallengeObjectiveMultiplier} rounds with {joined} or {ops[^1]}.";
             }
         }

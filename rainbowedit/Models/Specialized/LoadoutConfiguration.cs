@@ -35,7 +35,7 @@ public class LoadoutConfiguration
     {
         Source = source;
 
-        List<Weapon.Gadget> possibleGadgets = Source.Gadgets.GetSetFlags();
+        var possibleGadgets = Source.Gadgets.GetSetFlags();
         if (possibleGadgets.Any())
         {
             Gadget = possibleGadgets.Random();
@@ -111,7 +111,7 @@ public class LoadoutConfiguration
     /// <returns>A string as described.</returns>
     public string ShortString()
     {
-        int totalWidth = 4 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
+        var totalWidth = 4 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
         return $"{{ {$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)} }}";
     }
 

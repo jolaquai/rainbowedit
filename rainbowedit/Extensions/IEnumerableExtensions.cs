@@ -6,6 +6,15 @@
 public static class IEnumerableExtensions
 {
     /// <summary>
+    /// Removes an item from an <see cref="IEnumerable{T}"/>.
+    /// </summary>
+    /// <typeparam name="T">The Type of the items in the collection.</typeparam>
+    /// <param name="source">The collection to remove <paramref name="item"/> from.</param>
+    /// <param name="item">The item to remove.</param>
+    /// <returns>A copy of the original collection with <paramref name="item"/> removed if it was present.</returns>
+    public static IEnumerable<T> Remove<T>(this IEnumerable<T> source, T item) => source.Except(new List<T>() { item });
+
+    /// <summary>
     /// Returns a random item from an <see cref="IEnumerable{T}"/>.
     /// </summary>
     /// <typeparam name="T">The <see cref="Type"/> of the items in <paramref name="source"/>.</typeparam>
@@ -27,7 +36,7 @@ public static class IEnumerableExtensions
     /// <returns>A value indicating whether <paramref name="source"/> contains <paramref name="value"/>.</returns>
     public static bool Contains<T>(this IEnumerable<T> source, T value, Func<T, T, bool> comparer)
     {
-        foreach (T item in source)
+        foreach (var item in source)
         {
             if (comparer(item, value))
             {

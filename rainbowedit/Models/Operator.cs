@@ -3,13 +3,24 @@
 namespace RainbowEdit;
 
 /// <summary>
-/// An <see cref="Operator"/> in Siege.
+/// Represents an <see cref="Operator"/> in Siege.
 /// </summary>
 public class Operator
 {
     /// <summary>
     /// A series of constants containing the different movement speeds of an <see cref="Operator"/> in in-game meters per second.
     /// </summary>
+    /// <remarks>
+    /// The naming pattern of the fields is: <c>SPEED_{rating}_{weapon}_{slow?}{stance}{aim?}</c> where
+    /// <list type="bullet">
+    /// <item><c>rating</c>: the <see cref="Operator"/> <see cref="Speed"/> rating, <c>3</c>, <c>2</c> or <c>1</c>,</item>
+    /// <item><c>weapon</c>: the weight class of the <see cref="Weapon"/> being held, <c>HEAVY</c> or <c>LIGHT</c>,</item>
+    /// <item><c>slow?</c>: a value indicating whether the slow-move key was being held for this measurement, <c>SLOW</c> or absent (always absent for <c>{stance} == PRONE</c> or <c>{stance} == RUN</c>,</item>
+    /// <item><c>stance</c>: a value indicating in which stance or movement "subtype" this measurement is for, <c>PRONE</c>, <c>CROUCH</c>, <c>WALK</c> or <c>RUN</c> and</item>
+    /// <item><c>aim?</c>: a value indicating whether the measurement was made while ADS or not, <c>_AIM</c> or absent (always absent for <c>{stance} == RUN</c>).</item>
+    /// </list>
+    /// As such, there are several invalid combinations that cannot exist, such as <c>SPEED_3_HEAVY_RUN_AIM</c> or <c>SPEED_3_LIGHT_SLOWRUN_AIM</c> as the movement "subtypes" contradict each other.
+    /// </remarks>
     public static class OperatorSpeed
     {
         #region Speed 3 (gathered using Ash)

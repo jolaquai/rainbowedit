@@ -36,10 +36,17 @@ public class Weapon
     /// This does not include the single round chambered after cocking the <see cref="Weapon"/>.
     /// </remarks>
     public int Capacity { get; private set; }
+    private Sight _sights;
     /// <summary>
     /// A combination of <see cref="Sight"/> values that specifies which sights may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Sight Sights { get; private set; }
+    public Sight Sights {
+        get {
+            var op = (int)_sights & ~(int)(Sight.None | Sight.Invalid | Sight.Other);
+            return (Sight)op;
+        }
+        private set => _sights = value;
+    }
     /// <summary>
     /// A combination of <see cref="Barrel"/> values that specifies which barrel extensions may be equipped on this <see cref="Weapon"/>.
     /// </summary>
@@ -98,11 +105,11 @@ public class Weapon
         /// <summary>
         /// Identifies the Assault Rifle weapon type.
         /// </summary>
-        AssaultRifle = 1,
+        AssaultRifle    = 1,
         /// <summary>
         /// Identifies the Handgun weapon type.
         /// </summary>
-        Handgun = 2,
+        Handgun         = 2,
         /// <summary>
         /// Identifies the Light Machine Gun weapon type.
         /// </summary>
@@ -110,35 +117,35 @@ public class Weapon
         /// <summary>
         /// Identifies the Machine Pistol weapon type.
         /// </summary>
-        MachinePistol = 8,
+        MachinePistol   = 8,
         /// <summary>
         /// Identifies the Marksman Rifle weapon type.
         /// </summary>
-        MarksmanRifle = 16,
+        MarksmanRifle   = 16,
         /// <summary>
         /// Identifies the Shield weapon type.
         /// </summary>
-        Shield = 32,
+        Shield          = 32,
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire slugs).
         /// </summary>
-        ShotgunSlug = 64,
+        ShotgunSlug     = 64,
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire shot).
         /// </summary>
-        ShotgunShot = 128,
+        ShotgunShot     = 128,
         /// <summary>
         /// Identifies the Shotgun weapon type (shorthand for an "any shotgun" filter).
         /// </summary>
-        Shotgun = ShotgunShot | ShotgunSlug,
+        Shotgun         = ShotgunShot | ShotgunSlug,
         /// <summary>
         /// Identifies the Submachine Gun weapon type.
         /// </summary>
-        SubmachineGun = 256,
+        SubmachineGun   = 256,
         /// <summary>
         /// Identifies the Hand Cannon weapon type.
         /// </summary>
-        HandCannon = 512
+        HandCannon      = 512
     }
 
     /// <summary>
@@ -150,11 +157,11 @@ public class Weapon
         /// <summary>
         /// 
         /// </summary>
-        None = 0,
+        None       = 0,
         /// <summary>
         /// 
         /// </summary>
-        FullAuto = 1,
+        FullAuto   = 1,
         /// <summary>
         /// 
         /// </summary>
@@ -166,7 +173,7 @@ public class Weapon
     /// Indicates which sights can be or are forcefully equipped on a <see cref="Weapon"/>.
     /// </para>
     /// <para>
-    /// As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
+    /// As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying (1x) scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
     /// </para>
     /// <para>
     /// However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
@@ -183,43 +190,43 @@ public class Weapon
         /// <summary>
         /// Generally unused. Indicates an invalid value in terms of a <see cref="WeaponConfiguration"/>.
         /// </summary>
-        Invalid = 0,
+        Invalid      = 0b0_0000_0000,
         /// <summary>
         /// Indicates that no sights can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        None = 1,
+        None         = 0b0_0000_0001,
         /// <summary>
-        /// Indicates that no or at most any non-magnifying sight can be equipped on a <see cref="Weapon"/>.
+        /// Indicates that some other weird stuff is going on with the sights for a <see cref="Weapon"/>. This identifies, for example, <see cref="Defenders.Ela"/>'s and <see cref="Attackers.Zofia"/>'s <i>RG15</i> <see cref="WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped, or <see cref="Defenders.Tachanka"/>'s <i>DP27</i> <see cref="WeaponType.LightMachineGun"/>, which has the additional <i>Reflex D</i> option.
         /// </summary>
-        NonMagnifying = 3,
+        Other        = 0b0_0000_0010,
+        /// <summary>
+        /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>.
+        /// </summary>
+        One          = 0b0_0000_0100,
         /// <summary>
         /// Indicates that no or at most a 1.5x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        OnePointFive = 7,
+        OnePointFive = 0b0_0000_1100,
         /// <summary>
         /// Indicates that no or at most a 2x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Two = 15,
+        Two          = 0b0_0001_1100,
         /// <summary>
         /// Indicates that no or at most a 2.5x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        TwoPointFive = 31,
+        TwoPointFive = 0b0_0011_1100,
         /// <summary>
         /// Indicates that no or at most a 3x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Three = 63,
+        Three        = 0b0_0111_1100,
         /// <summary>
-        /// Indicates that no or at most any non-magnifying sight can be equipped on a <see cref="Weapon"/>, which may then be magnified to 4x by <see cref="Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="Attackers.Glaz"/>.
+        /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>, which may then be magnified to 4x by <see cref="Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="Attackers.Glaz"/>.
         /// </summary>
-        Four = 131,
+        Four         = 0b0_1000_0100,
         /// <summary>
         /// Indicates that no sights can be equipped on a <see cref="Weapon"/>. This identifies <see cref="Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="Attackers.Kali"/>.
         /// </summary>
-        FiveTwelve = 256,
-        /// <summary>
-        /// Indicates that some other weird stuff is going on with the sights for a <see cref="Weapon"/>. This identifies, for example, <see cref="Defenders.Ela"/>'s and <see cref="Attackers.Zofia"/>'s <i>RG15</i> <see cref="WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped.
-        /// </summary>
-        Other = 512
+        FiveTwelve   = 0b1_0000_0000
     }
 
     /// <summary>
@@ -231,23 +238,23 @@ public class Weapon
         /// <summary>
         /// Indicates that no barrel attachments can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        None = 0,
+        None           = 0,
         /// <summary>
         /// Indicates that a suppressor can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Suppressor = 1,
+        Suppressor     = 1,
         /// <summary>
         /// Indicates that a flash hider can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        FlashHider = 2,
+        FlashHider     = 2,
         /// <summary>
         /// Indicates that a compensator can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Compensator = 4,
+        Compensator    = 4,
         /// <summary>
         /// Indicates that a muzzle brake can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        MuzzleBrake = 8,
+        MuzzleBrake    = 8,
         /// <summary>
         /// Indicates that an extended barrel can be equipped on a <see cref="Weapon"/>.
         /// </summary>
@@ -263,7 +270,7 @@ public class Weapon
         /// <summary>
         /// Indicates that no grips can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        None = 0,
+        None         = 0,
         /// <summary>
         /// Indicates that a vertical grip can be equipped on a <see cref="Weapon"/>.
         /// </summary>
@@ -271,7 +278,7 @@ public class Weapon
         /// <summary>
         /// Indicates that an angled grip can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        AngledGrip = 2
+        AngledGrip   = 2
     }
 
     /// <summary>
@@ -283,44 +290,44 @@ public class Weapon
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose fragmentation grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        FragGrenade = 1,
+        FragGrenade       = 1,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        BreachCharge = 2,
+        BreachCharge      = 2,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose claymores during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        Claymore = 4,
+        Claymore          = 4,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose hard-breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        HardBreachCharge = 8,
+        HardBreachCharge  = 8,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose smoke grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        SmokeGrenade = 16,
+        SmokeGrenade      = 16,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose stun grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        StunGrenade = 32,
+        StunGrenade       = 32,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose EMP grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        EmpGrenade = 64,
+        EmpGrenade        = 64,
 
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose barbed wire during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        BarbedWire = 128,
+        BarbedWire        = 128,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a deployable shield during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        DeployableShield = 256,
+        DeployableShield  = 256,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a nitro cell during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        NitroCell = 512,
+        NitroCell         = 512,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a bulletproof camera during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
@@ -328,11 +335,11 @@ public class Weapon
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose proximity alarms during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        ProximityAlarm = 2048,
+        ProximityAlarm    = 2048,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose impact grenades during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        ImpactGrenade = 4096
+        ImpactGrenade     = 4096
     }
 
     /// <summary>
@@ -380,7 +387,7 @@ public class Weapon
         {
             try
             {
-                DamagePerSecond = (int)(Damage * Capacity / (((decimal)ReloadTactical.TotalSeconds) + (Capacity / (RoundsPerMinute / 60M))));
+                DamagePerSecond = (int)(Damage * Capacity / ((ReloadTactical.TotalSeconds) + (Capacity / (RoundsPerMinute / 60d))));
             }
             catch
             {
@@ -406,4 +413,10 @@ public class Weapon
     /// </summary>
     /// <returns>A <see cref="WeaponConfiguration"/> as described.</returns>
     public WeaponConfiguration GetRandomConfiguration() => new(this);
+
+    /// <summary>
+    /// Gets the raw value for the <see cref="Sights"/> property; that is, special flags such as <see cref="Sight.Invalid"/>, <see cref="Sight.None"/> or <see cref="Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="Sights"/> is considered undefined behavior.
+    /// </summary>
+    /// <returns>The internal unmodified value of the <see cref="Sights"/> property, which may contain special flags as described.</returns>
+    public int GetRawSightValue() => (int)_sights;
 }

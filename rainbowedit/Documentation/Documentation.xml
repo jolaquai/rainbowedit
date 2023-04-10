@@ -182,6 +182,15 @@
             Provides extensions for the <see cref="T:System.Collections.Generic.IEnumerable`1"/> type and derived types.
             </summary>
         </member>
+        <member name="M:RainbowEdit.Extensions.IEnumerableExtensions.Remove``1(System.Collections.Generic.IEnumerable{``0},``0)">
+            <summary>
+            Removes an item from an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <typeparam name="T">The Type of the items in the collection.</typeparam>
+            <param name="source">The collection to remove <paramref name="item"/> from.</param>
+            <param name="item">The item to remove.</param>
+            <returns>A copy of the original collection with <paramref name="item"/> removed if it was present.</returns>
+        </member>
         <member name="M:RainbowEdit.Extensions.IEnumerableExtensions.Random``1(System.Collections.Generic.IEnumerable{``0})">
             <summary>
             Returns a random item from an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
@@ -689,12 +698,21 @@
         </member>
         <member name="T:RainbowEdit.Operator">
             <summary>
-            An <see cref="T:RainbowEdit.Operator"/> in Siege.
+            Represents an <see cref="T:RainbowEdit.Operator"/> in Siege.
             </summary>
         </member>
         <member name="T:RainbowEdit.Operator.OperatorSpeed">
             <summary>
-            A series of constants containing the different movement speeds of an <see cref="T:RainbowEdit.Operator"/> in in-game meters per second.
+            <para>A series of constants containing the different movement speeds of an <see cref="T:RainbowEdit.Operator"/> in in-game meters per second.</para>
+            <para>The naming pattern of the fields is: <c>SPEED_{rating}_{weapon}_{slow?}{stance}{aim?}</c> where
+            <list type="bullet">
+            <item><c>rating</c>: the <see cref="T:RainbowEdit.Operator"/> <see cref="P:RainbowEdit.Operator.Speed"/> rating, <c>3</c>, <c>2</c> or <c>1</c>,</item>
+            <item><c>weapon</c>: the weight class of the <see cref="T:RainbowEdit.Weapon"/> being held, <c>HEAVY</c> or <c>LIGHT</c>,</item>
+            <item><c>slow?</c>: a value indicating whether the slow-move key was being held for this measurement, <c>SLOW</c> or absent (always absent for <c>{stance} == PRONE</c> or <c>{stance} == RUN</c>,</item>
+            <item><c>stance</c>: a value indicating in which stance or movement "type" this measurement is for, <c>PRONE</c>, <c>CROUCH</c>, <c>WALK</c> or <c>RUN</c> and</item>
+            <item><c>aim?</c>: a value indicating whether the measurement was made while ADS or not, <c>_AIM</c> or absent (always absent for <c>{stance} == RUN</c>).</item>
+            </list>
+            </para>
             </summary>
         </member>
         <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_PRONE">
@@ -1291,7 +1309,7 @@
             Instantiates a new <see cref="T:RainbowEdit.WeaponConfiguration"/> object from and one each of their <see cref="T:RainbowEdit.Weapon.Sight"/>s, <see cref="T:RainbowEdit.Weapon.Barrel"/>s and <see cref="T:RainbowEdit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:RainbowEdit.Weapon.Underbarrel"/> laser.
             </summary>
             <param name="source">The <see cref="T:RainbowEdit.Weapon"/> to gather random values for this <see cref="T:RainbowEdit.WeaponConfiguration"/> instance's properties from.</param>
-            <param name="sight">A <see cref="T:RainbowEdit.Weapon.Sight"/> enum value detailing the sight to use. If this is <see cref="F:RainbowEdit.Weapon.Sight.NonMagnifying"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>, a random one of its variants is chosen.</param>
+            <param name="sight">A <see cref="T:RainbowEdit.Weapon.Sight"/> enum value detailing the sight to use. If this is <see cref="F:RainbowEdit.Weapon.Sight.One"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>, a random one of its variants is chosen.</param>
             <param name="barrel">A <see cref="T:RainbowEdit.Weapon.Barrel"/> enum value detailing the barrel attachment to use.</param>
             <param name="grip">A <see cref="T:RainbowEdit.Weapon.Grip"/> enum value detailing the grip to use.</param>
             <param name="underbarrel">Whether to use an underbarrel laser.</param>
@@ -1306,7 +1324,7 @@
             </para>
             </summary>
             <param name="source">The <see cref="T:RainbowEdit.Weapon"/> to assign to this <see cref="T:RainbowEdit.WeaponConfiguration"/> instance.</param>
-            <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Sight)" /> OR one of the sub-sight names for <see cref="F:RainbowEdit.Weapon.Sight.NonMagnifying"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>.</param>
+            <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Sight)" /> OR one of the sub-sight names for <see cref="F:RainbowEdit.Weapon.Sight.One"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>.</param>
             <param name="barrel">A string detailing the barrel attachment to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Barrel)" />.</param>
             <param name="grip">A string detailing the grip to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Grip)" />.</param>
             <param name="underbarrel">Whether to use an underbarrel laser.</param>
@@ -1395,7 +1413,7 @@
         </member>
         <member name="P:RainbowEdit.Weapon.ReloadTactical">
             <summary>
-            A <see cref="T:System.TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="T:RainbowEdit.Weapon"/> (a reload when there is a round chambered).
+            A <see cref="T:System.TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="T:RainbowEdit.Weapon"/> (a reload when there is a round chambered). For weapons that cannot be in this state (such as revolvers), this is generally equal to <see cref="P:RainbowEdit.Weapon.ReloadEmpty"/>.
             </summary>
         </member>
         <member name="P:RainbowEdit.Weapon.ReloadEmpty">
@@ -1415,7 +1433,8 @@
         </member>
         <member name="F:RainbowEdit.Weapon.ExtendedBarrelDamageMultiplier">
             <summary>
-            The multiplier that is applied to a weapon's base damage when equipping an <see cref="F:RainbowEdit.Weapon.Barrel.ExtendedBarrel"/> on it. Defined as 15% on top of the <see cref="T:RainbowEdit.Weapon"/>'s base damage as part of the Y7S2 Designer's notes (https://store.steampowered.com/news/app/359550/view/5254045511872530857).
+            <para>The multiplier that is applied to a weapon's base damage when equipping an <see cref="F:RainbowEdit.Weapon.Barrel.ExtendedBarrel"/> on it. Defined as 15% on top of the <see cref="T:RainbowEdit.Weapon"/>'s base damage as part of the Y7S2 Designer's notes (https://store.steampowered.com/news/app/359550/view/5254045511872530857).</para>
+            <para>As of Y8S1.2, this has been changed to 12% on top of a <see cref="T:RainbowEdit.Weapon"/>'s base damage.</para>
             </summary>
         </member>
         <member name="T:RainbowEdit.Weapon.WeaponType">
@@ -1504,7 +1523,7 @@
             Indicates which sights can be or are forcefully equipped on a <see cref="T:RainbowEdit.Weapon"/>.
             </para>
             <para>
-            As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
+            As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying (1x) scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
             </para>
             <para>
             However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
@@ -1527,9 +1546,14 @@
             Indicates that no sights can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
             </summary>
         </member>
-        <member name="F:RainbowEdit.Weapon.Sight.NonMagnifying">
+        <member name="F:RainbowEdit.Weapon.Sight.Other">
             <summary>
-            Indicates that no or at most any non-magnifying sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
+            Indicates that some other weird stuff is going on with the sights for a <see cref="T:RainbowEdit.Weapon"/>. This identifies, for example, <see cref="F:RainbowEdit.Defenders.Ela"/>'s and <see cref="F:RainbowEdit.Attackers.Zofia"/>'s <i>RG15</i> <see cref="F:RainbowEdit.Weapon.WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped, or <see cref="F:RainbowEdit.Defenders.Tachanka"/>'s <i>DP27</i> <see cref="F:RainbowEdit.Weapon.WeaponType.LightMachineGun"/>, which has the additional <i>Reflex D</i> option.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Sight.One">
+            <summary>
+            Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>.
             </summary>
         </member>
         <member name="F:RainbowEdit.Weapon.Sight.OnePointFive">
@@ -1554,17 +1578,12 @@
         </member>
         <member name="F:RainbowEdit.Weapon.Sight.Four">
             <summary>
-            Indicates that no or at most any non-magnifying sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>, which may then be magnified to 4x by <see cref="F:RainbowEdit.Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="F:RainbowEdit.Attackers.Glaz"/>.
+            Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="T:RainbowEdit.Weapon"/>, which may then be magnified to 4x by <see cref="F:RainbowEdit.Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="F:RainbowEdit.Attackers.Glaz"/>.
             </summary>
         </member>
         <member name="F:RainbowEdit.Weapon.Sight.FiveTwelve">
             <summary>
             Indicates that no sights can be equipped on a <see cref="T:RainbowEdit.Weapon"/>. This identifies <see cref="F:RainbowEdit.Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="F:RainbowEdit.Attackers.Kali"/>.
-            </summary>
-        </member>
-        <member name="F:RainbowEdit.Weapon.Sight.Other">
-            <summary>
-            Indicates that some other weird stuff is going on with the sights for a <see cref="T:RainbowEdit.Weapon"/>. This identifies, for example, <see cref="F:RainbowEdit.Defenders.Ela"/>'s and <see cref="F:RainbowEdit.Attackers.Zofia"/>'s <i>RG15</i> <see cref="F:RainbowEdit.Weapon.WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped.
             </summary>
         </member>
         <member name="T:RainbowEdit.Weapon.Barrel">
@@ -1728,6 +1747,12 @@
             Creates a <see cref="T:RainbowEdit.WeaponConfiguration"/> from all possible <see cref="P:RainbowEdit.Weapon.Barrels"/>, <see cref="P:RainbowEdit.Weapon.Grips"/>, <see cref="P:RainbowEdit.Weapon.Sights"/> and <see cref="P:RainbowEdit.Weapon.Underbarrel"/> options attachment combinations.
             </summary>
             <returns>A <see cref="T:RainbowEdit.WeaponConfiguration"/> as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Weapon.GetRawSightValue">
+            <summary>
+            Gets the raw value for the <see cref="P:RainbowEdit.Weapon.Sights"/> property; that is, special flags such as <see cref="F:RainbowEdit.Weapon.Sight.Invalid"/>, <see cref="F:RainbowEdit.Weapon.Sight.None"/> or <see cref="F:RainbowEdit.Weapon.Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="P:RainbowEdit.Weapon.Sights"/> is considered undefined behavior.
+            </summary>
+            <returns>The internal unmodified value of the <see cref="P:RainbowEdit.Weapon.Sights"/> property, which may contain special flags as described.</returns>
         </member>
         <member name="T:RainbowEdit.Randomizers">
             <summary>
