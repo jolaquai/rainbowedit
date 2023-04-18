@@ -318,7 +318,10 @@ public class Operator
                     var speeds = new Dictionary<string, decimal>();
                     foreach (var constInfo in constInfos)
                     {
-                        speeds.Add(constInfo.Name, (decimal)constInfo.GetValue(null));
+                        if (constInfo.GetValue(null) is decimal speed)
+                        {
+                            speeds.Add(constInfo.Name, speed);
+                        }
                     }
                     _constants = speeds;
                 }

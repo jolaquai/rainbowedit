@@ -2,10 +2,22 @@
 
 namespace RainbowEdit;
 
+/// <summary>
+/// Represents a <i>Battle Pass</i> or Weekly <i>Ubisoft Connect</i> Challenge.
+/// </summary>
 public class Challenge
 {
+    /// <summary>
+    /// The type of this <see cref="Challenge"/>.
+    /// </summary>
     public ChallengeType Type { get; internal set; }
+    /// <summary>
+    /// A collection of <see cref="Operator"/> instances, representing the <see cref="Operator"/>s that may be used to complete this <see cref="Challenge"/>.
+    /// </summary>
     public IEnumerable<Operator> Operators { get; internal set; }
+    /// <summary>
+    /// Extra data. See the <see cref="Challenge(ChallengeType, object?)"/> constructor for more information on how to set this, how it is used and what values it may take.
+    /// </summary>
     public object? Extra { get; internal set; }
 
     /// <summary>
@@ -157,6 +169,7 @@ public class Challenge
         return retDict;
     }
 
+    /// <inheritdoc/>
     public override string? ToString()
     {
         return $"{Type.Stringify()}{(Extra is not null ? $" ({Extra})" : "")}";
