@@ -1,6 +1,6 @@
 ﻿using RainbowEdit;
 
-namespace rainbowedit.Models;
+namespace RainbowEdit.Models;
 
 /// <summary>
 /// Represents a <see cref="Specialty"/>, introduced in Y8S1. 

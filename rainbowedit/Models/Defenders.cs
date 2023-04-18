@@ -1,4 +1,4 @@
-﻿using rainbowedit.Models;
+﻿using RainbowEdit.Models;
 
 namespace RainbowEdit;
 

@@ -1,7 +1,4 @@
-﻿using System.Data.Common;
-using System.Text.RegularExpressions;
-
-using rainbowedit.Helpers;
+﻿using System.Text.RegularExpressions;
 
 namespace RainbowEdit.Extensions;
 
@@ -141,6 +138,31 @@ public static partial class EnumExtensions
                 .First(enumVal => (op & (int)enumVal) == (int)enumVal)
                 .Stringify();
         })()
-        //_ => throw new ArgumentException($"A string representation could not be generated the provided value {source}.", nameof(source))
+        //_ => throw new ArgumentException($"A string representation could not be generated for the provided value {source}.", nameof(source))
+    };
+
+    /// <summary>
+    /// Generates a string representation for this <see cref="Challenge.ChallengeType"/> enum value.
+    /// </summary>
+    /// <param name="source">The enum value to stringify.</param>
+    /// <returns>A string representing this <see cref="Challenge.ChallengeType"/> enum value.</returns>
+    public static string Stringify(this Challenge.ChallengeType source) => source switch
+    {
+        Challenge.ChallengeType.Operators => "Win rounds",
+        Challenge.ChallengeType.WeaponTypeKills => "Eliminate with specific weapon type",
+        Challenge.ChallengeType.Blind => "Blind opponents",
+        Challenge.ChallengeType.Disorient => "Disorient opponents",
+        Challenge.ChallengeType.Universal => "[Universal]",
+        Challenge.ChallengeType.GadgetMelee => "Gadget or melee eliminations",
+        Challenge.ChallengeType.SuppressedKills => "Eliminations with a Suppressor equipped",
+        Challenge.ChallengeType.Headshots => "Headshot eliminations",
+        Challenge.ChallengeType.Rappel => "Rappel kills",
+        Challenge.ChallengeType.Damage => "Damage opponents",
+        Challenge.ChallengeType.BulletHits => "Hit opponents with bullets",
+        Challenge.ChallengeType.GadgetDestroy => "Destroy opponent gadgets or special abilities",
+        Challenge.ChallengeType.ObservationDestroy => "Destroy opponent observation tools",
+        Challenge.ChallengeType.QuickMatch => "Win Quick Match rounds",
+        Challenge.ChallengeType.Ranked => "Play Ranked matches",
+        _ => "how"
     };
 }
