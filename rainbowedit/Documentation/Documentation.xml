@@ -4,6 +4,26 @@
         <name>rainbowedit</name>
     </assembly>
     <members>
+        <member name="T:RainbowEdit.Challenge">
+            <summary>
+            Represents a <i>Battle Pass</i> or Weekly <i>Ubisoft Connect</i> Challenge.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Challenge.Type">
+            <summary>
+            The type of this <see cref="T:RainbowEdit.Challenge"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Challenge.Operators">
+            <summary>
+            A collection of <see cref="T:RainbowEdit.Operator"/> instances, representing the <see cref="T:RainbowEdit.Operator"/>s that may be used to complete this <see cref="T:RainbowEdit.Challenge"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Challenge.Extra">
+            <summary>
+            Extra data. See the <see cref="M:RainbowEdit.Challenge.#ctor(RainbowEdit.Challenge.ChallengeType,System.Object)"/> constructor for more information on how to set this, how it is used and what values it may take.
+            </summary>
+        </member>
         <member name="M:RainbowEdit.Challenge.#ctor(RainbowEdit.Operator[])">
             <summary>
             Instantiates a new <see cref="T:RainbowEdit.Challenge"/> from a series of <see cref="T:RainbowEdit.Operator"/>s. This implies the <see cref="P:RainbowEdit.Challenge.Type"/> to be <see cref="F:RainbowEdit.Challenge.ChallengeType.Operators"/>.
@@ -109,6 +129,9 @@
             </summary>
             <param name="challenges">The <see cref="T:RainbowEdit.Challenge"/>s to map.</param>
             <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that maps viable Operators to the given <paramref name="challenges"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Challenge.ToString">
+            <inheritdoc/>
         </member>
         <member name="T:RainbowEdit.Examples">
             <summary>
@@ -777,7 +800,7 @@
             <item><c>stance</c>: a value indicating which stance or movement "subtype" this measurement is for, <c>PRONE</c>, <c>CROUCH</c>, <c>WALK</c> or <c>RUN</c> and</item>
             <item><c>aim?</c>: a value indicating whether the measurement was made while ADS or not, <c>_AIM</c> or absent (always absent for <c>{stance} == RUN</c>).</item>
             </list>
-            As such, there are several invalid combinations that cannot exist, such as <c>SPEED_3_HEAVY_RUN_AIM</c> or <c>SPEED_3_LIGHT_SLOWRUN_AIM</c> as the movement "subtypes" contradict each other.
+            As such, there are several invalid combinations that cannot exist, such as <c>SPEED_3_HEAVY_RUN_AIM</c>, <c>SPEED_3_HEAVY_SLOWPRONE</c> <c>SPEED_3_LIGHT_SLOWRUN_AIM</c> as the movement "subtypes" contradict each other.
             </remarks>
         </member>
         <member name="F:RainbowEdit.Operator.OperatorSpeed.SPEED_3_HEAVY_PRONE">
@@ -2049,6 +2072,13 @@
             <param name="filter">The function that dictates which <see cref="T:RainbowEdit.Operator"/>s are in the pool of <see cref="T:RainbowEdit.Operator"/> to choose from.</param>
             <returns>A random <see cref="T:RainbowEdit.Operator"/>.</returns>
         </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomOperator(RainbowEdit.Operator[])">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> while excluding any number of them.
+            </summary>
+            <param name="filter">The set of <see cref="T:RainbowEdit.Operator"/>s to exclude from the selection.</param>
+            <returns>A random <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
         <member name="M:RainbowEdit.Randomizers.GetRandomDefender">
             <summary>
             Gets a random <see cref="T:RainbowEdit.Operator"/> from the <see cref="T:RainbowEdit.Defenders"/>.
@@ -2062,6 +2092,13 @@
             <param name="filter">The function that dictates which <see cref="T:RainbowEdit.Operator"/>s are in the pool of Defenders to choose from.</param>
             <returns>A random Defender's <see cref="T:RainbowEdit.Operator"/>.</returns>
         </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomDefender(RainbowEdit.Operator[])">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> from the <see cref="T:RainbowEdit.Defenders"/> while excluding any number of them.
+            </summary>
+            <param name="filter">The set of <see cref="T:RainbowEdit.Operator"/>s to exclude from the selection.</param>
+            <returns>A random Defender's <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
         <member name="M:RainbowEdit.Randomizers.GetRandomAttacker">
             <summary>
             Gets a random <see cref="T:RainbowEdit.Operator"/> from the <see cref="T:RainbowEdit.Attackers"/>.
@@ -2073,6 +2110,13 @@
             Gets a random <see cref="T:RainbowEdit.Operator"/> from a pool of <see cref="T:RainbowEdit.Attackers"/> defined by a <paramref name="filter"/> function.
             </summary>
             <param name="filter">The function that dictates which <see cref="T:RainbowEdit.Operator"/>s are in the pool of Attackers to choose from.</param>
+            <returns>A random Attacker's <see cref="T:RainbowEdit.Operator"/>.</returns>
+        </member>
+        <member name="M:RainbowEdit.Randomizers.GetRandomAttacker(RainbowEdit.Operator[])">
+            <summary>
+            Gets a random <see cref="T:RainbowEdit.Operator"/> from the <see cref="T:RainbowEdit.Attackers"/> while excluding any number of them.
+            </summary>
+            <param name="filter">The set of <see cref="T:RainbowEdit.Operator"/>s to exclude from the selection.</param>
             <returns>A random Attacker's <see cref="T:RainbowEdit.Operator"/>.</returns>
         </member>
         <member name="T:RainbowEdit.Siege">
