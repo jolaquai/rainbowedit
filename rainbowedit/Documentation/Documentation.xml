@@ -171,17 +171,32 @@
             </summary>
             <param name="string">The string representation that did not match any actual value <typeparamref name="TEnum"/> can have.</param>
         </member>
-        <member name="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException">
+        <member name="T:RainbowEdit.Exceptions.LoadoutOperatorMismatchException">
             <summary>
-            The exception that is thrown when a <see cref="T:RainbowEdit.Weapon"/> object is attmpted to be brought in connection with an <see cref="T:RainbowEdit.Operator"/> that it does not belong to inside a <see cref="T:RainbowEdit.LoadoutConfiguration"/>.
+            The exception that is thrown when any part of a loadout is attempted to be brought in connection with an <see cref="T:RainbowEdit.Operator"/> that it does not match with inside a <see cref="T:RainbowEdit.LoadoutConfiguration"/>.
             </summary>
         </member>
-        <member name="M:RainbowEdit.Exceptions.WeaponOperatorMismatchException.#ctor(RainbowEdit.Weapon,RainbowEdit.Operator)">
+        <member name="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Operator">
             <summary>
-            Instantiates a new <see cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="weapon"/>.
+            The <see cref="T:RainbowEdit.Operator"/> that was targeted.
             </summary>
-            <param name="weapon">The <see cref="T:RainbowEdit.Weapon"/> that was attempted to be brought in connection with <paramref name="operator"/>.</param>
-            <param name="operator">The <see cref="T:RainbowEdit.Operator"/> that was targeted despite the <paramref name="weapon"/> not belonging to them.</param>
+        </member>
+        <member name="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Type">
+            <summary>
+            The type of the <see cref="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Value"/> that was attempted to be brought in connection with <see cref="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Operator"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Value">
+            <summary>
+            The erroneous value that was attempted to be brought in connection with <see cref="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Operator"/>.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.#ctor(RainbowEdit.Operator,System.Object)">
+            <summary>
+            Instantiates a new <see cref="T:RainbowEdit.Exceptions.LoadoutOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="value"/>.
+            </summary>
+            <param name="value">The value that was attempted to be brought in connection with <paramref name="operator"/>.</param>
+            <param name="operator">The <see cref="T:RainbowEdit.Operator"/> that was targeted despite the <paramref name="value"/> not belonging to them.</param>
         </member>
         <member name="T:RainbowEdit.Extensions.EnumExtensions">
             <summary>
@@ -1322,14 +1337,14 @@
             Instantiates a new <see cref="T:RainbowEdit.LoadoutConfiguration"/> object from an <see cref="T:RainbowEdit.Operator"/> and one each of their <see cref="P:RainbowEdit.Operator.Gadgets"/>, <see cref="P:RainbowEdit.Operator.Primaries"/> and <see cref="P:RainbowEdit.Operator.Secondaries"/>, the latter two of which are used to instantiate randomized <see cref="T:RainbowEdit.WeaponConfiguration"/>s.
             </para>
             <para>
-            A <see cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException"/> is thrown if the passed <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.
+            A <see cref="T:RainbowEdit.Exceptions.LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.
             </para>
             </summary>
             <param name="source">The <see cref="T:RainbowEdit.Operator"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
             <param name="gadget">The <see cref="T:RainbowEdit.Weapon.Gadget"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
             <param name="primary">One of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Primaries"/>.</param>
             <param name="secondary">One of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Secondaries"/>.</param>
-            <exception cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException">Thrown if the passed <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.</exception>
+            <exception cref="T:RainbowEdit.Exceptions.LoadoutOperatorMismatchException">Thrown if the passed <paramref name="gadget"/> or any of the <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.</exception>
         </member>
         <member name="M:RainbowEdit.LoadoutConfiguration.#ctor(RainbowEdit.Operator,RainbowEdit.Weapon.Gadget,RainbowEdit.WeaponConfiguration,RainbowEdit.WeaponConfiguration)">
             <summary>
@@ -1337,30 +1352,36 @@
             Instantiates a new fully customized <see cref="T:RainbowEdit.LoadoutConfiguration"/> object from an <see cref="T:RainbowEdit.Operator"/>, one of their <see cref="P:RainbowEdit.Operator.Gadgets"/> and one <see cref="T:RainbowEdit.WeaponConfiguration"/> identifying the <see cref="P:RainbowEdit.LoadoutConfiguration.Primary"/> and <see cref="P:RainbowEdit.LoadoutConfiguration.Secondary"/> respectively.
             </para>
             <para>
-            A <see cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException"/> is thrown if the passed <see cref="T:RainbowEdit.WeaponConfiguration"/>'s source <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.
+            A <see cref="T:RainbowEdit.Exceptions.LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="T:RainbowEdit.WeaponConfiguration"/>'s source <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.
             </para>
             </summary>
             <param name="source">The <see cref="T:RainbowEdit.Operator"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
             <param name="gadget">The <see cref="T:RainbowEdit.Weapon.Gadget"/> to assign to this <see cref="T:RainbowEdit.LoadoutConfiguration"/> instance.</param>
             <param name="primaryConfig">A <see cref="T:RainbowEdit.WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Primaries"/>.</param>
             <param name="secondaryConfig">A <see cref="T:RainbowEdit.WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>'s <see cref="P:RainbowEdit.Operator.Secondaries"/>.</param>
-            <exception cref="T:RainbowEdit.Exceptions.WeaponOperatorMismatchException">Thrown if the passed <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.</exception>
+            <exception cref="T:RainbowEdit.Exceptions.LoadoutOperatorMismatchException">Thrown if the passed <paramref name="gadget"/> or any of the <see cref="T:RainbowEdit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:RainbowEdit.Operator"/>.</exception>
         </member>
-        <member name="M:RainbowEdit.LoadoutConfiguration.ShortString">
+        <member name="M:RainbowEdit.LoadoutConfiguration.ToShortString">
             <summary>
             Constructs a short string identifying the components of this <see cref="T:RainbowEdit.LoadoutConfiguration"/>.
             </summary>
             <returns>A string as described.</returns>
         </member>
         <member name="M:RainbowEdit.LoadoutConfiguration.ToString">
-            <inheritdoc/>
+            <summary>
+            Constructs a <see cref="T:System.String"/> that identifies the components of this <see cref="T:RainbowEdit.LoadoutConfiguration"/>. This includes the nickname of a <see cref="P:RainbowEdit.LoadoutConfiguration.Source"/> <see cref="T:RainbowEdit.Operator"/>, a <see cref="P:RainbowEdit.LoadoutConfiguration.Primary"/> and <see cref="P:RainbowEdit.LoadoutConfiguration.Secondary"/> weapon's type and name and a <see cref="P:RainbowEdit.LoadoutConfiguration.Gadget"/> name.
+            </summary>
+            <returns>The string as described.</returns>
         </member>
         <member name="M:RainbowEdit.LoadoutConfiguration.op_Implicit(RainbowEdit.LoadoutConfiguration)~System.String">
-            <inheritdoc/>
+            <summary>
+            Implicitly converts a <see cref="T:RainbowEdit.LoadoutConfiguration"/> to a <see cref="T:System.String"/> identifying the components of this <see cref="T:RainbowEdit.LoadoutConfiguration"/>.
+            </summary>
+            <param name="config">The <see cref="T:RainbowEdit.LoadoutConfiguration"/> to convert.</param>
         </member>
         <member name="M:RainbowEdit.LoadoutConfiguration.LongString">
             <summary>
-            Constructs a long string identifying the components of this <see cref="T:RainbowEdit.LoadoutConfiguration"/> in detail.
+            Constructs a long string identifying the components of this <see cref="T:RainbowEdit.LoadoutConfiguration"/> in detail. This includes basically the same information as the string returned by <see cref="M:RainbowEdit.LoadoutConfiguration.ToString"/>, spanning over multiple lines.
             </summary>
             <returns>A string as described.</returns>
         </member>

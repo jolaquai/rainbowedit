@@ -120,7 +120,7 @@ public class LoadoutConfiguration
     public string ToShortString()
     {
         var totalWidth = 4 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
-        return $"{Source.Nickname.PadRight(Siege.LongestOperatorNickname.Length)}{$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)}";
+        return $"{Source.Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4)}{$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)}";
     }
     /// <summary>
     /// Constructs a <see cref="string"/> that identifies the components of this <see cref="LoadoutConfiguration"/>. This includes the nickname of a <see cref="Source"/> <see cref="Operator"/>, a <see cref="Primary"/> and <see cref="Secondary"/> weapon's type and name and a <see cref="Gadget"/> name.
