@@ -441,6 +441,185 @@ public class Operator
 
     /// <inheritdoc/>
     public override string ToString() => Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4);
-    /// <inheritdoc/>
+
+    /// <summary>
+    /// Returns a copy of a collection of <see cref="Operator"/> objects sorted by the order they appear in-game.
+    /// </summary>
+    /// <param name="collection">The collection to sort.</param>
+    /// <returns>The sorted collection as described.</returns>
+    public static IEnumerable<Operator> Sort(IEnumerable<Operator> collection) => collection.Order(Comparer);
+
+    /// <summary>
+    /// An <see cref="IComparer{T}"/> implementation for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
+    /// </summary>
+    /// <remarks>You may use this directly for custom implementations or use the <see cref="Sort(IEnumerable{Operator})"/> method.</remarks>
+    public static readonly IComparer<Operator> Comparer = new OperatorComparer();
+
+    #region Comparisons / operators
+    /// <summary>
+    /// Implicitly converts an <see cref="Operator"/> to a <see cref="string"/> that represents the <see cref="Operator"/>.
+    /// </summary>
+    /// <param name="op">The <see cref="Operator"/> to convert.</param>
     public static implicit operator string(Operator op) => op.ToString();
+
+    /// <inheritdoc/>
+    public override bool Equals(object? obj)
+    {
+        // We're ignoring pretty much all this Type's members on purpose, Operator instances cannot be created from outside this assembly, so we can be sure that the only way to compare two Operators is to compare those other properties
+        return obj is Operator @operator
+            && Nickname == @operator.Nickname
+            // && EqualityComparer<IEnumerable<Weapon>>.Default.Equals(Primaries, @operator.Primaries)
+            // && EqualityComparer<IEnumerable<Weapon>>.Default.Equals(Secondaries, @operator.Secondaries)
+            // && Gadgets == @operator.Gadgets
+            // && SpecialAbility == @operator.SpecialAbility
+            // && EqualityComparer<IEnumerable<Specialty>>.Default.Equals(Specialties, @operator.Specialties)
+            // && Organization == @operator.Organization
+            // && Birthplace == @operator.Birthplace
+            // && Height == @operator.Height
+            // && Weight == @operator.Weight
+            // && RealName == @operator.RealName
+            // && EqualityComparer<OperatorAge>.Default.Equals(Age, @operator.Age)
+            // && Speed == @operator.Speed
+            // && Health == @operator.Health
+            // && HP == @operator.HP
+            ;
+    }
+
+    /// <inheritdoc/>
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+        hash.Add(Nickname);
+        hash.Add(Primaries);
+        hash.Add(Secondaries);
+        hash.Add(Gadgets);
+        hash.Add(SpecialAbility);
+        hash.Add(Specialties);
+        hash.Add(Organization);
+        hash.Add(Birthplace);
+        hash.Add(Height);
+        hash.Add(Weight);
+        hash.Add(RealName);
+        hash.Add(Age);
+        hash.Add(Speed);
+        hash.Add(Health);
+        hash.Add(HP);
+        return hash.ToHashCode();
+    }
+
+    /// <summary>
+    /// Gets a value that indicates whether two <see cref="Operator"/> objects are equal.
+    /// </summary>
+    /// <param name="left">The left <see cref="Operator"/> to compare.</param>
+    /// <param name="right">The right <see cref="Operator"/> to compare.</param>
+    /// <returns>A value that indicates whether <paramref name="left"/> and <paramref name="right"/> are equal.</returns>
+    public static bool operator ==(Operator? left, Operator? right) => left is not null
+        && right is not null
+        && ReferenceEquals(left, right)
+        && left.Equals(right);
+    /// <summary>
+    /// Gets a value that indicates whether two <see cref="Operator"/> objects are not equal.
+    /// </summary>
+    /// <param name="left">The left <see cref="Operator"/> to compare.</param>
+    /// <param name="right">The right <see cref="Operator"/> to compare.</param>
+    /// <returns>A value that indicates whether <paramref name="left"/> and <paramref name="right"/> are not equal.</returns>
+    public static bool operator !=(Operator? left, Operator? right) => !(left == right);
+
+    /// <summary>
+    /// Gets a value that indicates whether the left operand appears before the right operand in the in-game order of <see cref="Operator"/> objects.
+    /// </summary>
+    /// <param name="left">The first <see cref="Operator"/> to consider for the comparison.</param>
+    /// <param name="right">The second <see cref="Operator"/> to consider for the comparison.</param>
+    /// <returns>A <see cref="bool"/> value as described.</returns>
+    /// <remarks><see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.</remarks>
+    public static bool operator <(Operator left, Operator right)
+    {
+        if (left is null || right is null || ReferenceEquals(left, right))
+        {
+            return false;
+        }
+
+        var list = Siege.DefAtk.ToList();
+        return list.IndexOf(left) < list.IndexOf(right);
+    }
+
+    /// <summary>
+    /// Gets a value that indicates whether the left operand appears after the right operand in the in-game order of <see cref="Operator"/> objects.
+    /// </summary>
+    /// <param name="left">The first <see cref="Operator"/> to consider for the comparison.</param>
+    /// <param name="right">The second <see cref="Operator"/> to consider for the comparison.</param>
+    /// <returns>A <see cref="bool"/> value as described.</returns>
+    /// <remarks><see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.</remarks>
+    public static bool operator >(Operator left, Operator right) => !(left < right);
+
+    /// <summary>
+    /// Gets a value that indicates whether the left operand appears before or in the same position as the right operand in the in-game order of <see cref="Operator"/> objects.
+    /// </summary>
+    /// <param name="left">The first <see cref="Operator"/> to consider for the comparison.</param>
+    /// <param name="right">The second <see cref="Operator"/> to consider for the comparison.</param>
+    /// <returns>A <see cref="bool"/> value as described.</returns>
+    /// <remarks>
+    /// <see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.
+    /// <para/>This is precisely equal to 
+    /// </remarks>
+    public static bool operator <=(Operator left, Operator right)
+    {
+        if (left is null || right is null)
+        {
+            return false;
+        }
+        if (ReferenceEquals(left, right))
+        {
+            return true;
+        }
+
+        var list = Siege.DefAtk.ToList();
+        return list.IndexOf(left) <= list.IndexOf(right);
+    }
+
+    /// /// <summary>
+    /// Gets a value that indicates whether the left operand appears in the same position as or after the right operand in the in-game order of <see cref="Operator"/> objects.
+    /// </summary>
+    /// <param name="left">The first <see cref="Operator"/> to consider for the comparison.</param>
+    /// <param name="right">The second <see cref="Operator"/> to consider for the comparison.</param>
+    /// <returns>A <see cref="bool"/> value as described.</returns>
+    /// <remarks>
+    /// <see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.
+    /// <para/>This is precisely equal to 
+    /// </remarks>
+    public static bool operator >=(Operator left, Operator right)
+    {
+        if (left is null || right is null)
+        {
+            return false;
+        }
+        if (ReferenceEquals(left, right))
+        {
+            return true;
+        }
+
+        var list = Siege.DefAtk.ToList();
+        return list.IndexOf(left) >= list.IndexOf(right);
+    }
+    #endregion
+
+    /// <summary>
+    /// Represents an <see cref="IComparer{T}"/> that compares <see cref="Operator"/> objects in the in-game order.
+    /// </summary>
+    private class OperatorComparer : IComparer<Operator>
+    {
+        public int Compare(Operator? x, Operator? y)
+        {
+            if (x is null || y is null)
+            {
+                return 0;
+            }
+            if (ReferenceEquals(x, y))
+            {
+                return 0;
+            }
+            var list = Siege.DefAtk.ToList();
+            return list.IndexOf(x) - list.IndexOf(y);
+        }
+    }
 }
