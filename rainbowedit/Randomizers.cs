@@ -187,6 +187,7 @@ public static class Randomizers
         public static string Wallbangs() => $"Eliminate {new Random().Next(1, 3) * ChallengeObjectiveMultiplier} opponents through penetrable surfaces.";
     }
 
+    #region Operator
     /// <summary>
     /// Gets a random <see cref="Operator"/>.
     /// </summary>
@@ -204,6 +205,30 @@ public static class Randomizers
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A random <see cref="Operator"/>.</returns>
     public static Operator GetRandomOperator(params Operator[] filter) => Siege.AtkDef.Except(filter).Random();
+
+    /// <summary>
+    /// Gets a number of random <see cref="Operator"/>s.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <returns>A collection of random <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomOperators(int count) => Siege.AtkDef.Random(count);
+    /// <summary>
+    /// Gets a number of random <see cref="Operator"/> from a pool of <see cref="Operator"/>s defined by a <paramref name="filter"/> function.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Operator"/> to choose from.</param>
+    /// <returns>A collection of random <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomOperators(int count, Func<Operator, bool> filter) => Siege.AtkDef.Where(filter).Random(count);
+    /// <summary>
+    /// Gets a number of random <see cref="Operator"/> while excluding any number of them.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
+    /// <returns>A collection of random <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomOperators(int count, params Operator[] filter) => Siege.AtkDef.Except(filter).Random(count);
+    #endregion
+
+    #region Defender
     /// <summary>
     /// Gets a random <see cref="Operator"/> from the <see cref="Defenders"/>.
     /// </summary>
@@ -212,7 +237,7 @@ public static class Randomizers
     /// <summary>
     /// Gets a random <see cref="Operator"/> from a pool of <see cref="Defenders"/> defined by a <paramref name="filter"/> function.
     /// </summary>
-    /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of Defenders to choose from.</param>
+    /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Defenders"/> to choose from.</param>
     /// <returns>A random Defender's <see cref="Operator"/>.</returns>
     public static Operator GetRandomDefender(Func<Operator, bool> filter) => Siege.Defenders.Where(filter).Random();
     /// <summary>
@@ -221,6 +246,30 @@ public static class Randomizers
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A random Defender's <see cref="Operator"/>.</returns>
     public static Operator GetRandomDefender(params Operator[] filter) => Siege.Defenders.Except(filter).Random();
+
+    /// <summary>
+    /// Gets a number of random <see cref="Operator"/>s from the <see cref="Defenders"/>.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <returns>A collection of random Defenders' <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomDefenders(int count) => Siege.Defenders.Random(count);
+    /// <summary>
+    /// Gets a number of random <see cref="Operator"/>s from a pool of <see cref="Defenders"/> defined by a <paramref name="filter"/> function.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Defenders"/> to choose from.</param>
+    /// <returns>A collection of random Defenders' <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomDefenders(int count, Func<Operator, bool> filter) => Siege.Defenders.Where(filter).Random(count);
+    /// <summary>
+    /// Gets a number of random <see cref="Defenders"/>s while excluding any number of them.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
+    /// <returns>A collection of random Defenders' <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomDefenders(int count, params Operator[] filter) => Siege.Defenders.Except(filter).Random(count);
+    #endregion
+
+    #region Attacker
     /// <summary>
     /// Gets a random <see cref="Operator"/> from the <see cref="Attackers"/>.
     /// </summary>
@@ -238,4 +287,26 @@ public static class Randomizers
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A random Attacker's <see cref="Operator"/>.</returns>
     public static Operator GetRandomAttacker(params Operator[] filter) => Siege.Attackers.Except(filter).Random();
+
+    /// <summary>
+    /// Gets a number of random <see cref="Operator"/>s from the <see cref="Attackers"/>.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <returns>A collection of random Attackers' <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomAttackers(int count) => Siege.Attackers.Random(count);
+    /// <summary>
+    /// Gets a number of random <see cref="Operator"/>s from a pool of <see cref="Attackers"/> defined by a <paramref name="filter"/> function.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Attackers"/> to choose from.</param>
+    /// <returns>A collection of random Attackers' <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomAttackers(int count, Func<Operator, bool> filter) => Siege.Attackers.Where(filter).Random(count);
+    /// <summary>
+    /// Gets a number of random <see cref="Attackers"/>s while excluding any number of them.
+    /// </summary>
+    /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
+    /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
+    /// <returns>A collection of random Attackers' <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> GetRandomAttackers(int count, params Operator[] filter) => Siege.Attackers.Except(filter).Random(count);
+    #endregion
 }

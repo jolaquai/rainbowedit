@@ -1,4 +1,6 @@
-﻿namespace RainbowEdit.Extensions;
+﻿using System.Collections.Generic;
+
+namespace RainbowEdit.Extensions;
 
 /// <summary>
 /// Provides extensions for the <see cref="IEnumerable{T}"/> type and derived types.
@@ -24,6 +26,35 @@ public static class IEnumerableExtensions
     {
         List<T> enumerated = new(source);
         return enumerated[new Random().Next(enumerated.Count)];
+    }
+
+    /// <summary>
+    /// Returns <paramref name="count"/> random items from an <see cref="IEnumerable{T}"/>, optionally ensuring <paramref name="noDuplicates"/>.
+    /// </summary>
+    /// <typeparam name="T">The <see cref="Type"/> of the items in <paramref name="source"/>.</typeparam>
+    /// <param name="source">The sequence to choose an item from.</param>
+    /// <param name="count">The number of items to return.</param>
+    /// <param name="noDuplicates">Whether to ensure no duplicate items are returned.</param>
+    /// <returns>A random item from <paramref name="source"/>.</returns>
+    public static IEnumerable<T> Random<T>(this IEnumerable<T> source, int count, bool noDuplicates = true)
+    {
+        if (!noDuplicates)
+        {
+            for (var i = 0; i < count; i++)
+            {
+                yield return source.Random();
+            }
+        }
+        else
+        {
+            var exclude = new List<T>();
+            for (var i = 0; i < count; i++)
+            {
+                var item = source.Except(exclude).Random();
+                exclude.Add(item);
+                yield return item;
+            }
+        }
     }
 
     /// <summary>

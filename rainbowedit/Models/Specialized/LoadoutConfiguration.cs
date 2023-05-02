@@ -119,7 +119,7 @@ public class LoadoutConfiguration
     /// <returns>A string as described.</returns>
     public string ToShortString()
     {
-        var totalWidth = 4 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
+        var totalWidth = 6 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
         return $"{Source.Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4)}{$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)}";
     }
     /// <summary>
