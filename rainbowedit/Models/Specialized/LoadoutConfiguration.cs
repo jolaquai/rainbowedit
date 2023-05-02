@@ -109,18 +109,24 @@ public class LoadoutConfiguration
     /// Constructs a short string identifying the components of this <see cref="LoadoutConfiguration"/>.
     /// </summary>
     /// <returns>A string as described.</returns>
-    public string ShortString()
+    public string ToShortString()
     {
         var totalWidth = 4 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
-        return $"{{ {$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)} }}";
+        return $"{Source.Nickname.PadRight(Siege.LongestOperatorNickname.Length)}{$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)}";
     }
 
-    /// <inheritdoc/>
-    public override string ToString() => ShortString();
-    /// <inheritdoc/>
-    public static implicit operator string(LoadoutConfiguration config) => config.ShortString();
     /// <summary>
-    /// Constructs a long string identifying the components of this <see cref="LoadoutConfiguration"/> in detail.
+    /// Constructs a <see cref="string"/> that identifies the components of this <see cref="LoadoutConfiguration"/>. This includes the nickname of a <see cref="Source"/> <see cref="Operator"/>, a <see cref="Primary"/> and <see cref="Secondary"/> weapon's type and name and a <see cref="Gadget"/> name.
+    /// </summary>
+    /// <returns>The string as described.</returns>
+    public override string ToString() => ToShortString();
+    /// <summary>
+    /// Implicitly converts a <see cref="LoadoutConfiguration"/> to a <see cref="string"/> identifying the components of this <see cref="LoadoutConfiguration"/>.
+    /// </summary>
+    /// <param name="config">The <see cref="LoadoutConfiguration"/> to convert.</param>
+    public static implicit operator string(LoadoutConfiguration config) => config.ToShortString();
+    /// <summary>
+    /// Constructs a long string identifying the components of this <see cref="LoadoutConfiguration"/> in detail. This includes basically the same information as the string returned by <see cref="ToString()"/>, spanning over multiple lines.
     /// </summary>
     /// <returns>A string as described.</returns>
     public string LongString() => $"""
