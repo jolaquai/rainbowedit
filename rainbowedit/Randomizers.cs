@@ -4,6 +4,7 @@ namespace RainbowEdit;
 
 /// <summary>
 /// A collection of methods that fetch random information or configurations from the model classes in <see cref="Siege"/>.
+/// <para/>Where a collection of <see cref="Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="Operator"/>s are sorted according to their in-game appearance; also see <see cref="Operator.Comparer"/> and <see cref="Operator.Sort(IEnumerable{Operator})"/>.
 /// </summary>
 public static class Randomizers
 {
