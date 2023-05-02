@@ -1160,11 +1160,9 @@
         </member>
         <member name="P:RainbowEdit.Operator.OperatorSpeed.Constants">
             <summary>
-            The constants defined in <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> compiled into a <see cref="T:System.Collections.Generic.Dictionary`2"/> of <see cref="T:System.String"/> and <see cref="T:System.Decimal"/>. The keys are the names of the constants, and the values are the values of the constants. This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> and getting it from this dictionary.
+            The constants defined in <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> compiled into a <see cref="T:System.Collections.Generic.Dictionary`2"/> of <see cref="T:System.String"/> and <see cref="T:System.Decimal"/>. The keys are the names of the constants, and the values are the values of the constants. This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
             </summary>
-            <remarks>
-            This collection is generated at runtime when it is first accessed.
-            </remarks>
+            <remarks>This collection is generated at runtime when it is first accessed.</remarks>
         </member>
         <member name="P:RainbowEdit.Operator.Nickname">
             <summary>
@@ -1268,8 +1266,93 @@
         <member name="M:RainbowEdit.Operator.ToString">
             <inheritdoc/>
         </member>
+        <member name="M:RainbowEdit.Operator.Sort(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})">
+            <summary>
+            Returns a copy of a collection of <see cref="T:RainbowEdit.Operator"/> objects sorted by the order they appear in-game.
+            </summary>
+            <param name="collection">The collection to sort.</param>
+            <returns>The sorted collection as described.</returns>
+        </member>
+        <member name="F:RainbowEdit.Operator.Comparer">
+            <summary>
+            An <see cref="T:System.Collections.Generic.IComparer`1"/> implementation for <see cref="T:RainbowEdit.Operator"/> objects that may be used to sort a collection of <see cref="T:RainbowEdit.Operator"/> objects by the order they appear in-game.
+            </summary>
+            <remarks>You may use this directly for custom implementations or use the <see cref="M:RainbowEdit.Operator.Sort(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})"/> method.</remarks>
+        </member>
         <member name="M:RainbowEdit.Operator.op_Implicit(RainbowEdit.Operator)~System.String">
+            <summary>
+            Implicitly converts an <see cref="T:RainbowEdit.Operator"/> to a <see cref="T:System.String"/> that represents the <see cref="T:RainbowEdit.Operator"/>.
+            </summary>
+            <param name="op">The <see cref="T:RainbowEdit.Operator"/> to convert.</param>
+        </member>
+        <member name="M:RainbowEdit.Operator.Equals(System.Object)">
             <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Operator.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Operator.op_Equality(RainbowEdit.Operator,RainbowEdit.Operator)">
+            <summary>
+            Gets a value that indicates whether two <see cref="T:RainbowEdit.Operator"/> objects are equal.
+            </summary>
+            <param name="left">The left <see cref="T:RainbowEdit.Operator"/> to compare.</param>
+            <param name="right">The right <see cref="T:RainbowEdit.Operator"/> to compare.</param>
+            <returns>A value that indicates whether <paramref name="left"/> and <paramref name="right"/> are equal.</returns>
+        </member>
+        <member name="M:RainbowEdit.Operator.op_Inequality(RainbowEdit.Operator,RainbowEdit.Operator)">
+            <summary>
+            Gets a value that indicates whether two <see cref="T:RainbowEdit.Operator"/> objects are not equal.
+            </summary>
+            <param name="left">The left <see cref="T:RainbowEdit.Operator"/> to compare.</param>
+            <param name="right">The right <see cref="T:RainbowEdit.Operator"/> to compare.</param>
+            <returns>A value that indicates whether <paramref name="left"/> and <paramref name="right"/> are not equal.</returns>
+        </member>
+        <member name="M:RainbowEdit.Operator.op_LessThan(RainbowEdit.Operator,RainbowEdit.Operator)">
+            <summary>
+            Gets a value that indicates whether the left operand appears before the right operand in the in-game order of <see cref="T:RainbowEdit.Operator"/> objects.
+            </summary>
+            <param name="left">The first <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <param name="right">The second <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <returns>A <see cref="T:System.Boolean"/> value as described.</returns>
+            <remarks><see cref="T:RainbowEdit.Defenders"/> are always considered lesser than <see cref="T:RainbowEdit.Attackers"/> for this comparison.</remarks>
+        </member>
+        <member name="M:RainbowEdit.Operator.op_GreaterThan(RainbowEdit.Operator,RainbowEdit.Operator)">
+            <summary>
+            Gets a value that indicates whether the left operand appears after the right operand in the in-game order of <see cref="T:RainbowEdit.Operator"/> objects.
+            </summary>
+            <param name="left">The first <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <param name="right">The second <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <returns>A <see cref="T:System.Boolean"/> value as described.</returns>
+            <remarks><see cref="T:RainbowEdit.Defenders"/> are always considered lesser than <see cref="T:RainbowEdit.Attackers"/> for this comparison.</remarks>
+        </member>
+        <member name="M:RainbowEdit.Operator.op_LessThanOrEqual(RainbowEdit.Operator,RainbowEdit.Operator)">
+            <summary>
+            Gets a value that indicates whether the left operand appears before or in the same position as the right operand in the in-game order of <see cref="T:RainbowEdit.Operator"/> objects.
+            </summary>
+            <param name="left">The first <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <param name="right">The second <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <returns>A <see cref="T:System.Boolean"/> value as described.</returns>
+            <remarks>
+            <see cref="T:RainbowEdit.Defenders"/> are always considered lesser than <see cref="T:RainbowEdit.Attackers"/> for this comparison.
+            <para/>This is precisely equal to 
+            </remarks>
+        </member>
+        <member name="M:RainbowEdit.Operator.op_GreaterThanOrEqual(RainbowEdit.Operator,RainbowEdit.Operator)">
+            /// <summary>
+            Gets a value that indicates whether the left operand appears in the same position as or after the right operand in the in-game order of <see cref="T:RainbowEdit.Operator"/> objects.
+            </summary>
+            <param name="left">The first <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <param name="right">The second <see cref="T:RainbowEdit.Operator"/> to consider for the comparison.</param>
+            <returns>A <see cref="T:System.Boolean"/> value as described.</returns>
+            <remarks>
+            <see cref="T:RainbowEdit.Defenders"/> are always considered lesser than <see cref="T:RainbowEdit.Attackers"/> for this comparison.
+            <para/>This is precisely equal to 
+            </remarks>
+        </member>
+        <member name="T:RainbowEdit.Operator.OperatorComparer">
+            <summary>
+            Represents an <see cref="T:System.Collections.Generic.IComparer`1"/> that compares <see cref="T:RainbowEdit.Operator"/> objects in the in-game order.
+            </summary>
         </member>
         <member name="T:RainbowEdit.OperatorAge">
             <summary>
@@ -1910,7 +1993,10 @@
             <inheritdoc/>
         </member>
         <member name="M:RainbowEdit.Weapon.op_Implicit(RainbowEdit.Weapon)~System.String">
-            <inheritdoc/>
+            <summary>
+            Implicitly converts a <see cref="T:RainbowEdit.Weapon"/> to a <see cref="T:System.String"/> that represents the <see cref="T:RainbowEdit.Weapon"/>.
+            </summary>
+            <param name="wep">The <see cref="T:RainbowEdit.Weapon"/> to convert.</param>
         </member>
         <member name="M:RainbowEdit.Weapon.Resolve(System.String)">
             <summary>
@@ -1918,6 +2004,7 @@
             </summary>
             <param name="name">The weapon name to resolve to a <see cref="T:RainbowEdit.Weapon"/> object.</param>
             <returns>A <see cref="T:RainbowEdit.Weapon"/> instance if one could be found with a matching name, otherwise <c>null</c>.</returns>
+            <remarks>Do not rely on this to return a <see cref="T:RainbowEdit.Weapon"/> instance usable for <see cref="T:RainbowEdit.Weapon.Sight"/> data as loadouts are specific to an <see cref="T:RainbowEdit.Operator"/>.</remarks>
         </member>
         <member name="M:RainbowEdit.Weapon.GetRandomConfiguration">
             <summary>

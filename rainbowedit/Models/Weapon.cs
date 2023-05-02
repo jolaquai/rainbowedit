@@ -398,7 +398,10 @@ public class Weapon
 
     /// <inheritdoc/>
     public override string ToString() => Name;
-    /// <inheritdoc/>
+    /// <summary>
+    /// Implicitly converts a <see cref="Weapon"/> to a <see cref="string"/> that represents the <see cref="Weapon"/>.
+    /// </summary>
+    /// <param name="wep">The <see cref="Weapon"/> to convert.</param>
     public static implicit operator string(Weapon wep) => wep.ToString();
 
     /// <summary>
@@ -406,6 +409,7 @@ public class Weapon
     /// </summary>
     /// <param name="name">The weapon name to resolve to a <see cref="Weapon"/> object.</param>
     /// <returns>A <see cref="Weapon"/> instance if one could be found with a matching name, otherwise <c>null</c>.</returns>
+    /// <remarks>Do not rely on this to return a <see cref="Weapon"/> instance usable for <see cref="Sight"/> data as loadouts are specific to an <see cref="Operator"/>.</remarks>
     public static Weapon? Resolve(string name) => Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries)).First(wep => wep.Name.Contains(name, StringComparison.OrdinalIgnoreCase) || wep.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>

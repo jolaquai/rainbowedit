@@ -211,21 +211,21 @@ public static class Randomizers
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <returns>A collection of random <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomOperators(int count) => Siege.AtkDef.Random(count);
+    public static IEnumerable<Operator> GetRandomOperators(int count) => Siege.AtkDef.Random(count).Order(Operator.Comparer);
     /// <summary>
     /// Gets a number of random <see cref="Operator"/> from a pool of <see cref="Operator"/>s defined by a <paramref name="filter"/> function.
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Operator"/> to choose from.</param>
     /// <returns>A collection of random <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomOperators(int count, Func<Operator, bool> filter) => Siege.AtkDef.Where(filter).Random(count);
+    public static IEnumerable<Operator> GetRandomOperators(int count, Func<Operator, bool> filter) => Siege.AtkDef.Where(filter).Random(count).Order(Operator.Comparer);
     /// <summary>
     /// Gets a number of random <see cref="Operator"/> while excluding any number of them.
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A collection of random <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomOperators(int count, params Operator[] filter) => Siege.AtkDef.Except(filter).Random(count);
+    public static IEnumerable<Operator> GetRandomOperators(int count, params Operator[] filter) => Siege.AtkDef.Except(filter).Random(count).Order(Operator.Comparer);
     #endregion
 
     #region Defender
@@ -252,21 +252,21 @@ public static class Randomizers
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <returns>A collection of random Defenders' <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomDefenders(int count) => Siege.Defenders.Random(count);
+    public static IEnumerable<Operator> GetRandomDefenders(int count) => Siege.Defenders.Random(count).Order(Operator.Comparer);
     /// <summary>
     /// Gets a number of random <see cref="Operator"/>s from a pool of <see cref="Defenders"/> defined by a <paramref name="filter"/> function.
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Defenders"/> to choose from.</param>
     /// <returns>A collection of random Defenders' <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomDefenders(int count, Func<Operator, bool> filter) => Siege.Defenders.Where(filter).Random(count);
+    public static IEnumerable<Operator> GetRandomDefenders(int count, Func<Operator, bool> filter) => Siege.Defenders.Where(filter).Random(count).Order(Operator.Comparer);
     /// <summary>
     /// Gets a number of random <see cref="Defenders"/>s while excluding any number of them.
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A collection of random Defenders' <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomDefenders(int count, params Operator[] filter) => Siege.Defenders.Except(filter).Random(count);
+    public static IEnumerable<Operator> GetRandomDefenders(int count, params Operator[] filter) => Siege.Defenders.Except(filter).Random(count).Order(Operator.Comparer);
     #endregion
 
     #region Attacker
@@ -293,20 +293,20 @@ public static class Randomizers
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <returns>A collection of random Attackers' <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomAttackers(int count) => Siege.Attackers.Random(count);
+    public static IEnumerable<Operator> GetRandomAttackers(int count) => Siege.Attackers.Random(count).Order(Operator.Comparer);
     /// <summary>
     /// Gets a number of random <see cref="Operator"/>s from a pool of <see cref="Attackers"/> defined by a <paramref name="filter"/> function.
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Attackers"/> to choose from.</param>
     /// <returns>A collection of random Attackers' <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomAttackers(int count, Func<Operator, bool> filter) => Siege.Attackers.Where(filter).Random(count);
+    public static IEnumerable<Operator> GetRandomAttackers(int count, Func<Operator, bool> filter) => Siege.Attackers.Where(filter).Random(count).Order(Operator.Comparer);
     /// <summary>
     /// Gets a number of random <see cref="Attackers"/>s while excluding any number of them.
     /// </summary>
     /// <param name="count">The number of <see cref="Operator"/>s to return.</param>
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A collection of random Attackers' <see cref="Operator"/>s.</returns>
-    public static IEnumerable<Operator> GetRandomAttackers(int count, params Operator[] filter) => Siege.Attackers.Except(filter).Random(count);
+    public static IEnumerable<Operator> GetRandomAttackers(int count, params Operator[] filter) => Siege.Attackers.Except(filter).Random(count).Order(Operator.Comparer);
     #endregion
 }

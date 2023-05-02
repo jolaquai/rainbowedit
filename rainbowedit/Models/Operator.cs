@@ -301,13 +301,11 @@ public class Operator
         public const decimal SPEED_1_LIGHT_WALK_AIM = 2.428393524M;
         #endregion
 
-        private static Dictionary<string, decimal> _constants = null;
+        private static Dictionary<string, decimal> _constants = null!;
         /// <summary>
-        /// The constants defined in <see cref="OperatorSpeed"/> compiled into a <see cref="Dictionary{TKey, TValue}"/> of <see cref="string"/> and <see cref="decimal"/>. The keys are the names of the constants, and the values are the values of the constants. This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="OperatorSpeed"/> and getting it from this dictionary.
+        /// The constants defined in <see cref="OperatorSpeed"/> compiled into a <see cref="Dictionary{TKey, TValue}"/> of <see cref="string"/> and <see cref="decimal"/>. The keys are the names of the constants, and the values are the values of the constants. This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
         /// </summary>
-        /// <remarks>
-        /// This collection is generated at runtime when it is first accessed.
-        /// </remarks>
+        /// <remarks>This collection is generated at runtime when it is first accessed.</remarks>
         public static Dictionary<string, decimal> Constants
         {
             get
