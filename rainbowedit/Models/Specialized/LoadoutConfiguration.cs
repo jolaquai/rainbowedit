@@ -36,7 +36,7 @@ public class LoadoutConfiguration
         Source = source;
 
         var possibleGadgets = Source.Gadgets.GetSetFlags();
-        if (possibleGadgets.Any())
+        if (possibleGadgets.Count != 0)
         {
             Gadget = possibleGadgets.Random();
         }
@@ -50,23 +50,27 @@ public class LoadoutConfiguration
     /// Instantiates a new <see cref="LoadoutConfiguration"/> object from an <see cref="Operator"/> and one each of their <see cref="Operator.Gadgets"/>, <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>, the latter two of which are used to instantiate randomized <see cref="WeaponConfiguration"/>s.
     /// </para>
     /// <para>
-    /// A <see cref="WeaponOperatorMismatchException"/> is thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
+    /// A <see cref="LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
     /// </para>
     /// </summary>
     /// <param name="source">The <see cref="Operator"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="gadget">The <see cref="Weapon.Gadget"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="primary">One of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Primaries"/>.</param>
     /// <param name="secondary">One of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Secondaries"/>.</param>
-    /// <exception cref="WeaponOperatorMismatchException">Thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.</exception>
+    /// <exception cref="LoadoutOperatorMismatchException">Thrown if the passed <paramref name="gadget"/> or any of the <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.</exception>
     public LoadoutConfiguration(Operator source, Weapon.Gadget gadget, Weapon primary, Weapon secondary)
     {
         if (source != primary.Source)
         {
-            throw new WeaponOperatorMismatchException(primary, source);
+            throw new LoadoutOperatorMismatchException(source, primary);
         }
         if (source != secondary.Source)
         {
-            throw new WeaponOperatorMismatchException(secondary, source);
+            throw new LoadoutOperatorMismatchException(source, secondary);
+        }
+        if (!source.Gadgets.HasFlag(gadget))
+        {
+            throw new LoadoutOperatorMismatchException(source, gadget);
         }
 
         Source = source;
@@ -80,23 +84,27 @@ public class LoadoutConfiguration
     /// Instantiates a new fully customized <see cref="LoadoutConfiguration"/> object from an <see cref="Operator"/>, one of their <see cref="Operator.Gadgets"/> and one <see cref="WeaponConfiguration"/> identifying the <see cref="Primary"/> and <see cref="Secondary"/> respectively.
     /// </para>
     /// <para>
-    /// A <see cref="WeaponOperatorMismatchException"/> is thrown if the passed <see cref="WeaponConfiguration"/>'s source <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
+    /// A <see cref="LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="WeaponConfiguration"/>'s source <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
     /// </para>
     /// </summary>
     /// <param name="source">The <see cref="Operator"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="gadget">The <see cref="Weapon.Gadget"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="primaryConfig">A <see cref="WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Primaries"/>.</param>
     /// <param name="secondaryConfig">A <see cref="WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Secondaries"/>.</param>
-    /// <exception cref="WeaponOperatorMismatchException">Thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.</exception>
+    /// <exception cref="LoadoutOperatorMismatchException">Thrown if the passed <paramref name="gadget"/> or any of the <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.</exception>
     public LoadoutConfiguration(Operator source, Weapon.Gadget gadget, WeaponConfiguration primaryConfig, WeaponConfiguration secondaryConfig)
     {
         if (source != primaryConfig.Source.Source)
         {
-            throw new WeaponOperatorMismatchException(primaryConfig.Source, source);
+            throw new LoadoutOperatorMismatchException(source, primaryConfig.Source);
         }
         if (source != secondaryConfig.Source.Source)
         {
-            throw new WeaponOperatorMismatchException(secondaryConfig.Source, source);
+            throw new LoadoutOperatorMismatchException(source, secondaryConfig.Source);
+        }
+        if (!source.Gadgets.HasFlag(gadget))
+        {
+            throw new LoadoutOperatorMismatchException(source, gadget);
         }
 
         Source = source;
@@ -114,7 +122,6 @@ public class LoadoutConfiguration
         var totalWidth = 4 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
         return $"{Source.Nickname.PadRight(Siege.LongestOperatorNickname.Length)}{$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)}";
     }
-
     /// <summary>
     /// Constructs a <see cref="string"/> that identifies the components of this <see cref="LoadoutConfiguration"/>. This includes the nickname of a <see cref="Source"/> <see cref="Operator"/>, a <see cref="Primary"/> and <see cref="Secondary"/> weapon's type and name and a <see cref="Gadget"/> name.
     /// </summary>
