@@ -381,7 +381,7 @@ public class Weapon
         }
 
         //SuppressedDamage = (int)Math.Round(Barrels.HasFlag(Barrel.Suppressor) ? Damage * SuppressedDamageMultiplier : 0);
-        SuppressedDamage = Barrels.HasFlag(Barrel.Suppressor) ? Damage : 0;
+        //SuppressedDamage = Barrels.HasFlag(Barrel.Suppressor) ? Damage : 0;
         ExtendedBarrelDamage = (int)Math.Round(Barrels.HasFlag(Barrel.ExtendedBarrel) ? Damage * ExtendedBarrelDamageMultiplier : 0);
         if (!Type.HasFlag(WeaponType.Shield))
         {
