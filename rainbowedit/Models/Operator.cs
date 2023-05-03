@@ -390,6 +390,15 @@ public class Operator
     public int HP { get; private set; }
 
     /// <summary>
+    /// Indicates whether this <see cref="Operator"/> is one of the <see cref="Defenders"/>.
+    /// </summary>
+    public bool IsDefender => Siege.Defenders.Contains(this);
+    /// <summary>
+    /// Indicates whether this <see cref="Operator"/> is one of the <see cref="Defenders"/>.
+    /// </summary>
+    public bool IsAttacker => !IsDefender;
+
+    /// <summary>
     /// Instantiates a new <see cref="Operator"/> object.
     /// </summary>
     /// <param name="nickname">The nickname of the <see cref="Operator"/>.</param>

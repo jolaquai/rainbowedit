@@ -1239,6 +1239,16 @@
             The <see cref="T:RainbowEdit.Operator"/>'s base health / HP value.
             </summary>
         </member>
+        <member name="P:RainbowEdit.Operator.IsDefender">
+            <summary>
+            Indicates whether this <see cref="T:RainbowEdit.Operator"/> is one of the <see cref="T:RainbowEdit.Defenders"/>.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Operator.IsAttacker">
+            <summary>
+            Indicates whether this <see cref="T:RainbowEdit.Operator"/> is one of the <see cref="T:RainbowEdit.Defenders"/>.
+            </summary>
+        </member>
         <member name="M:RainbowEdit.Operator.#ctor(System.String,System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},System.Collections.Generic.IEnumerable{RainbowEdit.Weapon},RainbowEdit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{RainbowEdit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,RainbowEdit.OperatorAge,System.Int32)">
             <summary>
             Instantiates a new <see cref="T:RainbowEdit.Operator"/> object.
@@ -2021,6 +2031,7 @@
         <member name="T:RainbowEdit.Randomizers">
             <summary>
             A collection of methods that fetch random information or configurations from the model classes in <see cref="T:RainbowEdit.Siege"/>.
+            <para/>Where a collection of <see cref="T:RainbowEdit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:RainbowEdit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="F:RainbowEdit.Operator.Comparer"/> and <see cref="M:RainbowEdit.Operator.Sort(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})"/>.
             </summary>
         </member>
         <member name="T:RainbowEdit.Randomizers.Challenges">
