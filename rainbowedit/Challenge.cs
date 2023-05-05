@@ -1,4 +1,6 @@
-﻿using RainbowEdit.Extensions;
+﻿using System.Linq;
+
+using RainbowEdit.Extensions;
 
 namespace RainbowEdit;
 
@@ -21,13 +23,17 @@ public class Challenge
     public object? Extra { get; internal set; }
 
     /// <summary>
-    /// Instantiates a new <see cref="Challenge"/> from a series of <see cref="Operator"/>s. This implies the <see cref="Type"/> to be <see cref="ChallengeType.Operators"/>.
+    /// Instantiates a new <see cref="Challenge"/> from a series of <see cref="Operator"/>s. This implies the <see cref="Type"/> to be <see cref="ChallengeType.Operators"/> or <see cref="ChallengeType.Organization"/>, the latter only if the passed <paramref name="operators"/> have matching <see cref="Operator.Organization"/> values.
     /// </summary>
-    /// <param name="operators">Any number of <see cref="Operator"/> instances to associate with this <see cref="Challenge"/>.</param>
+    /// <param name="operators">Any number of further <see cref="Operator"/>s to associate with this <see cref="Challenge"/>.</param>
     public Challenge(params Operator[] operators)
     {
-        Type = ChallengeType.Operators;
         Operators = operators;
+        Type = operators.Length > 1
+            ? (operators.Skip(1).All(op => op.Organization == operators.ElementAt(1).Organization)
+                ? ChallengeType.Organization
+                : ChallengeType.Operators)
+            : ChallengeType.Operators;
     }
 
     /// <summary>
@@ -47,7 +53,9 @@ public class Challenge
         Operators = challengeType switch
         {
             ChallengeType.Operators => extra as IEnumerable<Operator> ?? throw new ArgumentException($"With {nameof(challengeType)} == {ChallengeType.Operators}, {nameof(extra)} must be an object convertible to {typeof(IEnumerable<Operator>)}.", nameof(extra)),
-            ChallengeType.WeaponTypeKills => extra is Weapon.WeaponType wType ? Siege.DefAtk.Where(op => op.Primaries.Concat(op.Secondaries).Any(wep => wep.Type == wType)) : throw new ArgumentException($"With {nameof(challengeType)} == {ChallengeType.WeaponTypeKills}, {nameof(extra)} must be an {typeof(Weapon.WeaponType)} enum value.", nameof(extra)),
+            ChallengeType.WeaponTypeKills => extra is Weapon.WeaponType wType
+                ? Siege.DefAtk.Where(op => op.Primaries.Concat(op.Secondaries).Any(wep => wep.Type == wType))
+                : throw new ArgumentException($"With {nameof(challengeType)} == {ChallengeType.WeaponTypeKills}, {nameof(extra)} must be an {typeof(Weapon.WeaponType)} enum value.", nameof(extra)),
             ChallengeType.Blind => Siege.DefAtk.Where(op => op.Gadgets.HasValue(Weapon.Gadget.StunGrenade)).Append(Attackers.Ying).Append(Attackers.Blitz).Distinct(),
             ChallengeType.Disorient => new List<Operator>() { Defenders.Echo, Defenders.Ela, Defenders.Oryx, Attackers.Zofia },
             _ => Siege.DefAtk
@@ -59,70 +67,79 @@ public class Challenge
     /// <summary>
     /// Identifies the type of a <see cref="Challenge"/>.
     /// </summary>
-    public enum ChallengeType
+    [Flags]
+    public enum ChallengeType : ulong
     {
+        /// <summary>
+        /// Indicates that the type of a <see cref="Challenge"/> is unspecified. This is considered an invalid value.
+        /// </summary>
+        Unspecified = 0b0,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is winning rounds with specific <see cref="Operator"/>s.
         /// </summary>
-        Operators,
+        Operators = 0b1,
+        /// <summary>
+        /// Indicates that a <see cref="Challenge"/>'s requirement is winning rounds with <see cref="Operator"/>s belonging to a specific organization. This includes the <see cref="Operators"/> flag.
+        /// </summary>
+        Organization = 0b11,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is killing opponents with a specific type of <see cref="Weapon"/>.
         /// </summary>
-        WeaponTypeKills,
+        WeaponTypeKills = 0b100,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is blinding opponents using <i>Stun Grenade</i>s, <see cref="Attackers.Ying"/>'s <i>Candela</i> or <see cref="Attackers.Blitz"/>'s <i>Shield</i>.
         /// </summary>
-        Blind,
+        Blind = 0b1000,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is disorienting opponents using <see cref="Defenders.Echo"/>'s <i>Yokai</i>'s <i>Sonic Burst</i>s, <see cref="Defenders.Ela"/>'s <i>Grzmot Mine</i>s, <see cref="Defenders.Oryx"/>'s <i>Remah Dash</i> or <see cref="Attackers.Zofia"/>'s <i>Shock Grenade</i>s.
         /// </summary>
-        Disorient,
+        Disorient = 0b10000,
 
         /// <summary>
         /// Indicates that the specific requirement of a <see cref="Challenge"/> is not specific to any <see cref="Operator"/>s.
         /// </summary>
-        Universal,
+        Universal = 0b100000,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is eliminating opponents using gadgets or melee attacks. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        GadgetMelee,
+        GadgetMelee = 0b1000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is eliminating opponents with <see cref="Weapon"/>s that have a <see cref="Weapon.Barrel.Suppressor"/> equipped. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        SuppressedKills,
+        SuppressedKills = 0b10000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is eliminating opponents using headshots. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        Headshots,
+        Headshots = 0b100000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is eliminating opponents while in rappel (<i>"Death from above"</i>). This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        Rappel,
+        Rappel = 0b1000000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is dealing damage to opponents. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        Damage,
+        Damage = 0b10000000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is hitting opponents with bullets. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        BulletHits,
+        BulletHits = 0b100000000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is destroying opponent gadgets or special abilities. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        GadgetDestroy,
+        GadgetDestroy = 0b1000000000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is destroying opponents' observation tools. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        ObservationDestroy,
+        ObservationDestroy = 0b10000000000000 | Universal,
 
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is winning rounds in the <i>Quick Match</i> game mode. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        QuickMatch,
+        QuickMatch = 0b100000000000000 | Universal,
         /// /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is playing matches in the <i>Ranked</i> game mode. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
-        Ranked,
+        Ranked = 0b1000000000000000 | Universal,
     }
 
     /// <summary>
@@ -148,7 +165,7 @@ public class Challenge
             // If the Operators currently in the dictionary can complete all the Challenges we were passed, return the dictionary
             if (retDict.SelectMany(kv => kv.Value).SequenceEqual(challenges))
             {
-                return retDict;
+                break;
             }
 
             // Add the Operators that can complete the challenges in the group to the dictionary
@@ -165,8 +182,14 @@ public class Challenge
             }
         }
 
-        // Return the dictionary
-        return retDict;
+        // Filter the dictionary to remove Operators that can complete only the universal challenges (all Operators left can complete those duh)
+        var filtered = retDict.Where(kv => !kv.Value.All(challenge => challenge.Type.HasFlag(ChallengeType.Universal))).ToDictionary();
+
+        // TODO: ???
+        // I literally forgor what I wanted to do here
+
+        // Return
+        return filtered.Count != 0 ? filtered : retDict;
     }
 
     /// <inheritdoc/>

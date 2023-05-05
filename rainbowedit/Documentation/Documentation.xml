@@ -26,9 +26,9 @@
         </member>
         <member name="M:RainbowEdit.Challenge.#ctor(RainbowEdit.Operator[])">
             <summary>
-            Instantiates a new <see cref="T:RainbowEdit.Challenge"/> from a series of <see cref="T:RainbowEdit.Operator"/>s. This implies the <see cref="P:RainbowEdit.Challenge.Type"/> to be <see cref="F:RainbowEdit.Challenge.ChallengeType.Operators"/>.
+            Instantiates a new <see cref="T:RainbowEdit.Challenge"/> from a series of <see cref="T:RainbowEdit.Operator"/>s. This implies the <see cref="P:RainbowEdit.Challenge.Type"/> to be <see cref="F:RainbowEdit.Challenge.ChallengeType.Operators"/> or <see cref="F:RainbowEdit.Challenge.ChallengeType.Organization"/>, the latter only if the passed <paramref name="operators"/> have matching <see cref="P:RainbowEdit.Operator.Organization"/> values.
             </summary>
-            <param name="operators">Any number of <see cref="T:RainbowEdit.Operator"/> instances to associate with this <see cref="T:RainbowEdit.Challenge"/>.</param>
+            <param name="operators">Any number of further <see cref="T:RainbowEdit.Operator"/>s to associate with this <see cref="T:RainbowEdit.Challenge"/>.</param>
         </member>
         <member name="M:RainbowEdit.Challenge.#ctor(RainbowEdit.Challenge.ChallengeType,System.Object)">
             <summary>
@@ -48,9 +48,19 @@
             Identifies the type of a <see cref="T:RainbowEdit.Challenge"/>.
             </summary>
         </member>
+        <member name="F:RainbowEdit.Challenge.ChallengeType.Unspecified">
+            <summary>
+            Indicates that the type of a <see cref="T:RainbowEdit.Challenge"/> is unspecified. This is considered an invalid value.
+            </summary>
+        </member>
         <member name="F:RainbowEdit.Challenge.ChallengeType.Operators">
             <summary>
             Indicates that a <see cref="T:RainbowEdit.Challenge"/>'s requirement is winning rounds with specific <see cref="T:RainbowEdit.Operator"/>s.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Challenge.ChallengeType.Organization">
+            <summary>
+            Indicates that a <see cref="T:RainbowEdit.Challenge"/>'s requirement is winning rounds with <see cref="T:RainbowEdit.Operator"/>s belonging to a specific organization. This includes the <see cref="F:RainbowEdit.Challenge.ChallengeType.Operators"/> flag.
             </summary>
         </member>
         <member name="F:RainbowEdit.Challenge.ChallengeType.WeaponTypeKills">
@@ -152,6 +162,11 @@
             Groups all <see cref="T:RainbowEdit.Operator"/>s in the order of <see cref="F:RainbowEdit.Siege.DefAtk"/> by which <see cref="T:RainbowEdit.Weapon.WeaponType"/>s they have access to.
             </summary>
             <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> where the keys are <see cref="T:RainbowEdit.Weapon.WeaponType"/> enum values and the values are a collection of <see cref="T:RainbowEdit.Operator"/> objects.</returns>
+        </member>
+        <member name="M:RainbowEdit.Examples.WriteSpecialtiesAndOperators">
+            <summary>
+            Writes all specialties and the <see cref="T:RainbowEdit.Operator"/> that have them assigned to the <see cref="T:System.Console"/>.
+            </summary>
         </member>
         <member name="T:RainbowEdit.Exceptions.EnumStringificationException`1">
             <summary>
@@ -320,6 +335,20 @@
             <param name="comparer">The function that compares elements and ultimately determines whether <paramref name="source"/> contains <paramref name="value"/>.</param>
             <returns>A value indicating whether <paramref name="source"/> contains <paramref name="value"/>.</returns>
         </member>
+        <member name="T:RainbowEdit.Extensions.IEnumerableKeyValuePairExtensions">
+            <summary>
+            Provides extensions for the <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Collections.Generic.KeyValuePair`2"/> type and derived types.
+            </summary>
+        </member>
+        <member name="M:RainbowEdit.Extensions.IEnumerableKeyValuePairExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}})">
+            <summary>
+            Reconstructs a <see cref="T:System.Collections.Generic.Dictionary`2"/> from the given collection of key-value <paramref name="pairs"/>.
+            </summary>
+            <typeparam name="TKey">The <see cref="T:System.Type"/> of the keys.</typeparam>
+            <typeparam name="TValue">The <see cref="T:System.Type"/> of the value.</typeparam>
+            <param name="pairs">The sequence of key-value pairs to reconstruct into a <see cref="T:System.Collections.Generic.Dictionary`2"/>.</param>
+            <returns>The <see cref="T:System.Collections.Generic.Dictionary`2"/> as described.</returns>
+        </member>
         <member name="T:RainbowEdit.Attackers">
             <summary>
             The <see cref="T:RainbowEdit.Attackers"/> in Siege.
@@ -382,6 +411,11 @@
         <member name="F:RainbowEdit.Attackers.MapControl">
             <summary>
             The <see cref="T:RainbowEdit.Attackers"/>' <see cref="F:RainbowEdit.Attackers.MapControl"/> <see cref="T:RainbowEdit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Attackers.Specialties">
+            <summary>
+            A collection of all <see cref="T:RainbowEdit.Models.Specialty"/> instances that apply to <see cref="T:RainbowEdit.Attackers"/>.
             </summary>
         </member>
         <member name="F:RainbowEdit.Attackers.Sledge">
@@ -628,6 +662,11 @@
         <member name="F:RainbowEdit.Defenders.CrowdControl">
             <summary>
             The <see cref="T:RainbowEdit.Defenders"/>' <see cref="F:RainbowEdit.Defenders.CrowdControl"/> <see cref="T:RainbowEdit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Defenders.Specialties">
+            <summary>
+            A collection of all <see cref="T:RainbowEdit.Models.Specialty"/> instances that apply to <see cref="T:RainbowEdit.Defenders"/>.
             </summary>
         </member>
         <member name="F:RainbowEdit.Defenders.Smoke">
@@ -1344,7 +1383,6 @@
             <returns>A <see cref="T:System.Boolean"/> value as described.</returns>
             <remarks>
             <see cref="T:RainbowEdit.Defenders"/> are always considered lesser than <see cref="T:RainbowEdit.Attackers"/> for this comparison.
-            <para/>This is precisely equal to 
             </remarks>
         </member>
         <member name="M:RainbowEdit.Operator.op_GreaterThanOrEqual(RainbowEdit.Operator,RainbowEdit.Operator)">
@@ -1356,12 +1394,11 @@
             <returns>A <see cref="T:System.Boolean"/> value as described.</returns>
             <remarks>
             <see cref="T:RainbowEdit.Defenders"/> are always considered lesser than <see cref="T:RainbowEdit.Attackers"/> for this comparison.
-            <para/>This is precisely equal to 
             </remarks>
         </member>
         <member name="T:RainbowEdit.Operator.OperatorComparer">
             <summary>
-            Represents an <see cref="T:System.Collections.Generic.IComparer`1"/> that compares <see cref="T:RainbowEdit.Operator"/> objects in the in-game order.
+            Represents an <see cref="T:System.Collections.Generic.IComparer`1"/> implementation that compares <see cref="T:RainbowEdit.Operator"/> objects according to their in-game order.
             </summary>
         </member>
         <member name="T:RainbowEdit.OperatorAge">
@@ -1580,6 +1617,12 @@
             <param name="name">The name of the <see cref="T:RainbowEdit.Models.Specialty"/>.</param>
             <param name="reward">The <see cref="T:RainbowEdit.Operator"/> reward for completing all three of this <see cref="T:RainbowEdit.Models.Specialty"/>'s <paramref name="challenges"/>.</param>
             <param name="challenges">The list of challenges for this <see cref="T:RainbowEdit.Models.Specialty"/>.</param>
+        </member>
+        <member name="M:RainbowEdit.Models.Specialty.GetOperators">
+            <summary>
+            Compiles a collection of all <see cref="T:RainbowEdit.Operator"/>s that have this <see cref="T:RainbowEdit.Models.Specialty"/>.
+            </summary>
+            <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:RainbowEdit.Operator"/> that have this <see cref="T:RainbowEdit.Models.Specialty"/>.</returns>
         </member>
         <member name="T:RainbowEdit.Models.Specialty.Challenge">
             <summary>

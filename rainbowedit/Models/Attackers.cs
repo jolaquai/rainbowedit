@@ -146,6 +146,19 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
             new("Eliminate 2 opponents through breakable surfaces.", "1-Day Battle Point Booster 3x")
         }
     );
+
+    /// <summary>
+    /// A collection of all <see cref="Specialty"/> instances that apply to <see cref="Attackers"/>.
+    /// </summary>
+    public static readonly IEnumerable<Specialty> Specialties = new List<Specialty>()
+    {
+        Breach,
+        Support,
+        FrontLine,
+        Intel,
+        AntiGadget,
+        MapControl
+    };
     #endregion
 
     #region Attacker instances

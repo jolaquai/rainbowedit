@@ -34,7 +34,7 @@ public static partial class EnumExtensions
     /// <param name="source">The enum value to test.</param>
     /// <returns>A value indicating whether <paramref name="source"/> has a non-zero value.</returns>
     public static bool HasValue<T>(this T source)
-        where T : Enum => source.GetSetFlags().Any();
+        where T : Enum => source.GetSetFlags().Count != 0;
 
     /// <summary>
     /// Determines if an enum value <paramref name="source"/> of <typeparamref name="T"/> has at least one value that another <paramref name="value"/> also has. May not work correctly with non-<see cref="FlagsAttribute"/> enums.
@@ -148,7 +148,9 @@ public static partial class EnumExtensions
     /// <returns>A string representing this <see cref="Challenge.ChallengeType"/> enum value.</returns>
     public static string Stringify(this Challenge.ChallengeType source) => source switch
     {
+        Challenge.ChallengeType.Unspecified => throw new ArgumentException($"Unspecified Challenges are considered invalid.", nameof(source)),
         Challenge.ChallengeType.Operators => "Win rounds",
+        Challenge.ChallengeType.Organization => "Organization Active Duty",
         Challenge.ChallengeType.WeaponTypeKills => "Eliminate with specific weapon type",
         Challenge.ChallengeType.Blind => "Blind opponents",
         Challenge.ChallengeType.Disorient => "Disorient opponents",

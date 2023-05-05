@@ -35,4 +35,20 @@ public static class Examples
         }
         return ret;
     }
+
+    /// <summary>
+    /// Writes all specialties and the <see cref="Operator"/> that have them assigned to the <see cref="Console"/>.
+    /// </summary>
+    public static void WriteSpecialtiesAndOperators()
+    {
+        var totalWidth = Defenders.Specialties.Max(s => s.Name.Length) + 1;
+        foreach (var specialty in Defenders.Specialties)
+        {
+            Console.WriteLine($"{(specialty.Name + ":").PadRight(totalWidth)} {string.Join(", ", specialty.GetOperators())}");
+        }
+        foreach (var specialty in Attackers.Specialties)
+        {
+            Console.WriteLine($"{(specialty.Name + ":").PadRight(totalWidth)} {string.Join(", ", specialty.GetOperators())}");
+        }
+    }
 }

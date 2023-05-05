@@ -5,7 +5,7 @@ namespace RainbowEdit;
 /// <summary>
 /// The <see cref="Defenders"/> in Siege.
 /// </summary>
-public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
+public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
 {
     static Defenders()
     {
@@ -145,6 +145,19 @@ public partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
             new("Disorient 2 opponents.", "Renown 750")
         }
     );
+
+    /// <summary>
+    /// A collection of all <see cref="Specialty"/> instances that apply to <see cref="Defenders"/>.
+    /// </summary>
+    public static readonly IEnumerable<Specialty> Specialties = new List<Specialty>()
+    {
+        Trapper,
+        Support,
+        AntiEntry,
+        Intel,
+        AntiGadget,
+        CrowdControl
+    };
     #endregion
 
     #region Defender instances

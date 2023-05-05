@@ -1,4 +1,6 @@
-﻿using RainbowEdit;
+﻿using System.Linq;
+
+using RainbowEdit;
 
 namespace RainbowEdit.Models;
 
@@ -32,6 +34,12 @@ public class Specialty
         Reward = reward;
         Challenges = challenges;
     }
+
+    /// <summary>
+    /// Compiles a collection of all <see cref="Operator"/>s that have this <see cref="Specialty"/>.
+    /// </summary>
+    /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="Operator"/> that have this <see cref="Specialty"/>.</returns>
+    public IEnumerable<Operator> GetOperators() => Siege.DefAtk.Where(op => op.Specialties.Contains(this));
 
     /// <summary>
     /// Represents one of the three challenges of a <see cref="Specialty"/>.

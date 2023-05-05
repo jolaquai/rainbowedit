@@ -447,7 +447,7 @@ public class Operator
     public LoadoutConfiguration GetRandomLoadout() => new(this);
 
     /// <inheritdoc/>
-    public override string ToString() => Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4);
+    public override string ToString() => Nickname; // Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4);
 
     /// <summary>
     /// Returns a copy of a collection of <see cref="Operator"/> objects sorted by the order they appear in-game.
@@ -473,6 +473,7 @@ public class Operator
     public override bool Equals(object? obj)
     {
         // We're ignoring pretty much all this Type's members on purpose, Operator instances cannot be created from outside this assembly, so we can be sure that the only way to compare two Operators is to compare those other properties
+        // And if someone reflects themselves access to the constructor, they can just as well reflect themselves access to the properties' internals and they deserve whatever is coming to them
         return obj is Operator @operator
             && Nickname == @operator.Nickname
             // && EqualityComparer<IEnumerable<Weapon>>.Default.Equals(Primaries, @operator.Primaries)
@@ -567,7 +568,6 @@ public class Operator
     /// <returns>A <see cref="bool"/> value as described.</returns>
     /// <remarks>
     /// <see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.
-    /// <para/>This is precisely equal to 
     /// </remarks>
     public static bool operator <=(Operator left, Operator right)
     {
@@ -592,7 +592,6 @@ public class Operator
     /// <returns>A <see cref="bool"/> value as described.</returns>
     /// <remarks>
     /// <see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.
-    /// <para/>This is precisely equal to 
     /// </remarks>
     public static bool operator >=(Operator left, Operator right)
     {
@@ -611,7 +610,7 @@ public class Operator
     #endregion
 
     /// <summary>
-    /// Represents an <see cref="IComparer{T}"/> that compares <see cref="Operator"/> objects in the in-game order.
+    /// Represents an <see cref="IComparer{T}"/> implementation that compares <see cref="Operator"/> objects according to their in-game order.
     /// </summary>
     private class OperatorComparer : IComparer<Operator>
     {
