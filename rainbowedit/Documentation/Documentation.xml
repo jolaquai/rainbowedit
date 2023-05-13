@@ -133,12 +133,20 @@
             Indicates that a <see cref="T:RainbowEdit.Challenge"/>'s requirement is playing matches in the <i>Ranked</i> game mode. This is a type of <see cref="F:RainbowEdit.Challenge.ChallengeType.Universal"/> <see cref="T:RainbowEdit.Challenge"/>.
             </summary>
         </member>
-        <member name="M:RainbowEdit.Challenge.ConstructOperatorMappings(RainbowEdit.Challenge[])">
+        <member name="M:RainbowEdit.Challenge.ConstructOperatorMapping(RainbowEdit.Challenge[])">
             <summary>
             Constructs a mapping from <see cref="T:RainbowEdit.Operator"/>s to the given <paramref name="challenges"/>.
             </summary>
             <param name="challenges">The <see cref="T:RainbowEdit.Challenge"/>s to map.</param>
-            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that maps viable Operators to the given <paramref name="challenges"/>.</returns>
+            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that maps <paramref name="challenges"/> to the <see cref="T:RainbowEdit.Operator"/>s that cam compelte them.</returns>
+        </member>
+        <member name="M:RainbowEdit.Challenge.ConstructChallengeMapping(RainbowEdit.Challenge[])">
+            <summary>
+            Compiles the <see cref="T:RainbowEdit.Operator"/>s that can complete the given <paramref name="challenges"/> into a <see cref="T:System.Collections.Generic.Dictionary`2"/>.
+            </summary>
+            /// <param name="challenges">The <see cref="T:RainbowEdit.Challenge"/>s to map.</param>
+            <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> that maps Operators that can complete them to the given <paramref name="challenges"/>.</returns>
+            <returns>An inverted <see cref="T:System.Collections.Generic.Dictionary`2"/> as described.</returns>
         </member>
         <member name="M:RainbowEdit.Challenge.ToString">
             <inheritdoc/>
@@ -1197,11 +1205,28 @@
             The speed of a <see cref="P:RainbowEdit.Operator.Speed"/> 1 <see cref="T:RainbowEdit.Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
             </summary>
         </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.LADDER_ASCEND">
+            <summary>
+            The speed at which an <see cref="T:RainbowEdit.Operator"/> climbs up a ladder.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.LADDER_DESCEND">
+            <summary>
+            The speed at which an <see cref="T:RainbowEdit.Operator"/> climbs down a ladder.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Operator.OperatorSpeed.LADDER_SLIDE">
+            <summary>
+            The speed at which an <see cref="T:RainbowEdit.Operator"/> slides down a ladder.
+            </summary>
+        </member>
         <member name="P:RainbowEdit.Operator.OperatorSpeed.Constants">
             <summary>
-            The constants defined in <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> compiled into a <see cref="T:System.Collections.Generic.Dictionary`2"/> of <see cref="T:System.String"/> and <see cref="T:System.Decimal"/>. The keys are the names of the constants, and the values are the values of the constants. This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
+            The constants defined in <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> compiled into a <see cref="T:System.Collections.Generic.Dictionary`2"/> of <see cref="T:System.String"/> and <see cref="T:System.Decimal"/>. The keys are the names of the constants, and the values are the values of the constants.
             </summary>
-            <remarks>This collection is generated at runtime when it is first accessed.</remarks>
+            <remarks>
+            This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="T:RainbowEdit.Operator.OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
+            <para/>This collection is generated at runtime when it is first accessed.</remarks>
         </member>
         <member name="P:RainbowEdit.Operator.Nickname">
             <summary>

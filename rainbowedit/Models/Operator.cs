@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 using RainbowEdit.Models;
 
@@ -301,31 +302,43 @@ public class Operator
         public const decimal SPEED_1_LIGHT_WALK_AIM = 2.428393524M;
         #endregion
 
+        /// <summary>
+        /// The speed at which an <see cref="Operator"/> climbs up a ladder.
+        /// </summary>
+        public const decimal LADDER_ASCEND = 2.016129032M;
+        /// <summary>
+        /// The speed at which an <see cref="Operator"/> climbs down a ladder.
+        /// </summary>
+        public const decimal LADDER_DESCEND = 2.101546774M;
+        /// <summary>
+        /// The speed at which an <see cref="Operator"/> slides down a ladder.
+        /// </summary>
+        public const decimal LADDER_SLIDE = 7.284382284M;
+
         private static Dictionary<string, decimal> _constants = null!;
         /// <summary>
-        /// The constants defined in <see cref="OperatorSpeed"/> compiled into a <see cref="Dictionary{TKey, TValue}"/> of <see cref="string"/> and <see cref="decimal"/>. The keys are the names of the constants, and the values are the values of the constants. This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
+        /// The constants defined in <see cref="OperatorSpeed"/> compiled into a <see cref="Dictionary{TKey, TValue}"/> of <see cref="string"/> and <see cref="decimal"/>. The keys are the names of the constants, and the values are the values of the constants.
         /// </summary>
-        /// <remarks>This collection is generated at runtime when it is first accessed.</remarks>
-        public static Dictionary<string, decimal> Constants
+        /// <remarks>
+        /// This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
+        /// <para/>This collection is generated at runtime when it is first accessed.</remarks>
+        public static Dictionary<string, decimal> Constants => (new Func<Dictionary<string, decimal>>(() =>
         {
-            get
+            if (_constants is null)
             {
-                if (_constants is null)
+                var constInfos = typeof(OperatorSpeed).GetFields(BindingFlags.Static | BindingFlags.Public);
+                var speeds = new Dictionary<string, decimal>();
+                foreach (var constInfo in constInfos)
                 {
-                    var constInfos = typeof(OperatorSpeed).GetFields(BindingFlags.Static | BindingFlags.Public);
-                    var speeds = new Dictionary<string, decimal>();
-                    foreach (var constInfo in constInfos)
+                    if (constInfo.GetValue(null) is decimal speed)
                     {
-                        if (constInfo.GetValue(null) is decimal speed)
-                        {
-                            speeds.Add(constInfo.Name, speed);
-                        }
+                        speeds.Add(constInfo.Name, speed);
                     }
-                    _constants = speeds;
                 }
-                return _constants;
+                _constants = speeds;
             }
-        }
+            return _constants;
+        }))();
     }
 
     /// <summary>
