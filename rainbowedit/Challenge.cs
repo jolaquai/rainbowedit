@@ -146,10 +146,10 @@ public class Challenge
     /// Constructs a mapping from <see cref="Operator"/>s to the given <paramref name="challenges"/>.
     /// </summary>
     /// <param name="challenges">The <see cref="Challenge"/>s to map.</param>
-    /// <returns>A <see cref="Dictionary{TKey, TValue}"/> that maps viable Operators to the given <paramref name="challenges"/>.</returns>
-    public static Dictionary<Operator, IEnumerable<Challenge>> ConstructOperatorMappings(params Challenge[] challenges)
+    /// <returns>A <see cref="Dictionary{TKey, TValue}"/> that maps <paramref name="challenges"/> to the <see cref="Operator"/>s that cam compelte them.</returns>
+    public static Dictionary<Operator, List<Challenge>> ConstructOperatorMapping(params Challenge[] challenges)
     {
-        var retDict = new Dictionary<Operator, IEnumerable<Challenge>>();
+        var retDict = new Dictionary<Operator, List<Challenge>>();
 
         // Group the challenges by the Operators that can complete them
         var groupedChallenges = challenges.GroupBy(challenge => challenge.Operators);
@@ -161,7 +161,7 @@ public class Challenge
             {
                 //continue;
             }
-            
+
             // If the Operators currently in the dictionary can complete all the Challenges we were passed, return the dictionary
             if (retDict.SelectMany(kv => kv.Value).SequenceEqual(challenges))
             {
@@ -173,11 +173,11 @@ public class Challenge
             {
                 if (retDict.ContainsKey(op))
                 {
-                    retDict[op] = retDict[op].Concat(challengeGroup);
+                    retDict[op].AddRange(challengeGroup);
                 }
                 else
                 {
-                    retDict.Add(op, challengeGroup);
+                    retDict.Add(op, new List<Challenge>(challengeGroup));
                 }
             }
         }
@@ -191,6 +191,14 @@ public class Challenge
         // Return
         return filtered.Count != 0 ? filtered : retDict;
     }
+
+    /// <summary>
+    /// Compiles the <see cref="Operator"/>s that can complete the given <paramref name="challenges"/> into a <see cref="Dictionary{TKey, TValue}"/>.
+    /// </summary>
+    /// /// <param name="challenges">The <see cref="Challenge"/>s to map.</param>
+    /// <returns>A <see cref="Dictionary{TKey, TValue}"/> that maps Operators that can complete them to the given <paramref name="challenges"/>.</returns>
+    /// <returns>An inverted <see cref="Dictionary{TKey, TValue}"/> as described.</returns>
+    public static Dictionary<Challenge, IEnumerable<Operator>> ConstructChallengeMapping(params Challenge[] challenges) => challenges.ToDictionary(challenge => challenge, challenge => challenge.Operators);
 
     /// <inheritdoc/>
     public override string? ToString()
