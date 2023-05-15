@@ -2967,9 +2967,24 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 true,
                 1220,
                 1450
+            ),
+            new(
+                Grim,
+                "Bailiff 410",
+                Weapon.WeaponType.ShotgunShot,
+                Weapon.FiringMode.SingleShot,
+                30,
+                485,
+                5,
+                Weapon.Sight.None,
+                Weapon.Barrel.None,
+                Weapon.Grip.None,
+                true,
+                3260,
+                3370
             )
         },
-        Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
+        Weapon.Gadget.BreachCharge | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.Claymore,
         "Kawan Hive Launcher",
         new List<Specialty>()
         {

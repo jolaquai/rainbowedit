@@ -290,56 +290,60 @@ public class Weapon
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose fragmentation grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        FragGrenade       = 1,
+        FragGrenade        = 1,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        BreachCharge      = 2,
+        BreachCharge       = 2,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose claymores during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        Claymore          = 4,
+        Claymore           = 4,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose hard-breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        HardBreachCharge  = 8,
+        HardBreachCharge   = 8,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose smoke grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        SmokeGrenade      = 16,
+        SmokeGrenade       = 16,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose stun grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        StunGrenade       = 32,
+        StunGrenade        = 32,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose EMP grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        EmpGrenade        = 64,
+        EmpGrenade         = 64,
 
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose barbed wire during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        BarbedWire        = 128,
+        BarbedWire         = 128,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a deployable shield during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        DeployableShield  = 256,
+        DeployableShield   = 256,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a nitro cell during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        NitroCell         = 512,
+        NitroCell          = 512,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a bulletproof camera during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        BulletproofCamera = 1024,
+        BulletproofCamera  = 1024,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose proximity alarms during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        ProximityAlarm    = 2048,
+        ProximityAlarm     = 2048,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose impact grenades during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        ImpactGrenade     = 4096
+        ImpactGrenade      = 4096,
+        /// <summary>
+        /// Indicates than an <see cref="Operator"/> may choose observation blockers during loadout selection. This is unique to <see cref="Defenders" />.
+        /// </summary>
+        ObservationBlocker = 8192
     }
 
     /// <summary>

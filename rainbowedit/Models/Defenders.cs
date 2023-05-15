@@ -232,7 +232,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2130
             )
         },
-        Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield,
+        Weapon.Gadget.BarbedWire | Weapon.Gadget.ProximityAlarm,
         "Compound Z8 Grenades",
         new List<Specialty>()
         {
@@ -508,7 +508,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1490
             )
         },
-        Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
+        Weapon.Gadget.NitroCell | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker,
         "HB-5 Cardiac Sensor",
         new List<Specialty>()
         {
@@ -726,7 +726,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1440
             )
         },
-        Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ImpactGrenade,
+        Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ObservationBlocker,
         "R1N \"Rhino\" Armor - Armor Pack",
         new List<Specialty>()
         {
@@ -914,7 +914,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2210
             )
         },
-        Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield,
+        Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield | Weapon.Gadget.ProximityAlarm,
         "Shumikha Grenade Launcher",
         new List<Specialty>()
         {
@@ -986,7 +986,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1560
             )
         },
-        Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
+        Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ObservationBlocker,
         "ADS-Mk IV \"Magpie\" Automated Defense System",
         new List<Specialty>()
         {
@@ -1289,7 +1289,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1590
             )
         },
-        Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm,
+        Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ObservationBlocker,
         "Silent Step",
         new List<Specialty>()
         {
@@ -1607,7 +1607,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1370
             )
         },
-        Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield,
+        Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker,
         "GRZMOT Mine",
         new List<Specialty>()
         {
@@ -1781,7 +1781,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3020
             )
         },
-        Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade,
+        Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ObservationBlocker,
         "Compact Laser Emplacement Mk V \"Evil Eye\"",
         new List<Specialty>()
         {
@@ -1868,7 +1868,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3370
             )
         },
-        Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
+        Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ObservationBlocker,
         "Prisma",
         new List<Specialty>()
         {
@@ -1955,7 +1955,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1380
             )
         },
-        Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade,
+        Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
         "Crowd Control Electric Shield",
         new List<Specialty>()
         {
@@ -2042,7 +2042,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2540
             )
         },
-        Weapon.Gadget.NitroCell | Weapon.Gadget.BarbedWire,
+        Weapon.Gadget.NitroCell | Weapon.Gadget.BarbedWire | Weapon.Gadget.ObservationBlocker,
         "Rtila Electroclaw",
         new List<Specialty>()
         {
@@ -2201,7 +2201,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2300
             )
         },
-        Weapon.Gadget.DeployableShield | Weapon.Gadget.NitroCell,
+        Weapon.Gadget.DeployableShield | Weapon.Gadget.NitroCell | Weapon.Gadget.ObservationBlocker,
         "Glance Smart Glasses",
         new List<Specialty>()
         {
@@ -2273,7 +2273,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1450
             )
         },
-        Weapon.Gadget.ProximityAlarm | Weapon.Gadget.NitroCell,
+        Weapon.Gadget.ProximityAlarm | Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "Volcán Canister",
         new List<Specialty>()
         {
@@ -2677,7 +2677,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1440
             )
         },
-        Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
+        Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera,
         "Kóna Healing Station",
         new List<Specialty>()
         {
@@ -2920,6 +2920,78 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
         65M,
         "Ana Valentina Díaz",
         new(18, 9, 37),
+        2
+    );
+    
+    /// <summary>
+    /// The <see cref="Operator"/> <see cref="Fenrir"/>.
+    /// </summary>
+    public static readonly Operator Fenrir = new(
+        "Fenrir",
+        new List<Weapon>()
+        {
+            new(
+                Fenrir,
+                "MP7",
+                Weapon.WeaponType.SubmachineGun,
+                Weapon.FiringMode.FullAuto,
+                32,
+                900,
+                30,
+                Weapon.Sight.One,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
+                Weapon.Grip.None,
+                true,
+                1320,
+                2250
+            ),
+            new(
+                Fenrir,
+                "SASG-12",
+                Weapon.WeaponType.ShotgunShot,
+                Weapon.FiringMode.SingleShot,
+                50,
+                330,
+                10,
+                Weapon.Sight.One,
+                Weapon.Barrel.Suppressor,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                true,
+                1520,
+                2180
+            )
+        },
+        new List<Weapon>()
+        {
+            new(
+                Fenrir,
+                "Bailiff 410",
+                Weapon.WeaponType.ShotgunShot,
+                Weapon.FiringMode.SingleShot,
+                30,
+                485,
+                5,
+                Weapon.Sight.None,
+                Weapon.Barrel.None,
+                Weapon.Grip.None,
+                true,
+                3260,
+                3370
+            )
+        },
+        Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
+        "F-NATT Dread Mine",
+        new List<Specialty>()
+        {
+            CrowdControl,
+            Trapper
+        },
+        "[UNAFFILIATED]",
+        "Zipaquirá, Colombia",
+        176,
+        74M,
+        "Emil Svensson",
+        new(3, 12, 34),
         2
     );
     #endregion

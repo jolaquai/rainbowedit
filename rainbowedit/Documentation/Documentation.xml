@@ -211,7 +211,7 @@
         </member>
         <member name="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Value">
             <summary>
-            The erroneous value that was attempted to be brought in connection with <see cref="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Operator"/>.
+            The erroneous value of Type <see cref="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Type"/> that was attempted to be brought in connection with <see cref="P:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.Operator"/>.
             </summary>
         </member>
         <member name="M:RainbowEdit.Exceptions.LoadoutOperatorMismatchException.#ctor(RainbowEdit.Operator,System.Object)">
@@ -2047,6 +2047,11 @@
         <member name="F:RainbowEdit.Weapon.Gadget.ImpactGrenade">
             <summary>
             Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose impact grenades during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
+            </summary>
+        </member>
+        <member name="F:RainbowEdit.Weapon.Gadget.ObservationBlocker">
+            <summary>
+            Indicates than an <see cref="T:RainbowEdit.Operator"/> may choose observation blockers during loadout selection. This is unique to <see cref="T:RainbowEdit.Defenders" />.
             </summary>
         </member>
         <member name="M:RainbowEdit.Weapon.#ctor(RainbowEdit.Operator,System.String,RainbowEdit.Weapon.WeaponType,RainbowEdit.Weapon.FiringMode,System.Int32,System.Int32,System.Int32,RainbowEdit.Weapon.Sight,RainbowEdit.Weapon.Barrel,RainbowEdit.Weapon.Grip,System.Boolean,System.Int32,System.Int32)">

@@ -16,7 +16,7 @@ internal class LoadoutOperatorMismatchException : Exception
     /// </summary>
     public Type Type { get; }
     /// <summary>
-    /// The erroneous value that was attempted to be brought in connection with <see cref="Operator"/>.
+    /// The erroneous value of Type <see cref="Type"/> that was attempted to be brought in connection with <see cref="Operator"/>.
     /// </summary>
     public object Value { get; }
 
