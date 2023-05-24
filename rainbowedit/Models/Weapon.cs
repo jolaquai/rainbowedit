@@ -419,6 +419,16 @@ public class Weapon
     /// <remarks>Do not rely on this to return a <see cref="Weapon"/> instance usable for <see cref="Sight"/> data as loadouts are specific to an <see cref="Operator"/>.</remarks>
     public static Weapon? Resolve(string name, double similarityThreshold = -1)
     {
+        ArgumentNullException.ThrowIfNull(name);
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Weapon name to search for cannot be empty or whitespace-only.", nameof(name));
+        }
+        if (similarityThreshold > 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(similarityThreshold), similarityThreshold, "Explicitly overridden similarity threshold cannot be greater than 1.");
+        }
+
         // Dynamically check how accurate the name must be to be considered a match if a direct match cannot be found, if the threshold is not manually overridden
         similarityThreshold = similarityThreshold == -1 ? 1d / (0.05 * name.Length + 1) : similarityThreshold;
 
