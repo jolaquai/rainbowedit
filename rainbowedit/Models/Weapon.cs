@@ -1,4 +1,6 @@
-﻿namespace RainbowEdit;
+﻿using rainbowedit.Extensions;
+
+namespace RainbowEdit;
 
 /// <summary>
 /// An <see cref="Operator"/>-specific <see cref="Weapon"/> in Siege.
@@ -411,10 +413,30 @@ public class Weapon
     /// <summary>
     /// Attempts to resolve a weapon name to the first <see cref="Weapon"/> object that is found while enumerating <see cref="Siege.DefAtk"/>.
     /// </summary>
-    /// <param name="name">The weapon name to resolve to a <see cref="Weapon"/> object.</param>
-    /// <returns>A <see cref="Weapon"/> instance if one could be found with a matching name, otherwise <c>null</c>.</returns>
+    /// <param name="name">The case-insensitive weapon name to resolve to a <see cref="Weapon"/> object.</param>
+    /// <param name="similarityThreshold">How similar (in percent) an actual <see cref="Name"/> must be for the <see cref="Weapon"/> to be considered a match for the specified <paramref name="name"/>. If not specified, a value is dynamically calculated based on the length of <paramref name="name"/>.</param>
+    /// <returns>A <see cref="Weapon"/> instance if one could be found with a matching <paramref name="name"/>. If no exact match could be found, a <see cref="Weapon"/> instance whose name is sufficiently similar to an existing <see cref="Weapon"/>'s name. If this also returns no match, <c>null</c>.</returns>
     /// <remarks>Do not rely on this to return a <see cref="Weapon"/> instance usable for <see cref="Sight"/> data as loadouts are specific to an <see cref="Operator"/>.</remarks>
-    public static Weapon? Resolve(string name) => Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries)).First(wep => wep.Name.Contains(name, StringComparison.OrdinalIgnoreCase) || wep.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+    public static Weapon? Resolve(string name, double similarityThreshold = -1)
+    {
+        // Dynamically check how accurate the name must be to be considered a match if a direct match cannot be found, if the threshold is not manually overridden
+        similarityThreshold = similarityThreshold == -1 ? 1d / (0.05 * name.Length + 1) : similarityThreshold;
+
+        var allWeps = Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries));
+        if (allWeps.FirstOrDefault(wep => wep.Name.Contains(name, StringComparison.OrdinalIgnoreCase) || wep.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) is Weapon maybeWep)
+        {
+            return maybeWep;
+        }
+        else if (allWeps.Select(wep => new KeyValuePair<Weapon, double>(wep, wep.Name.GetSimilarity(name)))
+                .Where(kv => kv.Value >= similarityThreshold)
+                .OrderByDescending(kv => kv.Value)
+                .ToList() is var possibleSimilarWeps
+            && possibleSimilarWeps.Count > 0)
+        {
+            return possibleSimilarWeps[0].Key;
+        }
+        return null;
+    }
 
     /// <summary>
     /// Creates a <see cref="WeaponConfiguration"/> from all possible <see cref="Barrels"/>, <see cref="Grips"/>, <see cref="Sights"/> and <see cref="Underbarrel"/> options attachment combinations.

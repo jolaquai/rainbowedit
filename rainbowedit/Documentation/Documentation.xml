@@ -842,6 +842,11 @@
             The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Solis"/>.
             </summary>
         </member>
+        <member name="F:RainbowEdit.Defenders.Fenrir">
+            <summary>
+            The <see cref="T:RainbowEdit.Operator"/> <see cref="F:RainbowEdit.Defenders.Fenrir"/>.
+            </summary>
+        </member>
         <member name="M:RainbowEdit.Defenders.GetPersonalSpecialtyChallengeSet(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Compiles specific challenges from all <see cref="T:RainbowEdit.Defenders"/>' specialties into a collection.
@@ -2081,12 +2086,13 @@
             </summary>
             <param name="wep">The <see cref="T:RainbowEdit.Weapon"/> to convert.</param>
         </member>
-        <member name="M:RainbowEdit.Weapon.Resolve(System.String)">
+        <member name="M:RainbowEdit.Weapon.Resolve(System.String,System.Double)">
             <summary>
             Attempts to resolve a weapon name to the first <see cref="T:RainbowEdit.Weapon"/> object that is found while enumerating <see cref="F:RainbowEdit.Siege.DefAtk"/>.
             </summary>
-            <param name="name">The weapon name to resolve to a <see cref="T:RainbowEdit.Weapon"/> object.</param>
-            <returns>A <see cref="T:RainbowEdit.Weapon"/> instance if one could be found with a matching name, otherwise <c>null</c>.</returns>
+            <param name="name">The case-insensitive weapon name to resolve to a <see cref="T:RainbowEdit.Weapon"/> object.</param>
+            <param name="similarityThreshold">How similar (in percent) an actual <see cref="P:RainbowEdit.Weapon.Name"/> must be for the <see cref="T:RainbowEdit.Weapon"/> to be considered a match for the specified <paramref name="name"/>. If not specified, a value is dynamically calculated based on the length of <paramref name="name"/>.</param>
+            <returns>A <see cref="T:RainbowEdit.Weapon"/> instance if one could be found with a matching <paramref name="name"/>. If no exact match could be found, a <see cref="T:RainbowEdit.Weapon"/> instance whose name is sufficiently similar to an existing <see cref="T:RainbowEdit.Weapon"/>'s name. If this also returns no match, <c>null</c>.</returns>
             <remarks>Do not rely on this to return a <see cref="T:RainbowEdit.Weapon"/> instance usable for <see cref="T:RainbowEdit.Weapon.Sight"/> data as loadouts are specific to an <see cref="T:RainbowEdit.Operator"/>.</remarks>
         </member>
         <member name="M:RainbowEdit.Weapon.GetRandomConfiguration">
@@ -2429,6 +2435,20 @@
             <summary>
             The longest <see cref="T:RainbowEdit.Weapon.Gadget"/> name there is.
             </summary>
+        </member>
+        <member name="T:rainbowedit.Extensions.StringExtensions">
+            <summary>
+            Provides extension methods for the <see cref="T:System.String"/> type.
+            </summary>
+        </member>
+        <member name="M:rainbowedit.Extensions.StringExtensions.GetSimilarity(System.String,System.String,System.StringComparer)">
+            <summary>
+            Computes a value that indicates the similarity between two strings. "Similarity" is defined as the number of characters that are the same in both strings, divided by the length of the longer string. As such, the value returned by this method is always between <c>0</c> (the strings are have no characters in common) and <c>1</c> (the strings are equal), inclusive.
+            </summary>
+            <param name="first">The first <see cref="T:System.String"/> to use for the comparison.</param>
+            <param name="second">The second <see cref="T:System.String"/> to use for the comparison.</param>
+            <param name="stringComparer">A <see cref="T:System.StringComparer"/> instance to use when comparing the <see cref="T:System.String"/>s. Defaults to <see cref="P:System.StringComparer.OrdinalIgnoreCase"/>.</param>
+            <returns>The computed similarity as described.</returns>
         </member>
         <member name="T:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0">
             <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the UppercaseLetterRegex method.</summary>
