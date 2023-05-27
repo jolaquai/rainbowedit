@@ -42,8 +42,10 @@ public class Weapon
     /// <summary>
     /// A combination of <see cref="Sight"/> values that specifies which sights may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Sight Sights {
-        get {
+    public Sight Sights
+    {
+        get
+        {
             var op = (int)_sights & ~(int)(Sight.None | Sight.Invalid | Sight.Other);
             return (Sight)op;
         }
@@ -65,7 +67,7 @@ public class Weapon
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.Suppressor"/>.
     /// </summary>
     [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to always be equal to {nameof(Damage)} or 0 (if no {nameof(Barrel.Suppressor)} can be equipped on the weapon), use that instead.")]
-    public int SuppressedDamage { get; private set; }
+    public int SuppressedDamage => Barrels.HasFlag(Barrel.Suppressor) ? Damage : 0;
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.ExtendedBarrel"/>.
     /// </summary>
@@ -88,6 +90,51 @@ public class Weapon
     public bool IsSecondary { get; private set; } = false;
 
     /// <summary>
+    /// Contains properties that return specific collections of <see cref="Weapon"/>s.
+    /// </summary>
+    public static class Collections
+    {
+        /// <summary>
+        /// Returns all unique <see cref="Defenders"/>' primary <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/>).
+        /// </summary>
+        public static IEnumerable<Weapon> DefenderPrimary => Siege.Defenders.SelectMany(op => op.Primaries).DistinctBy(wep => wep.Name);
+        /// <summary>
+        /// Returns all unique <see cref="Defenders"/>' secondary <see cref="Weapon"/>s (see <see cref="Operator.Secondaries"/>).
+        /// </summary>
+        public static IEnumerable<Weapon> DefenderSecondary => Siege.Defenders.SelectMany(op => op.Secondaries).DistinctBy(wep => wep.Name);
+        /// <summary>
+        /// Returns all unique <see cref="Defenders"/>' <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>).
+        /// </summary>
+        public static IEnumerable<Weapon> DefenderAll => Siege.Defenders.SelectMany(op => op.Primaries.Concat(op.Secondaries)).DistinctBy(wep => wep.Name);
+
+        /// <summary>
+        /// Returns all unique <see cref="Attackers"/>' primary <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/>).
+        /// </summary>
+        public static IEnumerable<Weapon> AttackerPrimary => Siege.Attackers.SelectMany(op => op.Primaries).DistinctBy(wep => wep.Name);
+        /// <summary>
+        /// Returns all unique <see cref="Attackers"/>' secondary <see cref="Weapon"/>s (see <see cref="Operator.Secondaries"/>).
+        /// </summary>
+        public static IEnumerable<Weapon> AttackerSecondary => Siege.Attackers.SelectMany(op => op.Primaries).DistinctBy(wep => wep.Name);
+        /// <summary>
+        /// Returns all unique <see cref="Attackers"/>' <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>).
+        /// </summary>
+        public static IEnumerable<Weapon> AttackerAll => Siege.Attackers.SelectMany(op => op.Primaries.Concat(op.Secondaries)).DistinctBy(wep => wep.Name);
+
+        /// <summary>
+        /// Returns all unique <see cref="Defenders"/>' and <see cref="Attackers"/>' primary <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/>), concatenated in that order.
+        /// </summary>
+        public static IEnumerable<Weapon> AllPrimary => Siege.DefAtk.SelectMany(op => op.Primaries).DistinctBy(wep => wep.Name);
+        /// <summary>
+        /// Returns all unique <see cref="Defenders"/>' and <see cref="Attackers"/>' secondary <see cref="Weapon"/>s (see <see cref="Operator.Secondaries"/>), concatenated in that order.
+        /// </summary>
+        public static IEnumerable<Weapon> AllSecondary => Siege.DefAtk.SelectMany(op => op.Secondaries).DistinctBy(wep => wep.Name);
+        /// <summary>
+        /// Returns all unique <see cref="Defenders"/>' and <see cref="Attackers"/>' <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>), concatenated in that order.
+        /// </summary>
+        public static IEnumerable<Weapon> All => Siege.DefAtk.SelectMany(op => op.Secondaries.Concat(op.Secondaries)).DistinctBy(wep => wep.Name);
+    }
+
+    /// <summary>
     /// The multiplier that is applied to a weapon's base damage when equipping a <see cref="Barrel.Suppressor"/> on it. This is not defined anywhere and resulted from averaging the ratios from all weapons a <see cref="Barrel.Suppressor"/> can be equipped on (<c>suppressed_dmg / dmg</c>). Typically, using <c>0.84</c> yields a close enough approximate. The calculated value is then rounded towards the nearest integer.
     /// </summary>
     [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to be redefined to `1M`. Do not reference this to perform calculations as they are no-ops.", true)]
@@ -107,11 +154,11 @@ public class Weapon
         /// <summary>
         /// Identifies the Assault Rifle weapon type.
         /// </summary>
-        AssaultRifle    = 1,
+        AssaultRifle = 1,
         /// <summary>
         /// Identifies the Handgun weapon type.
         /// </summary>
-        Handgun         = 2,
+        Handgun = 2,
         /// <summary>
         /// Identifies the Light Machine Gun weapon type.
         /// </summary>
@@ -119,35 +166,35 @@ public class Weapon
         /// <summary>
         /// Identifies the Machine Pistol weapon type.
         /// </summary>
-        MachinePistol   = 8,
+        MachinePistol = 8,
         /// <summary>
         /// Identifies the Marksman Rifle weapon type.
         /// </summary>
-        MarksmanRifle   = 16,
+        MarksmanRifle = 16,
         /// <summary>
         /// Identifies the Shield weapon type.
         /// </summary>
-        Shield          = 32,
+        Shield = 32,
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire slugs).
         /// </summary>
-        ShotgunSlug     = 64,
+        ShotgunSlug = 64,
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire shot).
         /// </summary>
-        ShotgunShot     = 128,
+        ShotgunShot = 128,
         /// <summary>
         /// Identifies the Shotgun weapon type (shorthand for an "any shotgun" filter).
         /// </summary>
-        Shotgun         = ShotgunShot | ShotgunSlug,
+        Shotgun = ShotgunShot | ShotgunSlug,
         /// <summary>
         /// Identifies the Submachine Gun weapon type.
         /// </summary>
-        SubmachineGun   = 256,
+        SubmachineGun = 256,
         /// <summary>
         /// Identifies the Hand Cannon weapon type.
         /// </summary>
-        HandCannon      = 512
+        HandCannon = 512
     }
 
     /// <summary>
@@ -159,11 +206,11 @@ public class Weapon
         /// <summary>
         /// 
         /// </summary>
-        None       = 0,
+        None = 0,
         /// <summary>
         /// 
         /// </summary>
-        FullAuto   = 1,
+        FullAuto = 1,
         /// <summary>
         /// 
         /// </summary>
@@ -192,19 +239,19 @@ public class Weapon
         /// <summary>
         /// Generally unused. Indicates an invalid value in terms of a <see cref="WeaponConfiguration"/>.
         /// </summary>
-        Invalid      = 0b0_0000_0000,
+        Invalid = 0b0_0000_0000,
         /// <summary>
         /// Indicates that no sights can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        None         = 0b0_0000_0001,
+        None = 0b0_0000_0001,
         /// <summary>
         /// Indicates that some other weird stuff is going on with the sights for a <see cref="Weapon"/>. This identifies, for example, <see cref="Defenders.Ela"/>'s and <see cref="Attackers.Zofia"/>'s <i>RG15</i> <see cref="WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped, or <see cref="Defenders.Tachanka"/>'s <i>DP27</i> <see cref="WeaponType.LightMachineGun"/>, which has the additional <i>Reflex D</i> option.
         /// </summary>
-        Other        = 0b0_0000_0010,
+        Other = 0b0_0000_0010,
         /// <summary>
         /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        One          = 0b0_0000_0100,
+        One = 0b0_0000_0100,
         /// <summary>
         /// Indicates that no or at most a 1.5x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
@@ -212,7 +259,7 @@ public class Weapon
         /// <summary>
         /// Indicates that no or at most a 2x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Two          = 0b0_0001_1100,
+        Two = 0b0_0001_1100,
         /// <summary>
         /// Indicates that no or at most a 2.5x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
@@ -220,15 +267,15 @@ public class Weapon
         /// <summary>
         /// Indicates that no or at most a 3x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Three        = 0b0_0111_1100,
+        Three = 0b0_0111_1100,
         /// <summary>
         /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>, which may then be magnified to 4x by <see cref="Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="Attackers.Glaz"/>.
         /// </summary>
-        Four         = 0b0_1000_0100,
+        Four = 0b0_1000_0100,
         /// <summary>
         /// Indicates that no sights can be equipped on a <see cref="Weapon"/>. This identifies <see cref="Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="Attackers.Kali"/>.
         /// </summary>
-        FiveTwelve   = 0b1_0000_0000
+        FiveTwelve = 0b1_0000_0000
     }
 
     /// <summary>
@@ -240,23 +287,23 @@ public class Weapon
         /// <summary>
         /// Indicates that no barrel attachments can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        None           = 0,
+        None = 0,
         /// <summary>
         /// Indicates that a suppressor can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Suppressor     = 1,
+        Suppressor = 1,
         /// <summary>
         /// Indicates that a flash hider can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        FlashHider     = 2,
+        FlashHider = 2,
         /// <summary>
         /// Indicates that a compensator can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Compensator    = 4,
+        Compensator = 4,
         /// <summary>
         /// Indicates that a muzzle brake can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        MuzzleBrake    = 8,
+        MuzzleBrake = 8,
         /// <summary>
         /// Indicates that an extended barrel can be equipped on a <see cref="Weapon"/>.
         /// </summary>
@@ -272,7 +319,7 @@ public class Weapon
         /// <summary>
         /// Indicates that no grips can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        None         = 0,
+        None = 0,
         /// <summary>
         /// Indicates that a vertical grip can be equipped on a <see cref="Weapon"/>.
         /// </summary>
@@ -280,7 +327,7 @@ public class Weapon
         /// <summary>
         /// Indicates that an angled grip can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        AngledGrip   = 2
+        AngledGrip = 2
     }
 
     /// <summary>
@@ -292,56 +339,56 @@ public class Weapon
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose fragmentation grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        FragGrenade        = 1,
+        FragGrenade = 1,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        BreachCharge       = 2,
+        BreachCharge = 2,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose claymores during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        Claymore           = 4,
+        Claymore = 4,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose hard-breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        HardBreachCharge   = 8,
+        HardBreachCharge = 8,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose smoke grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        SmokeGrenade       = 16,
+        SmokeGrenade = 16,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose stun grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        StunGrenade        = 32,
+        StunGrenade = 32,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose EMP grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
-        EmpGrenade         = 64,
+        EmpGrenade = 64,
 
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose barbed wire during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        BarbedWire         = 128,
+        BarbedWire = 128,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a deployable shield during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        DeployableShield   = 256,
+        DeployableShield = 256,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a nitro cell during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        NitroCell          = 512,
+        NitroCell = 512,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a bulletproof camera during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        BulletproofCamera  = 1024,
+        BulletproofCamera = 1024,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose proximity alarms during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        ProximityAlarm     = 2048,
+        ProximityAlarm = 2048,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose impact grenades during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
-        ImpactGrenade      = 4096,
+        ImpactGrenade = 4096,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose observation blockers during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
@@ -411,6 +458,18 @@ public class Weapon
     public static implicit operator string(Weapon wep) => wep.ToString();
 
     /// <summary>
+    /// Creates a <see cref="WeaponConfiguration"/> from all possible <see cref="Barrels"/>, <see cref="Grips"/>, <see cref="Sights"/> and <see cref="Underbarrel"/> options attachment combinations.
+    /// </summary>
+    /// <returns>A <see cref="WeaponConfiguration"/> as described.</returns>
+    public WeaponConfiguration GetRandomConfiguration() => new(this);
+
+    /// <summary>
+    /// Gets the raw value for the <see cref="Sights"/> property; that is, special flags such as <see cref="Sight.Invalid"/>, <see cref="Sight.None"/> or <see cref="Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="Sights"/> is considered undefined behavior.
+    /// </summary>
+    /// <returns>The internal unmodified value of the <see cref="Sights"/> property, which may contain special flags as described.</returns>
+    public int GetRawSightValue() => (int)_sights;
+
+    /// <summary>
     /// Attempts to resolve a weapon name to the first <see cref="Weapon"/> object that is found while enumerating <see cref="Siege.DefAtk"/>.
     /// </summary>
     /// <param name="name">The case-insensitive weapon name to resolve to a <see cref="Weapon"/> object.</param>
@@ -432,7 +491,7 @@ public class Weapon
         // Dynamically check how accurate the name must be to be considered a match if a direct match cannot be found, if the threshold is not manually overridden
         similarityThreshold = similarityThreshold == -1 ? 1d / (0.05 * name.Length + 1) : similarityThreshold;
 
-        var allWeps = Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries));
+        var allWeps = Collections.All;
         if (allWeps.FirstOrDefault(wep => wep.Name.Contains(name, StringComparison.OrdinalIgnoreCase) || wep.Name.Equals(name, StringComparison.OrdinalIgnoreCase)) is Weapon maybeWep)
         {
             return maybeWep;
@@ -447,16 +506,4 @@ public class Weapon
         }
         return null;
     }
-
-    /// <summary>
-    /// Creates a <see cref="WeaponConfiguration"/> from all possible <see cref="Barrels"/>, <see cref="Grips"/>, <see cref="Sights"/> and <see cref="Underbarrel"/> options attachment combinations.
-    /// </summary>
-    /// <returns>A <see cref="WeaponConfiguration"/> as described.</returns>
-    public WeaponConfiguration GetRandomConfiguration() => new(this);
-
-    /// <summary>
-    /// Gets the raw value for the <see cref="Sights"/> property; that is, special flags such as <see cref="Sight.Invalid"/>, <see cref="Sight.None"/> or <see cref="Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="Sights"/> is considered undefined behavior.
-    /// </summary>
-    /// <returns>The internal unmodified value of the <see cref="Sights"/> property, which may contain special flags as described.</returns>
-    public int GetRawSightValue() => (int)_sights;
 }
