@@ -1769,6 +1769,56 @@
             Whether this <see cref="T:RainbowEdit.Weapon"/> is a secondary weapon.
             </summary>
         </member>
+        <member name="T:RainbowEdit.Weapon.Collections">
+            <summary>
+            Contains properties that return specific collections of <see cref="T:RainbowEdit.Weapon"/>s.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.DefenderPrimary">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Defenders"/>' primary <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Primaries"/>).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.DefenderSecondary">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Defenders"/>' secondary <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Secondaries"/>).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.DefenderAll">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Defenders"/>' <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Primaries"/> and <see cref="P:RainbowEdit.Operator.Secondaries"/>).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.AttackerPrimary">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Attackers"/>' primary <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Primaries"/>).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.AttackerSecondary">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Attackers"/>' secondary <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Secondaries"/>).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.AttackerAll">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Attackers"/>' <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Primaries"/> and <see cref="P:RainbowEdit.Operator.Secondaries"/>).
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.AllPrimary">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Defenders"/>' and <see cref="T:RainbowEdit.Attackers"/>' primary <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Primaries"/>), concatenated in that order.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.AllSecondary">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Defenders"/>' and <see cref="T:RainbowEdit.Attackers"/>' secondary <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Secondaries"/>), concatenated in that order.
+            </summary>
+        </member>
+        <member name="P:RainbowEdit.Weapon.Collections.All">
+            <summary>
+            Returns all unique <see cref="T:RainbowEdit.Defenders"/>' and <see cref="T:RainbowEdit.Attackers"/>' <see cref="T:RainbowEdit.Weapon"/>s (see <see cref="P:RainbowEdit.Operator.Primaries"/> and <see cref="P:RainbowEdit.Operator.Secondaries"/>), concatenated in that order.
+            </summary>
+        </member>
         <member name="F:RainbowEdit.Weapon.SuppressedDamageMultiplier">
             <summary>
             The multiplier that is applied to a weapon's base damage when equipping a <see cref="F:RainbowEdit.Weapon.Barrel.Suppressor"/> on it. This is not defined anywhere and resulted from averaging the ratios from all weapons a <see cref="F:RainbowEdit.Weapon.Barrel.Suppressor"/> can be equipped on (<c>suppressed_dmg / dmg</c>). Typically, using <c>0.84</c> yields a close enough approximate. The calculated value is then rounded towards the nearest integer.
@@ -2086,15 +2136,6 @@
             </summary>
             <param name="wep">The <see cref="T:RainbowEdit.Weapon"/> to convert.</param>
         </member>
-        <member name="M:RainbowEdit.Weapon.Resolve(System.String,System.Double)">
-            <summary>
-            Attempts to resolve a weapon name to the first <see cref="T:RainbowEdit.Weapon"/> object that is found while enumerating <see cref="F:RainbowEdit.Siege.DefAtk"/>.
-            </summary>
-            <param name="name">The case-insensitive weapon name to resolve to a <see cref="T:RainbowEdit.Weapon"/> object.</param>
-            <param name="similarityThreshold">How similar (in percent) an actual <see cref="P:RainbowEdit.Weapon.Name"/> must be for the <see cref="T:RainbowEdit.Weapon"/> to be considered a match for the specified <paramref name="name"/>. If not specified, a value is dynamically calculated based on the length of <paramref name="name"/>.</param>
-            <returns>A <see cref="T:RainbowEdit.Weapon"/> instance if one could be found with a matching <paramref name="name"/>. If no exact match could be found, a <see cref="T:RainbowEdit.Weapon"/> instance whose name is sufficiently similar to an existing <see cref="T:RainbowEdit.Weapon"/>'s name. If this also returns no match, <c>null</c>.</returns>
-            <remarks>Do not rely on this to return a <see cref="T:RainbowEdit.Weapon"/> instance usable for <see cref="T:RainbowEdit.Weapon.Sight"/> data as loadouts are specific to an <see cref="T:RainbowEdit.Operator"/>.</remarks>
-        </member>
         <member name="M:RainbowEdit.Weapon.GetRandomConfiguration">
             <summary>
             Creates a <see cref="T:RainbowEdit.WeaponConfiguration"/> from all possible <see cref="P:RainbowEdit.Weapon.Barrels"/>, <see cref="P:RainbowEdit.Weapon.Grips"/>, <see cref="P:RainbowEdit.Weapon.Sights"/> and <see cref="P:RainbowEdit.Weapon.Underbarrel"/> options attachment combinations.
@@ -2106,6 +2147,15 @@
             Gets the raw value for the <see cref="P:RainbowEdit.Weapon.Sights"/> property; that is, special flags such as <see cref="F:RainbowEdit.Weapon.Sight.Invalid"/>, <see cref="F:RainbowEdit.Weapon.Sight.None"/> or <see cref="F:RainbowEdit.Weapon.Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="P:RainbowEdit.Weapon.Sights"/> is considered undefined behavior.
             </summary>
             <returns>The internal unmodified value of the <see cref="P:RainbowEdit.Weapon.Sights"/> property, which may contain special flags as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Weapon.Resolve(System.String,System.Double)">
+            <summary>
+            Attempts to resolve a weapon name to the first <see cref="T:RainbowEdit.Weapon"/> object that is found while enumerating <see cref="F:RainbowEdit.Siege.DefAtk"/>.
+            </summary>
+            <param name="name">The case-insensitive weapon name to resolve to a <see cref="T:RainbowEdit.Weapon"/> object.</param>
+            <param name="similarityThreshold">How similar (in percent) an actual <see cref="P:RainbowEdit.Weapon.Name"/> must be for the <see cref="T:RainbowEdit.Weapon"/> to be considered a match for the specified <paramref name="name"/>. If not specified, a value is dynamically calculated based on the length of <paramref name="name"/>.</param>
+            <returns>A <see cref="T:RainbowEdit.Weapon"/> instance if one could be found with a matching <paramref name="name"/>. If no exact match could be found, a <see cref="T:RainbowEdit.Weapon"/> instance whose name is sufficiently similar to an existing <see cref="T:RainbowEdit.Weapon"/>'s name. If this also returns no match, <c>null</c>.</returns>
+            <remarks>Do not rely on this to return a <see cref="T:RainbowEdit.Weapon"/> instance usable for <see cref="T:RainbowEdit.Weapon.Sight"/> data as loadouts are specific to an <see cref="T:RainbowEdit.Operator"/>.</remarks>
         </member>
         <member name="T:RainbowEdit.Randomizers">
             <summary>

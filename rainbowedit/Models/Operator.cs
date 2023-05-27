@@ -467,12 +467,12 @@ public class Operator
     /// </summary>
     /// <param name="collection">The collection to sort.</param>
     /// <returns>The sorted collection as described.</returns>
-    public static IEnumerable<Operator> Sort(IEnumerable<Operator> collection) => collection.Order(Comparer);
+    public static IEnumerable<Operator> Order(IEnumerable<Operator> collection) => collection.Order(Comparer);
 
     /// <summary>
     /// An <see cref="IComparer{T}"/> implementation for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
     /// </summary>
-    /// <remarks>You may use this directly for custom implementations or use the <see cref="Sort(IEnumerable{Operator})"/> method.</remarks>
+    /// <remarks>You may use this directly for custom implementations or use the <see cref="Order(IEnumerable{Operator})"/> method.</remarks>
     public static readonly IComparer<Operator> Comparer = new OperatorComparer();
 
     #region Comparisons / operators
