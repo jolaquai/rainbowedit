@@ -119,9 +119,9 @@ public class LoadoutConfiguration
     /// <returns>A string as described.</returns>
     public string ToShortString()
     {
-        var totalWidth = 10 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.Stringify().Length;
+        var totalWidth = 10 + Siege.LongestWeaponName.Length + Weapon.Resolve(Siege.LongestWeaponName).Type.GetDescription().Length;
 
-        return $"{Source.Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4)}{$"({Primary.Source.Type.Stringify()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.Stringify()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.Stringify().PadRight(Siege.LongestGadgetName.Length)}";
+        return $"{Source.Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4)}{$"({Primary.Source.Type.GetDescription()}){Primary.Source.Name},".PadRight(totalWidth)} {$"({Secondary.Source.Type.GetDescription()}){Secondary.Source.Name},".PadRight(totalWidth)} {Gadget.GetDescription().PadRight(Siege.LongestGadgetName.Length)}";
     }
     /// <summary>
     /// Constructs a <see cref="string"/> that identifies the components of this <see cref="LoadoutConfiguration"/>. This includes the nickname of a <see cref="Source"/> <see cref="Operator"/>, a <see cref="Primary"/> and <see cref="Secondary"/> weapon's type and name and a <see cref="Gadget"/> name.
@@ -143,6 +143,6 @@ public class LoadoutConfiguration
         {string.Join(Environment.NewLine, Primary.ToString().Split(Environment.NewLine).Select(str => $"    {str}"))}
         Secondary:
         {string.Join(Environment.NewLine, Secondary.ToString().Split(Environment.NewLine).Select(str => $"    {str}"))}
-        Gadget: {Gadget.Stringify()}
+        Gadget: {Gadget.GetDescription()}
         """;
 }

@@ -39,5 +39,5 @@ public static class Siege
     /// <summary>
     /// The longest <see cref="Weapon.Gadget"/> name there is.
     /// </summary>
-    public static readonly string LongestGadgetName = Enum.GetValues<Weapon.Gadget>().Select(val => val.Stringify()).MaxBy(gadget => gadget.Length);
+    public static readonly string LongestGadgetName = Enum.GetValues<Weapon.Gadget>().Select(val => val.GetDescription()).MaxBy(gadget => gadget.Length);
 }

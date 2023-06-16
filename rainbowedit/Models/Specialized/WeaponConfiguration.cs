@@ -50,30 +50,30 @@ public class WeaponConfiguration
             {
                 Weapon.Sight.One => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(),
                 Weapon.Sight.TwoPointFive => new List<string>() { "2.5x A", "2.5x B" }.Random(),
-                _ => sight.Stringify()
+                _ => sight.GetDescription()
             };
         }
         else
         {
-            Sight = Weapon.Sight.Invalid.Stringify();
+            Sight = Weapon.Sight.Invalid.GetDescription();
         }
 
         if (possibleBarrels.Any())
         {
-            Barrel = possibleBarrels.Random().Stringify();
+            Barrel = possibleBarrels.Random().GetDescription();
         }
         else
         {
-            Barrel = Weapon.Barrel.None.Stringify();
+            Barrel = Weapon.Barrel.None.GetDescription();
         }
 
         if (possibleGrips.Any())
         {
-            Grip = possibleGrips.Random().Stringify();
+            Grip = possibleGrips.Random().GetDescription();
         }
         else
         {
-            Grip = Weapon.Grip.None.Stringify();
+            Grip = Weapon.Grip.None.GetDescription();
         }
 
         if (Source.Underbarrel)
@@ -93,15 +93,15 @@ public class WeaponConfiguration
     public WeaponConfiguration(Weapon source, Weapon.Sight sight, Weapon.Barrel barrel, Weapon.Grip grip, bool underbarrel)
     {
         Source = source;
-        Barrel = barrel.Stringify();
-        Grip = grip.Stringify();
+        Barrel = barrel.GetDescription();
+        Grip = grip.GetDescription();
         Underbarrel = underbarrel;
 
         Sight = sight switch
         {
             Weapon.Sight.One => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(),
             Weapon.Sight.TwoPointFive => new List<string>() { "2.5x A", "2.5x B" }.Random(),
-            _ => sight.Stringify()
+            _ => sight.GetDescription()
         };
     }
 
@@ -124,7 +124,8 @@ public class WeaponConfiguration
         Source = source;
         Underbarrel = underbarrel;
 
-        if (!Enum.GetValues<Weapon.Barrel>().Select(@enum => @enum.Stringify()).Contains(barrel))
+        if (!Enum.GetValues<Weapon.Barrel>().Select(@enum => @enum.GetDescription()).Contains(barrel)
+            || !Enum.GetNames<Weapon.Barrel>().Contains(barrel))
         {
             throw new EnumStringificationException<Weapon.Barrel>(barrel);
         }
@@ -133,7 +134,8 @@ public class WeaponConfiguration
             Barrel = barrel;
         }
         
-        if (!Enum.GetValues<Weapon.Grip>().Select(@enum => @enum.Stringify()).Contains(grip))
+        if (!Enum.GetValues<Weapon.Grip>().Select(@enum => @enum.GetDescription()).Contains(grip)
+            || !Enum.GetNames<Weapon.Grip>().Contains(grip))
         {
             throw new EnumStringificationException<Weapon.Grip>(grip);
         }
@@ -143,7 +145,8 @@ public class WeaponConfiguration
         }
         
         if (!Enum.GetValues<Weapon.Sight>()
-                 .Select(@enum => @enum.Stringify())
+                 .Select(@enum => @enum.GetDescription())
+                 .Concat(Enum.GetNames<Weapon.Sight>())
                  .Concat(new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" })
                  .Concat(new List<string>() { "2.5x A", "2.5x B" }
             ).Contains(sight)
@@ -164,7 +167,7 @@ public class WeaponConfiguration
         {
             return $"""
                 Name: {Source.Name}
-                Type: {Source.Type.Stringify()}
+                Type: {Source.Type.GetDescription()}
                 Sight: {Sight}
                 Barrel: {Barrel}
                 Grip: {Grip}
@@ -175,7 +178,7 @@ public class WeaponConfiguration
         {
             return $"""
                 Name: {Source.Name}
-                Type: {Source.Type.Stringify()}
+                Type: {Source.Type.GetDescription()}
                 Sight: {(Source.Sights.HasFlag(Weapon.Sight.Other) ? "\u2014" : Sight)}
                 Barrel: {Barrel}
                 Laser: {(Source.Underbarrel ? (Underbarrel ? "Yes" : "No") : "\u2014")}

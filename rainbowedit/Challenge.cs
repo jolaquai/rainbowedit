@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.ComponentModel;
+using System.Linq;
 
 using RainbowEdit.Extensions;
 
@@ -85,6 +86,7 @@ public class Challenge
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is killing opponents with a specific type of <see cref="Weapon"/>.
         /// </summary>
+        [Description("Weapon Type Kills")]
         WeaponTypeKills = 0b100,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is blinding opponents using <i>Stun Grenade</i>s, <see cref="Attackers.Ying"/>'s <i>Candela</i> or <see cref="Attackers.Blitz"/>'s <i>Shield</i>.
@@ -102,10 +104,12 @@ public class Challenge
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is eliminating opponents using gadgets or melee attacks. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
+        [Description("Gadget / Melee")]
         GadgetMelee = 0b1000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is eliminating opponents with <see cref="Weapon"/>s that have a <see cref="Weapon.Barrel.Suppressor"/> equipped. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
+        [Description("Suppressed Kills")]
         SuppressedKills = 0b10000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is eliminating opponents using headshots. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
@@ -122,23 +126,28 @@ public class Challenge
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is hitting opponents with bullets. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
+        [Description("Bullet Hits")]
         BulletHits = 0b100000000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is destroying opponent gadgets or special abilities. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
+        [Description("Gadget Destructions")]
         GadgetDestroy = 0b1000000000000 | Universal,
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is destroying opponents' observation tools. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
+        [Description("Observation Tool Destructions")]
         ObservationDestroy = 0b10000000000000 | Universal,
 
         /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is winning rounds in the <i>Quick Match</i> game mode. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
+        [Description("Quick Match Rounds")]
         QuickMatch = 0b100000000000000 | Universal,
         /// /// <summary>
         /// Indicates that a <see cref="Challenge"/>'s requirement is playing matches in the <i>Ranked</i> game mode. This is a type of <see cref="Universal"/> <see cref="Challenge"/>.
         /// </summary>
+        [Description("Ranked Rounds")]
         Ranked = 0b1000000000000000 | Universal,
     }
 
@@ -203,6 +212,6 @@ public class Challenge
     /// <inheritdoc/>
     public override string? ToString()
     {
-        return $"{Type.Stringify()}{(Extra is not null ? $" ({Extra})" : "")}";
+        return $"{Type.GetDescription()}{(Extra is not null ? $" ({Extra})" : "")}";
     }
 }

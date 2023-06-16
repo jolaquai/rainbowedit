@@ -17,7 +17,7 @@ public static class Examples
     /// <returns></returns>
     public static int ShotsToKill(Operator @operator, WeaponConfiguration weaponConfig, bool armorPlate = false)
     {
-        var damage = weaponConfig.Barrel == Weapon.Barrel.ExtendedBarrel.Stringify() ? weaponConfig.Source.ExtendedBarrelDamage : weaponConfig.Source.Damage;
+        var damage = weaponConfig.Barrel == Weapon.Barrel.ExtendedBarrel.GetDescription() ? weaponConfig.Source.ExtendedBarrelDamage : weaponConfig.Source.Damage;
 
         return (int)Math.Ceiling((@operator.HP + (armorPlate ? 20 : 0)) / (double)damage);
     }

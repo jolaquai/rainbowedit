@@ -251,55 +251,12 @@
             <param name="value">An enum value that is checked against.</param>
             <returns>A value indicating whether <paramref name="source"/> has at least one value that <paramref name="value"/> also has.</returns>
         </member>
-        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Gadget)">
+        <member name="M:RainbowEdit.Extensions.EnumExtensions.GetDescription(System.Enum)">
             <summary>
-            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Gadget"/> enum value.
+            Returns the <see cref="P:System.ComponentModel.DescriptionAttribute.Description"/> for the given <see cref="T:System.Enum"/> value. If the value is not decorated with a <see cref="T:System.ComponentModel.DescriptionAttribute"/>, the default <see cref="T:System.String"/> representation of the value is returned.
             </summary>
-            <param name="source">The enum value to stringify.</param>
-            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Gadget"/> enum value.</returns>
-        </member>
-        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Barrel)">
-            <summary>
-            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Barrel"/> enum value.
-            </summary>
-            <param name="source">The enum value to stringify.</param>
-            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Barrel"/> enum value.</returns>
-        </member>
-        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Grip)">
-            <summary>
-            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Grip"/> enum value.
-            </summary>
-            <param name="source">The enum value to stringify.</param>
-            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Grip"/> enum value.</returns>
-        </member>
-        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.WeaponType)">
-            <summary>
-            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.WeaponType"/> enum value.
-            </summary>
-            <param name="source">The enum value to stringify.</param>
-            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.WeaponType"/> enum value.</returns>
-        </member>
-        <member name="M:RainbowEdit.Extensions.EnumExtensions.UppercaseLetterRegex">
-            <remarks>
-            Pattern explanation:<br/>
-            <code>
-            ○ Match a character in the set [A-Z].<br/>
-            </code>
-            </remarks>
-        </member>
-        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Sight)">
-            <summary>
-            Generates a string representation for this <see cref="T:RainbowEdit.Weapon.Sight"/> enum value.
-            </summary>
-            <param name="source">The enum value to stringify.</param>
-            <returns>A string representing this <see cref="T:RainbowEdit.Weapon.Sight"/> enum value.</returns>
-        </member>
-        <member name="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Challenge.ChallengeType)">
-            <summary>
-            Generates a string representation for this <see cref="T:RainbowEdit.Challenge.ChallengeType"/> enum value.
-            </summary>
-            <param name="source">The enum value to stringify.</param>
-            <returns>A string representing this <see cref="T:RainbowEdit.Challenge.ChallengeType"/> enum value.</returns>
+            <param name="any">The <see cref="T:System.Enum"/> value to retrieve the description for.</param>
+            <returns>The value of the <see cref="P:System.ComponentModel.DescriptionAttribute.Description"/> for the given <see cref="T:System.Enum"/> value or its default <see cref="T:System.String"/> representation.</returns>
         </member>
         <member name="T:RainbowEdit.Extensions.IEnumerableExtensions">
             <summary>
@@ -1345,7 +1302,7 @@
         <member name="M:RainbowEdit.Operator.ToString">
             <inheritdoc/>
         </member>
-        <member name="M:RainbowEdit.Operator.Sort(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})">
+        <member name="M:RainbowEdit.Operator.Order(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})">
             <summary>
             Returns a copy of a collection of <see cref="T:RainbowEdit.Operator"/> objects sorted by the order they appear in-game.
             </summary>
@@ -1356,7 +1313,7 @@
             <summary>
             An <see cref="T:System.Collections.Generic.IComparer`1"/> implementation for <see cref="T:RainbowEdit.Operator"/> objects that may be used to sort a collection of <see cref="T:RainbowEdit.Operator"/> objects by the order they appear in-game.
             </summary>
-            <remarks>You may use this directly for custom implementations or use the <see cref="M:RainbowEdit.Operator.Sort(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})"/> method.</remarks>
+            <remarks>You may use this directly for custom implementations or use the <see cref="M:RainbowEdit.Operator.Order(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})"/> method.</remarks>
         </member>
         <member name="M:RainbowEdit.Operator.op_Implicit(RainbowEdit.Operator)~System.String">
             <summary>
@@ -1611,9 +1568,9 @@
             </para>
             </summary>
             <param name="source">The <see cref="T:RainbowEdit.Weapon"/> to assign to this <see cref="T:RainbowEdit.WeaponConfiguration"/> instance.</param>
-            <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Sight)" /> OR one of the sub-sight names for <see cref="F:RainbowEdit.Weapon.Sight.One"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>.</param>
-            <param name="barrel">A string detailing the barrel attachment to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Barrel)" />.</param>
-            <param name="grip">A string detailing the grip to use. This must match one of the string representations returned by <see cref="M:RainbowEdit.Extensions.EnumExtensions.Stringify(RainbowEdit.Weapon.Grip)" />.</param>
+            <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="!:EnumExtensions.Stringify(Weapon.Sight)" /> OR one of the sub-sight names for <see cref="F:RainbowEdit.Weapon.Sight.One"/> or <see cref="F:RainbowEdit.Weapon.Sight.TwoPointFive"/>.</param>
+            <param name="barrel">A string detailing the barrel attachment to use. This must match one of the string representations returned by <see cref="!:EnumExtensions.Stringify(Weapon.Barrel)" />.</param>
+            <param name="grip">A string detailing the grip to use. This must match one of the string representations returned by <see cref="!:EnumExtensions.Stringify(Weapon.Grip)" />.</param>
             <param name="underbarrel">Whether to use an underbarrel laser.</param>
             <exception cref="T:RainbowEdit.Exceptions.EnumStringificationException`1">Thrown if one of the strings passed does not match any possible string representations for that enum.</exception>
         </member>
@@ -2160,7 +2117,7 @@
         <member name="T:RainbowEdit.Randomizers">
             <summary>
             A collection of methods that fetch random information or configurations from the model classes in <see cref="T:RainbowEdit.Siege"/>.
-            <para/>Where a collection of <see cref="T:RainbowEdit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:RainbowEdit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="F:RainbowEdit.Operator.Comparer"/> and <see cref="M:RainbowEdit.Operator.Sort(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})"/>.
+            <para/>Where a collection of <see cref="T:RainbowEdit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:RainbowEdit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="F:RainbowEdit.Operator.Comparer"/> and <see cref="!:Operator.Sort(IEnumerable&lt;Operator&gt;)"/>.
             </summary>
         </member>
         <member name="T:RainbowEdit.Randomizers.Challenges">
@@ -2499,42 +2456,6 @@
             <param name="second">The second <see cref="T:System.String"/> to use for the comparison.</param>
             <param name="stringComparer">A <see cref="T:System.StringComparer"/> instance to use when comparing the <see cref="T:System.String"/>s. Defaults to <see cref="P:System.StringComparer.OrdinalIgnoreCase"/>.</param>
             <returns>The computed similarity as described.</returns>
-        </member>
-        <member name="T:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0">
-            <summary>Custom <see cref="T:System.Text.RegularExpressions.Regex"/>-derived type for the UppercaseLetterRegex method.</summary>
-        </member>
-        <member name="F:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.Instance">
-            <summary>Cached, thread-safe singleton instance.</summary>
-        </member>
-        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.#ctor">
-            <summary>Initializes the instance.</summary>
-        </member>
-        <member name="T:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory">
-            <summary>Provides a factory for creating <see cref="T:System.Text.RegularExpressions.RegexRunner"/> instances to be used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
-        </member>
-        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.CreateInstance">
-            <summary>Creates an instance of a <see cref="T:System.Text.RegularExpressions.RegexRunner"/> used by methods on <see cref="T:System.Text.RegularExpressions.Regex"/>.</summary>
-        </member>
-        <member name="T:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.Runner">
-            <summary>Provides the runner that contains the custom logic implementing the specified regular expression.</summary>
-        </member>
-        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.Runner.Scan(System.ReadOnlySpan{System.Char})">
-            <summary>Scan the <paramref name="inputSpan"/> starting from base.runtextstart for the next match.</summary>
-            <param name="inputSpan">The text being scanned by the regular expression.</param>
-        </member>
-        <member name="M:System.Text.RegularExpressions.Generated.UppercaseLetterRegex_0.RunnerFactory.Runner.TryFindNextPossibleStartingPosition(System.ReadOnlySpan{System.Char})">
-            <summary>Search <paramref name="inputSpan"/> starting from base.runtextpos for the next location a match could possibly start.</summary>
-            <param name="inputSpan">The text being scanned by the regular expression.</param>
-            <returns>true if a possible match was found; false if no more matches are possible.</returns>
-        </member>
-        <member name="T:System.Text.RegularExpressions.Generated.Utilities">
-            <summary>Helper methods used by generated <see cref="T:System.Text.RegularExpressions.Regex"/>-derived implementations.</summary>
-        </member>
-        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout">
-            <summary>Default timeout value set in <see cref="T:System.AppContext"/>, or <see cref="F:System.Text.RegularExpressions.Regex.InfiniteMatchTimeout"/> if none was set.</summary>
-        </member>
-        <member name="F:System.Text.RegularExpressions.Generated.Utilities.s_hasTimeout">
-            <summary>Whether <see cref="F:System.Text.RegularExpressions.Generated.Utilities.s_defaultTimeout"/> is non-infinite.</summary>
         </member>
     </members>
 </doc>

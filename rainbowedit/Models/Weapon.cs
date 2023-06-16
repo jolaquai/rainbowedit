@@ -1,4 +1,6 @@
-﻿using rainbowedit.Extensions;
+﻿using System.ComponentModel;
+
+using rainbowedit.Extensions;
 
 namespace RainbowEdit;
 
@@ -154,6 +156,7 @@ public class Weapon
         /// <summary>
         /// Identifies the Assault Rifle weapon type.
         /// </summary>
+        [Description("Assault Rifle")]
         AssaultRifle = 1,
         /// <summary>
         /// Identifies the Handgun weapon type.
@@ -162,14 +165,17 @@ public class Weapon
         /// <summary>
         /// Identifies the Light Machine Gun weapon type.
         /// </summary>
+        [Description("Light Machine Gun")]
         LightMachineGun = 4,
         /// <summary>
         /// Identifies the Machine Pistol weapon type.
         /// </summary>
+        [Description("Machine Pistol")]
         MachinePistol = 8,
         /// <summary>
         /// Identifies the Marksman Rifle weapon type.
         /// </summary>
+        [Description("Marksman Rifle")]
         MarksmanRifle = 16,
         /// <summary>
         /// Identifies the Shield weapon type.
@@ -178,22 +184,27 @@ public class Weapon
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire slugs).
         /// </summary>
+        [Description("Shotgun (Slug)")]
         ShotgunSlug = 64,
         /// <summary>
         /// Identifies the Shotgun weapon type (for shotguns that fire shot).
         /// </summary>
+        [Description("Shotgun (Shot)")]
         ShotgunShot = 128,
         /// <summary>
         /// Identifies the Shotgun weapon type (shorthand for an "any shotgun" filter).
         /// </summary>
+        [Description("Shotgun (Any ammo)")]
         Shotgun = ShotgunShot | ShotgunSlug,
         /// <summary>
         /// Identifies the Submachine Gun weapon type.
         /// </summary>
+        [Description("Submachine Gun")]
         SubmachineGun = 256,
         /// <summary>
         /// Identifies the Hand Cannon weapon type.
         /// </summary>
+        [Description("Hand Cannon")]
         HandCannon = 512
     }
 
@@ -210,10 +221,12 @@ public class Weapon
         /// <summary>
         /// 
         /// </summary>
+        [Description("Full Auto")]
         FullAuto = 1,
         /// <summary>
         /// 
         /// </summary>
+        [Description("Single Shot")]
         SingleShot = 2
     }
 
@@ -251,30 +264,37 @@ public class Weapon
         /// <summary>
         /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("1x")]
         One = 0b0_0000_0100,
         /// <summary>
         /// Indicates that no or at most a 1.5x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("1.5x")]
         OnePointFive = 0b0_0000_1100,
         /// <summary>
         /// Indicates that no or at most a 2x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("2x")]
         Two = 0b0_0001_1100,
         /// <summary>
         /// Indicates that no or at most a 2.5x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("2.5x")]
         TwoPointFive = 0b0_0011_1100,
         /// <summary>
         /// Indicates that no or at most a 3x sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("3x")]
         Three = 0b0_0111_1100,
         /// <summary>
         /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>, which may then be magnified to 4x by <see cref="Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="Attackers.Glaz"/>.
         /// </summary>
+        [Description("4x")]
         Four = 0b0_1000_0100,
         /// <summary>
         /// Indicates that no sights can be equipped on a <see cref="Weapon"/>. This identifies <see cref="Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="Attackers.Kali"/>.
         /// </summary>
+        [Description("5x/12x")]
         FiveTwelve = 0b1_0000_0000
     }
 
@@ -295,6 +315,7 @@ public class Weapon
         /// <summary>
         /// Indicates that a flash hider can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("Flash Hider")]
         FlashHider = 2,
         /// <summary>
         /// Indicates that a compensator can be equipped on a <see cref="Weapon"/>.
@@ -303,10 +324,12 @@ public class Weapon
         /// <summary>
         /// Indicates that a muzzle brake can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("Muzzle Brake")]
         MuzzleBrake = 8,
         /// <summary>
         /// Indicates that an extended barrel can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("Extended Barrel")]
         ExtendedBarrel = 16
     }
 
@@ -323,10 +346,12 @@ public class Weapon
         /// <summary>
         /// Indicates that a vertical grip can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("Vertical Grip")]
         VerticalGrip = 1,
         /// <summary>
         /// Indicates that an angled grip can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        [Description("Angled Grip")]
         AngledGrip = 2
     }
 
@@ -339,59 +364,73 @@ public class Weapon
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose fragmentation grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
+        [Description("Frag Grenade")]
         FragGrenade = 1,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
+        [Description("Breach Charge")]
         BreachCharge = 2,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose claymores during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
+        [Description("Claymore")]
         Claymore = 4,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose hard-breach charges grenade during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
+        [Description("Hard Breach Charge")]
         HardBreachCharge = 8,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose smoke grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
+        [Description("Smoke Grenade")]
         SmokeGrenade = 16,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose stun grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
+        [Description("Stun Grenade")]
         StunGrenade = 32,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose EMP grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>
+        [Description("EMP Grenade")]
         EmpGrenade = 64,
 
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose barbed wire during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
+        [Description("Barbed Wire")]
         BarbedWire = 128,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a deployable shield during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
+        [Description("Deployable Shield")]
         DeployableShield = 256,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a nitro cell during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
+        [Description("Nitro Cell")]
         NitroCell = 512,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose a bulletproof camera during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
+        [Description("Bulletproof Camera")]
         BulletproofCamera = 1024,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose proximity alarms during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
+        [Description("Proximity Alarm")]
         ProximityAlarm = 2048,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose impact grenades during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
+        [Description("Impact Grenade")]
         ImpactGrenade = 4096,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose observation blockers during loadout selection. This is unique to <see cref="Defenders" />.
         /// </summary>
+        [Description("Observation Blocker")]
         ObservationBlocker = 8192
     }
 

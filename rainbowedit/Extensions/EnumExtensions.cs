@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.ComponentModel;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace RainbowEdit.Extensions;
 
@@ -47,124 +49,23 @@ public static partial class EnumExtensions
         where T : Enum => source.GetSetFlags().Intersect(value.GetSetFlags()).Any();
 
     /// <summary>
-    /// Generates a string representation for this <see cref="Weapon.Gadget"/> enum value.
+    /// Returns the <see cref="DescriptionAttribute.Description"/> for the given <see cref="Enum"/> value. If the value is not decorated with a <see cref="DescriptionAttribute"/>, the default <see cref="string"/> representation of the value is returned.
     /// </summary>
-    /// <param name="source">The enum value to stringify.</param>
-    /// <returns>A string representing this <see cref="Weapon.Gadget"/> enum value.</returns>
-    public static string Stringify(this Weapon.Gadget source)
+    /// <param name="any">The <see cref="Enum"/> value to retrieve the description for.</param>
+    /// <returns>The value of the <see cref="DescriptionAttribute.Description"/> for the given <see cref="Enum"/> value or its default <see cref="string"/> representation.</returns>
+    public static string GetDescription(this Enum any)
     {
-        var gadget = source.ToString();
-        var matches = UppercaseLetterRegex().Matches(gadget, 1);
-        foreach (var match in matches.Cast<Match>())
+        var type = any.GetType();
+        var name = Enum.GetName(type, any);
+        var fallback = any.ToString();
+        if (type.GetField(name!) is FieldInfo field
+            && field.GetCustomAttribute<DescriptionAttribute>() is DescriptionAttribute desc)
         {
-            gadget = gadget.Replace(match.Value, ' ' + match.Value);
+            return desc.Description;
         }
-        return gadget.Trim();
-    }
-
-    /// <summary>
-    /// Generates a string representation for this <see cref="Weapon.Barrel"/> enum value.
-    /// </summary>
-    /// <param name="source">The enum value to stringify.</param>
-    /// <returns>A string representing this <see cref="Weapon.Barrel"/> enum value.</returns>
-    public static string Stringify(this Weapon.Barrel source)
-    {
-        var barrel = source.ToString();
-        var matches = UppercaseLetterRegex().Matches(barrel, 1);
-        foreach (var match in matches.Cast<Match>())
+        else
         {
-            barrel = barrel.Replace(match.Value, ' ' + match.Value);
+            return fallback;
         }
-        return barrel.Trim();
     }
-
-    /// <summary>
-    /// Generates a string representation for this <see cref="Weapon.Grip"/> enum value.
-    /// </summary>
-    /// <param name="source">The enum value to stringify.</param>
-    /// <returns>A string representing this <see cref="Weapon.Grip"/> enum value.</returns>
-    public static string Stringify(this Weapon.Grip source)
-    {
-        var grip = source.ToString();
-        var matches = UppercaseLetterRegex().Matches(grip, 1);
-        foreach (var match in matches.Cast<Match>())
-        {
-            grip = grip.Replace(match.Value, ' ' + match.Value);
-        }
-        return grip.Trim();
-    }
-
-    /// <summary>
-    /// Generates a string representation for this <see cref="Weapon.WeaponType"/> enum value.
-    /// </summary>
-    /// <param name="source">The enum value to stringify.</param>
-    /// <returns>A string representing this <see cref="Weapon.WeaponType"/> enum value.</returns>
-    public static string Stringify(this Weapon.WeaponType source)
-    {
-        var type = source.ToString();
-        var matches = UppercaseLetterRegex().Matches(type, 1);
-        foreach (var match in matches.Cast<Match>())
-        {
-            type = type.Replace(match.Value, ' ' + match.Value);
-        }
-        return type.Trim();
-    }
-    [GeneratedRegex("[A-Z]")]
-    private static partial Regex UppercaseLetterRegex();
-
-    /// <summary>
-    /// Generates a string representation for this <see cref="Weapon.Sight"/> enum value.
-    /// </summary>
-    /// <param name="source">The enum value to stringify.</param>
-    /// <returns>A string representing this <see cref="Weapon.Sight"/> enum value.</returns>
-    public static string Stringify(this Weapon.Sight source) => source switch
-    {
-        Weapon.Sight.Invalid => "Invalid",
-        Weapon.Sight.None => "None",
-        Weapon.Sight.One => "1x",
-        Weapon.Sight.OnePointFive => "1.5x",
-        Weapon.Sight.Two => "2x",
-        Weapon.Sight.TwoPointFive => "2.5x",
-        Weapon.Sight.Three => "3x",
-        Weapon.Sight.Four => "4x",
-        Weapon.Sight.FiveTwelve => "5x/12x",
-        Weapon.Sight.Other => "Other",
-        _ => new Func<string>(() =>
-        {
-            var op = (int)source & ~(int)Weapon.Sight.Other;
-            return Enum.GetValues<Weapon.Sight>()
-                .Reverse()
-                .Remove(Weapon.Sight.Invalid)
-                .First(enumVal => (op & (int)enumVal) == (int)enumVal)
-                .Stringify();
-        })()
-        //_ => throw new ArgumentException($"A string representation could not be generated for the provided value {source}.", nameof(source))
-    };
-
-    /// <summary>
-    /// Generates a string representation for this <see cref="Challenge.ChallengeType"/> enum value.
-    /// </summary>
-    /// <param name="source">The enum value to stringify.</param>
-    /// <returns>A string representing this <see cref="Challenge.ChallengeType"/> enum value.</returns>
-    public static string Stringify(this Challenge.ChallengeType source) => source switch
-    {
-        Challenge.ChallengeType.Unspecified => throw new ArgumentException($"Unspecified Challenges are considered invalid.", nameof(source)),
-        Challenge.ChallengeType.Operators => "Win rounds",
-        Challenge.ChallengeType.Organization => "Organization Active Duty",
-        Challenge.ChallengeType.WeaponTypeKills => "Eliminate with specific weapon type",
-        Challenge.ChallengeType.Blind => "Blind opponents",
-        Challenge.ChallengeType.Disorient => "Disorient opponents",
-        Challenge.ChallengeType.Universal => "[Universal]",
-        Challenge.ChallengeType.GadgetMelee => "Gadget or melee eliminations",
-        Challenge.ChallengeType.SuppressedKills => "Eliminations with a Suppressor equipped",
-        Challenge.ChallengeType.Headshots => "Headshot eliminations",
-        Challenge.ChallengeType.Rappel => "Rappel kills",
-        Challenge.ChallengeType.Damage => "Damage opponents",
-        Challenge.ChallengeType.BulletHits => "Hit opponents with bullets",
-        Challenge.ChallengeType.GadgetDestroy => "Destroy opponent gadgets or special abilities",
-        Challenge.ChallengeType.ObservationDestroy => "Destroy opponent observation tools",
-        Challenge.ChallengeType.QuickMatch => "Win Quick Match rounds",
-        Challenge.ChallengeType.Ranked => "Play Ranked matches",
-        _ => "how"
-    };
 }
