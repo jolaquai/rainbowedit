@@ -2707,7 +2707,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 36,
                 700,
                 22,
-                Weapon.Sight.One,
+                Weapon.Sight.OnePointFive,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
                 Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                 true,
