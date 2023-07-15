@@ -1,5 +1,4 @@
-﻿using RainbowEdit;
-using RainbowEdit.Extensions;
+﻿using RainbowEdit.Extensions;
 
 namespace RainbowEdit;
 
@@ -50,5 +49,27 @@ public static class Examples
         {
             Console.WriteLine($"{(specialty.Name + ":").PadRight(totalWidth)} {string.Join(", ", specialty.GetOperators())}");
         }
+    }
+
+    /// <summary>
+    /// Creates a sequence of <see cref="Operator"/> instances that have access to a given <see cref="Weapon.WeaponType"/>.
+    /// </summary>
+    /// <param name="type">The <see cref="Weapon.WeaponType"/> to filter by.</param>
+    /// <returns>The sequence of <see cref="Operator"/>s.</returns>
+    public static IEnumerable<Operator> OperatorsWithWeaponOfType(Weapon.WeaponType type)
+    {
+        return Siege.DefAtk.Where(op => op.Primaries.Concat(op.Secondaries).Any(wep => wep.Type == type));
+    }
+    
+    /// <summary>
+    /// Creates a sequence of <see cref="Weapon"/> instances that are of a given <see cref="Weapon.WeaponType"/>.
+    /// </summary>
+    /// <param name="type">The <see cref="Weapon.WeaponType"/> to filter by.</param>
+    /// <returns>The sequence of <see cref="Weapon"/>s.</returns>
+    public static IEnumerable<Weapon> WeaponsOfType(Weapon.WeaponType type)
+    {
+        return Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries)
+                                                                .Where(wep => wep.Type == type))
+                           .DistinctBy(wep => wep.Name);
     }
 }
