@@ -9,6 +9,8 @@ namespace RainbowEdit;
 /// Represents an <see cref="Operator"/> in Siege.
 /// </summary>
 public class Operator
+    : IEquatable<Operator>,
+      IComparable<Operator>
 {
     /// <summary>
     /// A series of constants containing the different movement speeds of an <see cref="Operator"/> in in-game meters per second.
@@ -322,23 +324,26 @@ public class Operator
         /// <remarks>
         /// This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
         /// <para/>This collection is generated at runtime when it is first accessed.</remarks>
-        public static Dictionary<string, decimal> Constants => (new Func<Dictionary<string, decimal>>(() =>
+        public static Dictionary<string, decimal> Constants
         {
-            if (_constants is null)
+            get
             {
-                var constInfos = typeof(OperatorSpeed).GetFields(BindingFlags.Static | BindingFlags.Public);
-                var speeds = new Dictionary<string, decimal>();
-                foreach (var constInfo in constInfos)
+                if (_constants is null)
                 {
-                    if (constInfo.GetValue(null) is decimal speed)
+                    var constInfos = typeof(OperatorSpeed).GetFields(BindingFlags.Static | BindingFlags.Public);
+                    var speeds = new Dictionary<string, decimal>();
+                    foreach (var constInfo in constInfos)
                     {
-                        speeds.Add(constInfo.Name, speed);
+                        if (constInfo.GetValue(null) is decimal speed)
+                        {
+                            speeds.Add(constInfo.Name, speed);
+                        }
                     }
+                    _constants = speeds;
                 }
-                _constants = speeds;
+                return _constants;
             }
-            return _constants;
-        }))();
+        }
     }
 
     /// <summary>
@@ -449,7 +454,7 @@ public class Operator
             1 => 100,
             2 => 110,
             3 => 125,
-            _ => throw new ArgumentException($"Invalid 'Speed' rating '{Speed}' resulted in unexpected Health rating '{Health}' for new Operator.", nameof(speed))
+            _ => throw new ArgumentOutOfRangeException($"Invalid 'Speed' rating '{Speed}' resulted in unexpected Health rating '{Health}' for new Operator.", nameof(speed))
         };
     }
 
@@ -463,11 +468,29 @@ public class Operator
     public override string ToString() => Nickname; // Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4);
 
     /// <summary>
-    /// Returns a copy of a collection of <see cref="Operator"/> objects sorted by the order they appear in-game.
+    /// Returns a copy of a collection of <see cref="Operator"/> objects sorted in the order they appear in-game.
+    /// </summary>
+    /// <param name="sequence">The collection to sort.</param>
+    /// <returns>The sorted collection as described.</returns>
+    public static IOrderedEnumerable<Operator> Order(IEnumerable<Operator> sequence)
+    {
+        ArgumentNullException.ThrowIfNull(sequence);
+        return sequence.Order(Comparer);
+    }
+
+    /// <summary>
+    /// Replaces the contents of a collection of <see cref="Operator"/> objects with the same objects sorted in the order they appear in-game.
     /// </summary>
     /// <param name="collection">The collection to sort.</param>
-    /// <returns>The sorted collection as described.</returns>
-    public static IEnumerable<Operator> Order(IEnumerable<Operator> collection) => collection.Order(Comparer);
+    public static void Order(ICollection<Operator> collection)
+    {
+        ArgumentNullException.ThrowIfNull(collection);
+        collection.Clear();
+        foreach (var op in collection.Order(Comparer))
+        {
+            collection.Add(op);
+        }
+    }
 
     /// <summary>
     /// An <see cref="IComparer{T}"/> implementation for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
@@ -484,6 +507,30 @@ public class Operator
 
     /// <inheritdoc/>
     public override bool Equals(object? obj)
+    {
+        // We're ignoring pretty much all this Type's members on purpose, Operator instances cannot be created from outside this assembly, so we can be sure that the only way to compare two Operators is to compare those other properties
+        // And if someone reflects themselves access to the constructor, they can just as well reflect themselves access to the properties' internals and they deserve whatever is coming to them
+        return obj is Operator @operator
+            && Nickname == @operator.Nickname
+            // && EqualityComparer<IEnumerable<Weapon>>.Default.Equals(Primaries, @operator.Primaries)
+            // && EqualityComparer<IEnumerable<Weapon>>.Default.Equals(Secondaries, @operator.Secondaries)
+            // && Gadgets == @operator.Gadgets
+            // && SpecialAbility == @operator.SpecialAbility
+            // && EqualityComparer<IEnumerable<Specialty>>.Default.Equals(Specialties, @operator.Specialties)
+            // && Organization == @operator.Organization
+            // && Birthplace == @operator.Birthplace
+            // && Height == @operator.Height
+            // && Weight == @operator.Weight
+            // && RealName == @operator.RealName
+            // && EqualityComparer<OperatorAge>.Default.Equals(Age, @operator.Age)
+            // && Speed == @operator.Speed
+            // && Health == @operator.Health
+            // && HP == @operator.HP
+            ;
+    }
+
+    /// <inheritdoc/>
+    public bool Equals(Operator? obj)
     {
         // We're ignoring pretty much all this Type's members on purpose, Operator instances cannot be created from outside this assembly, so we can be sure that the only way to compare two Operators is to compare those other properties
         // And if someone reflects themselves access to the constructor, they can just as well reflect themselves access to the properties' internals and they deserve whatever is coming to them
@@ -555,7 +602,7 @@ public class Operator
     /// <remarks><see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.</remarks>
     public static bool operator <(Operator left, Operator right)
     {
-        if (left is null || right is null || ReferenceEquals(left, right))
+        if (left is null || right is null || ReferenceEquals(left, right) || Equals(left, right))
         {
             return false;
         }
@@ -571,7 +618,16 @@ public class Operator
     /// <param name="right">The second <see cref="Operator"/> to consider for the comparison.</param>
     /// <returns>A <see cref="bool"/> value as described.</returns>
     /// <remarks><see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.</remarks>
-    public static bool operator >(Operator left, Operator right) => !(left < right);
+    public static bool operator >(Operator left, Operator right)
+    {
+        if (left is null || right is null || ReferenceEquals(left, right) || Equals(left, right))
+        {
+            return false;
+        }
+
+        var list = Siege.DefAtk.ToList();
+        return list.IndexOf(left) > list.IndexOf(right);
+    }
 
     /// <summary>
     /// Gets a value that indicates whether the left operand appears before or in the same position as the right operand in the in-game order of <see cref="Operator"/> objects.
@@ -582,20 +638,7 @@ public class Operator
     /// <remarks>
     /// <see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.
     /// </remarks>
-    public static bool operator <=(Operator left, Operator right)
-    {
-        if (left is null || right is null)
-        {
-            return false;
-        }
-        if (ReferenceEquals(left, right))
-        {
-            return true;
-        }
-
-        var list = Siege.DefAtk.ToList();
-        return list.IndexOf(left) <= list.IndexOf(right);
-    }
+    public static bool operator <=(Operator left, Operator right) => !(left > right);
 
     /// /// <summary>
     /// Gets a value that indicates whether the left operand appears in the same position as or after the right operand in the in-game order of <see cref="Operator"/> objects.
@@ -606,39 +649,27 @@ public class Operator
     /// <remarks>
     /// <see cref="Defenders"/> are always considered lesser than <see cref="Attackers"/> for this comparison.
     /// </remarks>
-    public static bool operator >=(Operator left, Operator right)
-    {
-        if (left is null || right is null)
-        {
-            return false;
-        }
-        if (ReferenceEquals(left, right))
-        {
-            return true;
-        }
+    public static bool operator >=(Operator left, Operator right) => !(left < right);
 
-        var list = Siege.DefAtk.ToList();
-        return list.IndexOf(left) >= list.IndexOf(right);
-    }
-    #endregion
+    /// <inheritdoc/>
+    public int CompareTo(Operator? other) => Comparer.Compare(this, other);
 
     /// <summary>
     /// Represents an <see cref="IComparer{T}"/> implementation that compares <see cref="Operator"/> objects according to their in-game order.
     /// </summary>
     private class OperatorComparer : IComparer<Operator>
     {
-        public int Compare(Operator? x, Operator? y)
+        public int Compare(Operator? left, Operator? right)
         {
-            if (x is null || y is null)
-            {
-                return 0;
-            }
-            if (ReferenceEquals(x, y))
+            ArgumentNullException.ThrowIfNull(left);
+            ArgumentNullException.ThrowIfNull(right);
+            if (ReferenceEquals(left, right))
             {
                 return 0;
             }
             var list = Siege.DefAtk.ToList();
-            return list.IndexOf(x) - list.IndexOf(y);
+            return list.IndexOf(left) - list.IndexOf(right);
         }
     }
+    #endregion
 }
