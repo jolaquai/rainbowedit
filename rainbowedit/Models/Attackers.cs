@@ -44,7 +44,8 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
             Osa,
             Sens,
             Grim,
-            Brava
+            Brava,
+            Ram
         };
 
         // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
@@ -3085,6 +3086,89 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
         "Nayara Cardoso",
         new(10, 1, 40),
         3
+    );
+    public static readonly Operator Ram = new Operator(
+        "Ram",
+        new List<Weapon>()
+        {
+            new(
+                Ram,
+                "R4-C",
+                Weapon.WeaponType.AssaultRifle,
+                Weapon.FiringMode.FullAuto,
+                39,
+                860,
+                30,
+                Weapon.Sight.Two,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                true,
+                1330,
+                2200
+            ),
+            new(
+                Ram,
+                "LMG-E",
+                Weapon.WeaponType.LightMachineGun,
+                Weapon.FiringMode.FullAuto,
+                41,
+                720,
+                150,
+                Weapon.Sight.Two,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                true,
+                6180,
+                5430
+            )
+        },
+        new List<Weapon>()
+        {
+            new(
+                Ram,
+                "MK1 9mm",
+                Weapon.WeaponType.Handgun,
+                Weapon.FiringMode.SingleShot,
+                48,
+                550,
+                13,
+                Weapon.Sight.None,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
+                Weapon.Grip.None,
+                true,
+                1110,
+                1320
+            ),
+            new(
+                Ram,
+                "ITA12S",
+                Weapon.WeaponType.ShotgunShot,
+                Weapon.FiringMode.SingleShot,
+                70,
+                85,
+                5,
+                Weapon.Sight.One,
+                Weapon.Barrel.None,
+                Weapon.Grip.None,
+                true,
+                3200,
+                4580
+            )
+        },
+        Weapon.Gadget.StunGrenade | Weapon.Gadget.SmokeGrenade,
+        "BU-GI Auto-Breacher",
+        new List<Specialty>()
+        {
+            Breach,
+            AntiGadget
+        },
+        "35th Commando Battalion",
+        "Busan, South Korea",
+        1.78M,
+        68M,
+        "Bo-Ram Choi",
+        new(25, 4, 37),
+        1
     );
     #endregion
 
