@@ -840,7 +840,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 "DP27",
                 Weapon.WeaponType.LightMachineGun,
                 Weapon.FiringMode.FullAuto,
-                49,
+                60,
                 550,
                 70,
                 Weapon.Sight.Other | Weapon.Sight.One,
@@ -2214,7 +2214,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
         80,
         "Collinn McKinley",
         new(18, 3, 48),
-        2
+        1
     );
 
     /// <summary>

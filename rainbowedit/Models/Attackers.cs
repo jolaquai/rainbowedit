@@ -1870,21 +1870,6 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
             ),
             new(
                 Finka,
-                "GONNE-6",
-                Weapon.WeaponType.HandCannon,
-                Weapon.FiringMode.SingleShot,
-                10,
-                0,
-                1,
-                Weapon.Sight.None,
-                Weapon.Barrel.None,
-                Weapon.Grip.None,
-                false,
-                0,
-                0
-            ),
-            new(
-                Finka,
                 "GSH-18",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1899,7 +1884,7 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 1470
             )
         },
-        Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade,
+        Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade | Weapon.Gadget.FragGrenade,
         "Adrenal Surge",
         new List<Specialty>()
         {
@@ -2506,9 +2491,24 @@ public sealed partial class Attackers : IEnumerable<Operator>, IEnumerator<Opera
                 true,
                 1110,
                 1320
+            ),
+            new(
+                Iana,
+                "GONNE-6",
+                Weapon.WeaponType.HandCannon,
+                Weapon.FiringMode.SingleShot,
+                10,
+                0,
+                1,
+                Weapon.Sight.None,
+                Weapon.Barrel.None,
+                Weapon.Grip.None,
+                false,
+                0,
+                0
             )
         },
-        Weapon.Gadget.FragGrenade | Weapon.Gadget.SmokeGrenade,
+        Weapon.Gadget.StunGrenade | Weapon.Gadget.SmokeGrenade,
         "Gemini Replicator",
         new List<Specialty>()
         {

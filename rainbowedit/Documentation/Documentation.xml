@@ -176,6 +176,20 @@
             Writes all specialties and the <see cref="T:RainbowEdit.Operator"/> that have them assigned to the <see cref="T:System.Console"/>.
             </summary>
         </member>
+        <member name="M:RainbowEdit.Examples.OperatorsWithWeaponOfType(RainbowEdit.Weapon.WeaponType)">
+            <summary>
+            Creates a sequence of <see cref="T:RainbowEdit.Operator"/> instances that have access to a given <see cref="T:RainbowEdit.Weapon.WeaponType"/>.
+            </summary>
+            <param name="type">The <see cref="T:RainbowEdit.Weapon.WeaponType"/> to filter by.</param>
+            <returns>The sequence of <see cref="T:RainbowEdit.Operator"/>s.</returns>
+        </member>
+        <member name="M:RainbowEdit.Examples.WeaponsOfType(RainbowEdit.Weapon.WeaponType)">
+            <summary>
+            Creates a sequence of <see cref="T:RainbowEdit.Weapon"/> instances that are of a given <see cref="T:RainbowEdit.Weapon.WeaponType"/>.
+            </summary>
+            <param name="type">The <see cref="T:RainbowEdit.Weapon.WeaponType"/> to filter by.</param>
+            <returns>The sequence of <see cref="T:RainbowEdit.Weapon"/>s.</returns>
+        </member>
         <member name="T:RainbowEdit.Exceptions.EnumStringificationException`1">
             <summary>
             The exception that is thrown when an enum value is attempted to be represented by a string that does not match it inside a <see cref="T:RainbowEdit.WeaponConfiguration"/>.
@@ -299,20 +313,6 @@
             <param name="value">The value to locate in the sequence.</param>
             <param name="comparer">The function that compares elements and ultimately determines whether <paramref name="source"/> contains <paramref name="value"/>.</param>
             <returns>A value indicating whether <paramref name="source"/> contains <paramref name="value"/>.</returns>
-        </member>
-        <member name="T:RainbowEdit.Extensions.IEnumerableKeyValuePairExtensions">
-            <summary>
-            Provides extensions for the <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:System.Collections.Generic.KeyValuePair`2"/> type and derived types.
-            </summary>
-        </member>
-        <member name="M:RainbowEdit.Extensions.IEnumerableKeyValuePairExtensions.ToDictionary``2(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}})">
-            <summary>
-            Reconstructs a <see cref="T:System.Collections.Generic.Dictionary`2"/> from the given collection of key-value <paramref name="pairs"/>.
-            </summary>
-            <typeparam name="TKey">The <see cref="T:System.Type"/> of the keys.</typeparam>
-            <typeparam name="TValue">The <see cref="T:System.Type"/> of the value.</typeparam>
-            <param name="pairs">The sequence of key-value pairs to reconstruct into a <see cref="T:System.Collections.Generic.Dictionary`2"/>.</param>
-            <returns>The <see cref="T:System.Collections.Generic.Dictionary`2"/> as described.</returns>
         </member>
         <member name="T:RainbowEdit.Attackers">
             <summary>
@@ -1304,10 +1304,16 @@
         </member>
         <member name="M:RainbowEdit.Operator.Order(System.Collections.Generic.IEnumerable{RainbowEdit.Operator})">
             <summary>
-            Returns a copy of a collection of <see cref="T:RainbowEdit.Operator"/> objects sorted by the order they appear in-game.
+            Returns a copy of a collection of <see cref="T:RainbowEdit.Operator"/> objects sorted in the order they appear in-game.
+            </summary>
+            <param name="sequence">The collection to sort.</param>
+            <returns>The sorted collection as described.</returns>
+        </member>
+        <member name="M:RainbowEdit.Operator.Order(System.Collections.Generic.ICollection{RainbowEdit.Operator})">
+            <summary>
+            Replaces the contents of a collection of <see cref="T:RainbowEdit.Operator"/> objects with the same objects sorted in the order they appear in-game.
             </summary>
             <param name="collection">The collection to sort.</param>
-            <returns>The sorted collection as described.</returns>
         </member>
         <member name="F:RainbowEdit.Operator.Comparer">
             <summary>
@@ -1322,6 +1328,9 @@
             <param name="op">The <see cref="T:RainbowEdit.Operator"/> to convert.</param>
         </member>
         <member name="M:RainbowEdit.Operator.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:RainbowEdit.Operator.Equals(RainbowEdit.Operator)">
             <inheritdoc/>
         </member>
         <member name="M:RainbowEdit.Operator.GetHashCode">
@@ -1382,6 +1391,9 @@
             <remarks>
             <see cref="T:RainbowEdit.Defenders"/> are always considered lesser than <see cref="T:RainbowEdit.Attackers"/> for this comparison.
             </remarks>
+        </member>
+        <member name="M:RainbowEdit.Operator.CompareTo(RainbowEdit.Operator)">
+            <inheritdoc/>
         </member>
         <member name="T:RainbowEdit.Operator.OperatorComparer">
             <summary>
