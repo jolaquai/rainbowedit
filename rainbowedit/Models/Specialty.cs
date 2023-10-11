@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 
-using RainbowEdit;
+using rainbowedit;
 
-namespace RainbowEdit.Models;
+namespace rainbowedit.Models;
 
 /// <summary>
 /// Represents a <see cref="Specialty"/>, introduced in Y8S1. 

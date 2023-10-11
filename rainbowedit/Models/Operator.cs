@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 
-using RainbowEdit.Models;
+using rainbowedit.Models;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 /// <summary>
 /// Represents an <see cref="Operator"/> in Siege.

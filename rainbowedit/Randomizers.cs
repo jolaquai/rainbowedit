@@ -1,6 +1,6 @@
-﻿using RainbowEdit.Extensions;
+﻿using rainbowedit.Extensions;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 /// <summary>
 /// A collection of methods that fetch random information or configurations from the model classes in <see cref="Siege"/>.

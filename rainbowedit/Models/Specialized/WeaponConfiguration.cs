@@ -1,7 +1,7 @@
-﻿using RainbowEdit.Exceptions;
-using RainbowEdit.Extensions;
+﻿using rainbowedit.Exceptions;
+using rainbowedit.Extensions;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 /// <summary>
 /// A single weapon configuration from all possible <see cref="Weapon.Barrels"/>, <see cref="Weapon.Grips"/>, <see cref="Weapon.Sights"/> and <see cref="Weapon.Underbarrel"/> combinations.
@@ -129,21 +129,15 @@ public class WeaponConfiguration
         {
             throw new EnumStringificationException<Weapon.Barrel>(barrel);
         }
-        else
-        {
-            Barrel = barrel;
-        }
-        
+        Barrel = barrel;
+
         if (!Enum.GetValues<Weapon.Grip>().Select(@enum => @enum.GetDescription()).Contains(grip)
             || !Enum.GetNames<Weapon.Grip>().Contains(grip))
         {
             throw new EnumStringificationException<Weapon.Grip>(grip);
         }
-        else
-        {
-            Grip = grip;
-        }
-        
+        Grip = grip;
+
         if (!Enum.GetValues<Weapon.Sight>()
                  .Select(@enum => @enum.GetDescription())
                  .Concat(Enum.GetNames<Weapon.Sight>())
@@ -154,10 +148,7 @@ public class WeaponConfiguration
         {
             throw new EnumStringificationException<Weapon.Sight>(sight);
         }
-        else
-        {
-            Sight = sight;
-        }
+        Sight = sight;
     }
 
     /// <inheritdoc/>

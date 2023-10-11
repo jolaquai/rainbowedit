@@ -1,4 +1,4 @@
-﻿namespace RainbowEdit.Exceptions;
+﻿namespace rainbowedit.Exceptions;
 
 /// <summary>
 /// The exception that is thrown when an enum value is attempted to be represented by a string that does not match it inside a <see cref="WeaponConfiguration"/>.

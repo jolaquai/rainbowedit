@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace RainbowEdit.Extensions;
+namespace rainbowedit.Extensions;
 
 /// <summary>
 /// Provides extensions for the <see cref="Enum"/> type and derived types.

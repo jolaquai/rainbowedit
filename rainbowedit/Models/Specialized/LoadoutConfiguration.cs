@@ -1,7 +1,7 @@
-﻿using RainbowEdit.Exceptions;
-using RainbowEdit.Extensions;
+﻿using rainbowedit.Exceptions;
+using rainbowedit.Extensions;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
 

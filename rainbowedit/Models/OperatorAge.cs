@@ -1,4 +1,4 @@
-﻿namespace RainbowEdit;
+﻿namespace rainbowedit;
 
 /// <summary>
 /// Represents the age of an <see cref="Operator"/>.

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 /// <summary>
 /// The <see cref="Attackers"/> in Siege.

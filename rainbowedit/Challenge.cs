@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Linq;
 
-using RainbowEdit.Extensions;
+using rainbowedit.Extensions;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 /// <summary>
 /// Represents a <i>Battle Pass</i> or Weekly <i>Ubisoft Connect</i> Challenge.

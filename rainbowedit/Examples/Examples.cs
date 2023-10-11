@@ -1,6 +1,6 @@
-﻿using RainbowEdit.Extensions;
+﻿using rainbowedit.Extensions;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 /// <summary>
 /// A number of examples you can use to get the hang of how the library works or what you could do with it.

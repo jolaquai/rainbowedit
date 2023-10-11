@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RainbowEdit.Extensions;
+namespace rainbowedit.Extensions;
 
 /// <summary>
 /// Provides extensions for the <see cref="IEnumerable{T}"/> type and derived types.

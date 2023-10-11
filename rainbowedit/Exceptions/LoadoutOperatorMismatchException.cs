@@ -1,14 +1,14 @@
-﻿using RainbowEdit;
+﻿using rainbowedit;
 
-namespace RainbowEdit.Exceptions;
+namespace rainbowedit.Exceptions;
 
 /// <summary>
-/// The exception that is thrown when any part of a loadout is attempted to be brought in connection with an <see cref="RainbowEdit.Operator"/> that it does not match with inside a <see cref="LoadoutConfiguration"/>.
+/// The exception that is thrown when any part of a loadout is attempted to be brought in connection with an <see cref="rainbowedit.Operator"/> that it does not match with inside a <see cref="LoadoutConfiguration"/>.
 /// </summary>
 internal class LoadoutOperatorMismatchException : Exception
 {
     /// <summary>
-    /// The <see cref="RainbowEdit.Operator"/> that was targeted.
+    /// The <see cref="rainbowedit.Operator"/> that was targeted.
     /// </summary>
     public Operator Operator { get; }
     /// <summary>
@@ -24,7 +24,7 @@ internal class LoadoutOperatorMismatchException : Exception
     /// Instantiates a new <see cref="LoadoutOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="value"/>.
     /// </summary>
     /// <param name="value">The value that was attempted to be brought in connection with <paramref name="operator"/>.</param>
-    /// <param name="operator">The <see cref="RainbowEdit.Operator"/> that was targeted despite the <paramref name="value"/> not belonging to them.</param>
+    /// <param name="operator">The <see cref="rainbowedit.Operator"/> that was targeted despite the <paramref name="value"/> not belonging to them.</param>
     public LoadoutOperatorMismatchException(Operator @operator, object value)
     {
         Operator = @operator;

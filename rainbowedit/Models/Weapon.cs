@@ -2,7 +2,7 @@
 
 using rainbowedit.Extensions;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 /// <summary>
 /// An <see cref="Operator"/>-specific <see cref="Weapon"/> in Siege.
@@ -93,6 +93,7 @@ public class Weapon
 
     /// <summary>
     /// Contains properties that return specific collections of <see cref="Weapon"/>s.
+    /// Note that, at runtime, these evaluate correctly and return an <see cref="IEnumerable{T}"/> of <see cref="Weapon"/>. The inherent issue with how the <see cref="Operator"/> and, consequently, their <see cref="Weapon"/>s are instantiated are that the order in which static fields and properties are initialized is undefined. At compile-time, all the <see cref="Operator"/> and <see cref="Weapon"/> fields/properties are <see langword="null"/>, which makes them unusable for creating pre-defined collections of them. As such, these properties are evaluated lazily through <see cref="IEnumerable{T}"/>.
     /// </summary>
     public static class Collections
     {
@@ -139,7 +140,7 @@ public class Weapon
     /// <summary>
     /// The multiplier that is applied to a weapon's base damage when equipping a <see cref="Barrel.Suppressor"/> on it. This is not defined anywhere and resulted from averaging the ratios from all weapons a <see cref="Barrel.Suppressor"/> can be equipped on (<c>suppressed_dmg / dmg</c>). Typically, using <c>0.84</c> yields a close enough approximate. The calculated value is then rounded towards the nearest integer.
     /// </summary>
-    [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to be redefined to `1M`. Do not reference this to perform calculations as they are no-ops.", true)]
+    [Obsolete($"The {nameof(Barrel.Suppressor)} rework in Y7S3 caused this to be redefined to exactly 1. Do not reference this to perform calculations as they are no-ops.", true)]
     public const decimal SuppressedDamageMultiplier = 1M; // 0.837697879481015
     /// <summary>
     /// <para>The multiplier that is applied to a weapon's base damage when equipping an <see cref="Barrel.ExtendedBarrel"/> on it. Defined as 15% on top of the <see cref="Weapon"/>'s base damage as part of the Y7S2 Designer's notes (https://store.steampowered.com/news/app/359550/view/5254045511872530857).</para>
@@ -147,6 +148,7 @@ public class Weapon
     /// </summary>
     public const decimal ExtendedBarrelDamageMultiplier = 1.12M;
 
+    #region public enum WeaponType
     /// <summary>
     /// Identifies the type of a <see cref="Weapon"/>.
     /// </summary>
@@ -207,7 +209,9 @@ public class Weapon
         [Description("Hand Cannon")]
         HandCannon = 512
     }
+    #endregion
 
+    #region public enum FiringMode
     /// <summary>
     /// Indicates which firing mode a <see cref="Weapon"/> uses.
     /// </summary>
@@ -229,7 +233,9 @@ public class Weapon
         [Description("Single Shot")]
         SingleShot = 2
     }
+    #endregion
 
+    #region public enum Sight
     /// <summary>
     /// <para>
     /// Indicates which sights can be or are forcefully equipped on a <see cref="Weapon"/>.
@@ -297,7 +303,9 @@ public class Weapon
         [Description("5x/12x")]
         FiveTwelve = 0b1_0000_0000
     }
+    #endregion
 
+    #region public enum Barrel
     /// <summary>
     /// Indicates which barrel attachments can be or are forcefully equipped on a <see cref="Weapon"/>.
     /// </summary>
@@ -332,7 +340,9 @@ public class Weapon
         [Description("Extended Barrel")]
         ExtendedBarrel = 16
     }
+    #endregion
 
+    #region public enum Grip
     /// <summary>
     /// Indicates which grips can be or are forcefully equipped on a <see cref="Weapon"/>.
     /// </summary>
@@ -354,7 +364,9 @@ public class Weapon
         [Description("Angled Grip")]
         AngledGrip = 2
     }
+    #endregion
 
+    #region public enum Gadget
     /// <summary>
     /// Indicates which gadgets an <see cref="Operator"/> may choose from.
     /// </summary>
@@ -433,6 +445,7 @@ public class Weapon
         [Description("Observation Blocker")]
         ObservationBlocker = 8192
     }
+    #endregion
 
     /// <summary>
     /// Instantiates a new <see cref="Weapon"/> object with the given data.
@@ -500,10 +513,10 @@ public class Weapon
     /// Creates a <see cref="WeaponConfiguration"/> from all possible <see cref="Barrels"/>, <see cref="Grips"/>, <see cref="Sights"/> and <see cref="Underbarrel"/> options attachment combinations.
     /// </summary>
     /// <returns>A <see cref="WeaponConfiguration"/> as described.</returns>
-    public WeaponConfiguration GetRandomConfiguration() => new(this);
+    public WeaponConfiguration GetRandomConfiguration() => new WeaponConfiguration(this);
 
     /// <summary>
-    /// Gets the raw value for the <see cref="Sights"/> property; that is, special flags such as <see cref="Sight.Invalid"/>, <see cref="Sight.None"/> or <see cref="Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="Sights"/> is considered undefined behavior.
+    /// Gets the raw value for the <see cref="Sights"/> property; that is, special flags such as <see cref="Sight.Invalid"/>, <see cref="Sight.None"/> or <see cref="Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="Sights"/> are considered undefined behavior.
     /// </summary>
     /// <returns>The internal unmodified value of the <see cref="Sights"/> property, which may contain special flags as described.</returns>
     public int GetRawSightValue() => (int)_sights;
@@ -517,12 +530,8 @@ public class Weapon
     /// <remarks>Do not rely on this to return a <see cref="Weapon"/> instance usable for <see cref="Sight"/> data as loadouts are specific to an <see cref="Operator"/>.</remarks>
     public static Weapon? Resolve(string name, double similarityThreshold = -1)
     {
-        ArgumentNullException.ThrowIfNull(name);
-        if (string.IsNullOrWhiteSpace(name))
-        {
-            throw new ArgumentException("Weapon name to search for cannot be empty or whitespace-only.", nameof(name));
-        }
-        if (similarityThreshold > 1)
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(name);
+        if (similarityThreshold is not -1 and (< 0 or > 1))
         {
             throw new ArgumentOutOfRangeException(nameof(similarityThreshold), similarityThreshold, "Explicitly overridden similarity threshold cannot be greater than 1.");
         }

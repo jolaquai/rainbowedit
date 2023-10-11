@@ -1,6 +1,6 @@
-﻿using RainbowEdit.Extensions;
+﻿using rainbowedit.Extensions;
 
-namespace RainbowEdit;
+namespace rainbowedit;
 
 #pragma warning disable CS8601 // Possible null reference assignment.
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
@@ -11,13 +11,13 @@ namespace RainbowEdit;
 public static class Siege
 {
     /// <summary>
-    /// Contains all <see cref="RainbowEdit.Attackers"/> from the game.
+    /// Contains all <see cref="rainbowedit.Attackers"/> from the game.
     /// </summary>
-    public static readonly List<Operator> Attackers = RainbowEdit.Attackers.Operators;
+    public static readonly List<Operator> Attackers = rainbowedit.Attackers.Operators;
     /// <summary>
-    /// Contains all <see cref="RainbowEdit.Defenders"/> from the game.
+    /// Contains all <see cref="rainbowedit.Defenders"/> from the game.
     /// </summary>
-    public static readonly List<Operator> Defenders = RainbowEdit.Defenders.Operators;
+    public static readonly List<Operator> Defenders = rainbowedit.Defenders.Operators;
 
     /// <summary>
     /// Contains all <see cref="Operator"/>s defined in <see cref="Attackers"/> and <see cref="Defenders"/>, concatenated in that order.
