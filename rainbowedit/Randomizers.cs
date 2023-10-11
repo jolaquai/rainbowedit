@@ -4,7 +4,7 @@ namespace rainbowedit;
 
 /// <summary>
 /// A collection of methods that fetch random information or configurations from the model classes in <see cref="Siege"/>.
-/// <para/>Where a collection of <see cref="Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="Operator"/>s are sorted according to their in-game appearance; also see <see cref="Operator.Comparer"/> and <see cref="Operator.Sort(IEnumerable{Operator})"/>.
+/// <para/>Where a collection of <see cref="Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="Operator"/>s are sorted according to their in-game appearance; also see <see cref="Operator.Comparer"/> and <see cref="Operator.Order(IEnumerable{Operator})"/>, <see cref="Operator.Sort(ICollection{Operator})"/> and <see cref="Operator.Sort(List{Operator})"/>.
 /// </summary>
 public static class Randomizers
 {
@@ -25,10 +25,10 @@ public static class Randomizers
         public static string WinRoundsWith()
         {
             var s = "Win {0} rounds with {1}, {2}, {3} or {4}.";
-            List<Operator> operators = new()
-            {
+            List<Operator> operators =
+            [
                 GetRandomAttacker()
-            };
+            ];
             operators.Add(GetRandomAttacker(op => !operators.Contains(op)));
             operators.Add(GetRandomDefender(op => !operators.Contains(op)));
             operators.Add(GetRandomDefender(op => !operators.Contains(op)));

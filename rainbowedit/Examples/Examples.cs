@@ -27,7 +27,7 @@ public static class Examples
     /// <returns>A <see cref="Dictionary{TKey, TValue}"/> where the keys are <see cref="Weapon.WeaponType"/> enum values and the values are a collection of <see cref="Operator"/> objects.</returns>
     public static Dictionary<Weapon.WeaponType, IEnumerable<Operator>> OperatorsByWeaponType()
     {
-        Dictionary<Weapon.WeaponType, IEnumerable<Operator>> ret = new();
+        Dictionary<Weapon.WeaponType, IEnumerable<Operator>> ret = [];
         foreach (var @enum in Enum.GetValues<Weapon.WeaponType>())
         {
             ret.Add(@enum, Siege.DefAtk.Where(op => op.Primaries.Concat(op.Secondaries).Any(wep => wep.Type == @enum)));

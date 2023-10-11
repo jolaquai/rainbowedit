@@ -24,7 +24,7 @@ public static class IEnumerableExtensions
     /// <returns>A random item from <paramref name="source"/>.</returns>
     public static T Random<T>(this IEnumerable<T> source)
     {
-        List<T> enumerated = new(source);
+        List<T> enumerated = [..source];
         return enumerated[new Random().Next(enumerated.Count)];
     }
 

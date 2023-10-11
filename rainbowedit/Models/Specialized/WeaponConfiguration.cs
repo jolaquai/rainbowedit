@@ -8,26 +8,32 @@ namespace rainbowedit;
 /// </summary>
 public class WeaponConfiguration
 {
+    /// <summary>
+    /// A <see cref="System.Random"/> instance that is used by <see cref="WeaponConfiguration"/> instances to generate random values.
+    /// If calling code already possesses a <see cref="System.Random"/> instance, it should set this property to that instance.
+    /// </summary>
+    public static Random Random { get; set; } = new Random();
+
     ///<summary>
     /// The <see cref="Weapon"/> this configuration applies to.
     ///</summary>
-    public Weapon Source { get; private set; }
+    public Weapon Source { get; }
     /// <summary>
     /// A string detailing the sight to use.
     /// </summary>
-    public string Sight { get; private set; }
+    public string Sight { get; }
     /// <summary>
     /// A string detailing the barrel attachment to use.
     /// </summary>
-    public string Barrel { get; private set; }
+    public string Barrel { get; }
     /// <summary>
     /// A string detailing the grip to use.
     /// </summary>
-    public string Grip { get; private set; }
+    public string Grip { get; }
     /// <summary>
     /// Whether to use an underbarrel laser.
     /// </summary>
-    public bool Underbarrel { get; private set; }
+    public bool Underbarrel { get; }
 
     /// <summary>
     /// Instantiates a new <see cref="WeaponConfiguration"/> object from just a <see cref="Weapon"/> to gather values from.
@@ -37,13 +43,13 @@ public class WeaponConfiguration
     {
         Source = source;
 
-        Random ran = new();
+        var ran = new Random();
 
         var possibleSights = Source.Sights.GetSetFlags();
         var possibleBarrels = Source.Barrels.GetSetFlags();
         var possibleGrips = Source.Grips.GetSetFlags();
 
-        if (possibleSights.Any())
+        if (possibleSights.Count != 0)
         {
             var sight = possibleSights.Random();
             Sight = sight switch
@@ -58,7 +64,7 @@ public class WeaponConfiguration
             Sight = Weapon.Sight.Invalid.GetDescription();
         }
 
-        if (possibleBarrels.Any())
+        if (possibleBarrels.Count != 0)
         {
             Barrel = possibleBarrels.Random().GetDescription();
         }
@@ -67,7 +73,7 @@ public class WeaponConfiguration
             Barrel = Weapon.Barrel.None.GetDescription();
         }
 
-        if (possibleGrips.Any())
+        if (possibleGrips.Count != 0)
         {
             Grip = possibleGrips.Random().GetDescription();
         }
@@ -114,9 +120,9 @@ public class WeaponConfiguration
     /// </para>
     /// </summary>
     /// <param name="source">The <see cref="Weapon"/> to assign to this <see cref="WeaponConfiguration"/> instance.</param>
-    /// <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="EnumExtensions.Stringify(Weapon.Sight)" /> OR one of the sub-sight names for <see cref="Weapon.Sight.One"/> or <see cref="Weapon.Sight.TwoPointFive"/>.</param>
-    /// <param name="barrel">A string detailing the barrel attachment to use. This must match one of the string representations returned by <see cref="EnumExtensions.Stringify(Weapon.Barrel)" />.</param>
-    /// <param name="grip">A string detailing the grip to use. This must match one of the string representations returned by <see cref="EnumExtensions.Stringify(Weapon.Grip)" />.</param>
+    /// <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="EnumExtensions.GetDescription(Enum)" /> OR one of the sub-sight names for <see cref="Weapon.Sight.One"/> or <see cref="Weapon.Sight.TwoPointFive"/>.</param>
+    /// <param name="barrel">A string detailing the barrel attachment to use. This must match one of the string representations returned by <see cref="EnumExtensions.GetDescription(Enum)" />.</param>
+    /// <param name="grip">A string detailing the grip to use. This must match one of the string representations returned by <see cref="EnumExtensions.GetDescription(Enum)" />.</param>
     /// <param name="underbarrel">Whether to use an underbarrel laser.</param>
     /// <exception cref="EnumStringificationException{TEnum}">Thrown if one of the strings passed does not match any possible string representations for that enum.</exception>
     public WeaponConfiguration(Weapon source, string sight, string barrel, string grip, bool underbarrel)

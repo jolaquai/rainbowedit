@@ -13,15 +13,15 @@ public class LoadoutConfiguration
     /// <summary>
     /// The <see cref="Operator"/> this configuration applies to.
     /// </summary>
-    public Operator Source { get; private set; }
+    public Operator Source { get; }
     /// <summary>
     /// A <see cref="WeaponConfiguration"/> detailing the primary <see cref="Weapon"/> and the attachments to use.
     /// </summary>
-    public WeaponConfiguration Primary { get; private set; }
+    public WeaponConfiguration Primary { get; }
     /// <summary>
     /// A <see cref="WeaponConfiguration"/> detailing the secondary <see cref="Weapon"/> and the attachments to use.
     /// </summary>
-    public WeaponConfiguration Secondary { get; private set; }
+    public WeaponConfiguration Secondary { get; }
     /// <summary>
     /// A <see cref="Weapon.Gadget"/> enum value identifying the <see cref="Weapon.Gadget"/> to use.
     /// </summary>
@@ -41,8 +41,8 @@ public class LoadoutConfiguration
             Gadget = possibleGadgets.Random();
         }
 
-        Primary = new(Source.Primaries.Random());
-        Secondary = new(Source.Secondaries.Random());
+        Primary = new WeaponConfiguration(Source.Primaries.Random());
+        Secondary = new WeaponConfiguration(Source.Secondaries.Random());
     }
 
     /// <summary>
@@ -75,8 +75,8 @@ public class LoadoutConfiguration
 
         Source = source;
         Gadget = gadget;
-        Primary = new(primary);
-        Secondary = new(secondary);
+        Primary = new WeaponConfiguration(primary);
+        Secondary = new WeaponConfiguration(secondary);
     }
 
     /// <summary>

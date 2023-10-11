@@ -12,7 +12,7 @@ public class Specialty
     /// <summary>
     /// The name of this <see cref="Specialty"/>.
     /// </summary>
-    public string Name { get; private set; }
+    public string Name { get; }
     /// <summary>
     /// The <see cref="Operator"/> reward for completing all three of this <see cref="Specialty"/>'s <see cref="Challenges"/>.
     /// </summary>
@@ -20,7 +20,7 @@ public class Specialty
     /// <summary>
     /// A list of <see cref="Challenge"/>s to be completed to unlock rewards and finally the <see cref="Reward"/> <see cref="Operator"/>.
     /// </summary>
-    public List<Challenge> Challenges { get; private set; }
+    public List<Challenge> Challenges { get; }
 
     /// <summary>
     /// Instantiates a new <see cref="Specialty"/> with a specified name, <see cref="Operator"/> reward, and list of <see cref="Challenges"/>.
@@ -49,12 +49,12 @@ public class Specialty
         /// <summary>
         /// The description of the <see cref="Challenge" />.
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get; }
 
         /// <summary>
         /// The reward for completing the <see cref="Challenge" />.
         /// </summary>
-        public string Reward { get; private set; }
+        public string Reward { get; }
 
         /// <summary>
         /// Instantiates a new <see cref="Challenge" /> with the specified name, description, and reward.

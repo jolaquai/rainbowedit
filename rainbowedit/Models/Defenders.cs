@@ -5,12 +5,12 @@ namespace rainbowedit;
 /// <summary>
 /// The <see cref="Defenders"/> in Siege.
 /// </summary>
-public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Operator>
+public sealed partial class Defenders : IEnumerable<Operator>
 {
     static Defenders()
     {
-        _operators = new()
-        {
+        _operators =
+        [
             Smoke,
             Mute,
             Castle,
@@ -44,7 +44,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
             Thorn,
             Azami,
             Solis
-        };
+        ];
 
         // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
         foreach (var op in _operators)
@@ -70,105 +70,98 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Trapper"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Trapper = new(
+    public static readonly Specialty Trapper = new Specialty(
         "Trapper",
         Ela,
-        new()
-        {
-            new("Deploy 5 trap devices.", "1-Day Renown Booster 1x"),
-            new("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
-            new("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
-        }
+        [
+            new Specialty.Challenge("Deploy 5 trap devices.", "1-Day Renown Booster 1x"),
+            new Specialty.Challenge("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
+            new Specialty.Challenge("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
+        ]
     );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Support"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Support = new(
+    public static readonly Specialty Support = new Specialty(
         "Support",
         Rook,
-        new()
-        {
-            new("Play 1 times as a Support Defender.", "1-Day Renown Booster 1x"),
-            new("Reach the Action Phase as a Defender 2 times without either bomb site being discovered.", "3-Days Renown Booster 1x"),
-            new("Heal 2 teammates.", "7-Days Renown Booster")
-        }
+        [
+            new Specialty.Challenge("Play 1 times as a Support Defender.", "1-Day Renown Booster 1x"),
+            new Specialty.Challenge("Reach the Action Phase as a Defender 2 times without either bomb site being discovered.", "3-Days Renown Booster 1x"),
+            new Specialty.Challenge("Heal 2 teammates.", "7-Days Renown Booster")
+        ]
     );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="AntiEntry"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty AntiEntry = new(
+    public static readonly Specialty AntiEntry = new Specialty(
         "Anti-Entry",
         Castle,
-        new()
-        {
-            new("Barricade 5 doors or windows.", "Renown 250"),
-            new("Reinforce 5 surfaces.", "Renown 500"),
-            new("Deploy 5 anti-entry devices that electrify utility or interfere wih electronics.", "Renown 750")
-        }
+        [
+            new Specialty.Challenge("Barricade 5 doors or windows.", "Renown 250"),
+            new Specialty.Challenge("Reinforce 5 surfaces.", "Renown 500"),
+            new Specialty.Challenge("Deploy 5 anti-entry devices that electrify utility or interfere wih electronics.", "Renown 750")
+        ]
     );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Intel"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty Intel = new(
+    public static readonly Specialty Intel = new Specialty(
         "Intel",
         Valkyrie,
-        new()
-        {
-            new("Scan and identify 7 Attackers as a Defender.", "Beginner Pack 1x"),
-            new("Deploy 5 Observation Tools as a Defender.", "Renown 500"),
-            new("Detect 1 opponents with Proximity Alarms that you deployed.", "7-Days Renown Booster 1x")
-        }
+        [
+            new Specialty.Challenge("Scan and identify 7 Attackers as a Defender.", "Beginner Pack 1x"),
+            new Specialty.Challenge("Deploy 5 Observation Tools as a Defender.", "Renown 500"),
+            new Specialty.Challenge("Detect 1 opponents with Proximity Alarms that you deployed.", "7-Days Renown Booster 1x")
+        ]
     );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty AntiGadget = new(
+    public static readonly Specialty AntiGadget = new Specialty(
         "Anti-Gadget",
         Jäger,
-        new()
-        {
-            new("Destroy 2 Attacker drones as a Defender.", "Renown 250"),
-            new("Destroy 5 Attacker devices as a Defender.", "1-Day Battle Point Booster 2x"),
-            new("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
-        }
+        [
+            new Specialty.Challenge("Destroy 2 Attacker drones as a Defender.", "Renown 250"),
+            new Specialty.Challenge("Destroy 5 Attacker devices as a Defender.", "1-Day Battle Point Booster 2x"),
+            new Specialty.Challenge("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
+        ]
     );
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="CrowdControl"/> <see cref="Specialty"/>.
     /// </summary>
-    public static readonly Specialty CrowdControl = new(
+    public static readonly Specialty CrowdControl = new Specialty(
         "Crowd Control",
         Tachanka,
-        new()
-        {
-            new("Deploy 5 Barbed Wire.", "1-Day Battle Point Booster 1x"),
-            new("Deactivate 2 electronic devices using the Bulletproof Camera EMP.", "3-Days Renown Booster 1x"),
-            new("Disorient 2 opponents.", "Renown 750")
-        }
+        [
+            new Specialty.Challenge("Deploy 5 Barbed Wire.", "1-Day Battle Point Booster 1x"),
+            new Specialty.Challenge("Deactivate 2 electronic devices using the Bulletproof Camera EMP.", "3-Days Renown Booster 1x"),
+            new Specialty.Challenge("Disorient 2 opponents.", "Renown 750")
+        ]
     );
 
     /// <summary>
     /// A collection of all <see cref="Specialty"/> instances that apply to <see cref="Defenders"/>.
     /// </summary>
-    public static readonly IEnumerable<Specialty> Specialties = new List<Specialty>()
-    {
+    public static readonly IEnumerable<Specialty> Specialties =
+    [
         Trapper,
         Support,
         AntiEntry,
         Intel,
         AntiGadget,
         CrowdControl
-    };
+    ];
     #endregion
 
     #region Defender instances
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Smoke"/>.
     /// </summary>
-    public static readonly Operator Smoke = new(
+    public static readonly Operator Smoke = new Operator(
         "Smoke",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Smoke,
                 "FMG-9",
                 Weapon.WeaponType.SubmachineGun,
@@ -183,7 +176,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1420,
                 2210
             ),
-            new(
+            new Weapon(
                 Smoke,
                 "M590A1",
                 Weapon.WeaponType.ShotgunShot,
@@ -198,10 +191,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4030,
                 4510
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Smoke,
                 "P226 MK 25",
                 Weapon.WeaponType.Handgun,
@@ -216,7 +208,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1220,
                 1430
             ),
-            new(
+            new Weapon(
                 Smoke,
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
@@ -231,31 +223,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1270,
                 2130
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ProximityAlarm,
         "Compound Z8 Grenades",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Trapper
-        },
+        ],
         "SAS",
         "London, England (King's Cross)",
         173,
         70,
         "James Porter",
-        new(14, 5, 36),
+        new OperatorAge(14, 5, 36),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Mute"/>.
     /// </summary>
-    public static readonly Operator Mute = new(
+    public static readonly Operator Mute = new Operator(
         "Mute",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Mute,
                 "MP5K",
                 Weapon.WeaponType.SubmachineGun,
@@ -270,7 +260,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1280,
                 2150
             ),
-            new(
+            new Weapon(
                 Mute,
                 "M590A1",
                 Weapon.WeaponType.ShotgunShot,
@@ -285,10 +275,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4030,
                 4510
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Mute,
                 "P226 MK 25",
                 Weapon.WeaponType.Handgun,
@@ -303,7 +292,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1220,
                 1430
             ),
-            new(
+            new Weapon(
                 Mute,
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
@@ -318,31 +307,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1270,
                 2130
             )
-        },
+        ],
         Weapon.Gadget.NitroCell | Weapon.Gadget.BulletproofCamera,
         "\"Moni\" GC90 Signal Disruptor",
-        new List<Specialty>()
-        {
+        [
             AntiGadget,
             CrowdControl
-        },
+        ],
         "SAS",
         "York, England",
         185,
         80,
         "Mark R. Chandar",
-        new(11, 10, 25),
+        new OperatorAge(11, 10, 25),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Castle"/>.
     /// </summary>
-    public static readonly Operator Castle = new(
+    public static readonly Operator Castle = new Operator(
         "Castle",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Castle,
                 "UMP45",
                 Weapon.WeaponType.SubmachineGun,
@@ -357,7 +344,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1480,
                 2190
             ),
-            new(
+            new Weapon(
                 Castle,
                 "M1014",
                 Weapon.WeaponType.ShotgunShot,
@@ -372,10 +359,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4450,
                 5330
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Castle,
                 "5.7 USG",
                 Weapon.WeaponType.Handgun,
@@ -390,7 +376,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1260,
                 1490
             ),
-            new(
+            new Weapon(
                 Castle,
                 "Super Shorty",
                 Weapon.WeaponType.ShotgunShot,
@@ -405,7 +391,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1300,
                 2450
             ),
-            new(
+            new Weapon(
                 Castle,
                 "M45 Meusoc",
                 Weapon.WeaponType.Handgun,
@@ -420,31 +406,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1100,
                 1300
             )
-        },
+        ],
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ProximityAlarm,
         "UTP1-Universal Tactical Panel",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Support
-        },
+        ],
         "FBI SWAT",
         "Sherman Oaks, California",
         185,
         86,
         "Miles Campbell",
-        new(20, 9, 36),
+        new OperatorAge(20, 9, 36),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Pulse"/>.
     /// </summary>
-    public static readonly Operator Pulse = new(
+    public static readonly Operator Pulse = new Operator(
         "Pulse",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Pulse,
                 "M1014",
                 Weapon.WeaponType.ShotgunShot,
@@ -459,7 +443,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4450,
                 5330
             ),
-            new(
+            new Weapon(
                 Pulse,
                 "UMP45",
                 Weapon.WeaponType.SubmachineGun,
@@ -474,10 +458,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1480,
                 2190
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Pulse,
                 "M45 Meusoc",
                 Weapon.WeaponType.Handgun,
@@ -492,7 +475,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1100,
                 1300
             ),
-            new(
+            new Weapon(
                 Pulse,
                 "5.7 USG",
                 Weapon.WeaponType.Handgun,
@@ -507,31 +490,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1260,
                 1490
             )
-        },
+        ],
         Weapon.Gadget.NitroCell | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker,
         "HB-5 Cardiac Sensor",
-        new List<Specialty>()
-        {
+        [
             Intel,
             Support
-        },
+        ],
         "FBI SWAT",
         "Goldsboro, North Carolina",
         188,
         85,
         "Jack Estrada",
-        new(11, 10, 32),
+        new OperatorAge(11, 10, 32),
         3
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Doc"/>.
     /// </summary>
-    public static readonly Operator Doc = new(
+    public static readonly Operator Doc = new Operator(
         "Doc",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Doc,
                 "SG-CQB",
                 Weapon.WeaponType.ShotgunShot,
@@ -546,7 +527,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4090,
                 4580
             ),
-            new(
+            new Weapon(
                 Doc,
                 "MP5",
                 Weapon.WeaponType.SubmachineGun,
@@ -561,7 +542,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1280,
                 2220
             ),
-            new(
+            new Weapon(
                 Doc,
                 "P90",
                 Weapon.WeaponType.SubmachineGun,
@@ -576,10 +557,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1560,
                 2190
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Doc,
                 "P9",
                 Weapon.WeaponType.Handgun,
@@ -594,7 +574,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1220,
                 1440
             ),
-            new(
+            new Weapon(
                 Doc,
                 "LFP586",
                 Weapon.WeaponType.Handgun,
@@ -609,7 +589,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2540,
                 2540
             ),
-            new(
+            new Weapon(
                 Doc,
                 "Bailiff 410",
                 Weapon.WeaponType.ShotgunShot,
@@ -624,30 +604,28 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3260,
                 3370
             )
-        },
+        ],
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
         "MPD-0 STIM PISTOL",
-        new List<Specialty>()
-        {
+        [
             Support
-        },
+        ],
         "GIGN",
         "Paris, France",
         177,
         74,
         "Gustave Kateb",
-        new(16, 9, 39),
+        new OperatorAge(16, 9, 39),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Rook"/>.
     /// </summary>
-    public static readonly Operator Rook = new(
+    public static readonly Operator Rook = new Operator(
         "Rook",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Rook,
                 "P90",
                 Weapon.WeaponType.SubmachineGun,
@@ -662,7 +640,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1560,
                 2190
             ),
-            new(
+            new Weapon(
                 Rook,
                 "MP5",
                 Weapon.WeaponType.SubmachineGun,
@@ -677,7 +655,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1280,
                 2220
             ),
-            new(
+            new Weapon(
                 Rook,
                 "SG-CQB",
                 Weapon.WeaponType.ShotgunShot,
@@ -692,10 +670,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4090,
                 4580
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Rook,
                 "LFP586",
                 Weapon.WeaponType.Handgun,
@@ -710,7 +687,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2540,
                 2540
             ),
-            new(
+            new Weapon(
                 Rook,
                 "P9",
                 Weapon.WeaponType.Handgun,
@@ -725,30 +702,28 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1220,
                 1440
             )
-        },
+        ],
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ObservationBlocker,
         "R1N \"Rhino\" Armor - Armor Pack",
-        new List<Specialty>()
-        {
+        [
             Support
-        },
+        ],
         "GIGN",
         "Tours, France",
         175,
         72,
         "Julien Nizan",
-        new(6, 1, 27),
+        new OperatorAge(6, 1, 27),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Kapkan"/>.
     /// </summary>
-    public static readonly Operator Kapkan = new(
+    public static readonly Operator Kapkan = new Operator(
         "Kapkan",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Kapkan,
                 "9x19VSN",
                 Weapon.WeaponType.SubmachineGun,
@@ -763,7 +738,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1430,
                 2220
             ),
-            new(
+            new Weapon(
                 Kapkan,
                 "SASG-12",
                 Weapon.WeaponType.ShotgunShot,
@@ -778,10 +753,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1520,
                 2180
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Kapkan,
                 "PMM",
                 Weapon.WeaponType.Handgun,
@@ -796,7 +770,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 0590,
                 1280
             ),
-            new(
+            new Weapon(
                 Kapkan,
                 "GSH-18",
                 Weapon.WeaponType.Handgun,
@@ -811,31 +785,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1260,
                 1470
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
         "EDD Mk II Tripwires",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Trapper
-        },
+        ],
         "SPETSNAZ",
         "Kovrov, Russia",
         180,
         80,
         "Maxim Basuda",
-        new(14, 5, 38),
+        new OperatorAge(14, 5, 38),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Tachanka"/>.
     /// </summary>
-    public static readonly Operator Tachanka = new(
+    public static readonly Operator Tachanka = new Operator(
         "Tachanka",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Tachanka,
                 "DP27",
                 Weapon.WeaponType.LightMachineGun,
@@ -850,7 +822,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2490,
                 3340
             ),
-            new(
+            new Weapon(
                 Tachanka,
                 "9x19VSN",
                 Weapon.WeaponType.SubmachineGun,
@@ -865,10 +837,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1430,
                 2220
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Tachanka,
                 "GSH-18",
                 Weapon.WeaponType.Handgun,
@@ -883,7 +854,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1260,
                 1470
             ),
-            new(
+            new Weapon(
                 Tachanka,
                 "PMM",
                 Weapon.WeaponType.Handgun,
@@ -898,7 +869,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 0590,
                 1280
             ),
-            new(
+            new Weapon(
                 Tachanka,
                 "Bearing 9",
                 Weapon.WeaponType.MachinePistol,
@@ -913,31 +884,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1300,
                 2210
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield | Weapon.Gadget.ProximityAlarm,
         "Shumikha Grenade Launcher",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             CrowdControl
-        },
+        ],
         "SPETSNAZ",
         "Saint Petersburg, Russia",
         183,
         86,
         "Alexsandr Sanaviev",
-        new(3, 11, 48),
+        new OperatorAge(3, 11, 48),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Jäger"/>.
     /// </summary>
-    public static readonly Operator Jäger = new(
+    public static readonly Operator Jäger = new Operator(
         "Jäger",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Jäger,
                 "M870",
                 Weapon.WeaponType.ShotgunShot,
@@ -952,7 +921,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3410,
                 4360
             ),
-            new(
+            new Weapon(
                 Jäger,
                 "416-C Carbine",
                 Weapon.WeaponType.AssaultRifle,
@@ -967,10 +936,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1340,
                 2180
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Jäger,
                 "P12",
                 Weapon.WeaponType.Handgun,
@@ -985,31 +953,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1230,
                 1560
             )
-        },
+        ],
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ObservationBlocker,
         "ADS-Mk IV \"Magpie\" Automated Defense System",
-        new List<Specialty>()
-        {
+        [
             AntiGadget,
             Support
-        },
+        ],
         "GSG 9",
         "Düsseldorf, Germany",
         180,
         64,
         "Marius Streicher",
-        new(9, 3, 39),
+        new OperatorAge(9, 3, 39),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Bandit"/>.
     /// </summary>
-    public static readonly Operator Bandit = new(
+    public static readonly Operator Bandit = new Operator(
         "Bandit",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Bandit,
                 "MP7",
                 Weapon.WeaponType.SubmachineGun,
@@ -1024,7 +990,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 2250
             ),
-            new(
+            new Weapon(
                 Bandit,
                 "M870",
                 Weapon.WeaponType.ShotgunShot,
@@ -1039,10 +1005,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3410,
                 4360
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Bandit,
                 "P12",
                 Weapon.WeaponType.Handgun,
@@ -1057,31 +1022,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1230,
                 1560
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
         "CED-1 Crude Electrical Device \"Shock Wires\"",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             AntiGadget
-        },
+        ],
         "GSG 9",
         "Berlin, Germany",
         180,
         68,
         "Dominic Brunsmeier",
-        new(13, 8, 42),
+        new OperatorAge(13, 8, 42),
         3
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Frost"/>.
     /// </summary>
-    public static readonly Operator Frost = new(
+    public static readonly Operator Frost = new Operator(
         "Frost",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Frost,
                 "Super 90",
                 Weapon.WeaponType.ShotgunShot,
@@ -1096,7 +1059,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4320,
                 5180
             ),
-            new(
+            new Weapon(
                 Frost,
                 "9mm C1",
                 Weapon.WeaponType.SubmachineGun,
@@ -1111,10 +1074,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1290,
                 2070
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Frost,
                 "MK1 9mm",
                 Weapon.WeaponType.Handgun,
@@ -1129,7 +1091,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1110,
                 1320
             ),
-            new(
+            new Weapon(
                 Frost,
                 "ITA12S",
                 Weapon.WeaponType.ShotgunShot,
@@ -1144,31 +1106,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3200,
                 4580
             )
-        },
+        ],
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.DeployableShield,
         "Sterling Mk2 LHT leg-hold trap (Welcome Mat)",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Trapper
-        },
+        ],
         "JTF2",
         "Vancouver, British Columbia",
         172,
         63,
         "Tina Lin Tsang",
-        new(4, 5, 32),
+        new OperatorAge(4, 5, 32),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Valkyrie"/>.
     /// </summary>
-    public static readonly Operator Valkyrie = new(
+    public static readonly Operator Valkyrie = new Operator(
         "Valkyrie",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Valkyrie,
                 "MPX",
                 Weapon.WeaponType.SubmachineGun,
@@ -1183,7 +1143,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1310,
                 2040
             ),
-            new(
+            new Weapon(
                 Valkyrie,
                 "SPAS-12",
                 Weapon.WeaponType.ShotgunShot,
@@ -1198,10 +1158,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3470,
                 4430
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Valkyrie,
                 "D-50",
                 Weapon.WeaponType.Handgun,
@@ -1216,31 +1175,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 1450
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
         "Gyro Cam Mk2 \"Black Eye\"",
-        new List<Specialty>()
-        {
+        [
             Intel,
             Support
-        },
+        ],
         "NAVY SEAL",
         "Oceanside, California",
         170,
         61,
         "Meghan J. Castellano",
-        new(21, 7, 31),
+        new OperatorAge(21, 7, 31),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Caveira"/>.
     /// </summary>
-    public static readonly Operator Caveira = new(
+    public static readonly Operator Caveira = new Operator(
         "Caveira",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Caveira,
                 "M12",
                 Weapon.WeaponType.SubmachineGun,
@@ -1255,7 +1212,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1290,
                 2170
             ),
-            new(
+            new Weapon(
                 Caveira,
                 "SPAS-15",
                 Weapon.WeaponType.ShotgunShot,
@@ -1270,10 +1227,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1180,
                 2020
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Caveira,
                 "Luison",
                 Weapon.WeaponType.Handgun,
@@ -1288,31 +1244,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 1590
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ObservationBlocker,
         "Silent Step",
-        new List<Specialty>()
-        {
+        [
             Intel,
             CrowdControl
-        },
+        ],
         "BOPE",
         "Rinópolis, Brazil",
         177,
         72,
         "Taina Pereira",
-        new(15, 10, 27),
+        new OperatorAge(15, 10, 27),
         3
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Echo"/>.
     /// </summary>
-    public static readonly Operator Echo = new(
+    public static readonly Operator Echo = new Operator(
         "Echo",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Echo,
                 "Supernova",
                 Weapon.WeaponType.ShotgunShot,
@@ -1327,7 +1281,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4080,
                 4560
             ),
-            new(
+            new Weapon(
                 Echo,
                 "MP5SD",
                 Weapon.WeaponType.SubmachineGun,
@@ -1342,10 +1296,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 2260
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Echo,
                 "P229",
                 Weapon.WeaponType.Handgun,
@@ -1360,7 +1313,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1220,
                 1450
             ),
-            new(
+            new Weapon(
                 Echo,
                 "Bearing 9",
                 Weapon.WeaponType.MachinePistol,
@@ -1375,31 +1328,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1300,
                 2210
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
         "Yokai Hovering Drone",
-        new List<Specialty>()
-        {
+        [
             Intel,
             CrowdControl
-        },
+        ],
         "SAT",
         "Suginami, Tokyo, Japan",
         180,
         72,
         "Masaru Enatsu",
-        new(31, 10, 36),
+        new OperatorAge(31, 10, 36),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Mira"/>.
     /// </summary>
-    public static readonly Operator Mira = new(
+    public static readonly Operator Mira = new Operator(
         "Mira",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Mira,
                 "Vector .45 ACP",
                 Weapon.WeaponType.SubmachineGun,
@@ -1414,7 +1365,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1330,
                 2170
             ),
-            new(
+            new Weapon(
                 Mira,
                 "ITA12L",
                 Weapon.WeaponType.ShotgunShot,
@@ -1429,10 +1380,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 5440,
                 7190
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Mira,
                 "USP40",
                 Weapon.WeaponType.Handgun,
@@ -1447,7 +1397,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1250,
                 1410
             ),
-            new(
+            new Weapon(
                 Mira,
                 "ITA12S",
                 Weapon.WeaponType.ShotgunShot,
@@ -1462,31 +1412,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3200,
                 4580
             )
-        },
+        ],
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.NitroCell,
         "Black Mirror",
-        new List<Specialty>()
-        {
+        [
             Intel,
             Support
-        },
+        ],
         "GEO",
         "Madrid, Spain",
         165,
         60,
         "Elena María Álvarez",
-        new(18, 11, 39),
+        new OperatorAge(18, 11, 39),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Lesion"/>.
     /// </summary>
-    public static readonly Operator Lesion = new(
+    public static readonly Operator Lesion = new Operator(
         "Lesion",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Lesion,
                 "SIX12 SD",
                 Weapon.WeaponType.ShotgunShot,
@@ -1501,7 +1449,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1400,
                 1400
             ),
-            new(
+            new Weapon(
                 Lesion,
                 "T-5 SMG",
                 Weapon.WeaponType.SubmachineGun,
@@ -1516,10 +1464,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1400,
                 2180
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Lesion,
                 "Q-929",
                 Weapon.WeaponType.Handgun,
@@ -1534,31 +1481,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1140,
                 1440
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
         "Gu Mines",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Trapper
-        },
+        ],
         "SDU",
         "Hong Kong, Junk Bay (Tseung Kwan O)",
         174,
         82,
         "Liu Tze Long",
-        new(2, 7, 44),
+        new OperatorAge(2, 7, 44),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Ela"/>.
     /// </summary>
-    public static readonly Operator Ela = new(
+    public static readonly Operator Ela = new Operator(
         "Ela",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Ela,
                 "Scorpion Evo 3 A1",
                 Weapon.WeaponType.SubmachineGun,
@@ -1573,7 +1518,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1250,
                 2220
             ),
-            new(
+            new Weapon(
                 Ela,
                 "FO-12",
                 Weapon.WeaponType.ShotgunShot,
@@ -1588,10 +1533,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1440,
                 2360
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Ela,
                 "RG15",
                 Weapon.WeaponType.Handgun,
@@ -1606,31 +1550,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1200,
                 1370
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker,
         "GRZMOT Mine",
-        new List<Specialty>()
-        {
+        [
             CrowdControl,
             Trapper
-        },
+        ],
         "GROM",
         "Wrocław, Poland",
         173,
         68,
         "Elżbieta Bosak",
-        new(8, 11, 31),
+        new OperatorAge(8, 11, 31),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Vigil"/>.
     /// </summary>
-    public static readonly Operator Vigil = new(
+    public static readonly Operator Vigil = new Operator(
         "Vigil",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Vigil,
                 "K1A",
                 Weapon.WeaponType.SubmachineGun,
@@ -1645,7 +1587,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1470,
                 2280
             ),
-            new(
+            new Weapon(
                 Vigil,
                 "BOSG.12.2",
                 Weapon.WeaponType.ShotgunSlug,
@@ -1660,10 +1602,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1160,
                 1430
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Vigil,
                 "C75 Auto",
                 Weapon.WeaponType.MachinePistol,
@@ -1678,7 +1619,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 2220
             ),
-            new(
+            new Weapon(
                 Vigil,
                 "SMG-12",
                 Weapon.WeaponType.MachinePistol,
@@ -1693,31 +1634,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 2300
             )
-        },
+        ],
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "ERC-7 Electronic Rendering Cloak",
-        new List<Specialty>()
-        {
+        [
             AntiGadget,
             CrowdControl
-        },
+        ],
         "707TH SMB",
         "[REDACTED]",
         173,
         73,
         "Chul Kyung Hwa",
-        new(17, 1, 34),
+        new OperatorAge(17, 1, 34),
         3
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Maestro"/>.
     /// </summary>
-    public static readonly Operator Maestro = new(
+    public static readonly Operator Maestro = new Operator(
         "Maestro",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Maestro,
                 "ALDA 5.56",
                 Weapon.WeaponType.LightMachineGun,
@@ -1732,7 +1671,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 5200,
                 4480
             ),
-            new(
+            new Weapon(
                 Maestro,
                 "ACS12",
                 Weapon.WeaponType.ShotgunSlug,
@@ -1747,10 +1686,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1590,
                 2440
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Maestro,
                 "Bailiff 410",
                 Weapon.WeaponType.ShotgunShot,
@@ -1765,7 +1703,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3260,
                 3370
             ),
-            new(
+            new Weapon(
                 Maestro,
                 "Keratos .357",
                 Weapon.WeaponType.Handgun,
@@ -1780,31 +1718,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3020,
                 3020
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ObservationBlocker,
         "Compact Laser Emplacement Mk V \"Evil Eye\"",
-        new List<Specialty>()
-        {
+        [
             AntiGadget,
             Intel
-        },
+        ],
         "GIS",
         "Rome, Italy",
         185,
         87,
         "Adriano Martello",
-        new(13, 4, 45),
+        new OperatorAge(13, 4, 45),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Alibi"/>.
     /// </summary>
-    public static readonly Operator Alibi = new(
+    public static readonly Operator Alibi = new Operator(
         "Alibi",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Alibi,
                 "Mx4 Storm",
                 Weapon.WeaponType.SubmachineGun,
@@ -1819,7 +1755,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1570,
                 2200
             ),
-            new(
+            new Weapon(
                 Alibi,
                 "ACS12",
                 Weapon.WeaponType.ShotgunSlug,
@@ -1834,10 +1770,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1590,
                 2440
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Alibi,
                 "Keratos .357",
                 Weapon.WeaponType.Handgun,
@@ -1852,7 +1787,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3020,
                 3020
             ),
-            new(
+            new Weapon(
                 Alibi,
                 "Bailiff 410",
                 Weapon.WeaponType.ShotgunShot,
@@ -1867,31 +1802,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3260,
                 3370
             )
-        },
+        ],
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ObservationBlocker,
         "Prisma",
-        new List<Specialty>()
-        {
+        [
             Intel,
             Trapper
-        },
+        ],
         "GIS",
         "Tripoli, Libya",
         171,
         63,
         "Aria de Luca",
-        new(15, 12, 37),
+        new OperatorAge(15, 12, 37),
         3
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Clash"/>.
     /// </summary>
-    public static readonly Operator Clash = new(
+    public static readonly Operator Clash = new Operator(
         "Clash",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Clash,
                 "CCE Shield",
                 Weapon.WeaponType.Shield,
@@ -1906,10 +1839,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 0,
                 0
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Clash,
                 "Super Shorty",
                 Weapon.WeaponType.ShotgunShot,
@@ -1924,7 +1856,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1300,
                 2450
             ),
-            new(
+            new Weapon(
                 Clash,
                 "SPSMG9",
                 Weapon.WeaponType.MachinePistol,
@@ -1939,7 +1871,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1350,
                 1590
             ),
-            new(
+            new Weapon(
                 Clash,
                 "P-10C",
                 Weapon.WeaponType.Handgun,
@@ -1954,31 +1886,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1240,
                 1380
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
         "Crowd Control Electric Shield",
-        new List<Specialty>()
-        {
+        [
             Intel,
             CrowdControl
-        },
+        ],
         "GSUTR",
         "London, England",
         179,
         73,
         "Morowa Evans",
-        new(7, 6, 35),
+        new OperatorAge(7, 6, 35),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Kaid"/>.
     /// </summary>
-    public static readonly Operator Kaid = new(
+    public static readonly Operator Kaid = new Operator(
         "Kaid",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Kaid,
                 "AUG A3",
                 Weapon.WeaponType.SubmachineGun,
@@ -1993,7 +1923,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1480,
                 2310
             ),
-            new(
+            new Weapon(
                 Kaid,
                 "TCSG12",
                 Weapon.WeaponType.ShotgunSlug,
@@ -2008,10 +1938,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1410,
                 2290
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Kaid,
                 ".44 Mag Semi-Auto",
                 Weapon.WeaponType.Handgun,
@@ -2026,7 +1955,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 0590,
                 1280
             ),
-            new(
+            new Weapon(
                 Kaid,
                 "LFP586",
                 Weapon.WeaponType.Handgun,
@@ -2041,31 +1970,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 2540,
                 2540
             )
-        },
+        ],
         Weapon.Gadget.NitroCell | Weapon.Gadget.BarbedWire | Weapon.Gadget.ObservationBlocker,
         "Rtila Electroclaw",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             AntiGadget
-        },
+        ],
         "GIGR",
         "Aroumd, Morocco",
         195,
         98,
         "Jalal El Fassi",
-        new(26, 6, 58),
+        new OperatorAge(26, 6, 58),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Mozzie"/>.
     /// </summary>
-    public static readonly Operator Mozzie = new(
+    public static readonly Operator Mozzie = new Operator(
         "Mozzie",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Mozzie,
                 "Commando 9",
                 Weapon.WeaponType.AssaultRifle,
@@ -2080,7 +2007,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1200,
                 1540
             ),
-            new(
+            new Weapon(
                 Mozzie,
                 "P10 RONI",
                 Weapon.WeaponType.SubmachineGun,
@@ -2095,10 +2022,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1120,
                 2200
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Mozzie,
                 "SDP 9mm",
                 Weapon.WeaponType.Handgun,
@@ -2113,31 +2039,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1050,
                 1450
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
         "Pest Launcher",
-        new List<Specialty>()
-        {
+        [
             AntiGadget,
             Intel
-        },
+        ],
         "SASR",
         "Portland, Australia",
         162,
         57,
         "Max Goose",
-        new(15, 2, 35),
+        new OperatorAge(15, 2, 35),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Warden"/>.
     /// </summary>
-    public static readonly Operator Warden = new(
+    public static readonly Operator Warden = new Operator(
         "Warden",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Warden,
                 "M590A1",
                 Weapon.WeaponType.ShotgunShot,
@@ -2152,7 +2076,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4030,
                 4510
             ),
-            new(
+            new Weapon(
                 Warden,
                 "MPX",
                 Weapon.WeaponType.SubmachineGun,
@@ -2167,10 +2091,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1310,
                 2040
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Warden,
                 "P-10C",
                 Weapon.WeaponType.Handgun,
@@ -2185,7 +2108,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1240,
                 1380
             ),
-            new(
+            new Weapon(
                 Warden,
                 "SMG-12",
                 Weapon.WeaponType.MachinePistol,
@@ -2200,31 +2123,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 2300
             )
-        },
+        ],
         Weapon.Gadget.DeployableShield | Weapon.Gadget.NitroCell | Weapon.Gadget.ObservationBlocker,
         "Glance Smart Glasses",
-        new List<Specialty>()
-        {
+        [
             AntiGadget,
             Intel
-        },
+        ],
         "SECRET SERVICE",
         "Louisville, Kentucky",
         183,
         80,
         "Collinn McKinley",
-        new(18, 3, 48),
+        new OperatorAge(18, 3, 48),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Goyo"/>.
     /// </summary>
-    public static readonly Operator Goyo = new(
+    public static readonly Operator Goyo = new Operator(
         "Goyo",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Goyo,
                 "Vector .45 ACP",
                 Weapon.WeaponType.SubmachineGun,
@@ -2239,7 +2160,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1330,
                 2170
             ),
-            new(
+            new Weapon(
                 Goyo,
                 "TCSG12",
                 Weapon.WeaponType.ShotgunSlug,
@@ -2254,10 +2175,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1410,
                 2290
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Goyo,
                 "P229",
                 Weapon.WeaponType.Handgun,
@@ -2272,31 +2192,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1220,
                 1450
             )
-        },
+        ],
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "Volcán Canister",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Trapper
-        },
+        ],
         "FUERZAS ESPECIALES",
         "Culiacán Rosales, Mexico",
         171,
         83,
         "César Ruiz Hernández",
-        new(20, 6, 31),
+        new OperatorAge(20, 6, 31),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Wamai"/>.
     /// </summary>
-    public static readonly Operator Wamai = new(
+    public static readonly Operator Wamai = new Operator(
         "Wamai",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Wamai,
                 "AUG A2",
                 Weapon.WeaponType.AssaultRifle,
@@ -2311,7 +2229,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1470,
                 2340
             ),
-            new(
+            new Weapon(
                 Wamai,
                 "MP5K",
                 Weapon.WeaponType.SubmachineGun,
@@ -2326,10 +2244,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1280,
                 2150
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Wamai,
                 "Keratos .357",
                 Weapon.WeaponType.Handgun,
@@ -2344,7 +2261,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3020,
                 3020
             ),
-            new(
+            new Weapon(
                 Wamai,
                 "P12",
                 Weapon.WeaponType.Handgun,
@@ -2359,31 +2276,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1230,
                 1560
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm,
         "Magnetic Neutralizing Electronic Targeting (Mag-NET) System",
-        new List<Specialty>()
-        {
+        [
             AntiGadget,
             Trapper
-        },
+        ],
         "NIGHTHAVEN",
         "Lamu, Kenya",
         187,
         83,
         "Ngũgĩ Muchoki Furaha",
-        new(1, 6, 28),
+        new OperatorAge(1, 6, 28),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Oryx"/>.
     /// </summary>
-    public static readonly Operator Oryx = new(
+    public static readonly Operator Oryx = new Operator(
         "Oryx",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Oryx,
                 "T-5 SMG",
                 Weapon.WeaponType.SubmachineGun,
@@ -2398,7 +2313,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1400,
                 2180
             ),
-            new(
+            new Weapon(
                 Oryx,
                 "SPAS-12",
                 Weapon.WeaponType.ShotgunShot,
@@ -2413,10 +2328,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3470,
                 4430
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Oryx,
                 "Bailiff 410",
                 Weapon.WeaponType.ShotgunShot,
@@ -2431,7 +2345,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3260,
                 3370
             ),
-            new(
+            new Weapon(
                 Oryx,
                 "USP40",
                 Weapon.WeaponType.Handgun,
@@ -2446,30 +2360,28 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1250,
                 1410
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ProximityAlarm,
         "Remah Dash",
-        new List<Specialty>()
-        {
+        [
             Support
-        },
+        ],
         "[UNAFFILIATED]",
         "Azraq, Jordan",
         195,
         130,
         "Saif Al Hadid",
-        new(3, 7, 45),
+        new OperatorAge(3, 7, 45),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Melusi"/>.
     /// </summary>
-    public static readonly Operator Melusi = new(
+    public static readonly Operator Melusi = new Operator(
         "Melusi",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Melusi,
                 "MP5",
                 Weapon.WeaponType.SubmachineGun,
@@ -2484,7 +2396,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1280,
                 2220
             ),
-            new(
+            new Weapon(
                 Melusi,
                 "Super 90",
                 Weapon.WeaponType.ShotgunShot,
@@ -2499,10 +2411,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 4320,
                 5180
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Melusi,
                 "RG15",
                 Weapon.WeaponType.Handgun,
@@ -2517,31 +2428,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1200,
                 1370
             )
-        },
+        ],
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "Banshee Sonic Defense",
-        new List<Specialty>()
-        {
+        [
             Intel,
             CrowdControl
-        },
+        ],
         "INKABA TASK FORCE",
         "Louwsburg, South Africa",
         172,
         68,
         "Thandiwe Ndlovu",
-        new(16, 6, 32),
+        new OperatorAge(16, 6, 32),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Aruni"/>.
     /// </summary>
-    public static readonly Operator Aruni = new(
+    public static readonly Operator Aruni = new Operator(
         "Aruni",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Aruni,
                 "P10 RONI",
                 Weapon.WeaponType.SubmachineGun,
@@ -2556,7 +2465,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1120,
                 2200
             ),
-            new(
+            new Weapon(
                 Aruni,
                 "Mk 14 EBR",
                 Weapon.WeaponType.MarksmanRifle,
@@ -2571,10 +2480,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1490,
                 2440
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Aruni,
                 "PRB92",
                 Weapon.WeaponType.Handgun,
@@ -2589,31 +2497,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 1590
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera,
         "Surya Gate",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             AntiGadget
-        },
+        ],
         "NIGHTHAVEN",
         "Ta Phraya District, Thailand",
         160,
         58,
         "Apha Tawanroong",
-        new(9, 8, 42),
+        new OperatorAge(9, 8, 42),
         1
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Thunderbird"/>.
     /// </summary>
-    public static readonly Operator Thunderbird = new(
+    public static readonly Operator Thunderbird = new Operator(
         "Thunderbird",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Thunderbird,
                 "Spear .308",
                 Weapon.WeaponType.AssaultRifle,
@@ -2628,7 +2534,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1510,
                 2460
             ),
-            new(
+            new Weapon(
                 Thunderbird,
                 "SPAS-15",
                 Weapon.WeaponType.ShotgunShot,
@@ -2643,10 +2549,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1180,
                 2020
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Thunderbird,
                 "Bearing 9",
                 Weapon.WeaponType.MachinePistol,
@@ -2661,7 +2566,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1300,
                 2210
             ),
-            new(
+            new Weapon(
                 Thunderbird,
                 "Q-929",
                 Weapon.WeaponType.Handgun,
@@ -2676,30 +2581,28 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1140,
                 1440
             )
-        },
+        ],
         Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera,
         "Kóna Healing Station",
-        new List<Specialty>()
-        {
+        [
             Support
-        },
+        ],
         "STAR-NET AVIATION",
         "Nakoda Territories",
         172,
         70,
         "Mina Sky",
-        new(1, 4, 36),
+        new OperatorAge(1, 4, 36),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Thorn"/>.
     /// </summary>
-    public static readonly Operator Thorn = new(
+    public static readonly Operator Thorn = new Operator(
         "Thorn",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Thorn,
                 "UZK50GI",
                 Weapon.WeaponType.SubmachineGun,
@@ -2714,7 +2617,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1370,
                 2300
             ),
-            new(
+            new Weapon(
                 Thorn,
                 "M870",
                 Weapon.WeaponType.ShotgunShot,
@@ -2729,10 +2632,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3410,
                 4360
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Thorn,
                 "1911 TACOPS",
                 Weapon.WeaponType.Handgun,
@@ -2747,7 +2649,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1240,
                 1440
             ),
-            new(
+            new Weapon(
                 Thorn,
                 "C75 Auto",
                 Weapon.WeaponType.MachinePistol,
@@ -2762,31 +2664,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 2220
             )
-        },
+        ],
         Weapon.Gadget.DeployableShield | Weapon.Gadget.BarbedWire,
         "Razorbloom Shell",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Trapper
-        },
+        ],
         "EMERGENCY RESPONSE UNIT",
         "County Kildare, Ireland",
         188,
         78,
         "Brianna Skehan",
-        new(18, 6, 28),
+        new OperatorAge(18, 6, 28),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Azami"/>.
     /// </summary>
-    public static readonly Operator Azami = new(
+    public static readonly Operator Azami = new Operator(
         "Azami",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Azami,
                 "9x19VSN",
                 Weapon.WeaponType.SubmachineGun,
@@ -2801,7 +2701,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1430,
                 2220
             ),
-            new(
+            new Weapon(
                 Azami,
                 "ACS12",
                 Weapon.WeaponType.ShotgunSlug,
@@ -2816,10 +2716,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1590,
                 2440
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Azami,
                 "D-50",
                 Weapon.WeaponType.Handgun,
@@ -2834,31 +2733,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 1450
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BarbedWire,
         "Kiba Barrier",
-        new List<Specialty>()
-        {
+        [
             AntiEntry,
             Support
-        },
+        ],
         "UNAFFILIATED",
         "Kyoto, Japan",
         164,
         56.7M,
         "Kana Fujiwara",
-        new(6, 9, 28),
+        new OperatorAge(6, 9, 28),
         2
     );
 
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Solis"/>.
     /// </summary>
-    public static readonly Operator Solis = new(
+    public static readonly Operator Solis = new Operator(
         "Solis",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Solis,
                 "P90",
                 Weapon.WeaponType.SubmachineGun,
@@ -2873,7 +2770,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1560,
                 2190
             ),
-            new(
+            new Weapon(
                 Solis,
                 "ITA12L",
                 Weapon.WeaponType.ShotgunShot,
@@ -2888,10 +2785,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 5440,
                 7190
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Solis,
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
@@ -2906,31 +2802,29 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1270,
                 2130
             )
-        },
+        ],
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
         "SPEC-IO Electro-Sensor",
-        new List<Specialty>()
-        {
+        [
             Intel,
             Support
-        },
+        ],
         "AFEAU",
         "Zipaquirá, Colombia",
         166,
         65M,
         "Ana Valentina Díaz",
-        new(18, 9, 37),
+        new OperatorAge(18, 9, 37),
         2
     );
-    
+
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Fenrir"/>.
     /// </summary>
-    public static readonly Operator Fenrir = new(
+    public static readonly Operator Fenrir = new Operator(
         "Fenrir",
-        new List<Weapon>()
-        {
-            new(
+        [
+            new Weapon(
                 Fenrir,
                 "MP7",
                 Weapon.WeaponType.SubmachineGun,
@@ -2945,7 +2839,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1320,
                 2250
             ),
-            new(
+            new Weapon(
                 Fenrir,
                 "SASG-12",
                 Weapon.WeaponType.ShotgunShot,
@@ -2960,10 +2854,9 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 1520,
                 2180
             )
-        },
-        new List<Weapon>()
-        {
-            new(
+        ],
+        [
+            new Weapon(
                 Fenrir,
                 "Bailiff 410",
                 Weapon.WeaponType.ShotgunShot,
@@ -2978,20 +2871,19 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
                 3260,
                 3370
             )
-        },
+        ],
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
         "F-NATT Dread Mine",
-        new List<Specialty>()
-        {
+        [
             CrowdControl,
             Trapper
-        },
+        ],
         "[UNAFFILIATED]",
         "Zipaquirá, Colombia",
         176,
         74M,
         "Emil Svensson",
-        new(3, 12, 34),
+        new OperatorAge(3, 12, 34),
         2
     );
     #endregion
@@ -3010,7 +2902,7 @@ public sealed partial class Defenders : IEnumerable<Operator>, IEnumerator<Opera
     /// <returns>A</returns>
     public static Dictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(int trapper, int support, int antientry, int intel, int antigadget, int crowdcontrol)
     {
-        Dictionary<Specialty, string> challenges = new();
+        Dictionary<Specialty, string> challenges = [];
 
         if (trapper is >= 1 and <= 3)
         {

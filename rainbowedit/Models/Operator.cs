@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 
 using rainbowedit.Models;
@@ -349,63 +350,63 @@ public class Operator
     /// <summary>
     /// The nickname of the <see cref="Operator"/>.
     /// </summary>
-    public string Nickname { get; private set; }
+    public string Nickname { get; }
     /// <summary>
     /// A collection of <see cref="Weapon"/> objects, containing information about the primary weapons the <see cref="Operator"/> may use.
     /// </summary>
-    public IEnumerable<Weapon> Primaries { get; private set; }
+    public IEnumerable<Weapon> Primaries { get; }
     /// <summary>
     /// A collection of <see cref="Weapon"/> objects, containing information about the secondary weapons the <see cref="Operator"/> may use.
     /// </summary>
-    public IEnumerable<Weapon> Secondaries { get; private set; }
+    public IEnumerable<Weapon> Secondaries { get; }
     /// <summary>
     /// A combination of <see cref="Weapon.Gadget"/> values that specifies which gadgets the <see cref="Operator"/> may choose from.
     /// </summary>
-    public Weapon.Gadget Gadgets { get; private set; }
+    public Weapon.Gadget Gadgets { get; }
     /// <summary>
     /// The name of the <see cref="Operator"/>'s special ability.
     /// </summary>
-    public string SpecialAbility { get; private set; }
+    public string SpecialAbility { get; }
     /// <summary>
     /// A collection of <see cref="Specialty"/> objects representing the <see cref="Operator"/>'s assigned specialties.
     /// </summary>
-    public IEnumerable<Specialty> Specialties { get; private set; }
+    public IEnumerable<Specialty> Specialties { get; }
     /// <summary>
     /// The name of the organization the <see cref="Operator"/> belongs to.
     /// </summary>
-    public string Organization { get; private set; }
+    public string Organization { get; }
     /// <summary>
     /// The <see cref="Operator"/>'s birthplace.
     /// </summary>
-    public string Birthplace { get; private set; }
+    public string Birthplace { get; }
     /// <summary>
     /// The <see cref="Operator"/>'s height in whole and fractional centimeters.
     /// </summary>
-    public decimal Height { get; private set; }
+    public decimal Height { get; }
     /// <summary>
     /// The <see cref="Operator"/>'s weight in whole and fractional kilograms.
     /// </summary>
-    public decimal Weight { get; private set; }
+    public decimal Weight { get; }
     /// <summary>
     /// The in-game real name of the <see cref="Operator"/>.
     /// </summary>
-    public string RealName { get; private set; }
+    public string RealName { get; }
     /// <summary>
     /// An <see cref="OperatorAge"/> instance specifying the <see cref="Operator"/>'s day and month of birth and their age.
     /// </summary>
-    public OperatorAge Age { get; private set; }
+    public OperatorAge Age { get; }
     /// <summary>
     /// The <see cref="Operator"/>'s speed rating.
     /// </summary>
-    public int Speed { get; private set; }
+    public int Speed { get; }
     /// <summary>
     /// The <see cref="Operator"/>'s health rating.
     /// </summary>
-    public int Health { get; private set; }
+    public int Health { get; }
     /// <summary>
     /// The <see cref="Operator"/>'s base health / HP value.
     /// </summary>
-    public int HP { get; private set; }
+    public int HP { get; }
 
     /// <summary>
     /// Indicates whether this <see cref="Operator"/> is one of the <see cref="Defenders"/>.
@@ -462,7 +463,7 @@ public class Operator
     /// Creates a <see cref="LoadoutConfiguration"/> from all possible <see cref="Primaries"/>, <see cref="Secondaries"/> (and those two's respective <see cref="Weapon.Barrels"/>, <see cref="Weapon.Grips"/>, <see cref="Weapon.Sights"/> and <see cref="Weapon.Underbarrel"/> options) and <see cref="Gadgets"/> loadout combinations.
     /// </summary>
     /// <returns>A <see cref="LoadoutConfiguration"/> as described.</returns>
-    public LoadoutConfiguration GetRandomLoadout() => new(this);
+    public LoadoutConfiguration GetRandomLoadout() => new LoadoutConfiguration(this);
 
     /// <inheritdoc/>
     public override string ToString() => Nickname; // Nickname.PadRight(Siege.LongestOperatorNickname.Length + 4);
@@ -477,19 +478,38 @@ public class Operator
         ArgumentNullException.ThrowIfNull(sequence);
         return sequence.Order(Comparer);
     }
-
     /// <summary>
-    /// Replaces the contents of a collection of <see cref="Operator"/> objects with the same objects sorted in the order they appear in-game.
+    /// Sorts the contents of an <see cref="ICollection{T}"/> of <see cref="Operator"/> objects in the order they appear in-game.
     /// </summary>
-    /// <param name="collection">The collection to sort.</param>
-    public static void Order(ICollection<Operator> collection)
+    /// <param name="sequence">The <see cref="ICollection{T}"/> to sort.</param>
+    /// <exception cref="ArgumentException">Thrown if this method is called on an instance of a fixed-size <see cref="ICollection{T}"/>-implementing Type such as <see cref="Array"/>.</exception>
+    public static void Sort(ICollection<Operator> sequence)
     {
-        ArgumentNullException.ThrowIfNull(collection);
-        collection.Clear();
-        foreach (var op in collection.Order(Comparer))
+        if (sequence is Array)
         {
-            collection.Add(op);
+            throw new ArgumentException($"Fixed-sized collections like {nameof(Array)} cannot be sorted using the non-specific `Sort(ICollection<Operator>)` overload.");
         }
+        var ordered = Order(sequence).ToList();
+        sequence.Clear();
+        ordered.ForEach(sequence.Add);
+    }
+    /// <summary>
+    /// Sorts the contents of a <see cref="List{T}"/> of <see cref="Operator"/> objects in the order they appear in-game.
+    /// </summary>
+    /// <param name="list">The <see cref="List{T}"/> to sort.</param>
+    public static void Sort(List<Operator> list)
+    {
+        Console.WriteLine($"Overload resolution chose: {new StackFrame().GetMethod()}");
+        list.Sort(Comparer);
+    }
+    /// <summary>
+    /// Sorts the contents of an <see cref="Array"/> of <see cref="Operator"/> objects in the order they appear in-game.
+    /// </summary>
+    /// <param name="array">The <see cref="Array"/> to sort.</param>
+    public static void Sort(Operator[] array)
+    {
+        Console.WriteLine($"Overload resolution chose: {new StackFrame().GetMethod()}");
+        Array.Sort(array, Comparer);
     }
 
     /// <summary>

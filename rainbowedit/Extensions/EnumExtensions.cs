@@ -18,7 +18,7 @@ public static partial class EnumExtensions
     public static List<T> GetSetFlags<T>(this T source)
         where T : Enum
     {
-        List<T> set = new();
+        List<T> set = [];
         foreach (T value in Enum.GetValues(typeof(T)))
         {
             if (source.HasFlag(value))

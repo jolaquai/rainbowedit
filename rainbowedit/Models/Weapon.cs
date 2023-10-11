@@ -16,30 +16,30 @@ public class Weapon
     /// <summary>
     /// The in-game name of the <see cref="Weapon"/>.
     /// </summary>
-    public string Name { get; private set; }
+    public string Name { get; }
     /// <summary>
     /// The in-game <see cref="WeaponType"/> of the <see cref="Weapon"/>.
     /// </summary>
-    public WeaponType Type { get; private set; }
+    public WeaponType Type { get; }
     /// <summary>
     /// The in-game <see cref="FiringMode"/> the <see cref="Weapon"/> uses.
     /// </summary>
-    public FiringMode FireMode { get; private set; }
+    public FiringMode FireMode { get; }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when <i>not</i> equipped with a <see cref="Barrel.ExtendedBarrel"/>.
     /// </summary>
-    public int Damage { get; private set; }
+    public int Damage { get; }
     /// <summary>
     /// The rounds per minute this <see cref="Weapon"/> is capable of firing in-game.
     /// </summary>
-    public int RoundsPerMinute { get; private set; }
+    public int RoundsPerMinute { get; }
     /// <summary>
     /// The in-game magazine capacity of this <see cref="Weapon"/>.
     /// </summary>
     /// <remarks>
     /// This does not include the single round chambered after cocking the <see cref="Weapon"/>.
     /// </remarks>
-    public int Capacity { get; private set; }
+    public int Capacity { get; }
     private Sight _sights;
     /// <summary>
     /// A combination of <see cref="Sight"/> values that specifies which sights may be equipped on this <see cref="Weapon"/>.
@@ -56,15 +56,15 @@ public class Weapon
     /// <summary>
     /// A combination of <see cref="Barrel"/> values that specifies which barrel extensions may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Barrel Barrels { get; private set; }
+    public Barrel Barrels { get; }
     /// <summary>
     /// A combination of <see cref="Grip"/> values that specifies which grips may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Grip Grips { get; private set; }
+    public Grip Grips { get; }
     /// <summary>
     /// Whether an underbarrel laser may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public bool Underbarrel { get; private set; }
+    public bool Underbarrel { get; }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.Suppressor"/>.
     /// </summary>
@@ -73,23 +73,23 @@ public class Weapon
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.ExtendedBarrel"/>.
     /// </summary>
-    public int ExtendedBarrelDamage { get; private set; }
+    public int ExtendedBarrelDamage { get; }
     /// <summary>
     /// The theoretical damage per second output of this <see cref="Weapon"/> during sustained fire.
     /// </summary>
-    public int DamagePerSecond { get; private set; }
+    public int DamagePerSecond { get; }
     /// <summary>
     /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="Weapon"/> (a reload when there is a round chambered). For weapons that cannot be in this state (such as revolvers), this is generally equal to <see cref="ReloadEmpty"/>.
     /// </summary>
-    public TimeSpan ReloadTactical { get; private set; }
+    public TimeSpan ReloadTactical { get; }
     /// <summary>
     /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform an empty reload with this <see cref="Weapon"/> (a reload when there is no round chambered).
     /// </summary>
-    public TimeSpan ReloadEmpty { get; private set; }
+    public TimeSpan ReloadEmpty { get; }
     /// <summary>
     /// Whether this <see cref="Weapon"/> is a secondary weapon.
     /// </summary>
-    public bool IsSecondary { get; private set; } = false;
+    public bool IsSecondary { get; } = false;
 
     /// <summary>
     /// Contains properties that return specific collections of <see cref="Weapon"/>s.
@@ -219,16 +219,16 @@ public class Weapon
     public enum FiringMode
     {
         /// <summary>
-        /// 
+        /// Generally unused. Indicates that a <see cref="Weapon"/> has no defined firing mode.
         /// </summary>
         None = 0,
         /// <summary>
-        /// 
+        /// Indicates that a <see cref="Weapon"/> is fully automatic.
         /// </summary>
         [Description("Full Auto")]
         FullAuto = 1,
         /// <summary>
-        /// 
+        /// Indicates that a <see cref="Weapon"/> is semi-automatic (requiring another trigger pull / click for each shot).
         /// </summary>
         [Description("Single Shot")]
         SingleShot = 2
@@ -237,21 +237,11 @@ public class Weapon
 
     #region public enum Sight
     /// <summary>
-    /// <para>
     /// Indicates which sights can be or are forcefully equipped on a <see cref="Weapon"/>.
-    /// </para>
-    /// <para>
-    /// As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying (1x) scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
-    /// </para>
-    /// <para>
-    /// However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
-    /// </para>
-    /// <para>
-    /// Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
-    /// </para>
-    /// <para>
-    /// As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="Sights"/> flags have been redefined to act as maximums. Use <see cref="Enum.HasFlag(Enum)"/> for any look-ups.
-    /// </para>
+    /// <para/>As of Y7S1, all weapons (excepting most secondaries and, for example, Glaz's "OTs-03" DMR, which does not have access to Reflex C) have access to all non-magnifying (1x) scopes (Red Dot, Holo, Reflex), or more precisely, all of their variants (no matter if standard, Russian, alternate etc.). Because of this, I've decided to combine them. Checking for magnifying scopes still works as before.
+    /// <para/>However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
+    /// <para/>Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
+    /// <para/>As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="Sights"/> flags have been redefined to act as maximums. Use <see cref="Enum.HasFlag(Enum)"/> for any look-ups.
     /// </summary>
     public enum Sight
     {
