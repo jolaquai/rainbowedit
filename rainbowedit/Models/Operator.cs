@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
 
 using rainbowedit.Models;
@@ -9,6 +8,10 @@ namespace rainbowedit;
 /// <summary>
 /// Represents an <see cref="Operator"/> in Siege.
 /// </summary>
+/// <remarks>
+/// <para/>Implements <see cref="IEquatable{T}"/> of <see cref="Operator"/> which enables compares <see cref="Operator"/>s by their <see cref="Operator.Nickname"/>.
+/// <para/>Implements <see cref="IComparable{T}"/> of <see cref="Operator"/> which enables sorting <see cref="Operator"/>s according to their in-game sorting order.
+/// </remarks>
 public class Operator
     : IEquatable<Operator>,
       IComparable<Operator>
@@ -324,7 +327,8 @@ public class Operator
         /// </summary>
         /// <remarks>
         /// This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
-        /// <para/>This collection is generated at runtime when it is first accessed.</remarks>
+        /// <para/>This collection is generated at runtime when it is first accessed.
+        /// </remarks>
         public static Dictionary<string, decimal> Constants
         {
             get
@@ -455,7 +459,7 @@ public class Operator
             1 => 100,
             2 => 110,
             3 => 125,
-            _ => throw new ArgumentOutOfRangeException($"Invalid 'Speed' rating '{Speed}' resulted in unexpected Health rating '{Health}' for new Operator.", nameof(speed))
+            _ => throw new ArgumentOutOfRangeException(nameof(speed), $"Invalid 'Speed' rating '{Speed}' resulted in unexpected Health rating '{Health}' for new Operator.")
         };
     }
 
@@ -499,7 +503,6 @@ public class Operator
     /// <param name="list">The <see cref="List{T}"/> to sort.</param>
     public static void Sort(List<Operator> list)
     {
-        Console.WriteLine($"Overload resolution chose: {new StackFrame().GetMethod()}");
         list.Sort(Comparer);
     }
     /// <summary>
@@ -508,7 +511,6 @@ public class Operator
     /// <param name="array">The <see cref="Array"/> to sort.</param>
     public static void Sort(Operator[] array)
     {
-        Console.WriteLine($"Overload resolution chose: {new StackFrame().GetMethod()}");
         Array.Sort(array, Comparer);
     }
 
@@ -516,7 +518,19 @@ public class Operator
     /// An <see cref="IComparer{T}"/> implementation for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
     /// </summary>
     /// <remarks>You may use this directly for custom implementations or use the <see cref="Order(IEnumerable{Operator})"/> method.</remarks>
-    public static readonly IComparer<Operator> Comparer = new OperatorComparer();
+    public static IComparer<Operator> Comparer { get; } = Comparer<Operator>.Create(
+        (Operator? left, Operator? right) =>
+        {
+            ArgumentNullException.ThrowIfNull(left);
+            ArgumentNullException.ThrowIfNull(right);
+            if (ReferenceEquals(left, right))
+            {
+                return 0;
+            }
+            var list = Siege.DefAtk.ToList();
+            return list.IndexOf(left) - list.IndexOf(right);
+        }
+    );
 
     #region Comparisons / operators
     /// <summary>
@@ -573,7 +587,10 @@ public class Operator
             ;
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Computes a <see cref="HashCode"/> for the current <see cref="Operator"/> object.
+    /// </summary>
+    /// <returns>The computed hash code as an <see cref="int"/>.</returns>
     public override int GetHashCode()
     {
         var hash = new HashCode();
@@ -673,23 +690,5 @@ public class Operator
 
     /// <inheritdoc/>
     public int CompareTo(Operator? other) => Comparer.Compare(this, other);
-
-    /// <summary>
-    /// Represents an <see cref="IComparer{T}"/> implementation that compares <see cref="Operator"/> objects according to their in-game order.
-    /// </summary>
-    private class OperatorComparer : IComparer<Operator>
-    {
-        public int Compare(Operator? left, Operator? right)
-        {
-            ArgumentNullException.ThrowIfNull(left);
-            ArgumentNullException.ThrowIfNull(right);
-            if (ReferenceEquals(left, right))
-            {
-                return 0;
-            }
-            var list = Siege.DefAtk.ToList();
-            return list.IndexOf(left) - list.IndexOf(right);
-        }
-    }
     #endregion
 }

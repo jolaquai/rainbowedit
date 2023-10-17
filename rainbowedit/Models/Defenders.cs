@@ -56,109 +56,115 @@ public sealed partial class Defenders : IEnumerable<Operator>
         }
 
         // Same as above
-        Trapper.Reward = Ela;
-        Support.Reward = Rook;
-        AntiEntry.Reward = Castle;
-        Intel.Reward = Valkyrie;
-        AntiGadget.Reward = Jäger;
-        CrowdControl.Reward = Tachanka;
+        Specialties.Trapper.Reward = Ela;
+        Specialties.Support.Reward = Rook;
+        Specialties.AntiEntry.Reward = Castle;
+        Specialties.Intel.Reward = Valkyrie;
+        Specialties.AntiGadget.Reward = Jäger;
+        Specialties.CrowdControl.Reward = Tachanka;
     }
 
 #pragma warning disable CS8604 // Possible null reference argument.
 
     #region Specialties
     /// <summary>
-    /// The <see cref="Defenders"/>' <see cref="Trapper"/> <see cref="Specialty"/>.
+    /// Contains <see cref="Specialty"/> definitions for <see cref="Defenders"/>.
     /// </summary>
-    public static readonly Specialty Trapper = new Specialty(
-        "Trapper",
-        Ela,
-        [
-            new Specialty.Challenge("Deploy 5 trap devices.", "1-Day Renown Booster 1x"),
-            new Specialty.Challenge("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
-            new Specialty.Challenge("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
-        ]
-    );
-    /// <summary>
-    /// The <see cref="Defenders"/>' <see cref="Support"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty Support = new Specialty(
-        "Support",
-        Rook,
-        [
-            new Specialty.Challenge("Play 1 times as a Support Defender.", "1-Day Renown Booster 1x"),
-            new Specialty.Challenge("Reach the Action Phase as a Defender 2 times without either bomb site being discovered.", "3-Days Renown Booster 1x"),
-            new Specialty.Challenge("Heal 2 teammates.", "7-Days Renown Booster")
-        ]
-    );
-    /// <summary>
-    /// The <see cref="Defenders"/>' <see cref="AntiEntry"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty AntiEntry = new Specialty(
-        "Anti-Entry",
-        Castle,
-        [
-            new Specialty.Challenge("Barricade 5 doors or windows.", "Renown 250"),
-            new Specialty.Challenge("Reinforce 5 surfaces.", "Renown 500"),
-            new Specialty.Challenge("Deploy 5 anti-entry devices that electrify utility or interfere wih electronics.", "Renown 750")
-        ]
-    );
-    /// <summary>
-    /// The <see cref="Defenders"/>' <see cref="Intel"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty Intel = new Specialty(
-        "Intel",
-        Valkyrie,
-        [
-            new Specialty.Challenge("Scan and identify 7 Attackers as a Defender.", "Beginner Pack 1x"),
-            new Specialty.Challenge("Deploy 5 Observation Tools as a Defender.", "Renown 500"),
-            new Specialty.Challenge("Detect 1 opponents with Proximity Alarms that you deployed.", "7-Days Renown Booster 1x")
-        ]
-    );
-    /// <summary>
-    /// The <see cref="Defenders"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty AntiGadget = new Specialty(
-        "Anti-Gadget",
-        Jäger,
-        [
-            new Specialty.Challenge("Destroy 2 Attacker drones as a Defender.", "Renown 250"),
-            new Specialty.Challenge("Destroy 5 Attacker devices as a Defender.", "1-Day Battle Point Booster 2x"),
-            new Specialty.Challenge("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
-        ]
-    );
-    /// <summary>
-    /// The <see cref="Defenders"/>' <see cref="CrowdControl"/> <see cref="Specialty"/>.
-    /// </summary>
-    public static readonly Specialty CrowdControl = new Specialty(
-        "Crowd Control",
-        Tachanka,
-        [
-            new Specialty.Challenge("Deploy 5 Barbed Wire.", "1-Day Battle Point Booster 1x"),
-            new Specialty.Challenge("Deactivate 2 electronic devices using the Bulletproof Camera EMP.", "3-Days Renown Booster 1x"),
-            new Specialty.Challenge("Disorient 2 opponents.", "Renown 750")
-        ]
-    );
+    public static class Specialties
+    {
+        /// <summary>
+        /// The <see cref="Defenders"/>' <see cref="Trapper"/> <see cref="Specialty"/>.
+        /// </summary>
+        public static Specialty Trapper { get; } = new Specialty(
+            "Trapper",
+            Ela,
+            [
+                new Specialty.Challenge("Deploy 5 trap devices.", "1-Day Renown Booster 1x"),
+                new Specialty.Challenge("Affect 1 opponents with trap devices.", "Beginner Pack 2x"),
+                new Specialty.Challenge("Win by counter-defusing the bomb 1 times.", "1-Day Battle Point Booster 3x")
+            ]
+        );
+        /// <summary>
+        /// The <see cref="Defenders"/>' <see cref="Support"/> <see cref="Specialty"/>.
+        /// </summary>
+        public static Specialty Support { get; } = new Specialty(
+            "Support",
+            Rook,
+            [
+                new Specialty.Challenge("Play 1 times as a Support Defender.", "1-Day Renown Booster 1x"),
+                new Specialty.Challenge("Reach the Action Phase as a Defender 2 times without either bomb site being discovered.", "3-Days Renown Booster 1x"),
+                new Specialty.Challenge("Heal 2 teammates.", "7-Days Renown Booster")
+            ]
+        );
+        /// <summary>
+        /// The <see cref="Defenders"/>' <see cref="AntiEntry"/> <see cref="Specialty"/>.
+        /// </summary>
+        public static Specialty AntiEntry { get; } = new Specialty(
+            "Anti-Entry",
+            Castle,
+            [
+                new Specialty.Challenge("Barricade 5 doors or windows.", "Renown 250"),
+                new Specialty.Challenge("Reinforce 5 surfaces.", "Renown 500"),
+                new Specialty.Challenge("Deploy 5 anti-entry devices that electrify utility or interfere wih electronics.", "Renown 750")
+            ]
+        );
+        /// <summary>
+        /// The <see cref="Defenders"/>' <see cref="Intel"/> <see cref="Specialty"/>.
+        /// </summary>
+        public static Specialty Intel { get; } = new Specialty(
+            "Intel",
+            Valkyrie,
+            [
+                new Specialty.Challenge("Scan and identify 7 Attackers as a Defender.", "Beginner Pack 1x"),
+                new Specialty.Challenge("Deploy 5 Observation Tools as a Defender.", "Renown 500"),
+                new Specialty.Challenge("Detect 1 opponents with Proximity Alarms that you deployed.", "7-Days Renown Booster 1x")
+            ]
+        );
+        /// <summary>
+        /// The <see cref="Defenders"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
+        /// </summary>
+        public static Specialty AntiGadget { get; } = new Specialty(
+            "Anti-Gadget",
+            Jäger,
+            [
+                new Specialty.Challenge("Destroy 2 Attacker drones as a Defender.", "Renown 250"),
+                new Specialty.Challenge("Destroy 5 Attacker devices as a Defender.", "1-Day Battle Point Booster 2x"),
+                new Specialty.Challenge("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
+            ]
+        );
+        /// <summary>
+        /// The <see cref="Defenders"/>' <see cref="CrowdControl"/> <see cref="Specialty"/>.
+        /// </summary>
+        public static Specialty CrowdControl { get; } = new Specialty(
+            "Crowd Control",
+            Tachanka,
+            [
+                new Specialty.Challenge("Deploy 5 Barbed Wire.", "1-Day Battle Point Booster 1x"),
+                new Specialty.Challenge("Deactivate 2 electronic devices using the Bulletproof Camera EMP.", "3-Days Renown Booster 1x"),
+                new Specialty.Challenge("Disorient 2 opponents.", "Renown 750")
+            ]
+        );
 
-    /// <summary>
-    /// A collection of all <see cref="Specialty"/> instances that apply to <see cref="Defenders"/>.
-    /// </summary>
-    public static readonly IEnumerable<Specialty> Specialties =
-    [
-        Trapper,
-        Support,
-        AntiEntry,
-        Intel,
-        AntiGadget,
-        CrowdControl
-    ];
+        /// <summary>
+        /// A collection of all <see cref="Specialty"/> instances that apply to <see cref="Defenders"/>.
+        /// </summary>
+        public static IEnumerable<Specialty> All { get; } =
+        [
+            Trapper,
+            Support,
+            AntiEntry,
+            Intel,
+            AntiGadget,
+            CrowdControl
+        ];
+    }
     #endregion
 
     #region Defender instances
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Smoke"/>.
     /// </summary>
-    public static readonly Operator Smoke = new Operator(
+    public static Operator Smoke { get; } = new Operator(
         "Smoke",
         [
             new Weapon(
@@ -227,8 +233,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ProximityAlarm,
         "Compound Z8 Grenades",
         [
-            AntiEntry,
-            Trapper
+            Specialties.AntiEntry,
+            Specialties.Trapper
         ],
         "SAS",
         "London, England (King's Cross)",
@@ -242,7 +248,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Mute"/>.
     /// </summary>
-    public static readonly Operator Mute = new Operator(
+    public static Operator Mute { get; } = new Operator(
         "Mute",
         [
             new Weapon(
@@ -311,8 +317,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.NitroCell | Weapon.Gadget.BulletproofCamera,
         "\"Moni\" GC90 Signal Disruptor",
         [
-            AntiGadget,
-            CrowdControl
+            Specialties.AntiGadget,
+            Specialties.CrowdControl
         ],
         "SAS",
         "York, England",
@@ -326,7 +332,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Castle"/>.
     /// </summary>
-    public static readonly Operator Castle = new Operator(
+    public static Operator Castle { get; } = new Operator(
         "Castle",
         [
             new Weapon(
@@ -410,8 +416,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ProximityAlarm,
         "UTP1-Universal Tactical Panel",
         [
-            AntiEntry,
-            Support
+            Specialties.AntiEntry,
+            Specialties.Support
         ],
         "FBI SWAT",
         "Sherman Oaks, California",
@@ -425,7 +431,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Pulse"/>.
     /// </summary>
-    public static readonly Operator Pulse = new Operator(
+    public static Operator Pulse { get; } = new Operator(
         "Pulse",
         [
             new Weapon(
@@ -494,8 +500,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.NitroCell | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker,
         "HB-5 Cardiac Sensor",
         [
-            Intel,
-            Support
+            Specialties.Intel,
+            Specialties.Support
         ],
         "FBI SWAT",
         "Goldsboro, North Carolina",
@@ -509,7 +515,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Doc"/>.
     /// </summary>
-    public static readonly Operator Doc = new Operator(
+    public static Operator Doc { get; } = new Operator(
         "Doc",
         [
             new Weapon(
@@ -608,7 +614,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
         "MPD-0 STIM PISTOL",
         [
-            Support
+            Specialties.Support
         ],
         "GIGN",
         "Paris, France",
@@ -622,7 +628,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Rook"/>.
     /// </summary>
-    public static readonly Operator Rook = new Operator(
+    public static Operator Rook { get; } = new Operator(
         "Rook",
         [
             new Weapon(
@@ -706,7 +712,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ObservationBlocker,
         "R1N \"Rhino\" Armor - Armor Pack",
         [
-            Support
+            Specialties.Support
         ],
         "GIGN",
         "Tours, France",
@@ -720,7 +726,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Kapkan"/>.
     /// </summary>
-    public static readonly Operator Kapkan = new Operator(
+    public static Operator Kapkan { get; } = new Operator(
         "Kapkan",
         [
             new Weapon(
@@ -789,8 +795,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
         "EDD Mk II Tripwires",
         [
-            AntiEntry,
-            Trapper
+            Specialties.AntiEntry,
+            Specialties.Trapper
         ],
         "SPETSNAZ",
         "Kovrov, Russia",
@@ -804,7 +810,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Tachanka"/>.
     /// </summary>
-    public static readonly Operator Tachanka = new Operator(
+    public static Operator Tachanka { get; } = new Operator(
         "Tachanka",
         [
             new Weapon(
@@ -888,8 +894,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield | Weapon.Gadget.ProximityAlarm,
         "Shumikha Grenade Launcher",
         [
-            AntiEntry,
-            CrowdControl
+            Specialties.AntiEntry,
+            Specialties.CrowdControl
         ],
         "SPETSNAZ",
         "Saint Petersburg, Russia",
@@ -903,7 +909,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Jäger"/>.
     /// </summary>
-    public static readonly Operator Jäger = new Operator(
+    public static Operator Jäger { get; } = new Operator(
         "Jäger",
         [
             new Weapon(
@@ -957,8 +963,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ObservationBlocker,
         "ADS-Mk IV \"Magpie\" Automated Defense System",
         [
-            AntiGadget,
-            Support
+            Specialties.AntiGadget,
+            Specialties.Support
         ],
         "GSG 9",
         "Düsseldorf, Germany",
@@ -972,7 +978,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Bandit"/>.
     /// </summary>
-    public static readonly Operator Bandit = new Operator(
+    public static Operator Bandit { get; } = new Operator(
         "Bandit",
         [
             new Weapon(
@@ -1026,8 +1032,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
         "CED-1 Crude Electrical Device \"Shock Wires\"",
         [
-            AntiEntry,
-            AntiGadget
+            Specialties.AntiEntry,
+            Specialties.AntiGadget
         ],
         "GSG 9",
         "Berlin, Germany",
@@ -1041,7 +1047,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Frost"/>.
     /// </summary>
-    public static readonly Operator Frost = new Operator(
+    public static Operator Frost { get; } = new Operator(
         "Frost",
         [
             new Weapon(
@@ -1110,8 +1116,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.DeployableShield,
         "Sterling Mk2 LHT leg-hold trap (Welcome Mat)",
         [
-            AntiEntry,
-            Trapper
+            Specialties.AntiEntry,
+            Specialties.Trapper
         ],
         "JTF2",
         "Vancouver, British Columbia",
@@ -1125,7 +1131,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Valkyrie"/>.
     /// </summary>
-    public static readonly Operator Valkyrie = new Operator(
+    public static Operator Valkyrie { get; } = new Operator(
         "Valkyrie",
         [
             new Weapon(
@@ -1179,8 +1185,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
         "Gyro Cam Mk2 \"Black Eye\"",
         [
-            Intel,
-            Support
+            Specialties.Intel,
+            Specialties.Support
         ],
         "NAVY SEAL",
         "Oceanside, California",
@@ -1194,7 +1200,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Caveira"/>.
     /// </summary>
-    public static readonly Operator Caveira = new Operator(
+    public static Operator Caveira { get; } = new Operator(
         "Caveira",
         [
             new Weapon(
@@ -1248,8 +1254,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ObservationBlocker,
         "Silent Step",
         [
-            Intel,
-            CrowdControl
+            Specialties.Intel,
+            Specialties.CrowdControl
         ],
         "BOPE",
         "Rinópolis, Brazil",
@@ -1263,7 +1269,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Echo"/>.
     /// </summary>
-    public static readonly Operator Echo = new Operator(
+    public static Operator Echo { get; } = new Operator(
         "Echo",
         [
             new Weapon(
@@ -1332,8 +1338,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
         "Yokai Hovering Drone",
         [
-            Intel,
-            CrowdControl
+            Specialties.Intel,
+            Specialties.CrowdControl
         ],
         "SAT",
         "Suginami, Tokyo, Japan",
@@ -1347,7 +1353,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Mira"/>.
     /// </summary>
-    public static readonly Operator Mira = new Operator(
+    public static Operator Mira { get; } = new Operator(
         "Mira",
         [
             new Weapon(
@@ -1416,8 +1422,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.NitroCell,
         "Black Mirror",
         [
-            Intel,
-            Support
+            Specialties.Intel,
+            Specialties.Support
         ],
         "GEO",
         "Madrid, Spain",
@@ -1431,7 +1437,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Lesion"/>.
     /// </summary>
-    public static readonly Operator Lesion = new Operator(
+    public static Operator Lesion { get; } = new Operator(
         "Lesion",
         [
             new Weapon(
@@ -1485,8 +1491,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
         "Gu Mines",
         [
-            AntiEntry,
-            Trapper
+            Specialties.AntiEntry,
+            Specialties.Trapper
         ],
         "SDU",
         "Hong Kong, Junk Bay (Tseung Kwan O)",
@@ -1500,7 +1506,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Ela"/>.
     /// </summary>
-    public static readonly Operator Ela = new Operator(
+    public static Operator Ela { get; } = new Operator(
         "Ela",
         [
             new Weapon(
@@ -1554,8 +1560,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker,
         "GRZMOT Mine",
         [
-            CrowdControl,
-            Trapper
+            Specialties.CrowdControl,
+            Specialties.Trapper
         ],
         "GROM",
         "Wrocław, Poland",
@@ -1569,7 +1575,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Vigil"/>.
     /// </summary>
-    public static readonly Operator Vigil = new Operator(
+    public static Operator Vigil { get; } = new Operator(
         "Vigil",
         [
             new Weapon(
@@ -1638,8 +1644,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "ERC-7 Electronic Rendering Cloak",
         [
-            AntiGadget,
-            CrowdControl
+            Specialties.AntiGadget,
+            Specialties.CrowdControl
         ],
         "707TH SMB",
         "[REDACTED]",
@@ -1653,7 +1659,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Maestro"/>.
     /// </summary>
-    public static readonly Operator Maestro = new Operator(
+    public static Operator Maestro { get; } = new Operator(
         "Maestro",
         [
             new Weapon(
@@ -1722,8 +1728,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ObservationBlocker,
         "Compact Laser Emplacement Mk V \"Evil Eye\"",
         [
-            AntiGadget,
-            Intel
+            Specialties.AntiGadget,
+            Specialties.Intel
         ],
         "GIS",
         "Rome, Italy",
@@ -1737,7 +1743,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Alibi"/>.
     /// </summary>
-    public static readonly Operator Alibi = new Operator(
+    public static Operator Alibi { get; } = new Operator(
         "Alibi",
         [
             new Weapon(
@@ -1806,8 +1812,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.ObservationBlocker,
         "Prisma",
         [
-            Intel,
-            Trapper
+            Specialties.Intel,
+            Specialties.Trapper
         ],
         "GIS",
         "Tripoli, Libya",
@@ -1821,7 +1827,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Clash"/>.
     /// </summary>
-    public static readonly Operator Clash = new Operator(
+    public static Operator Clash { get; } = new Operator(
         "Clash",
         [
             new Weapon(
@@ -1890,8 +1896,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.DeployableShield,
         "Crowd Control Electric Shield",
         [
-            Intel,
-            CrowdControl
+            Specialties.Intel,
+            Specialties.CrowdControl
         ],
         "GSUTR",
         "London, England",
@@ -1905,7 +1911,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Kaid"/>.
     /// </summary>
-    public static readonly Operator Kaid = new Operator(
+    public static Operator Kaid { get; } = new Operator(
         "Kaid",
         [
             new Weapon(
@@ -1974,8 +1980,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.NitroCell | Weapon.Gadget.BarbedWire | Weapon.Gadget.ObservationBlocker,
         "Rtila Electroclaw",
         [
-            AntiEntry,
-            AntiGadget
+            Specialties.AntiEntry,
+            Specialties.AntiGadget
         ],
         "GIGR",
         "Aroumd, Morocco",
@@ -1989,7 +1995,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Mozzie"/>.
     /// </summary>
-    public static readonly Operator Mozzie = new Operator(
+    public static Operator Mozzie { get; } = new Operator(
         "Mozzie",
         [
             new Weapon(
@@ -2043,8 +2049,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.NitroCell,
         "Pest Launcher",
         [
-            AntiGadget,
-            Intel
+            Specialties.AntiGadget,
+            Specialties.Intel
         ],
         "SASR",
         "Portland, Australia",
@@ -2058,7 +2064,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Warden"/>.
     /// </summary>
-    public static readonly Operator Warden = new Operator(
+    public static Operator Warden { get; } = new Operator(
         "Warden",
         [
             new Weapon(
@@ -2127,8 +2133,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.DeployableShield | Weapon.Gadget.NitroCell | Weapon.Gadget.ObservationBlocker,
         "Glance Smart Glasses",
         [
-            AntiGadget,
-            Intel
+            Specialties.AntiGadget,
+            Specialties.Intel
         ],
         "SECRET SERVICE",
         "Louisville, Kentucky",
@@ -2142,7 +2148,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Goyo"/>.
     /// </summary>
-    public static readonly Operator Goyo = new Operator(
+    public static Operator Goyo { get; } = new Operator(
         "Goyo",
         [
             new Weapon(
@@ -2196,8 +2202,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ProximityAlarm | Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "Volcán Canister",
         [
-            AntiEntry,
-            Trapper
+            Specialties.AntiEntry,
+            Specialties.Trapper
         ],
         "FUERZAS ESPECIALES",
         "Culiacán Rosales, Mexico",
@@ -2211,7 +2217,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Wamai"/>.
     /// </summary>
-    public static readonly Operator Wamai = new Operator(
+    public static Operator Wamai { get; } = new Operator(
         "Wamai",
         [
             new Weapon(
@@ -2280,8 +2286,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.ProximityAlarm,
         "Magnetic Neutralizing Electronic Targeting (Mag-NET) System",
         [
-            AntiGadget,
-            Trapper
+            Specialties.AntiGadget,
+            Specialties.Trapper
         ],
         "NIGHTHAVEN",
         "Lamu, Kenya",
@@ -2295,7 +2301,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Oryx"/>.
     /// </summary>
-    public static readonly Operator Oryx = new Operator(
+    public static Operator Oryx { get; } = new Operator(
         "Oryx",
         [
             new Weapon(
@@ -2364,7 +2370,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.ProximityAlarm,
         "Remah Dash",
         [
-            Support
+            Specialties.Support
         ],
         "[UNAFFILIATED]",
         "Azraq, Jordan",
@@ -2378,7 +2384,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Melusi"/>.
     /// </summary>
-    public static readonly Operator Melusi = new Operator(
+    public static Operator Melusi { get; } = new Operator(
         "Melusi",
         [
             new Weapon(
@@ -2432,8 +2438,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
         "Banshee Sonic Defense",
         [
-            Intel,
-            CrowdControl
+            Specialties.Intel,
+            Specialties.CrowdControl
         ],
         "INKABA TASK FORCE",
         "Louwsburg, South Africa",
@@ -2447,7 +2453,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Aruni"/>.
     /// </summary>
-    public static readonly Operator Aruni = new Operator(
+    public static Operator Aruni { get; } = new Operator(
         "Aruni",
         [
             new Weapon(
@@ -2501,8 +2507,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera,
         "Surya Gate",
         [
-            AntiEntry,
-            AntiGadget
+            Specialties.AntiEntry,
+            Specialties.AntiGadget
         ],
         "NIGHTHAVEN",
         "Ta Phraya District, Thailand",
@@ -2516,7 +2522,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Thunderbird"/>.
     /// </summary>
-    public static readonly Operator Thunderbird = new Operator(
+    public static Operator Thunderbird { get; } = new Operator(
         "Thunderbird",
         [
             new Weapon(
@@ -2585,7 +2591,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera,
         "Kóna Healing Station",
         [
-            Support
+            Specialties.Support
         ],
         "STAR-NET AVIATION",
         "Nakoda Territories",
@@ -2599,7 +2605,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Thorn"/>.
     /// </summary>
-    public static readonly Operator Thorn = new Operator(
+    public static Operator Thorn { get; } = new Operator(
         "Thorn",
         [
             new Weapon(
@@ -2668,8 +2674,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.DeployableShield | Weapon.Gadget.BarbedWire,
         "Razorbloom Shell",
         [
-            AntiEntry,
-            Trapper
+            Specialties.AntiEntry,
+            Specialties.Trapper
         ],
         "EMERGENCY RESPONSE UNIT",
         "County Kildare, Ireland",
@@ -2683,7 +2689,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Azami"/>.
     /// </summary>
-    public static readonly Operator Azami = new Operator(
+    public static Operator Azami { get; } = new Operator(
         "Azami",
         [
             new Weapon(
@@ -2737,8 +2743,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BarbedWire,
         "Kiba Barrier",
         [
-            AntiEntry,
-            Support
+            Specialties.AntiEntry,
+            Specialties.Support
         ],
         "UNAFFILIATED",
         "Kyoto, Japan",
@@ -2752,7 +2758,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Solis"/>.
     /// </summary>
-    public static readonly Operator Solis = new Operator(
+    public static Operator Solis { get; } = new Operator(
         "Solis",
         [
             new Weapon(
@@ -2806,8 +2812,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
         "SPEC-IO Electro-Sensor",
         [
-            Intel,
-            Support
+            Specialties.Intel,
+            Specialties.Support
         ],
         "AFEAU",
         "Zipaquirá, Colombia",
@@ -2821,7 +2827,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
     /// <summary>
     /// The <see cref="Operator"/> <see cref="Fenrir"/>.
     /// </summary>
-    public static readonly Operator Fenrir = new Operator(
+    public static Operator Fenrir { get; } = new Operator(
         "Fenrir",
         [
             new Weapon(
@@ -2875,8 +2881,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
         Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
         "F-NATT Dread Mine",
         [
-            CrowdControl,
-            Trapper
+            Specialties.CrowdControl,
+            Specialties.Trapper
         ],
         "[UNAFFILIATED]",
         "Zipaquirá, Colombia",

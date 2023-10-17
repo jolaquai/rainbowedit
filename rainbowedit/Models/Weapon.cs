@@ -243,6 +243,9 @@ public class Weapon
     /// <para/>Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
     /// <para/>As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="Sights"/> flags have been redefined to act as maximums. Use <see cref="Enum.HasFlag(Enum)"/> for any look-ups.
     /// </summary>
+    /// <remarks>
+    /// <para/><see cref="Sight"/> is semi-<see cref="FlagsAttribute"/>. <see cref="None"/> and <see cref="Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
+    /// </remarks>
     public enum Sight
     {
         /// <summary>
@@ -520,7 +523,7 @@ public class Weapon
     /// <remarks>Do not rely on this to return a <see cref="Weapon"/> instance usable for <see cref="Sight"/> data as loadouts are specific to an <see cref="Operator"/>.</remarks>
     public static Weapon? Resolve(string name, double similarityThreshold = -1)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(name);
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
         if (similarityThreshold is not -1 and (< 0 or > 1))
         {
             throw new ArgumentOutOfRangeException(nameof(similarityThreshold), similarityThreshold, "Explicitly overridden similarity threshold cannot be greater than 1.");

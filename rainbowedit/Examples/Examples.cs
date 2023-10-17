@@ -36,16 +36,16 @@ public static class Examples
     }
 
     /// <summary>
-    /// Writes all specialties and the <see cref="Operator"/> that have them assigned to the <see cref="Console"/>.
+    /// Writes all specialties and the <see cref="Operator"/>s that have them assigned to the <see cref="Console"/>.
     /// </summary>
     public static void WriteSpecialtiesAndOperators()
     {
-        var totalWidth = Defenders.Specialties.Max(s => s.Name.Length) + 1;
-        foreach (var specialty in Defenders.Specialties)
+        var totalWidth = Defenders.Specialties.All.Max(s => s.Name.Length) + 1;
+        foreach (var specialty in Defenders.Specialties.All)
         {
             Console.WriteLine($"{(specialty.Name + ":").PadRight(totalWidth)} {string.Join(", ", specialty.GetOperators())}");
         }
-        foreach (var specialty in Attackers.Specialties)
+        foreach (var specialty in Attackers.Specialties.All)
         {
             Console.WriteLine($"{(specialty.Name + ":").PadRight(totalWidth)} {string.Join(", ", specialty.GetOperators())}");
         }
@@ -60,7 +60,7 @@ public static class Examples
     {
         return Siege.DefAtk.Where(op => op.Primaries.Concat(op.Secondaries).Any(wep => wep.Type == type));
     }
-    
+
     /// <summary>
     /// Creates a sequence of <see cref="Weapon"/> instances that are of a given <see cref="Weapon.WeaponType"/>.
     /// </summary>
@@ -68,8 +68,7 @@ public static class Examples
     /// <returns>The sequence of <see cref="Weapon"/>s.</returns>
     public static IEnumerable<Weapon> WeaponsOfType(Weapon.WeaponType type)
     {
-        return Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries)
-                                                                .Where(wep => wep.Type == type))
+        return Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries).Where(wep => wep.Type == type))
                            .DistinctBy(wep => wep.Name);
     }
 }

@@ -30,11 +30,21 @@ public class Challenge
     public Challenge(params Operator[] operators)
     {
         Operators = operators;
-        Type = operators.Length > 1
-            ? (operators.Skip(1).All(op => op.Organization == operators.ElementAt(1).Organization)
-                ? ChallengeType.Organization
-                : ChallengeType.Operators)
-            : ChallengeType.Operators;
+        if (operators.Length > 1)
+        {
+            if (operators.Skip(1).All(op => op.Organization == operators[1].Organization))
+            {
+                Type = ChallengeType.Organization;
+            }
+            else
+            {
+                Type = ChallengeType.Operators;
+            }
+        }
+        else
+        {
+            Type = ChallengeType.Operators;
+        }
     }
 
     /// <summary>
@@ -56,7 +66,7 @@ public class Challenge
             ChallengeType.Operators => extra as IEnumerable<Operator> ?? throw new ArgumentException($"With {nameof(challengeType)} == {ChallengeType.Operators}, {nameof(extra)} must be an object convertible to {typeof(IEnumerable<Operator>)}.", nameof(extra)),
             ChallengeType.WeaponTypeKills => extra is Weapon.WeaponType wType
                 ? Siege.DefAtk.Where(op => op.Primaries.Concat(op.Secondaries).Any(wep => wep.Type == wType))
-                : throw new ArgumentException($"With {nameof(challengeType)} == {ChallengeType.WeaponTypeKills}, {nameof(extra)} must be an {typeof(Weapon.WeaponType)} enum value.", nameof(extra)),
+                : throw new ArgumentException($"With {nameof(challengeType)} == {ChallengeType.WeaponTypeKills}, {nameof(extra)} must be a {typeof(Weapon.WeaponType)} enum value.", nameof(extra)),
             ChallengeType.Blind => Siege.DefAtk.Where(op => op.Gadgets.HasValue(Weapon.Gadget.StunGrenade)).Append(Attackers.Ying).Append(Attackers.Blitz).Distinct(),
             ChallengeType.Disorient => new List<Operator>() { Defenders.Echo, Defenders.Ela, Defenders.Oryx, Attackers.Zofia },
             _ => Siege.DefAtk

@@ -32,12 +32,18 @@ public class OperatorAge
     }
 
     /// <summary>
-    /// Constructs a <see cref="DateTime"/> instance representing the current date of birth of the <see cref="Operator"/>.
+    /// Constructs a <see cref="DateTime"/> instance representing the (current) date of birth of the <see cref="Operator"/>.
+    /// "Current" because an <see cref="Operator"/>'s age is defined as their birth day and month and their age. <see cref="Operator"/>s do not age; as such, this method returns a different <see cref="DateTime"/> instance every year.
     /// </summary>
     public DateTime ToDateTime() => new DateTime(DateTime.Now.AddYears(-Age).Year, Month, Day);
+    /// <summary>
+    /// Converts an <see cref="OperatorAge"/> instance to a <see cref="DateTime"/> instance.
+    /// </summary>
+    /// <param name="age"></param>
+    public static explicit operator DateTime(OperatorAge age) => age.ToDateTime();
 
     /// <summary>
     /// Represents an <see cref="Operator"/>'s age when it is "redacted" or unavailable in-game for any other reason.
     /// </summary>
-    public static readonly OperatorAge Redacted = new OperatorAge(-1, -1, -1);
+    public static OperatorAge Redacted { get; } = new OperatorAge(-1, -1, -1);
 }

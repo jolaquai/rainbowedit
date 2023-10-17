@@ -5,7 +5,7 @@ using rainbowedit;
 namespace rainbowedit.Models;
 
 /// <summary>
-/// Represents a <see cref="Specialty"/>, introduced in Y8S1. 
+/// Represents a <see cref="Specialty"/>, introduced in Y8S1.
 /// </summary>
 public class Specialty
 {
