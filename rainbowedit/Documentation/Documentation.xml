@@ -70,12 +70,12 @@
         </member>
         <member name="F:rainbowedit.Challenge.ChallengeType.Blind">
             <summary>
-            Indicates that a <see cref="T:rainbowedit.Challenge"/>'s requirement is blinding opponents using <i>Stun Grenade</i>s, <see cref="F:rainbowedit.Attackers.Ying"/>'s <i>Candela</i> or <see cref="F:rainbowedit.Attackers.Blitz"/>'s <i>Shield</i>.
+            Indicates that a <see cref="T:rainbowedit.Challenge"/>'s requirement is blinding opponents using <i>Stun Grenade</i>s, <see cref="P:rainbowedit.Attackers.Ying"/>'s <i>Candela</i> or <see cref="P:rainbowedit.Attackers.Blitz"/>'s <i>Shield</i>.
             </summary>
         </member>
         <member name="F:rainbowedit.Challenge.ChallengeType.Disorient">
             <summary>
-            Indicates that a <see cref="T:rainbowedit.Challenge"/>'s requirement is disorienting opponents using <see cref="F:rainbowedit.Defenders.Echo"/>'s <i>Yokai</i>'s <i>Sonic Burst</i>s, <see cref="F:rainbowedit.Defenders.Ela"/>'s <i>Grzmot Mine</i>s, <see cref="F:rainbowedit.Defenders.Oryx"/>'s <i>Remah Dash</i> or <see cref="F:rainbowedit.Attackers.Zofia"/>'s <i>Shock Grenade</i>s.
+            Indicates that a <see cref="T:rainbowedit.Challenge"/>'s requirement is disorienting opponents using <see cref="P:rainbowedit.Defenders.Echo"/>'s <i>Yokai</i>'s <i>Sonic Burst</i>s, <see cref="P:rainbowedit.Defenders.Ela"/>'s <i>Grzmot Mine</i>s, <see cref="P:rainbowedit.Defenders.Oryx"/>'s <i>Remah Dash</i> or <see cref="P:rainbowedit.Attackers.Zofia"/>'s <i>Shock Grenade</i>s.
             </summary>
         </member>
         <member name="F:rainbowedit.Challenge.ChallengeType.Universal">
@@ -158,22 +158,22 @@
         </member>
         <member name="M:rainbowedit.Examples.ShotsToKill(rainbowedit.Operator,rainbowedit.WeaponConfiguration,System.Boolean)">
             <summary>
-            Calculates the shots it takes to kill an <paramref name="operator"/> using a given <paramref name="weaponConfig"/>, optionally considering the <c>20</c> extra HP one of <see cref="F:rainbowedit.Defenders.Rook"/>'s <i>Armor Plates</i> gives.
+            Calculates the shots it takes to kill an <paramref name="operator"/> using a given <paramref name="weaponConfig"/>, optionally considering the <c>20</c> extra HP one of <see cref="P:rainbowedit.Defenders.Rook"/>'s <i>Armor Plates</i> gives.
             </summary>
             <param name="operator">The <see cref="T:rainbowedit.Operator"/> to calculate the shots to kill for.</param>
             <param name="weaponConfig">The <see cref="T:rainbowedit.WeaponConfiguration"/> that is used to shoot the <paramref name="operator"/>.</param>
-            <param name="armorPlate">Whether to consider the <c>20</c> extra HP one of <see cref="F:rainbowedit.Defenders.Rook"/>'s <i>Armor Plates</i> gives.</param>
+            <param name="armorPlate">Whether to consider the <c>20</c> extra HP one of <see cref="P:rainbowedit.Defenders.Rook"/>'s <i>Armor Plates</i> gives.</param>
             <returns></returns>
         </member>
         <member name="M:rainbowedit.Examples.OperatorsByWeaponType">
             <summary>
-            Groups all <see cref="T:rainbowedit.Operator"/>s in the order of <see cref="F:rainbowedit.Siege.DefAtk"/> by which <see cref="T:rainbowedit.Weapon.WeaponType"/>s they have access to.
+            Groups all <see cref="T:rainbowedit.Operator"/>s in the order of <see cref="P:rainbowedit.Siege.DefAtk"/> by which <see cref="T:rainbowedit.Weapon.WeaponType"/>s they have access to.
             </summary>
             <returns>A <see cref="T:System.Collections.Generic.Dictionary`2"/> where the keys are <see cref="T:rainbowedit.Weapon.WeaponType"/> enum values and the values are a collection of <see cref="T:rainbowedit.Operator"/> objects.</returns>
         </member>
         <member name="M:rainbowedit.Examples.WriteSpecialtiesAndOperators">
             <summary>
-            Writes all specialties and the <see cref="T:rainbowedit.Operator"/> that have them assigned to the <see cref="T:System.Console"/>.
+            Writes all specialties and the <see cref="T:rainbowedit.Operator"/>s that have them assigned to the <see cref="T:System.Console"/>.
             </summary>
         </member>
         <member name="M:rainbowedit.Examples.OperatorsWithWeaponOfType(rainbowedit.Weapon.WeaponType)">
@@ -314,6 +314,15 @@
             <param name="comparer">The function that compares elements and ultimately determines whether <paramref name="source"/> contains <paramref name="value"/>.</param>
             <returns>A value indicating whether <paramref name="source"/> contains <paramref name="value"/>.</returns>
         </member>
+        <member name="M:rainbowedit.Extensions.IEnumerableExtensions.Divide``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Divides a sequence into <paramref name="count"/> smaller sequences of equal length (or near-equal, if <paramref name="source"/>'s length is not divisible by <paramref name="count"/>).
+            </summary>
+            <typeparam name="T">The type of the elements in <paramref name="source"/>.</typeparam>
+            <param name="source">The sequence to divide.</param>
+            <param name="count">The number of smaller sequences to divide <paramref name="source"/> into.</param>
+            <returns>A sequence of <paramref name="count"/> sequences of <typeparamref name="T"/> containing all elements of <paramref name="source"/>.</returns>
+        </member>
         <member name="T:rainbowedit.Extensions.StringExtensions">
             <summary>
             Provides extension methods for the <see cref="T:System.String"/> type.
@@ -350,226 +359,231 @@
         <member name="M:rainbowedit.Attackers.Dispose">
             <inheritdoc/>
         </member>
-        <member name="F:rainbowedit.Attackers.Breach">
+        <member name="T:rainbowedit.Attackers.Specialties">
             <summary>
-            The <see cref="T:rainbowedit.Attackers"/>' <see cref="F:rainbowedit.Attackers.Breach"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            Contains <see cref="T:rainbowedit.Models.Specialty"/> definitions for <see cref="T:rainbowedit.Attackers"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Support">
+        <member name="P:rainbowedit.Attackers.Specialties.Breach">
             <summary>
-            The <see cref="T:rainbowedit.Attackers"/>' <see cref="F:rainbowedit.Attackers.Support"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Attackers"/>' <see cref="P:rainbowedit.Attackers.Specialties.Breach"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.FrontLine">
+        <member name="P:rainbowedit.Attackers.Specialties.Support">
             <summary>
-            The <see cref="T:rainbowedit.Attackers"/>' <see cref="F:rainbowedit.Attackers.FrontLine"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Attackers"/>' <see cref="P:rainbowedit.Attackers.Specialties.Support"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Intel">
+        <member name="P:rainbowedit.Attackers.Specialties.FrontLine">
             <summary>
-            The <see cref="T:rainbowedit.Attackers"/>' <see cref="F:rainbowedit.Attackers.Intel"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Attackers"/>' <see cref="P:rainbowedit.Attackers.Specialties.FrontLine"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.AntiGadget">
+        <member name="P:rainbowedit.Attackers.Specialties.Intel">
             <summary>
-            The <see cref="T:rainbowedit.Attackers"/>' <see cref="F:rainbowedit.Attackers.AntiGadget"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Attackers"/>' <see cref="P:rainbowedit.Attackers.Specialties.Intel"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.MapControl">
+        <member name="P:rainbowedit.Attackers.Specialties.AntiGadget">
             <summary>
-            The <see cref="T:rainbowedit.Attackers"/>' <see cref="F:rainbowedit.Attackers.MapControl"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Attackers"/>' <see cref="P:rainbowedit.Attackers.Specialties.AntiGadget"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Specialties">
+        <member name="P:rainbowedit.Attackers.Specialties.MapControl">
+            <summary>
+            The <see cref="T:rainbowedit.Attackers"/>' <see cref="P:rainbowedit.Attackers.Specialties.MapControl"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Attackers.Specialties.All">
             <summary>
             A collection of all <see cref="T:rainbowedit.Models.Specialty"/> instances that apply to <see cref="T:rainbowedit.Attackers"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Sledge">
+        <member name="P:rainbowedit.Attackers.Sledge">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Sledge"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Sledge"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Thatcher">
+        <member name="P:rainbowedit.Attackers.Thatcher">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Thatcher"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Thatcher"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Ash">
+        <member name="P:rainbowedit.Attackers.Ash">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Ash"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Ash"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Thermite">
+        <member name="P:rainbowedit.Attackers.Thermite">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Thermite"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Thermite"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Twitch">
+        <member name="P:rainbowedit.Attackers.Twitch">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Twitch"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Twitch"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Montagne">
+        <member name="P:rainbowedit.Attackers.Montagne">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Montagne"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Montagne"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Glaz">
+        <member name="P:rainbowedit.Attackers.Glaz">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Glaz"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Glaz"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Fuze">
+        <member name="P:rainbowedit.Attackers.Fuze">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Fuze"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Fuze"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Blitz">
+        <member name="P:rainbowedit.Attackers.Blitz">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Blitz"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Blitz"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.IQ">
+        <member name="P:rainbowedit.Attackers.IQ">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.IQ"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.IQ"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Buck">
+        <member name="P:rainbowedit.Attackers.Buck">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Buck"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Buck"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Blackbeard">
+        <member name="P:rainbowedit.Attackers.Blackbeard">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Blackbeard"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Blackbeard"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Capitao">
+        <member name="P:rainbowedit.Attackers.Capitao">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Capitao"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Capitao"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Hibana">
+        <member name="P:rainbowedit.Attackers.Hibana">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Hibana"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Hibana"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Jackal">
+        <member name="P:rainbowedit.Attackers.Jackal">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Jackal"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Jackal"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Ying">
+        <member name="P:rainbowedit.Attackers.Ying">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Ying"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Ying"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Zofia">
+        <member name="P:rainbowedit.Attackers.Zofia">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Zofia"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Zofia"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Dokkaebi">
+        <member name="P:rainbowedit.Attackers.Dokkaebi">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Dokkaebi"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Dokkaebi"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Lion">
+        <member name="P:rainbowedit.Attackers.Lion">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Lion"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Lion"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Finka">
+        <member name="P:rainbowedit.Attackers.Finka">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Finka"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Finka"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Maverick">
+        <member name="P:rainbowedit.Attackers.Maverick">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Maverick"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Maverick"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Nomad">
+        <member name="P:rainbowedit.Attackers.Nomad">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Nomad"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Nomad"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Gridlock">
+        <member name="P:rainbowedit.Attackers.Gridlock">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Gridlock"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Gridlock"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Nokk">
+        <member name="P:rainbowedit.Attackers.Nokk">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Nokk"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Nokk"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Amaru">
+        <member name="P:rainbowedit.Attackers.Amaru">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Amaru"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Amaru"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Kali">
+        <member name="P:rainbowedit.Attackers.Kali">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Kali"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Kali"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Iana">
+        <member name="P:rainbowedit.Attackers.Iana">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Iana"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Iana"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Ace">
+        <member name="P:rainbowedit.Attackers.Ace">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Ace"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Ace"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Zero">
+        <member name="P:rainbowedit.Attackers.Zero">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Zero"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Zero"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Flores">
+        <member name="P:rainbowedit.Attackers.Flores">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Flores"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Flores"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Osa">
+        <member name="P:rainbowedit.Attackers.Osa">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Osa"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Osa"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Sens">
+        <member name="P:rainbowedit.Attackers.Sens">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Sens"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Sens"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Grim">
+        <member name="P:rainbowedit.Attackers.Grim">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Grim"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Grim"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Brava">
+        <member name="P:rainbowedit.Attackers.Brava">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Brava"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Brava"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Attackers.Ram">
+        <member name="P:rainbowedit.Attackers.Ram">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Attackers.Ram"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Ram"/>.
             </summary>
         </member>
         <member name="M:rainbowedit.Attackers.GetPersonalSpecialtyChallengeSet(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Compiles specific challenges from all <see cref="T:rainbowedit.Attackers"/>' specialties into a collection.
             </summary>
-            <param name="breach">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Attackers.Breach" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Attackers.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="frontline">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Attackers.FrontLine" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Attackers.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Attackers.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="mapcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Attackers.MapControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="breach">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Attackers.Specialties.Breach" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Attackers.Specialties.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="frontline">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Attackers.Specialties.FrontLine" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Attackers.Specialties.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Attackers.Specialties.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="mapcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Attackers.Specialties.MapControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <returns>A</returns>
         </member>
         <member name="T:rainbowedit.Defenders">
@@ -594,227 +608,236 @@
         <member name="M:rainbowedit.Defenders.Dispose">
             <inheritdoc/>
         </member>
-        <member name="F:rainbowedit.Defenders.Trapper">
+        <member name="T:rainbowedit.Defenders.Specialties">
             <summary>
-            The <see cref="T:rainbowedit.Defenders"/>' <see cref="F:rainbowedit.Defenders.Trapper"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            Contains <see cref="T:rainbowedit.Models.Specialty"/> definitions for <see cref="T:rainbowedit.Defenders"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Support">
+        <member name="P:rainbowedit.Defenders.Specialties.Trapper">
             <summary>
-            The <see cref="T:rainbowedit.Defenders"/>' <see cref="F:rainbowedit.Defenders.Support"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Defenders"/>' <see cref="P:rainbowedit.Defenders.Specialties.Trapper"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.AntiEntry">
+        <member name="P:rainbowedit.Defenders.Specialties.Support">
             <summary>
-            The <see cref="T:rainbowedit.Defenders"/>' <see cref="F:rainbowedit.Defenders.AntiEntry"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Defenders"/>' <see cref="P:rainbowedit.Defenders.Specialties.Support"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Intel">
+        <member name="P:rainbowedit.Defenders.Specialties.AntiEntry">
             <summary>
-            The <see cref="T:rainbowedit.Defenders"/>' <see cref="F:rainbowedit.Defenders.Intel"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Defenders"/>' <see cref="P:rainbowedit.Defenders.Specialties.AntiEntry"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.AntiGadget">
+        <member name="P:rainbowedit.Defenders.Specialties.Intel">
             <summary>
-            The <see cref="T:rainbowedit.Defenders"/>' <see cref="F:rainbowedit.Defenders.AntiGadget"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Defenders"/>' <see cref="P:rainbowedit.Defenders.Specialties.Intel"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.CrowdControl">
+        <member name="P:rainbowedit.Defenders.Specialties.AntiGadget">
             <summary>
-            The <see cref="T:rainbowedit.Defenders"/>' <see cref="F:rainbowedit.Defenders.CrowdControl"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            The <see cref="T:rainbowedit.Defenders"/>' <see cref="P:rainbowedit.Defenders.Specialties.AntiGadget"/> <see cref="T:rainbowedit.Models.Specialty"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Specialties">
+        <member name="P:rainbowedit.Defenders.Specialties.CrowdControl">
+            <summary>
+            The <see cref="T:rainbowedit.Defenders"/>' <see cref="P:rainbowedit.Defenders.Specialties.CrowdControl"/> <see cref="T:rainbowedit.Models.Specialty"/>.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Defenders.Specialties.All">
             <summary>
             A collection of all <see cref="T:rainbowedit.Models.Specialty"/> instances that apply to <see cref="T:rainbowedit.Defenders"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Smoke">
+        <member name="P:rainbowedit.Defenders.Smoke">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Smoke"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Smoke"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Mute">
+        <member name="P:rainbowedit.Defenders.Mute">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Mute"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Mute"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Castle">
+        <member name="P:rainbowedit.Defenders.Castle">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Castle"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Castle"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Pulse">
+        <member name="P:rainbowedit.Defenders.Pulse">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Pulse"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Pulse"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Doc">
+        <member name="P:rainbowedit.Defenders.Doc">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Doc"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Doc"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Rook">
+        <member name="P:rainbowedit.Defenders.Rook">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Rook"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Rook"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Kapkan">
+        <member name="P:rainbowedit.Defenders.Kapkan">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Kapkan"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Kapkan"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Tachanka">
+        <member name="P:rainbowedit.Defenders.Tachanka">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Tachanka"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Tachanka"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Jäger">
+        <member name="P:rainbowedit.Defenders.Jäger">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Jäger"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Jäger"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Bandit">
+        <member name="P:rainbowedit.Defenders.Bandit">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Bandit"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Bandit"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Frost">
+        <member name="P:rainbowedit.Defenders.Frost">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Frost"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Frost"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Valkyrie">
+        <member name="P:rainbowedit.Defenders.Valkyrie">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Valkyrie"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Valkyrie"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Caveira">
+        <member name="P:rainbowedit.Defenders.Caveira">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Caveira"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Caveira"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Echo">
+        <member name="P:rainbowedit.Defenders.Echo">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Echo"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Echo"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Mira">
+        <member name="P:rainbowedit.Defenders.Mira">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Mira"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Mira"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Lesion">
+        <member name="P:rainbowedit.Defenders.Lesion">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Lesion"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Lesion"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Ela">
+        <member name="P:rainbowedit.Defenders.Ela">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Ela"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Ela"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Vigil">
+        <member name="P:rainbowedit.Defenders.Vigil">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Vigil"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Vigil"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Maestro">
+        <member name="P:rainbowedit.Defenders.Maestro">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Maestro"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Maestro"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Alibi">
+        <member name="P:rainbowedit.Defenders.Alibi">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Alibi"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Alibi"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Clash">
+        <member name="P:rainbowedit.Defenders.Clash">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Clash"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Clash"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Kaid">
+        <member name="P:rainbowedit.Defenders.Kaid">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Kaid"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Kaid"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Mozzie">
+        <member name="P:rainbowedit.Defenders.Mozzie">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Mozzie"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Mozzie"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Warden">
+        <member name="P:rainbowedit.Defenders.Warden">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Warden"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Warden"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Goyo">
+        <member name="P:rainbowedit.Defenders.Goyo">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Goyo"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Goyo"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Wamai">
+        <member name="P:rainbowedit.Defenders.Wamai">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Wamai"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Wamai"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Oryx">
+        <member name="P:rainbowedit.Defenders.Oryx">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Oryx"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Oryx"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Melusi">
+        <member name="P:rainbowedit.Defenders.Melusi">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Melusi"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Melusi"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Aruni">
+        <member name="P:rainbowedit.Defenders.Aruni">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Aruni"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Aruni"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Thunderbird">
+        <member name="P:rainbowedit.Defenders.Thunderbird">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Thunderbird"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Thunderbird"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Thorn">
+        <member name="P:rainbowedit.Defenders.Thorn">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Thorn"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Thorn"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Azami">
+        <member name="P:rainbowedit.Defenders.Azami">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Azami"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Azami"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Solis">
+        <member name="P:rainbowedit.Defenders.Solis">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Solis"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Solis"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Defenders.Fenrir">
+        <member name="P:rainbowedit.Defenders.Fenrir">
             <summary>
-            The <see cref="T:rainbowedit.Operator"/> <see cref="F:rainbowedit.Defenders.Fenrir"/>.
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Fenrir"/>.
             </summary>
         </member>
         <member name="M:rainbowedit.Defenders.GetPersonalSpecialtyChallengeSet(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Compiles specific challenges from all <see cref="T:rainbowedit.Defenders"/>' specialties into a collection.
             </summary>
-            <param name="trapper">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Defenders.Trapper" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Defenders.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="antientry">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Defenders.AntiEntry" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Defenders.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Defenders.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="crowdcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="F:rainbowedit.Defenders.CrowdControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="trapper">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Trapper" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antientry">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:AntiEntry" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="crowdcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:CrowdControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <returns>A</returns>
         </member>
         <member name="T:rainbowedit.Operator">
             <summary>
             Represents an <see cref="T:rainbowedit.Operator"/> in Siege.
             </summary>
+            <remarks>
+            <para/>Implements <see cref="T:System.IEquatable`1"/> of <see cref="T:rainbowedit.Operator"/> which enables compares <see cref="T:rainbowedit.Operator"/>s by their <see cref="P:rainbowedit.Operator.Nickname"/>.
+            <para/>Implements <see cref="T:System.IComparable`1"/> of <see cref="T:rainbowedit.Operator"/> which enables sorting <see cref="T:rainbowedit.Operator"/>s according to their in-game sorting order.
+            </remarks>
         </member>
         <member name="T:rainbowedit.Operator.OperatorSpeed">
             <summary>
@@ -1183,7 +1206,8 @@
             </summary>
             <remarks>
             This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="T:rainbowedit.Operator.OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
-            <para/>This collection is generated at runtime when it is first accessed.</remarks>
+            <para/>This collection is generated at runtime when it is first accessed.
+            </remarks>
         </member>
         <member name="P:rainbowedit.Operator.Nickname">
             <summary>
@@ -1323,7 +1347,7 @@
             </summary>
             <param name="array">The <see cref="T:System.Array"/> to sort.</param>
         </member>
-        <member name="F:rainbowedit.Operator.Comparer">
+        <member name="P:rainbowedit.Operator.Comparer">
             <summary>
             An <see cref="T:System.Collections.Generic.IComparer`1"/> implementation for <see cref="T:rainbowedit.Operator"/> objects that may be used to sort a collection of <see cref="T:rainbowedit.Operator"/> objects by the order they appear in-game.
             </summary>
@@ -1342,7 +1366,10 @@
             <inheritdoc/>
         </member>
         <member name="M:rainbowedit.Operator.GetHashCode">
-            <inheritdoc/>
+            <summary>
+            Computes a <see cref="T:System.HashCode"/> for the current <see cref="T:rainbowedit.Operator"/> object.
+            </summary>
+            <returns>The computed hash code as an <see cref="T:System.Int32"/>.</returns>
         </member>
         <member name="M:rainbowedit.Operator.op_Equality(rainbowedit.Operator,rainbowedit.Operator)">
             <summary>
@@ -1403,11 +1430,6 @@
         <member name="M:rainbowedit.Operator.CompareTo(rainbowedit.Operator)">
             <inheritdoc/>
         </member>
-        <member name="T:rainbowedit.Operator.OperatorComparer">
-            <summary>
-            Represents an <see cref="T:System.Collections.Generic.IComparer`1"/> implementation that compares <see cref="T:rainbowedit.Operator"/> objects according to their in-game order.
-            </summary>
-        </member>
         <member name="T:rainbowedit.OperatorAge">
             <summary>
             Represents the age of an <see cref="T:rainbowedit.Operator"/>.
@@ -1438,10 +1460,17 @@
         </member>
         <member name="M:rainbowedit.OperatorAge.ToDateTime">
             <summary>
-            Constructs a <see cref="T:System.DateTime"/> instance representing the current date of birth of the <see cref="T:rainbowedit.Operator"/>.
+            Constructs a <see cref="T:System.DateTime"/> instance representing the (current) date of birth of the <see cref="T:rainbowedit.Operator"/>.
+            "Current" because an <see cref="T:rainbowedit.Operator"/>'s age is defined as their birth day and month and their age. <see cref="T:rainbowedit.Operator"/>s do not age; as such, this method returns a different <see cref="T:System.DateTime"/> instance every year.
             </summary>
         </member>
-        <member name="F:rainbowedit.OperatorAge.Redacted">
+        <member name="M:rainbowedit.OperatorAge.op_Explicit(rainbowedit.OperatorAge)~System.DateTime">
+            <summary>
+            Converts an <see cref="T:rainbowedit.OperatorAge"/> instance to a <see cref="T:System.DateTime"/> instance.
+            </summary>
+            <param name="age"></param>
+        </member>
+        <member name="P:rainbowedit.OperatorAge.Redacted">
             <summary>
             Represents an <see cref="T:rainbowedit.Operator"/>'s age when it is "redacted" or unavailable in-game for any other reason.
             </summary>
@@ -1604,7 +1633,7 @@
         </member>
         <member name="T:rainbowedit.Models.Specialty">
             <summary>
-            Represents a <see cref="T:rainbowedit.Models.Specialty"/>, introduced in Y8S1. 
+            Represents a <see cref="T:rainbowedit.Models.Specialty"/>, introduced in Y8S1.
             </summary>
         </member>
         <member name="P:rainbowedit.Models.Specialty.Name">
@@ -1901,6 +1930,9 @@
             <para/>Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
             <para/>As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="P:rainbowedit.Weapon.Sights"/> flags have been redefined to act as maximums. Use <see cref="M:System.Enum.HasFlag(System.Enum)"/> for any look-ups.
             </summary>
+            <remarks>
+            <para/><see cref="T:rainbowedit.Weapon.Sight"/> is semi-<see cref="T:System.FlagsAttribute"/>. <see cref="F:rainbowedit.Weapon.Sight.None"/> and <see cref="F:rainbowedit.Weapon.Sight.Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
+            </remarks>
         </member>
         <member name="F:rainbowedit.Weapon.Sight.Invalid">
             <summary>
@@ -1914,7 +1946,7 @@
         </member>
         <member name="F:rainbowedit.Weapon.Sight.Other">
             <summary>
-            Indicates that some other weird stuff is going on with the sights for a <see cref="T:rainbowedit.Weapon"/>. This identifies, for example, <see cref="F:rainbowedit.Defenders.Ela"/>'s and <see cref="F:rainbowedit.Attackers.Zofia"/>'s <i>RG15</i> <see cref="F:rainbowedit.Weapon.WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped, or <see cref="F:rainbowedit.Defenders.Tachanka"/>'s <i>DP27</i> <see cref="F:rainbowedit.Weapon.WeaponType.LightMachineGun"/>, which has the additional <i>Reflex D</i> option.
+            Indicates that some other weird stuff is going on with the sights for a <see cref="T:rainbowedit.Weapon"/>. This identifies, for example, <see cref="P:rainbowedit.Defenders.Ela"/>'s and <see cref="P:rainbowedit.Attackers.Zofia"/>'s <i>RG15</i> <see cref="F:rainbowedit.Weapon.WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped, or <see cref="P:rainbowedit.Defenders.Tachanka"/>'s <i>DP27</i> <see cref="F:rainbowedit.Weapon.WeaponType.LightMachineGun"/>, which has the additional <i>Reflex D</i> option.
             </summary>
         </member>
         <member name="F:rainbowedit.Weapon.Sight.One">
@@ -1944,12 +1976,12 @@
         </member>
         <member name="F:rainbowedit.Weapon.Sight.Four">
             <summary>
-            Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>, which may then be magnified to 4x by <see cref="F:rainbowedit.Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="F:rainbowedit.Attackers.Glaz"/>.
+            Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>, which may then be magnified to 4x by <see cref="P:rainbowedit.Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="P:rainbowedit.Attackers.Glaz"/>.
             </summary>
         </member>
         <member name="F:rainbowedit.Weapon.Sight.FiveTwelve">
             <summary>
-            Indicates that no sights can be equipped on a <see cref="T:rainbowedit.Weapon"/>. This identifies <see cref="F:rainbowedit.Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="F:rainbowedit.Attackers.Kali"/>.
+            Indicates that no sights can be equipped on a <see cref="T:rainbowedit.Weapon"/>. This identifies <see cref="P:rainbowedit.Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="P:rainbowedit.Attackers.Kali"/>.
             </summary>
         </member>
         <member name="T:rainbowedit.Weapon.Barrel">
@@ -2123,7 +2155,7 @@
         </member>
         <member name="M:rainbowedit.Weapon.Resolve(System.String,System.Double)">
             <summary>
-            Attempts to resolve a weapon name to the first <see cref="T:rainbowedit.Weapon"/> object that is found while enumerating <see cref="F:rainbowedit.Siege.DefAtk"/>.
+            Attempts to resolve a weapon name to the first <see cref="T:rainbowedit.Weapon"/> object that is found while enumerating <see cref="P:rainbowedit.Siege.DefAtk"/>.
             </summary>
             <param name="name">The case-insensitive weapon name to resolve to a <see cref="T:rainbowedit.Weapon"/> object.</param>
             <param name="similarityThreshold">How similar (in percent) an actual <see cref="P:rainbowedit.Weapon.Name"/> must be for the <see cref="T:rainbowedit.Weapon"/> to be considered a match for the specified <paramref name="name"/>. If not specified, a value is dynamically calculated based on the length of <paramref name="name"/>.</param>
@@ -2133,7 +2165,7 @@
         <member name="T:rainbowedit.Randomizers">
             <summary>
             A collection of methods that fetch random information or configurations from the model classes in <see cref="T:rainbowedit.Siege"/>.
-            <para/>Where a collection of <see cref="T:rainbowedit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:rainbowedit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="F:rainbowedit.Operator.Comparer"/> and <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>, <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.ICollection{rainbowedit.Operator})"/> and <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.List{rainbowedit.Operator})"/>.
+            <para/>Where a collection of <see cref="T:rainbowedit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:rainbowedit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="P:rainbowedit.Operator.Comparer"/> and <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>, <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.ICollection{rainbowedit.Operator})"/> and <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.List{rainbowedit.Operator})"/>.
             </summary>
         </member>
         <member name="T:rainbowedit.Randomizers.Challenges">
@@ -2424,37 +2456,37 @@
             Base class for all information accessible from the library.
             </summary>
         </member>
-        <member name="F:rainbowedit.Siege.Attackers">
+        <member name="P:rainbowedit.Siege.Attackers">
             <summary>
             Contains all <see cref="T:rainbowedit.Attackers"/> from the game.
             </summary>
         </member>
-        <member name="F:rainbowedit.Siege.Defenders">
+        <member name="P:rainbowedit.Siege.Defenders">
             <summary>
             Contains all <see cref="T:rainbowedit.Defenders"/> from the game.
             </summary>
         </member>
-        <member name="F:rainbowedit.Siege.AtkDef">
+        <member name="P:rainbowedit.Siege.AtkDef">
             <summary>
-            Contains all <see cref="T:rainbowedit.Operator"/>s defined in <see cref="F:rainbowedit.Siege.Attackers"/> and <see cref="F:rainbowedit.Siege.Defenders"/>, concatenated in that order.
+            Contains all <see cref="T:rainbowedit.Operator"/>s defined in <see cref="P:rainbowedit.Siege.Attackers"/> and <see cref="P:rainbowedit.Siege.Defenders"/>, concatenated in that order.
             </summary>
         </member>
-        <member name="F:rainbowedit.Siege.DefAtk">
+        <member name="P:rainbowedit.Siege.DefAtk">
             <summary>
-            Contains all <see cref="T:rainbowedit.Operator"/>s defined in <see cref="F:rainbowedit.Siege.Defenders"/> and <see cref="F:rainbowedit.Siege.Attackers"/>, concatenated in that order.
+            Contains all <see cref="T:rainbowedit.Operator"/>s defined in <see cref="P:rainbowedit.Siege.Defenders"/> and <see cref="P:rainbowedit.Siege.Attackers"/>, concatenated in that order.
             </summary>
         </member>
-        <member name="F:rainbowedit.Siege.LongestOperatorNickname">
+        <member name="P:rainbowedit.Siege.LongestOperatorNickname">
             <summary>
             The longest <see cref="P:rainbowedit.Operator.Nickname"/> there is.
             </summary>
         </member>
-        <member name="F:rainbowedit.Siege.LongestWeaponName">
+        <member name="P:rainbowedit.Siege.LongestWeaponName">
             <summary>
             The longest <see cref="P:rainbowedit.Weapon.Name"/> there is.
             </summary>
         </member>
-        <member name="F:rainbowedit.Siege.LongestGadgetName">
+        <member name="P:rainbowedit.Siege.LongestGadgetName">
             <summary>
             The longest <see cref="T:rainbowedit.Weapon.Gadget"/> name there is.
             </summary>

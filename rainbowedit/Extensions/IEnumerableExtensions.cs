@@ -76,4 +76,18 @@ public static class IEnumerableExtensions
         }
         return false;
     }
+
+    /// <summary>
+    /// Divides a sequence into <paramref name="count"/> smaller sequences of equal length (or near-equal, if <paramref name="source"/>'s length is not divisible by <paramref name="count"/>).
+    /// </summary>
+    /// <typeparam name="T">The type of the elements in <paramref name="source"/>.</typeparam>
+    /// <param name="source">The sequence to divide.</param>
+    /// <param name="count">The number of smaller sequences to divide <paramref name="source"/> into.</param>
+    /// <returns>A sequence of <paramref name="count"/> sequences of <typeparamref name="T"/> containing all elements of <paramref name="source"/>.</returns>
+    public static IEnumerable<IEnumerable<T>> Divide<T>(this IEnumerable<T> source, int count)
+    {
+        var sourceList = source.ToList();
+        var chunkSize = (int)Math.Ceiling((double)sourceList.Count / count);
+        return source.Chunk(chunkSize);
+    }
 }

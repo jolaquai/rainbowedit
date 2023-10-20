@@ -117,7 +117,7 @@ public class Weapon
         /// <summary>
         /// Returns all unique <see cref="Attackers"/>' secondary <see cref="Weapon"/>s (see <see cref="Operator.Secondaries"/>).
         /// </summary>
-        public static IEnumerable<Weapon> AttackerSecondary => Siege.Attackers.SelectMany(op => op.Primaries).DistinctBy(wep => wep.Name);
+        public static IEnumerable<Weapon> AttackerSecondary => Siege.Attackers.SelectMany(op => op.Secondaries).DistinctBy(wep => wep.Name);
         /// <summary>
         /// Returns all unique <see cref="Attackers"/>' <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>).
         /// </summary>
@@ -134,7 +134,7 @@ public class Weapon
         /// <summary>
         /// Returns all unique <see cref="Defenders"/>' and <see cref="Attackers"/>' <see cref="Weapon"/>s (see <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>), concatenated in that order.
         /// </summary>
-        public static IEnumerable<Weapon> All => Siege.DefAtk.SelectMany(op => op.Secondaries.Concat(op.Secondaries)).DistinctBy(wep => wep.Name);
+        public static IEnumerable<Weapon> All => Siege.DefAtk.SelectMany(op => op.Primaries.Concat(op.Secondaries)).DistinctBy(wep => wep.Name);
     }
 
     /// <summary>

@@ -2912,27 +2912,27 @@ public sealed partial class Defenders : IEnumerable<Operator>
 
         if (trapper is >= 1 and <= 3)
         {
-            challenges.Add(Trapper, $"{Trapper.Name,-13} -> {Trapper.Challenges[trapper - 1].Description}");
+            challenges.Add(Specialties.Trapper, $"{Specialties.Trapper.Name,-13} -> {Specialties.Trapper.Challenges[trapper - 1].Description}");
         }
         if (support is >= 1 and <= 3)
         {
-            challenges.Add(Support, $"{Support.Name,-13} -> {Support.Challenges[support - 1].Description}");
+            challenges.Add(Specialties.Support, $"{Specialties.Support.Name,-13} -> {Specialties.Support.Challenges[support - 1].Description}");
         }
         if (antientry is >= 1 and <= 3)
         {
-            challenges.Add(AntiEntry, $"{AntiEntry.Name,-13} -> {AntiEntry.Challenges[antientry - 1].Description}");
+            challenges.Add(Specialties.AntiEntry, $"{Specialties.AntiEntry.Name,-13} -> {Specialties.AntiEntry.Challenges[antientry - 1].Description}");
         }
         if (intel is >= 1 and <= 3)
         {
-            challenges.Add(Intel, $"{Intel.Name,-13} -> {Intel.Challenges[intel - 1].Description}");
+            challenges.Add(Specialties.Intel, $"{Specialties.Intel.Name,-13} -> {Specialties.Intel.Challenges[intel - 1].Description}");
         }
         if (antigadget is >= 1 and <= 3)
         {
-            challenges.Add(AntiGadget, $"{AntiGadget.Name,-13} -> {AntiGadget.Challenges[antigadget - 1].Description}");
+            challenges.Add(Specialties.AntiGadget, $"{Specialties.AntiGadget.Name,-13} -> {Specialties.AntiGadget.Challenges[antigadget - 1].Description}");
         }
         if (crowdcontrol is >= 1 and <= 3)
         {
-            challenges.Add(CrowdControl, $"{CrowdControl.Name,-13} -> {CrowdControl.Challenges[crowdcontrol - 1].Description}");
+            challenges.Add(Specialties.CrowdControl, $"{Specialties.CrowdControl.Name,-13} -> {Specialties.CrowdControl.Challenges[crowdcontrol - 1].Description}");
         }
 
         return challenges;
