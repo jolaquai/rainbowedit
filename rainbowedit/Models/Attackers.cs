@@ -914,7 +914,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 "552 Commando",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
-                47,
+                43,
                 690,
                 30,
                 Weapon.Sight.OnePointFive,
@@ -957,7 +957,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 1560
             )
         ],
-        Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore,
+        Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore | Weapon.Gadget.FragGrenade,
         "Electronics Detector RED Mk III \"Spectre\"",
         [
             Specialties.Intel,
@@ -1110,7 +1110,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 1450
             )
         ],
-        Weapon.Gadget.Claymore | Weapon.Gadget.StunGrenade | Weapon.Gadget.EmpGrenade,
+        Weapon.Gadget.Claymore | Weapon.Gadget.StunGrenade | Weapon.Gadget.FragGrenade,
         "TARS Mk 0-Transparent Armored Rifle Shield",
         [
             Specialties.Support
@@ -1698,20 +1698,6 @@ public sealed partial class Attackers : IEnumerable<Operator>
             ),
             new Weapon(
                 Lion,
-                "GONNE-6",
-                Weapon.WeaponType.HandCannon,
-                Weapon.FiringMode.SingleShot,
-                10,
-                0,
-                1,
-                Weapon.Sight.None,
-                Weapon.Barrel.None,
-                Weapon.Grip.None,
-                false,
-                0,
-                0),
-            new Weapon(
-                Lion,
                 "P9",
                 Weapon.WeaponType.Handgun,
                 Weapon.FiringMode.SingleShot,
@@ -1726,7 +1712,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 1440
             )
         ],
-        Weapon.Gadget.StunGrenade | Weapon.Gadget.Claymore | Weapon.Gadget.EmpGrenade,
+        Weapon.Gadget.StunGrenade | Weapon.Gadget.Claymore | Weapon.Gadget.FragGrenade,
         "EE-ONE-D Scanning Drone",
         [
             Specialties.Intel,
@@ -2719,7 +2705,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 1280
             )
         ],
-        Weapon.Gadget.SmokeGrenade | Weapon.Gadget.Claymore | Weapon.Gadget.EmpGrenade,
+        Weapon.Gadget.FragGrenade | Weapon.Gadget.Claymore | Weapon.Gadget.EmpGrenade,
         "Talon-8 Clear Shield",
         [
             Specialties.Intel,
@@ -2787,23 +2773,8 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 1050,
                 1450
             ),
-            new Weapon(
-                Sens,
-                "GONNE-6",
-                Weapon.WeaponType.HandCannon,
-                Weapon.FiringMode.SingleShot,
-                10,
-                0,
-                1,
-                Weapon.Sight.None,
-                Weapon.Barrel.None,
-                Weapon.Grip.None,
-                false,
-                0,
-                0
-            )
         ],
-        Weapon.Gadget.HardBreachCharge | Weapon.Gadget.Claymore,
+        Weapon.Gadget.HardBreachCharge | Weapon.Gadget.Claymore | Weapon.Gadget.FragGrenade,
         "R.O.U. Projector System",
         [
             Specialties.Support,
@@ -2829,7 +2800,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 "552 Commando",
                 Weapon.WeaponType.AssaultRifle,
                 Weapon.FiringMode.FullAuto,
-                47,
+                43,
                 690,
                 30,
                 Weapon.Sight.Two,
@@ -2887,7 +2858,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 3370
             )
         ],
-        Weapon.Gadget.BreachCharge | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.Claymore,
+        Weapon.Gadget.EmpGrenade | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.Claymore,
         "Kawan Hive Launcher",
         [
             Specialties.FrontLine,
