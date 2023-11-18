@@ -21,11 +21,12 @@ public static class IEnumerableExtensions
     /// </summary>
     /// <typeparam name="T">The <see cref="Type"/> of the items in <paramref name="source"/>.</typeparam>
     /// <param name="source">The sequence to choose an item from.</param>
+    /// <param name="random">A <see cref="System.Random"/> instance to use for generating random numbers. If <see langword="null"/>, a new instance will be created for each call.</param>
     /// <returns>A random item from <paramref name="source"/>.</returns>
-    public static T Random<T>(this IEnumerable<T> source)
+    public static T Random<T>(this IEnumerable<T> source, Random? random = null)
     {
-        List<T> enumerated = [..source];
-        return enumerated[new Random().Next(enumerated.Count)];
+        List<T> enumerated = [.. source];
+        return enumerated[(random ?? new Random()).Next(enumerated.Count)];
     }
 
     /// <summary>
