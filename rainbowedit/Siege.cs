@@ -10,6 +10,11 @@ namespace rainbowedit;
 /// </summary>
 public static class Siege
 {
+    internal static class Internals
+    {
+        internal static readonly Random _random = new Random();
+    }
+
     /// <summary>
     /// Contains all <see cref="rainbowedit.Attackers"/> from the game.
     /// </summary>

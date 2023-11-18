@@ -1,6 +1,4 @@
-﻿using rainbowedit;
-
-namespace rainbowedit.Exceptions;
+﻿namespace rainbowedit.Exceptions;
 
 /// <summary>
 /// The exception that is thrown when any part of a loadout is attempted to be brought in connection with an <see cref="rainbowedit.Operator"/> that it does not match with inside a <see cref="LoadoutConfiguration"/>.

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace rainbowedit.Extensions;
+﻿namespace rainbowedit.Extensions;
 
 /// <summary>
 /// Provides extensions for the <see cref="IEnumerable{T}"/> type and derived types.
@@ -43,7 +41,7 @@ public static class IEnumerableExtensions
         {
             for (var i = 0; i < count; i++)
             {
-                yield return source.Random();
+                yield return source.Random(Siege.Internals._random);
             }
         }
         else
@@ -51,7 +49,7 @@ public static class IEnumerableExtensions
             var exclude = new List<T>();
             for (var i = 0; i < count; i++)
             {
-                var item = source.Except(exclude).Random();
+                var item = source.Except(exclude).Random(Siege.Internals._random);
                 exclude.Add(item);
                 yield return item;
             }

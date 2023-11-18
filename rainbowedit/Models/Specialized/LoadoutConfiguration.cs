@@ -38,11 +38,11 @@ public class LoadoutConfiguration
         var possibleGadgets = Source.Gadgets.GetSetFlags();
         if (possibleGadgets.Count != 0)
         {
-            Gadget = possibleGadgets.Random();
+            Gadget = possibleGadgets.Random(Siege.Internals._random);
         }
 
-        Primary = new WeaponConfiguration(Source.Primaries.Random());
-        Secondary = new WeaponConfiguration(Source.Secondaries.Random());
+        Primary = new WeaponConfiguration(Source.Primaries.Random(Siege.Internals._random));
+        Secondary = new WeaponConfiguration(Source.Secondaries.Random(Siege.Internals._random));
     }
 
     /// <summary>

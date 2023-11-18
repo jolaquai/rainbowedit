@@ -51,11 +51,11 @@ public class WeaponConfiguration
 
         if (possibleSights.Count != 0)
         {
-            var sight = possibleSights.Random();
+            var sight = possibleSights.Random(Siege.Internals._random);
             Sight = sight switch
             {
-                Weapon.Sight.One => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(),
-                Weapon.Sight.TwoPointFive => new List<string>() { "2.5x A", "2.5x B" }.Random(),
+                Weapon.Sight.One => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Siege.Internals._random),
+                Weapon.Sight.TwoPointFive => new List<string>() { "2.5x A", "2.5x B" }.Random(Siege.Internals._random),
                 _ => sight.GetDescription()
             };
         }
@@ -66,7 +66,7 @@ public class WeaponConfiguration
 
         if (possibleBarrels.Count != 0)
         {
-            Barrel = possibleBarrels.Random().GetDescription();
+            Barrel = possibleBarrels.Random(Siege.Internals._random).GetDescription();
         }
         else
         {
@@ -75,7 +75,7 @@ public class WeaponConfiguration
 
         if (possibleGrips.Count != 0)
         {
-            Grip = possibleGrips.Random().GetDescription();
+            Grip = possibleGrips.Random(Siege.Internals._random).GetDescription();
         }
         else
         {
@@ -105,8 +105,8 @@ public class WeaponConfiguration
 
         Sight = sight switch
         {
-            Weapon.Sight.One => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(),
-            Weapon.Sight.TwoPointFive => new List<string>() { "2.5x A", "2.5x B" }.Random(),
+            Weapon.Sight.One => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Siege.Internals._random),
+            Weapon.Sight.TwoPointFive => new List<string>() { "2.5x A", "2.5x B" }.Random(Siege.Internals._random),
             _ => sight.GetDescription()
         };
     }

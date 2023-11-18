@@ -39,7 +39,7 @@ public static class Randomizers
         /// Constructs a string describing the challenge of eliminating opponents using <see cref="Weapon"/>s of a specific <see cref="Weapon.WeaponType"/>.
         /// </summary>
         /// <returns>A string as described.</returns>
-        public static string WeaponTypeEliminations() => $"Eliminate {new Random().Next(1, 3) * ChallengeObjectiveMultiplier} opponents with {Enum.GetValues<Weapon.WeaponType>().Select(type => type.ToString()).Random()}s.";
+        public static string WeaponTypeEliminations() => $"Eliminate {new Random().Next(1, 3) * ChallengeObjectiveMultiplier} opponents with {Enum.GetValues<Weapon.WeaponType>().Select(type => type.ToString()).Random(Siege.Internals._random)}s.";
 
         /// <summary>
         /// Constructs a string describing the challenge of winning rounds using <see cref="Operator"/>s belonging to a specific <see cref="Operator.Organization"/>.
@@ -47,7 +47,7 @@ public static class Randomizers
         /// <returns>A string as described.</returns>
         public static string OrganizationActiveDuty()
         {
-            var org = Siege.AtkDef.Select(op => op.Organization).Random();
+            var org = Siege.AtkDef.Select(op => op.Organization).Random(Siege.Internals._random);
             var ops = Siege.AtkDef.Where(op => op.Organization == org).Select(op => op.Nickname).ToList();
 
             if (ops.Count == 1)
@@ -193,19 +193,19 @@ public static class Randomizers
     /// Gets a random <see cref="Operator"/>.
     /// </summary>
     /// <returns>A random <see cref="Operator"/>.</returns>
-    public static Operator GetRandomOperator() => Siege.AtkDef.Random();
+    public static Operator GetRandomOperator() => Siege.AtkDef.Random(Siege.Internals._random);
     /// <summary>
     /// Gets a random <see cref="Operator"/> from a pool of <see cref="Operator"/>s defined by a <paramref name="filter"/> function.
     /// </summary>
     /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Operator"/> to choose from.</param>
     /// <returns>A random <see cref="Operator"/>.</returns>
-    public static Operator GetRandomOperator(Func<Operator, bool> filter) => Siege.AtkDef.Where(filter).Random();
+    public static Operator GetRandomOperator(Func<Operator, bool> filter) => Siege.AtkDef.Where(filter).Random(Siege.Internals._random);
     /// <summary>
     /// Gets a random <see cref="Operator"/> while excluding any number of them.
     /// </summary>
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A random <see cref="Operator"/>.</returns>
-    public static Operator GetRandomOperator(params Operator[] filter) => Siege.AtkDef.Except(filter).Random();
+    public static Operator GetRandomOperator(params Operator[] filter) => Siege.AtkDef.Except(filter).Random(Siege.Internals._random);
 
     /// <summary>
     /// Gets a number of random <see cref="Operator"/>s.
@@ -234,19 +234,19 @@ public static class Randomizers
     /// Gets a random <see cref="Operator"/> from the <see cref="Defenders"/>.
     /// </summary>
     /// <returns>A random Defender's <see cref="Operator"/>.</returns>
-    public static Operator GetRandomDefender() => Siege.Defenders.Random();
+    public static Operator GetRandomDefender() => Siege.Defenders.Random(Siege.Internals._random);
     /// <summary>
     /// Gets a random <see cref="Operator"/> from a pool of <see cref="Defenders"/> defined by a <paramref name="filter"/> function.
     /// </summary>
     /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of <see cref="Defenders"/> to choose from.</param>
     /// <returns>A random Defender's <see cref="Operator"/>.</returns>
-    public static Operator GetRandomDefender(Func<Operator, bool> filter) => Siege.Defenders.Where(filter).Random();
+    public static Operator GetRandomDefender(Func<Operator, bool> filter) => Siege.Defenders.Where(filter).Random(Siege.Internals._random);
     /// <summary>
     /// Gets a random <see cref="Operator"/> from the <see cref="Defenders"/> while excluding any number of them.
     /// </summary>
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A random Defender's <see cref="Operator"/>.</returns>
-    public static Operator GetRandomDefender(params Operator[] filter) => Siege.Defenders.Except(filter).Random();
+    public static Operator GetRandomDefender(params Operator[] filter) => Siege.Defenders.Except(filter).Random(Siege.Internals._random);
 
     /// <summary>
     /// Gets a number of random <see cref="Operator"/>s from the <see cref="Defenders"/>.
@@ -275,19 +275,19 @@ public static class Randomizers
     /// Gets a random <see cref="Operator"/> from the <see cref="Attackers"/>.
     /// </summary>
     /// <returns>A random Attacker's <see cref="Operator"/>.</returns>
-    public static Operator GetRandomAttacker() => Siege.Attackers.Random();
+    public static Operator GetRandomAttacker() => Siege.Attackers.Random(Siege.Internals._random);
     /// <summary>
     /// Gets a random <see cref="Operator"/> from a pool of <see cref="Attackers"/> defined by a <paramref name="filter"/> function.
     /// </summary>
     /// <param name="filter">The function that dictates which <see cref="Operator"/>s are in the pool of Attackers to choose from.</param>
     /// <returns>A random Attacker's <see cref="Operator"/>.</returns>
-    public static Operator GetRandomAttacker(Func<Operator, bool> filter) => Siege.Attackers.Where(filter).Random();
+    public static Operator GetRandomAttacker(Func<Operator, bool> filter) => Siege.Attackers.Where(filter).Random(Siege.Internals._random);
     /// <summary>
     /// Gets a random <see cref="Operator"/> from the <see cref="Attackers"/> while excluding any number of them.
     /// </summary>
     /// <param name="filter">The set of <see cref="Operator"/>s to exclude from the selection.</param>
     /// <returns>A random Attacker's <see cref="Operator"/>.</returns>
-    public static Operator GetRandomAttacker(params Operator[] filter) => Siege.Attackers.Except(filter).Random();
+    public static Operator GetRandomAttacker(params Operator[] filter) => Siege.Attackers.Except(filter).Random(Siege.Internals._random);
 
     /// <summary>
     /// Gets a number of random <see cref="Operator"/>s from the <see cref="Attackers"/>.
