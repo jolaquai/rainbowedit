@@ -43,7 +43,8 @@ public sealed partial class Defenders : IEnumerable<Operator>
             Thunderbird,
             Thorn,
             Azami,
-            Solis
+            Solis,
+            Tubarao
         ];
 
         // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
@@ -2890,6 +2891,72 @@ public sealed partial class Defenders : IEnumerable<Operator>
         74M,
         "Emil Svensson",
         new OperatorAge(3, 12, 34),
+        2
+    );
+
+    public static Operator Tubarao { get; } = new Operator(
+        "Tubarão",
+        [
+            new Weapon(
+                Tubarao,
+                "MPX",
+                Weapon.WeaponType.SubmachineGun,
+                Weapon.FiringMode.FullAuto,
+                26,
+                830,
+                30,
+                Weapon.Sight.One,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake | Weapon.Barrel.ExtendedBarrel,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                true,
+                1310,
+                2040
+            ),
+            new Weapon(
+                Tubarao,
+                "AR-15.50",
+                Weapon.WeaponType.MarksmanRifle,
+                Weapon.FiringMode.SingleShot,
+                67,
+                450,
+                10,
+                Weapon.Sight.OnePointFive,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
+                Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                true,
+                1280,
+                2120
+            )
+        ],
+        [
+            new Weapon(
+                Tubarao,
+                "P226 MK 25",
+                Weapon.WeaponType.Handgun,
+                Weapon.FiringMode.SingleShot,
+                50,
+                550,
+                15,
+                Weapon.Sight.None,
+                Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
+                Weapon.Grip.None,
+                true,
+                1220,
+                1430
+            )
+        ],
+        Weapon.Gadget.NitroCell | Weapon.Gadget.ProximityAlarm,
+        "Zoto Canister",
+        [
+            Specialties.AntiGadget,
+            Specialties.CrowdControl
+        ],
+        "DAE",
+        "Ponta Delgada, Portugal",
+        173,
+        69,
+        "Isaac Nunes Oliveira",
+        new OperatorAge(24, 11, 35),
         2
     );
     #endregion
