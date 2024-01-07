@@ -6,7 +6,7 @@ namespace rainbowedit;
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
 
 /// <summary>
-/// Base class for all information accessible from the library.
+/// General information.
 /// </summary>
 public static class Siege
 {

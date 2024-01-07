@@ -12,7 +12,7 @@ public static class IEnumerableExtensions
     /// <param name="source">The collection to remove <paramref name="item"/> from.</param>
     /// <param name="item">The item to remove.</param>
     /// <returns>A copy of the original collection with <paramref name="item"/> removed if it was present.</returns>
-    public static IEnumerable<T> Remove<T>(this IEnumerable<T> source, T item) => source.Except(new List<T>() { item });
+    public static IEnumerable<T> Remove<T>(this IEnumerable<T> source, T item) => source.Except([item]);
 
     /// <summary>
     /// Returns a random item from an <see cref="IEnumerable{T}"/>.
@@ -35,13 +35,13 @@ public static class IEnumerableExtensions
     /// <param name="count">The number of items to return.</param>
     /// <param name="noDuplicates">Whether to ensure no duplicate items are returned.</param>
     /// <returns>A random item from <paramref name="source"/>.</returns>
-    public static IEnumerable<T> Random<T>(this IEnumerable<T> source, int count, bool noDuplicates = true)
+    public static IEnumerable<T> Random<T>(this IEnumerable<T> source, int count, bool noDuplicates = true, Random? random = null)
     {
         if (!noDuplicates)
         {
             for (var i = 0; i < count; i++)
             {
-                yield return source.Random(Siege.Internals._random);
+                yield return source.Random(random ?? Siege.Internals._random);
             }
         }
         else
@@ -49,7 +49,7 @@ public static class IEnumerableExtensions
             var exclude = new List<T>();
             for (var i = 0; i < count; i++)
             {
-                var item = source.Except(exclude).Random(Siege.Internals._random);
+                var item = source.Except(exclude).Random(random ?? Siege.Internals._random);
                 exclude.Add(item);
                 yield return item;
             }
