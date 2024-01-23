@@ -1880,7 +1880,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 1440
             )
         ],
-        Weapon.Gadget.StunGrenade | Weapon.Gadget.Claymore,
+        Weapon.Gadget.StunGrenade | Weapon.Gadget.Claymore | Weapon.Gadget.SmokeGrenade,
         "Breaching Torch",
         [
             Specialties.Breach,
@@ -2205,7 +2205,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
-                35,
+                32,
                 1270,
                 16,
                 Weapon.Sight.One,
