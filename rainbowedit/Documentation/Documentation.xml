@@ -295,7 +295,7 @@
             <param name="random">A <see cref="T:System.Random"/> instance to use for generating random numbers. If <see langword="null"/>, a new instance will be created for each call.</param>
             <returns>A random item from <paramref name="source"/>.</returns>
         </member>
-        <member name="M:rainbowedit.Extensions.IEnumerableExtensions.Random``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Boolean)">
+        <member name="M:rainbowedit.Extensions.IEnumerableExtensions.Random``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Boolean,System.Random)">
             <summary>
             Returns <paramref name="count"/> random items from an <see cref="T:System.Collections.Generic.IEnumerable`1"/>, optionally ensuring <paramref name="noDuplicates"/>.
             </summary>
@@ -2454,7 +2454,7 @@
         </member>
         <member name="T:rainbowedit.Siege">
             <summary>
-            Base class for all information accessible from the library.
+            General information.
             </summary>
         </member>
         <member name="P:rainbowedit.Siege.Attackers">

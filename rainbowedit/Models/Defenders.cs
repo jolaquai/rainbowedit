@@ -220,7 +220,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
-                35,
+                32,
                 1270,
                 16,
                 Weapon.Sight.One,
@@ -304,7 +304,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
-                35,
+                32,
                 1270,
                 16,
                 Weapon.Sight.One,
@@ -793,7 +793,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
                 1470
             )
         ],
-        Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell,
+        Weapon.Gadget.BulletproofCamera | Weapon.Gadget.NitroCell,
         "EDD Mk II Tripwires",
         [
             Specialties.AntiEntry,
@@ -2589,7 +2589,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
                 1440
             )
         ],
-        Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera,
+        Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera | Weapon.Gadget.DeployableShield,
         "Kóna Healing Station",
         [
             Specialties.Support
@@ -2799,7 +2799,7 @@ public sealed partial class Defenders : IEnumerable<Operator>
                 "SMG-11",
                 Weapon.WeaponType.MachinePistol,
                 Weapon.FiringMode.FullAuto,
-                35,
+                32,
                 1270,
                 16,
                 Weapon.Sight.One,
