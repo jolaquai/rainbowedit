@@ -575,6 +575,11 @@
             The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Ram"/>.
             </summary>
         </member>
+        <member name="P:rainbowedit.Attackers.Deimos">
+            <summary>
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Attackers.Deimos"/>.
+            </summary>
+        </member>
         <member name="M:rainbowedit.Attackers.GetPersonalSpecialtyChallengeSet(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Compiles specific challenges from all <see cref="T:rainbowedit.Attackers"/>' specialties into a collection.
@@ -819,6 +824,11 @@
             The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Fenrir"/>.
             </summary>
         </member>
+        <member name="P:rainbowedit.Defenders.Tubarao">
+            <summary>
+            The <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Defenders.Tubarao"/>.
+            </summary>
+        </member>
         <member name="M:rainbowedit.Defenders.GetPersonalSpecialtyChallengeSet(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             Compiles specific challenges from all <see cref="T:rainbowedit.Defenders"/>' specialties into a collection.
@@ -838,376 +848,6 @@
             <remarks>
             <para/>Implements <see cref="T:System.IEquatable`1"/> of <see cref="T:rainbowedit.Operator"/> which enables compares <see cref="T:rainbowedit.Operator"/>s by their <see cref="P:rainbowedit.Operator.Nickname"/>.
             <para/>Implements <see cref="T:System.IComparable`1"/> of <see cref="T:rainbowedit.Operator"/> which enables sorting <see cref="T:rainbowedit.Operator"/>s according to their in-game sorting order.
-            </remarks>
-        </member>
-        <member name="T:rainbowedit.Operator.OperatorSpeed">
-            <summary>
-            A series of constants containing the different movement speeds of an <see cref="T:rainbowedit.Operator"/> in in-game meters per second.
-            </summary>
-            <remarks>
-            The naming pattern of the fields is: <c>SPEED_{rating}_{weapon}_{slow?}{stance}{aim?}</c> where
-            <list type="bullet">
-            <item><c>rating</c>: the <see cref="T:rainbowedit.Operator"/> <see cref="P:rainbowedit.Operator.Speed"/> rating, <c>3</c>, <c>2</c> or <c>1</c>,</item>
-            <item><c>weapon</c>: the weight class of the <see cref="T:rainbowedit.Weapon"/> being held, <c>HEAVY</c> or <c>LIGHT</c>,</item>
-            <item><c>slow?</c>: a value indicating whether the slow-move key was being held for this measurement, <c>SLOW</c> or absent (always absent for <c>{stance} == PRONE</c> or <c>{stance} == RUN</c>,</item>
-            <item><c>stance</c>: a value indicating which stance or movement "subtype" this measurement is for, <c>PRONE</c>, <c>CROUCH</c>, <c>WALK</c> or <c>RUN</c> and</item>
-            <item><c>aim?</c>: a value indicating whether the measurement was made while ADS or not, <c>_AIM</c> or absent (always absent for <c>{stance} == RUN</c>).</item>
-            </list>
-            As such, there are several invalid combinations that cannot exist, such as <c>SPEED_3_HEAVY_RUN_AIM</c>, <c>SPEED_3_HEAVY_SLOWPRONE</c> <c>SPEED_3_LIGHT_SLOWRUN_AIM</c> as the movement "subtypes" contradict each other.
-            </remarks>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_PRONE">
-            <summary>
-            The prone speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_PRONE">
-            <summary>
-            The prone speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_SLOWCROUCH">
-            <summary>
-            The slow-crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_SLOWCROUCH">
-            <summary>
-            The slow-crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_SLOWWALK">
-            <summary>
-            The slow-walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_SLOWWALK">
-            <summary>
-            The slow-walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_CROUCH">
-            <summary>
-            The crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_CROUCH">
-            <summary>
-            The crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_WALK">
-            <summary>
-            The walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_WALK">
-            <summary>
-            The walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_RUN">
-            <summary>
-            The run speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_RUN">
-            <summary>
-            The run speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_PRONE_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_PRONE_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_SLOWCROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_SLOWCROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_SLOWWALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_SLOWWALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_CROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_CROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_HEAVY_WALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_3_LIGHT_WALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 3 <see cref="T:rainbowedit.Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_PRONE">
-            <summary>
-            The prone speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_PRONE">
-            <summary>
-            The prone speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_SLOWCROUCH">
-            <summary>
-            The slow-crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_SLOWCROUCH">
-            <summary>
-            The slow-crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_SLOWWALK">
-            <summary>
-            The slow-walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_SLOWWALK">
-            <summary>
-            The slow-walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_CROUCH">
-            <summary>
-            The crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_CROUCH">
-            <summary>
-            The crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_WALK">
-            <summary>
-            The walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_WALK">
-            <summary>
-            The walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_RUN">
-            <summary>
-            The run speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_RUN">
-            <summary>
-            The run speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_PRONE_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_PRONE_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_SLOWCROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_SLOWCROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_SLOWWALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_SLOWWALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_CROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_CROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_HEAVY_WALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_2_LIGHT_WALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 2 <see cref="T:rainbowedit.Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_PRONE">
-            <summary>
-            The prone speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_PRONE">
-            <summary>
-            The prone speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_SLOWCROUCH">
-            <summary>
-            The slow-crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_SLOWCROUCH">
-            <summary>
-            The slow-crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_SLOWWALK">
-            <summary>
-            The slow-walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_SLOWWALK">
-            <summary>
-            The slow-walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_CROUCH">
-            <summary>
-            The crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_CROUCH">
-            <summary>
-            The crouch speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_WALK">
-            <summary>
-            The walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_WALK">
-            <summary>
-            The walk speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_RUN">
-            <summary>
-            The run speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_RUN">
-            <summary>
-            The run speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_PRONE_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, in prone and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_PRONE_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, in prone and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_SLOWCROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-crouching and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_SLOWCROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-crouching and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_SLOWWALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-walking and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_SLOWWALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, slow-walking and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_CROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, crouching and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_CROUCH_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, crouching and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_HEAVY_WALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, walking and having a heavy weapon (such as an Assault Rifle) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.SPEED_1_LIGHT_WALK_AIM">
-            <summary>
-            The speed of a <see cref="P:rainbowedit.Operator.Speed"/> 1 <see cref="T:rainbowedit.Operator"/> while aiming down sights, walking and having a light weapon (such as a Pistol) equipped.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.LADDER_ASCEND">
-            <summary>
-            The speed at which an <see cref="T:rainbowedit.Operator"/> climbs up a ladder.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.LADDER_DESCEND">
-            <summary>
-            The speed at which an <see cref="T:rainbowedit.Operator"/> climbs down a ladder.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Operator.OperatorSpeed.LADDER_SLIDE">
-            <summary>
-            The speed at which an <see cref="T:rainbowedit.Operator"/> slides down a ladder.
-            </summary>
-        </member>
-        <member name="P:rainbowedit.Operator.OperatorSpeed.Constants">
-            <summary>
-            The constants defined in <see cref="T:rainbowedit.Operator.OperatorSpeed"/> compiled into a <see cref="T:System.Collections.Generic.Dictionary`2"/> of <see cref="T:System.String"/> and <see cref="T:System.Decimal"/>. The keys are the names of the constants, and the values are the values of the constants.
-            </summary>
-            <remarks>
-            This allows programmatically piecing together the name of the required value as described in the documentation of <see cref="T:rainbowedit.Operator.OperatorSpeed"/> and getting it from this dictionary instead of using reflection or some other stupid, slow method...
-            <para/>This collection is generated at runtime when it is first accessed.
             </remarks>
         </member>
         <member name="P:rainbowedit.Operator.Nickname">
@@ -1608,7 +1248,7 @@
             Instantiates a new <see cref="T:rainbowedit.WeaponConfiguration"/> object from and one each of their <see cref="T:rainbowedit.Weapon.Sight"/>s, <see cref="T:rainbowedit.Weapon.Barrel"/>s and <see cref="T:rainbowedit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:rainbowedit.Weapon.Underbarrel"/> laser.
             </summary>
             <param name="source">The <see cref="T:rainbowedit.Weapon"/> to gather random values for this <see cref="T:rainbowedit.WeaponConfiguration"/> instance's properties from.</param>
-            <param name="sight">A <see cref="T:rainbowedit.Weapon.Sight"/> enum value detailing the sight to use. If this is <see cref="F:rainbowedit.Weapon.Sight.One"/> or <see cref="F:rainbowedit.Weapon.Sight.TwoPointFive"/>, a random one of its variants is chosen.</param>
+            <param name="sight">A <see cref="T:rainbowedit.Weapon.Sight"/> enum value detailing the sight to use. If this is <see cref="F:rainbowedit.Weapon.Sight.NonMagnifying"/> or <see cref="F:rainbowedit.Weapon.Sight.Magnifying"/>, a random one of its variants is chosen.</param>
             <param name="barrel">A <see cref="T:rainbowedit.Weapon.Barrel"/> enum value detailing the barrel attachment to use.</param>
             <param name="grip">A <see cref="T:rainbowedit.Weapon.Grip"/> enum value detailing the grip to use.</param>
             <param name="underbarrel">Whether to use an underbarrel laser.</param>
@@ -1623,7 +1263,7 @@
             </para>
             </summary>
             <param name="source">The <see cref="T:rainbowedit.Weapon"/> to assign to this <see cref="T:rainbowedit.WeaponConfiguration"/> instance.</param>
-            <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="M:rainbowedit.Extensions.EnumExtensions.GetDescription(System.Enum)" /> OR one of the sub-sight names for <see cref="F:rainbowedit.Weapon.Sight.One"/> or <see cref="F:rainbowedit.Weapon.Sight.TwoPointFive"/>.</param>
+            <param name="sight">A string detailing the sight to use. This must match one of the string representations returned by <see cref="M:rainbowedit.Extensions.EnumExtensions.GetDescription(System.Enum)" /> OR one of the sub-sight names for <see cref="F:rainbowedit.Weapon.Sight.NonMagnifying"/> or <see cref="F:rainbowedit.Weapon.Sight.Magnifying"/>.</param>
             <param name="barrel">A string detailing the barrel attachment to use. This must match one of the string representations returned by <see cref="M:rainbowedit.Extensions.EnumExtensions.GetDescription(System.Enum)" />.</param>
             <param name="grip">A string detailing the grip to use. This must match one of the string representations returned by <see cref="M:rainbowedit.Extensions.EnumExtensions.GetDescription(System.Enum)" />.</param>
             <param name="underbarrel">Whether to use an underbarrel laser.</param>
@@ -1781,6 +1421,11 @@
             Whether this <see cref="T:rainbowedit.Weapon"/> is a secondary weapon.
             </summary>
         </member>
+        <member name="P:rainbowedit.Weapon.AdsSpeed">
+            <summary>
+            The ADS speed of this <see cref="T:rainbowedit.Weapon"/>, in seconds.
+            </summary>
+        </member>
         <member name="T:rainbowedit.Weapon.Collections">
             <summary>
             Contains properties that return specific collections of <see cref="T:rainbowedit.Weapon"/>s.
@@ -1903,6 +1548,16 @@
             Identifies the Hand Cannon weapon type.
             </summary>
         </member>
+        <member name="F:rainbowedit.Weapon.WeaponType.Revolver">
+            <summary>
+            Identifies the Revolver weapon type.
+            </summary>
+        </member>
+        <member name="F:rainbowedit.Weapon.WeaponType.SniperRifle">
+            <summary>
+            Identifies the Sniper Rifle weapon type.
+            </summary>
+        </member>
         <member name="T:rainbowedit.Weapon.FiringMode">
             <summary>
             Indicates which firing mode a <see cref="T:rainbowedit.Weapon"/> uses.
@@ -1930,9 +1585,10 @@
             <para/>However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
             <para/>Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
             <para/>As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="P:rainbowedit.Weapon.Sights"/> flags have been redefined to act as maximums. Use <see cref="M:System.Enum.HasFlag(System.Enum)"/> for any look-ups.
+            <para/>Y9S1 introduces massive changes to the entire <see cref="T:rainbowedit.Weapon"/> ecosystem, including the overall functionalities of sights, barrels, grips and underbarrel attachments. As such, the <see cref="P:rainbowedit.Weapon.Sights"/> enum has been redefined to reflect these changes. <see langword="None"/> has been renamed to <see cref="!:IronSight"/> and all options (excepting <see cref="F:rainbowedit.Weapon.Sight.VariableSniper"/> now also contain <see cref="!:IronSight"/>.
             </summary>
             <remarks>
-            <para/><see cref="T:rainbowedit.Weapon.Sight"/> is semi-<see cref="T:System.FlagsAttribute"/>. <see cref="F:rainbowedit.Weapon.Sight.None"/> and <see cref="F:rainbowedit.Weapon.Sight.Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
+            <para/><see cref="T:rainbowedit.Weapon.Sight"/> is semi-<see cref="T:System.FlagsAttribute"/>. and <see cref="!:Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
             </remarks>
         </member>
         <member name="F:rainbowedit.Weapon.Sight.Invalid">
@@ -1940,49 +1596,35 @@
             Generally unused. Indicates an invalid value in terms of a <see cref="T:rainbowedit.WeaponConfiguration"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.Sight.None">
+        <member name="F:rainbowedit.Weapon.Sight.NoneOther">
             <summary>
-            Indicates that no sights can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
+            Indicates that no sights can be equipped on a <see cref="T:rainbowedit.Weapon"/> or that there's something else weird going on with it.
+            This is true for most <see cref="F:rainbowedit.Weapon.WeaponType.Handgun"/>s.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.Sight.Other">
+        <member name="F:rainbowedit.Weapon.Sight.NonMagnifying">
             <summary>
-            Indicates that some other weird stuff is going on with the sights for a <see cref="T:rainbowedit.Weapon"/>. This identifies, for example, <see cref="P:rainbowedit.Defenders.Ela"/>'s and <see cref="P:rainbowedit.Attackers.Zofia"/>'s <i>RG15</i> <see cref="F:rainbowedit.Weapon.WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped, or <see cref="P:rainbowedit.Defenders.Tachanka"/>'s <i>DP27</i> <see cref="F:rainbowedit.Weapon.WeaponType.LightMachineGun"/>, which has the additional <i>Reflex D</i> option.
+            Indicates that non-magnifying (1x) sights can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.Sight.One">
+        <member name="F:rainbowedit.Weapon.Sight.Magnifying">
             <summary>
-            Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
+            Indicates that the magnifying sights can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.Sight.OnePointFive">
+        <member name="F:rainbowedit.Weapon.Sight.Telescopic">
             <summary>
-            Indicates that no or at most a 1.5x sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
+            Indicates that the telescopic sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.Sight.Two">
+        <member name="F:rainbowedit.Weapon.Sight.FlipSight">
             <summary>
-            Indicates that no or at most a 2x sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
+            Indicates that Iron Sights or at most any non-magnifying (1x) sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>, which may then be magnified to 4x by <see cref="P:rainbowedit.Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="P:rainbowedit.Attackers.Glaz"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.Sight.TwoPointFive">
+        <member name="F:rainbowedit.Weapon.Sight.VariableSniper">
             <summary>
-            Indicates that no or at most a 2.5x sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Weapon.Sight.Three">
-            <summary>
-            Indicates that no or at most a 3x sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Weapon.Sight.Four">
-            <summary>
-            Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>, which may then be magnified to 4x by <see cref="P:rainbowedit.Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="P:rainbowedit.Attackers.Glaz"/>.
-            </summary>
-        </member>
-        <member name="F:rainbowedit.Weapon.Sight.FiveTwelve">
-            <summary>
-            Indicates that no sights can be equipped on a <see cref="T:rainbowedit.Weapon"/>. This identifies <see cref="P:rainbowedit.Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="P:rainbowedit.Attackers.Kali"/>.
+            Indicates that a variable-zoom 5x/12x sight can be equipped on a <see cref="T:rainbowedit.Weapon"/>. This identifies <see cref="P:rainbowedit.Attackers.Kali"/>'s <i>CSRX 300</i>. Unique to <see cref="P:rainbowedit.Attackers.Kali"/>.
             </summary>
         </member>
         <member name="T:rainbowedit.Weapon.Barrel">
@@ -2025,7 +1667,7 @@
             Indicates which grips can be or are forcefully equipped on a <see cref="T:rainbowedit.Weapon"/>.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.Grip.None">
+        <member name="F:rainbowedit.Weapon.Grip.HorizontalGrip">
             <summary>
             Indicates that no grips can be equipped on a <see cref="T:rainbowedit.Weapon"/>.
             </summary>
@@ -2150,7 +1792,7 @@
         </member>
         <member name="M:rainbowedit.Weapon.GetRawSightValue">
             <summary>
-            Gets the raw value for the <see cref="P:rainbowedit.Weapon.Sights"/> property; that is, special flags such as <see cref="F:rainbowedit.Weapon.Sight.Invalid"/>, <see cref="F:rainbowedit.Weapon.Sight.None"/> or <see cref="F:rainbowedit.Weapon.Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="P:rainbowedit.Weapon.Sights"/> are considered undefined behavior.
+            Gets the raw value for the <see cref="P:rainbowedit.Weapon.Sights"/> property; that is, special flags such as <see cref="F:rainbowedit.Weapon.Sight.Invalid"/>, <see cref="!:Sight.None"/> or <see cref="!:Sight.Other"/> may be set. Comparisons using this value as opposed to <see cref="P:rainbowedit.Weapon.Sights"/> are considered undefined behavior.
             </summary>
             <returns>The internal unmodified value of the <see cref="P:rainbowedit.Weapon.Sights"/> property, which may contain special flags as described.</returns>
         </member>
