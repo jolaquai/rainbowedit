@@ -3062,9 +3062,38 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 1430,
                 2440
             ),
+            new Weapon(
+                Deimos,
+                "M590A1",
+                Weapon.WeaponType.ShotgunShot,
+                Weapon.FiringMode.SingleShot,
+                48,
+                85,
+                7,
+                Weapon.Sight.NonMagnifying,
+                Weapon.Barrel.None,
+                Weapon.Grip.HorizontalGrip,
+                true,
+                4030,
+                4510
+            ),
         ],
         [
-            
+            new Weapon(
+                Deimos,
+                ".44 Vendetta",
+                Weapon.WeaponType.Revolver,
+                Weapon.FiringMode.SingleShot,
+                78,
+                550, // can only guess since they don't disclose the actual RPM values for single-shot weapons
+                6,
+                Weapon.Sight.NoneOther,
+                Weapon.Barrel.None,
+                Weapon.Grip.HorizontalGrip,
+                true,
+                2040,
+                2060
+            )
         ],
         Weapon.Gadget.FragGrenade | Weapon.Gadget.HardBreachCharge,
         "Deathmark Tracker",
@@ -3080,7 +3109,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
         new OperatorAge(24, 12, 51),
         1
     );
-#endregion
+    #endregion
 
 #pragma warning restore CS8604 // Possible null reference argument.
 
