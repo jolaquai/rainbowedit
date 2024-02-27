@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
+using System.Net.Http.Headers;
 
+using rainbowedit.Exceptions;
 using rainbowedit.Extensions;
 
 namespace rainbowedit;
@@ -48,7 +50,7 @@ public class Weapon
     {
         get
         {
-            var op = (int)_sights & ~(int)(Sight.None | Sight.Invalid | Sight.Other);
+            var op = (int)_sights & ~(int)(Sight.Invalid | Sight.NoneOther);
             return (Sight)op;
         }
         private set => _sights = value;
@@ -90,6 +92,22 @@ public class Weapon
     /// Whether this <see cref="Weapon"/> is a secondary weapon.
     /// </summary>
     public bool IsSecondary { get; } = false;
+    /// <summary>
+    /// The ADS speed of this <see cref="Weapon"/>, in seconds.
+    /// </summary>
+    public double AdsSpeed
+    {
+        get => Type switch
+        {
+            WeaponType.Handgun or WeaponType.Revolver or WeaponType.HandCannon => 0.24,
+            WeaponType.MachinePistol => 0.38,
+            WeaponType.SubmachineGun => 0.46,
+            WeaponType.AssaultRifle or WeaponType.MarksmanRifle or WeaponType.SniperRifle => 0.52,
+            WeaponType.LightMachineGun => 0.56,
+            WeaponType.ShotgunShot or WeaponType.ShotgunSlug => 0.34,
+            _ => throw new InvalidOperationException()
+        };
+    }
 
     /// <summary>
     /// Contains properties that return specific collections of <see cref="Weapon"/>s.
@@ -207,7 +225,17 @@ public class Weapon
         /// Identifies the Hand Cannon weapon type.
         /// </summary>
         [Description("Hand Cannon")]
-        HandCannon = 512
+        HandCannon = 512,
+        /// <summary>
+        /// Identifies the Revolver weapon type.
+        /// </summary>
+        [Description("Revolver")]
+        Revolver = 1024,
+        /// <summary>
+        /// Identifies the Sniper Rifle weapon type.
+        /// </summary>
+        [Description("Sniper Rifle")]
+        SniperRifle = 2048
     }
     #endregion
 
@@ -242,59 +270,48 @@ public class Weapon
     /// <para/>However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
     /// <para/>Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
     /// <para/>As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="Sights"/> flags have been redefined to act as maximums. Use <see cref="Enum.HasFlag(Enum)"/> for any look-ups.
+    /// <para/>Y9S1 introduces massive changes to the entire <see cref="Weapon"/> ecosystem, including the overall functionalities of sights, barrels, grips and underbarrel attachments. As such, the <see cref="Sights"/> enum has been redefined to reflect these changes. <see langword="None"/> has been renamed to <see cref="IronSight"/> and all options (excepting <see cref="VariableSniper"/> now also contain <see cref="IronSight"/>.
     /// </summary>
     /// <remarks>
-    /// <para/><see cref="Sight"/> is semi-<see cref="FlagsAttribute"/>. <see cref="None"/> and <see cref="Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
+    /// <para/><see cref="Sight"/> is semi-<see cref="FlagsAttribute"/>. and <see cref="Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
     /// </remarks>
     public enum Sight
     {
         /// <summary>
         /// Generally unused. Indicates an invalid value in terms of a <see cref="WeaponConfiguration"/>.
         /// </summary>
-        Invalid = 0b0_0000_0000,
+        Invalid = 0,
         /// <summary>
-        /// Indicates that no sights can be equipped on a <see cref="Weapon"/>.
+        /// Indicates that no sights can be equipped on a <see cref="Weapon"/> or that there's something else weird going on with it.
+        /// This is true for most <see cref="WeaponType.Handgun"/>s.
         /// </summary>
-        None = 0b0_0000_0001,
+        [Description("None/Other")]
+        NoneOther = 0b000_0001,
         /// <summary>
-        /// Indicates that some other weird stuff is going on with the sights for a <see cref="Weapon"/>. This identifies, for example, <see cref="Defenders.Ela"/>'s and <see cref="Attackers.Zofia"/>'s <i>RG15</i> <see cref="WeaponType.Handgun"/>, which has a red-dot sight forcibly equipped, or <see cref="Defenders.Tachanka"/>'s <i>DP27</i> <see cref="WeaponType.LightMachineGun"/>, which has the additional <i>Reflex D</i> option.
+        /// Indicates that non-magnifying (1x) sights can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        Other = 0b0_0000_0010,
+        [Description("Non-Magnifying")]
+        NonMagnifying = 0b00_0010,
         /// <summary>
-        /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>.
+        /// Indicates that the magnifying sights can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        [Description("1x")]
-        One = 0b0_0000_0100,
+        [Description("Magnifying")]
+        Magnifying = 0b00_0110,
         /// <summary>
-        /// Indicates that no or at most a 1.5x sight can be equipped on a <see cref="Weapon"/>.
+        /// Indicates that the telescopic sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        [Description("1.5x")]
-        OnePointFive = 0b0_0000_1100,
+        [Description("Telescopic")]
+        Telescopic = 0b00_1110,
         /// <summary>
-        /// Indicates that no or at most a 2x sight can be equipped on a <see cref="Weapon"/>.
-        /// </summary>
-        [Description("2x")]
-        Two = 0b0_0001_1100,
-        /// <summary>
-        /// Indicates that no or at most a 2.5x sight can be equipped on a <see cref="Weapon"/>.
-        /// </summary>
-        [Description("2.5x")]
-        TwoPointFive = 0b0_0011_1100,
-        /// <summary>
-        /// Indicates that no or at most a 3x sight can be equipped on a <see cref="Weapon"/>.
-        /// </summary>
-        [Description("3x")]
-        Three = 0b0_0111_1100,
-        /// <summary>
-        /// Indicates that no or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>, which may then be magnified to 4x by <see cref="Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="Attackers.Glaz"/>.
+        /// Indicates that Iron Sights or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>, which may then be magnified to 4x by <see cref="Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="Attackers.Glaz"/>.
         /// </summary>
         [Description("4x")]
-        Four = 0b0_1000_0100,
+        FlipSight = 0b01_0010,
         /// <summary>
-        /// Indicates that no sights can be equipped on a <see cref="Weapon"/>. This identifies <see cref="Attackers.Kali"/>'s <i>CSRX 300</i>. It is fitted with a 5x scope, which can be toggled to 12x. Unique to <see cref="Attackers.Kali"/>.
+        /// Indicates that a variable-zoom 5x/12x sight can be equipped on a <see cref="Weapon"/>. This identifies <see cref="Attackers.Kali"/>'s <i>CSRX 300</i>. Unique to <see cref="Attackers.Kali"/>.
         /// </summary>
         [Description("5x/12x")]
-        FiveTwelve = 0b1_0000_0000
+        VariableSniper = 0b10_0000
     }
     #endregion
 
@@ -345,7 +362,8 @@ public class Weapon
         /// <summary>
         /// Indicates that no grips can be equipped on a <see cref="Weapon"/>.
         /// </summary>
-        None = 0,
+        [Description("Horizontal Grip")]
+        HorizontalGrip = 0,
         /// <summary>
         /// Indicates that a vertical grip can be equipped on a <see cref="Weapon"/>.
         /// </summary>
