@@ -3055,7 +3055,7 @@ public sealed partial class Attackers : IEnumerable<Operator>
                 44,
                 650,
                 40,
-                Weapon.Sight.Magnifying,
+                Weapon.Sight.NonMagnifying,
                 Weapon.Barrel.Suppressor | Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator | Weapon.Barrel.MuzzleBrake,
                 Weapon.Grip.HorizontalGrip,
                 true,
