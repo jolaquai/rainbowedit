@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel;
-using System.Net.Http.Headers;
 
-using rainbowedit.Exceptions;
 using rainbowedit.Extensions;
 
 namespace rainbowedit;
@@ -66,6 +64,9 @@ public class Weapon
     /// <summary>
     /// Whether an underbarrel laser may be equipped on this <see cref="Weapon"/>.
     /// </summary>
+    /// <remarks>
+    /// Usage of an underbarrel laser grants a 10% ADS speed bonus.
+    /// </remarks>
     public bool Underbarrel { get; }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.Suppressor"/>.
@@ -77,7 +78,8 @@ public class Weapon
     /// </summary>
     public int ExtendedBarrelDamage { get; }
     /// <summary>
-    /// The theoretical damage per second output of this <see cref="Weapon"/> during sustained fire.
+    /// The theoretical damage per second output of this <see cref="Weapon"/> during sustained fire, including ideal (tactical) reloads.
+    /// This is only technically relevant and not really meaningful in-game. Furthermore, it's entirely non-sensical for the <c>GONNE-6</c> or shields, for example.
     /// </summary>
     public int DamagePerSecond { get; }
     /// <summary>
@@ -91,23 +93,12 @@ public class Weapon
     /// <summary>
     /// Whether this <see cref="Weapon"/> is a secondary weapon.
     /// </summary>
-    public bool IsSecondary { get; } = false;
+    public bool IsSecondary { get; }
     /// <summary>
-    /// The ADS speed of this <see cref="Weapon"/>, in seconds.
+    /// The time it takes to transition from or to aiming down sights (ADS) with this <see cref="Weapon"/>.
+    /// Note that this is only the base value and does not apply modifiers such as sight ADS speed multipliers.
     /// </summary>
-    public double AdsSpeed
-    {
-        get => Type switch
-        {
-            WeaponType.Handgun or WeaponType.Revolver or WeaponType.HandCannon => 0.24,
-            WeaponType.MachinePistol => 0.38,
-            WeaponType.SubmachineGun => 0.46,
-            WeaponType.AssaultRifle or WeaponType.MarksmanRifle or WeaponType.SniperRifle => 0.52,
-            WeaponType.LightMachineGun => 0.56,
-            WeaponType.ShotgunShot or WeaponType.ShotgunSlug => 0.34,
-            _ => throw new InvalidOperationException()
-        };
-    }
+    public double AdsSpeed { get; }
 
     /// <summary>
     /// Contains properties that return specific collections of <see cref="Weapon"/>s.
@@ -288,30 +279,47 @@ public class Weapon
         [Description("None/Other")]
         NoneOther = 0b000_0001,
         /// <summary>
+        /// Indicates that a <see cref="Weapon"/>'s Iron Sight can be chosen.
+        /// </summary>
+        /// <remarks>
+        /// Usage of the Iron Sight grants a 10% ADS speed bonus.
+        /// </remarks>
+        [Description("Iron Sight")]
+        IronSight = 0b000_0010,
+        /// <summary>
         /// Indicates that non-magnifying (1x) sights can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        /// <remarks>
+        /// Usage of a non-magnifying sight grants a 5% ADS speed bonus.
+        /// </remarks>
         [Description("Non-Magnifying")]
-        NonMagnifying = 0b00_0010,
+        NonMagnifying = 0b000_0110,
         /// <summary>
         /// Indicates that the magnifying sights can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        /// <remarks>
+        /// Usage of a magnifying sight grants no ADS speed bonus, but also does not incur a penalty.
+        /// </remarks>
         [Description("Magnifying")]
-        Magnifying = 0b00_0110,
+        Magnifying = 0b000_1110,
         /// <summary>
         /// Indicates that the telescopic sight can be equipped on a <see cref="Weapon"/>.
         /// </summary>
+        /// <remarks>
+        /// Usage of a magnifying sight grants no ADS speed bonus, but also does not incur a penalty.
+        /// </remarks>
         [Description("Telescopic")]
-        Telescopic = 0b00_1110,
+        Telescopic = 0b001_1110,
         /// <summary>
         /// Indicates that Iron Sights or at most any non-magnifying (1x) sight can be equipped on a <see cref="Weapon"/>, which may then be magnified to 4x by <see cref="Attackers.Glaz"/>'s <i>HDS Flip Sight</i>. Unique to <see cref="Attackers.Glaz"/>.
         /// </summary>
         [Description("4x")]
-        FlipSight = 0b01_0010,
+        FlipSight = 0b010_0110,
         /// <summary>
         /// Indicates that a variable-zoom 5x/12x sight can be equipped on a <see cref="Weapon"/>. This identifies <see cref="Attackers.Kali"/>'s <i>CSRX 300</i>. Unique to <see cref="Attackers.Kali"/>.
         /// </summary>
         [Description("5x/12x")]
-        VariableSniper = 0b10_0000
+        VariableSniper = 0b100_0000
     }
     #endregion
 
@@ -361,6 +369,7 @@ public class Weapon
     {
         /// <summary>
         /// Indicates that no grips can be equipped on a <see cref="Weapon"/>.
+        /// This is also the <see langword="default"/> for <see cref="WeaponType.Handgun"/>s, <see cref="WeaponType.Revolver"/>s and the like, for which no grip options are available.
         /// </summary>
         [Description("Horizontal Grip")]
         HorizontalGrip = 0,
@@ -490,7 +499,7 @@ public class Weapon
         ReloadTactical = TimeSpan.FromMilliseconds(reloadTactical);
         ReloadEmpty = TimeSpan.FromMilliseconds(reloadEmpty);
 
-        if (Type is WeaponType.Handgun or WeaponType.MachinePistol or WeaponType.HandCannon
+        if (Type is WeaponType.Handgun or WeaponType.MachinePistol or WeaponType.HandCannon or WeaponType.Revolver
             || Name is "ITA12S" or "Super Shorty" or "Bailiff 410")
         {
             IsSecondary = true;
@@ -510,6 +519,17 @@ public class Weapon
                 DamagePerSecond = 0;
             }
         }
+
+        AdsSpeed = Type switch
+        {
+            WeaponType.Handgun or WeaponType.Revolver or WeaponType.HandCannon => 0.24,
+            WeaponType.MachinePistol => 0.38,
+            WeaponType.SubmachineGun => 0.46,
+            WeaponType.AssaultRifle or WeaponType.MarksmanRifle or WeaponType.SniperRifle => 0.52,
+            WeaponType.LightMachineGun => 0.56,
+            WeaponType.ShotgunShot or WeaponType.ShotgunSlug => 0.34,
+            _ => throw new InvalidOperationException()
+        };
     }
 
     /// <inheritdoc/>
