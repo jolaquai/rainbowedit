@@ -2835,7 +2835,7 @@ public static class Attackers
                     44,
                     650,
                     40,
-                    Weapon.Sight.NonMagnifying,
+                    Weapon.Sight.Magnifying,
                     Weapon.Barrel.Suppressor
                         | Weapon.Barrel.FlashHider
                         | Weapon.Barrel.Compensator
