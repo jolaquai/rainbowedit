@@ -11,7 +11,7 @@ namespace rainbowedit;
 public class LoadoutConfiguration
 {
     /// <summary>
-    /// The <see cref="Operator"/> this configuration applies to.
+    /// The <see cref="Defender"/> this configuration applies to.
     /// </summary>
     public Operator Source { get; }
     /// <summary>
@@ -30,7 +30,7 @@ public class LoadoutConfiguration
     /// <summary>
     /// Instantiates a new <see cref="LoadoutConfiguration"/> object from just an <see cref="Operator"/> to gather values from.
     /// </summary>
-    /// <param name="source">The <see cref="Operator"/> to gather random values for this <see cref="LoadoutConfiguration"/> instance's properties from.</param>
+    /// <param name="source">The <see cref="Defender"/> to gather random values for this <see cref="LoadoutConfiguration"/> instance's properties from.</param>
     public LoadoutConfiguration(Operator source)
     {
         Source = source;
@@ -53,7 +53,7 @@ public class LoadoutConfiguration
     /// A <see cref="LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
     /// </para>
     /// </summary>
-    /// <param name="source">The <see cref="Operator"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
+    /// <param name="source">The <see cref="Defender"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="gadget">The <see cref="Weapon.Gadget"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="primary">One of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Primaries"/>.</param>
     /// <param name="secondary">One of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Secondaries"/>.</param>
@@ -87,7 +87,7 @@ public class LoadoutConfiguration
     /// A <see cref="LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="WeaponConfiguration"/>'s source <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
     /// </para>
     /// </summary>
-    /// <param name="source">The <see cref="Operator"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
+    /// <param name="source">The <see cref="Defender"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="gadget">The <see cref="Weapon.Gadget"/> to assign to this <see cref="LoadoutConfiguration"/> instance.</param>
     /// <param name="primaryConfig">A <see cref="WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Primaries"/>.</param>
     /// <param name="secondaryConfig">A <see cref="WeaponConfiguration"/> instance constructed from one of the <paramref name="source"/> <see cref="Operator"/>'s <see cref="Operator.Secondaries"/>.</param>

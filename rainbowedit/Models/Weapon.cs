@@ -10,7 +10,7 @@ namespace rainbowedit;
 public class Weapon
 {
     ///<summary>
-    /// The <see cref="Operator"/> this <see cref="Weapon"/> belongs to.
+    /// The <see cref="Defender"/> this <see cref="Weapon"/> belongs to.
     ///</summary>
     public Operator Source { get; internal set; }
     /// <summary>
@@ -470,7 +470,7 @@ public class Weapon
     /// <summary>
     /// Instantiates a new <see cref="Weapon"/> object with the given data.
     /// </summary>
-    /// <param name="source">The <see cref="Operator"/> this <see cref="Weapon"/> belongs to.</param>
+    /// <param name="source">The <see cref="Defender"/> this <see cref="Weapon"/> belongs to.</param>
     /// <param name="name">The in-game name of the <see cref="Weapon"/>.</param>
     /// <param name="type">The in-game <see cref="WeaponType"/> of the <see cref="Weapon"/>.</param>
     /// <param name="fireMode">The in-game <see cref="FiringMode"/> the <see cref="Weapon"/> uses.</param>
@@ -528,7 +528,8 @@ public class Weapon
             WeaponType.AssaultRifle or WeaponType.MarksmanRifle or WeaponType.SniperRifle => 0.52,
             WeaponType.LightMachineGun => 0.56,
             WeaponType.ShotgunShot or WeaponType.ShotgunSlug => 0.34,
-            _ => throw new InvalidOperationException()
+            WeaponType.Shield or WeaponType.Shotgun => 0,
+            _ => throw new InvalidEnumArgumentException(nameof(Type), (int)Type, typeof(WeaponType))
         };
     }
 

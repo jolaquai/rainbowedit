@@ -10,7 +10,7 @@ public static class Examples
     /// <summary>
     /// Calculates the shots it takes to kill an <paramref name="operator"/> using a given <paramref name="weaponConfig"/>, optionally considering the <c>20</c> extra HP one of <see cref="Defenders.Rook"/>'s <i>Armor Plates</i> gives.
     /// </summary>
-    /// <param name="operator">The <see cref="Operator"/> to calculate the shots to kill for.</param>
+    /// <param name="operator">The <see cref="Defender"/> to calculate the shots to kill for.</param>
     /// <param name="weaponConfig">The <see cref="WeaponConfiguration"/> that is used to shoot the <paramref name="operator"/>.</param>
     /// <param name="armorPlate">Whether to consider the <c>20</c> extra HP one of <see cref="Defenders.Rook"/>'s <i>Armor Plates</i> gives.</param>
     /// <returns></returns>
@@ -40,12 +40,12 @@ public static class Examples
     /// </summary>
     public static void WriteSpecialtiesAndOperators()
     {
-        var totalWidth = Defenders.Specialties.All.Max(s => s.Name.Length) + 1;
-        foreach (var specialty in Defenders.Specialties.All)
+        var totalWidth = Defenders.Specialties.Max(s => s.Name.Length) + 1;
+        foreach (var specialty in Defenders.Specialties)
         {
             Console.WriteLine($"{(specialty.Name + ":").PadRight(totalWidth)} {string.Join(", ", specialty.GetOperators())}");
         }
-        foreach (var specialty in Attackers.Specialties.All)
+        foreach (var specialty in Attackers.Specialties)
         {
             Console.WriteLine($"{(specialty.Name + ":").PadRight(totalWidth)} {string.Join(", ", specialty.GetOperators())}");
         }

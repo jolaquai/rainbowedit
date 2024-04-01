@@ -10,7 +10,7 @@ public class Specialty
     /// </summary>
     public string Name { get; }
     /// <summary>
-    /// The <see cref="Operator"/> reward for completing all three of this <see cref="Specialty"/>'s <see cref="Challenges"/>.
+    /// The <see cref="Defender"/> reward for completing all three of this <see cref="Specialty"/>'s <see cref="Challenges"/>.
     /// </summary>
     public Operator Reward { get; set; }
     /// <summary>
@@ -22,7 +22,7 @@ public class Specialty
     /// Instantiates a new <see cref="Specialty"/> with a specified name, <see cref="Operator"/> reward, and list of <see cref="Challenges"/>.
     /// </summary>
     /// <param name="name">The name of the <see cref="Specialty"/>.</param>
-    /// <param name="reward">The <see cref="Operator"/> reward for completing all three of this <see cref="Specialty"/>'s <paramref name="challenges"/>.</param>
+    /// <param name="reward">The <see cref="Defender"/> reward for completing all three of this <see cref="Specialty"/>'s <paramref name="challenges"/>.</param>
     /// <param name="challenges">The list of challenges for this <see cref="Specialty"/>.</param>
     internal Specialty(string name, Operator reward, List<Challenge> challenges)
     {

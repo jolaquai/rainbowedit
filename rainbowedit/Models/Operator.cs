@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-using rainbowedit.Models;
+﻿using rainbowedit.Models;
 
 namespace rainbowedit;
 
@@ -11,7 +9,7 @@ namespace rainbowedit;
 /// <para/>Implements <see cref="IEquatable{T}"/> of <see cref="Operator"/> which enables compares <see cref="Operator"/>s by their <see cref="Operator.Nickname"/>.
 /// <para/>Implements <see cref="IComparable{T}"/> of <see cref="Operator"/> which enables sorting <see cref="Operator"/>s according to their in-game sorting order.
 /// </remarks>
-public class Operator
+public abstract class Operator
     : IEquatable<Operator>,
       IComparable<Operator>
 {
@@ -44,15 +42,15 @@ public class Operator
     /// </summary>
     public string Organization { get; }
     /// <summary>
-    /// The <see cref="Operator"/>'s birthplace.
+    /// The <see cref="Defender"/>'s birthplace.
     /// </summary>
     public string Birthplace { get; }
     /// <summary>
-    /// The <see cref="Operator"/>'s height in whole and fractional centimeters.
+    /// The <see cref="Defender"/>'s height in whole and fractional centimeters.
     /// </summary>
     public decimal Height { get; }
     /// <summary>
-    /// The <see cref="Operator"/>'s weight in whole and fractional kilograms.
+    /// The <see cref="Defender"/>'s weight in whole and fractional kilograms.
     /// </summary>
     public decimal Weight { get; }
     /// <summary>
@@ -64,15 +62,15 @@ public class Operator
     /// </summary>
     public OperatorAge Age { get; }
     /// <summary>
-    /// The <see cref="Operator"/>'s speed rating.
+    /// The <see cref="Defender"/>'s speed rating.
     /// </summary>
     public int Speed { get; }
     /// <summary>
-    /// The <see cref="Operator"/>'s health rating.
+    /// The <see cref="Defender"/>'s health rating.
     /// </summary>
     public int Health { get; }
     /// <summary>
-    /// The <see cref="Operator"/>'s base health / HP value.
+    /// The <see cref="Defender"/>'s base health / HP value.
     /// </summary>
     public int HP { get; }
 
@@ -96,12 +94,12 @@ public class Operator
     /// <param name="specialAbility">The name of the <see cref="Operator"/>'s special ability.</param>
     /// <param name="specialties">A collection of <see cref="Specialty"/> objects representing the <see cref="Operator"/>'s assigned specialties.</param>
     /// <param name="organization">The name of the organization the <see cref="Operator"/> belongs to.</param>
-    /// <param name="birthplace">The <see cref="Operator"/>'s birthplace.</param>
-    /// <param name="height">The <see cref="Operator"/>'s height in whole and fractional centimeters.</param>
-    /// <param name="weight">The <see cref="Operator"/>'s weight in whole and fractional kilograms.</param>
+    /// <param name="birthplace">The <see cref="Defender"/>'s birthplace.</param>
+    /// <param name="height">The <see cref="Defender"/>'s height in whole and fractional centimeters.</param>
+    /// <param name="weight">The <see cref="Defender"/>'s weight in whole and fractional kilograms.</param>
     /// <param name="realName">The in-game real name of the <see cref="Operator"/>.</param>
     /// <param name="age">An <see cref="OperatorAge"/> instance specifying the <see cref="Operator"/>'s day and month of birth and their age.</param>
-    /// <param name="speed">The <see cref="Operator"/>'s speed rating.</param>
+    /// <param name="speed">The <see cref="Defender"/>'s speed rating.</param>
     internal Operator(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, IEnumerable<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed)
     {
         Nickname = nickname;
@@ -201,7 +199,7 @@ public class Operator
     /// <summary>
     /// Implicitly converts an <see cref="Operator"/> to a <see cref="string"/> that represents the <see cref="Operator"/>.
     /// </summary>
-    /// <param name="op">The <see cref="Operator"/> to convert.</param>
+    /// <param name="op">The <see cref="Defender"/> to convert.</param>
     public static implicit operator string(Operator op) => op.ToString();
 
     /// <inheritdoc/>
@@ -356,4 +354,51 @@ public class Operator
     /// <inheritdoc/>
     public int CompareTo(Operator? other) => Comparer.Compare(this, other);
     #endregion
+}
+
+public class Attacker : Operator
+{
+    /// <summary>
+    /// Instantiates a new <see cref="Attacker"/> object.
+    /// </summary>
+    /// <param name="nickname">The nickname of the <see cref="Attacker"/>.</param>
+    /// <param name="primaries">A collection of <see cref="rainbowedit.Weapon"/> objects, containing information about the primary weapons the <see cref="Attacker"/> may use.</param>
+    /// <param name="secondaries">A collection of <see cref="rainbowedit.Weapon"/> objects, containing information about the secondary weapons the <see cref="Attacker"/> may use.</param>
+    /// <param name="gadgets">A combination of <see cref="rainbowedit.Weapon.Gadget"/> values that specifies which gadgets the <see cref="Attacker"/> may choose from.</param>
+    /// <param name="specialAbility">The name of the <see cref="Attacker"/>'s special ability.</param>
+    /// <param name="specialties">A collection of <see cref="rainbowedit.Models.Specialty"/> objects representing the <see cref="Attacker"/>'s assigned specialties.</param>
+    /// <param name="organization">The name of the organization the <see cref="Attacker"/> belongs to.</param>
+    /// <param name="birthplace">The <see cref="Attacker"/>'s birthplace.</param>
+    /// <param name="height">The <see cref="Attacker"/>'s height in whole and fractional centimeters.</param>
+    /// <param name="weight">The <see cref="Attacker"/>'s weight in whole and fractional kilograms.</param>
+    /// <param name="realName">The in-game real name of the <see cref="Attacker"/>.</param>
+    /// <param name="age">An <see cref="rainbowedit.OperatorAge"/> instance specifying the <see cref="Attacker"/>'s day and month of birth and their age.</param>
+    /// <param name="speed">The <see cref="Attacker"/>'s speed rating.</param>
+    internal Attacker(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, IEnumerable<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed) : base(nickname, primaries, secondaries, gadgets, specialAbility, specialties, organization, birthplace, height, weight, realName, age, speed)
+    {
+
+    }
+}
+public class Defender : Operator
+{
+    /// <summary>
+    /// Instantiates a new <see cref="Defender"/> object.
+    /// </summary>
+    /// <param name="nickname">The nickname of the <see cref="Defender"/>.</param>
+    /// <param name="primaries">A collection of <see cref="rainbowedit.Weapon"/> objects, containing information about the primary weapons the <see cref="Defender"/> may use.</param>
+    /// <param name="secondaries">A collection of <see cref="rainbowedit.Weapon"/> objects, containing information about the secondary weapons the <see cref="Defender"/> may use.</param>
+    /// <param name="gadgets">A combination of <see cref="rainbowedit.Weapon.Gadget"/> values that specifies which gadgets the <see cref="Defender"/> may choose from.</param>
+    /// <param name="specialAbility">The name of the <see cref="Defender"/>'s special ability.</param>
+    /// <param name="specialties">A collection of <see cref="rainbowedit.Models.Specialty"/> objects representing the <see cref="Defender"/>'s assigned specialties.</param>
+    /// <param name="organization">The name of the organization the <see cref="Defender"/> belongs to.</param>
+    /// <param name="birthplace">The <see cref="Defender"/>'s birthplace.</param>
+    /// <param name="height">The <see cref="Defender"/>'s height in whole and fractional centimeters.</param>
+    /// <param name="weight">The <see cref="Defender"/>'s weight in whole and fractional kilograms.</param>
+    /// <param name="realName">The in-game real name of the <see cref="Defender"/>.</param>
+    /// <param name="age">An <see cref="rainbowedit.OperatorAge"/> instance specifying the <see cref="Defender"/>'s day and month of birth and their age.</param>
+    /// <param name="speed">The <see cref="Defender"/>'s speed rating.</param>
+    internal Defender(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, IEnumerable<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed) : base(nickname, primaries, secondaries, gadgets, specialAbility, specialties, organization, birthplace, height, weight, realName, age, speed)
+    {
+
+    }
 }
