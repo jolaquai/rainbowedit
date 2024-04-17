@@ -26,13 +26,13 @@
         </member>
         <member name="M:rainbowedit.Challenge.#ctor(rainbowedit.Operator[])">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Challenge"/> from a series of <see cref="T:rainbowedit.Operator"/>s. This implies the <see cref="P:rainbowedit.Challenge.Type"/> to be <see cref="F:rainbowedit.Challenge.ChallengeType.Operators"/> or <see cref="F:rainbowedit.Challenge.ChallengeType.Organization"/>, the latter only if the passed <paramref name="operators"/> have matching <see cref="P:rainbowedit.Operator.Organization"/> values.
+            Initializes a new <see cref="T:rainbowedit.Challenge"/> from a series of <see cref="T:rainbowedit.Operator"/>s. This implies the <see cref="P:rainbowedit.Challenge.Type"/> to be <see cref="F:rainbowedit.Challenge.ChallengeType.Operators"/> or <see cref="F:rainbowedit.Challenge.ChallengeType.Organization"/>, the latter only if the passed <paramref name="operators"/> have matching <see cref="P:rainbowedit.Operator.Organization"/> values.
             </summary>
             <param name="operators">Any number of further <see cref="T:rainbowedit.Operator"/>s to associate with this <see cref="T:rainbowedit.Challenge"/>.</param>
         </member>
         <member name="M:rainbowedit.Challenge.#ctor(rainbowedit.Challenge.ChallengeType,System.Object)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Challenge"/> from a <see cref="T:rainbowedit.Challenge.ChallengeType"/> and <paramref name="extra"/> data, the nature of which depends on which <paramref name="challengeType"/> was passed:
+            Initializes a new <see cref="T:rainbowedit.Challenge"/> from a <see cref="T:rainbowedit.Challenge.ChallengeType"/> and <paramref name="extra"/> data, the nature of which depends on which <paramref name="challengeType"/> was passed:
             <list type="bullet">
             <item><see cref="F:rainbowedit.Challenge.ChallengeType.Operators"/>: <paramref name="extra"/> must be a Type convertible to an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of <see cref="T:rainbowedit.Operator"/>.</item>
             <item><see cref="F:rainbowedit.Challenge.ChallengeType.WeaponTypeKills"/>: <paramref name="extra"/> must be a <see cref="T:rainbowedit.Weapon.WeaponType"/> enum value. The <see cref="P:rainbowedit.Challenge.Extra"/> property is set to the passed value.</item>
@@ -197,14 +197,14 @@
         </member>
         <member name="M:rainbowedit.Exceptions.EnumStringificationException`1.#ctor(`0,System.String)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Exceptions.EnumStringificationException`1"/> with a given <typeparamref name="TEnum"/> and <paramref name="string"/>.
+            Initializes a new <see cref="T:rainbowedit.Exceptions.EnumStringificationException`1"/> with a given <typeparamref name="TEnum"/> and <paramref name="string"/>.
             </summary>
             <param name="enum">The enum value of type <typeparamref name="TEnum"/> that was attempted to be represented by <paramref name="string"/>.</param>
             <param name="string">The string representation that did not match the actual value of <paramref name="enum"/>.</param>
         </member>
         <member name="M:rainbowedit.Exceptions.EnumStringificationException`1.#ctor(System.String)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Exceptions.EnumStringificationException`1"/> with a given <paramref name="string"/>.
+            Initializes a new <see cref="T:rainbowedit.Exceptions.EnumStringificationException`1"/> with a given <paramref name="string"/>.
             </summary>
             <param name="string">The string representation that did not match any actual value <typeparamref name="TEnum"/> can have.</param>
         </member>
@@ -235,7 +235,7 @@
         </member>
         <member name="M:rainbowedit.Exceptions.LoadoutOperatorMismatchException.#ctor(rainbowedit.Operator,System.Object)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Exceptions.LoadoutOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="value"/>.
+            Initializes a new <see cref="T:rainbowedit.Exceptions.LoadoutOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="value"/>.
             </summary>
             <param name="value">The value that was attempted to be brought in connection with <paramref name="operator"/>.</param>
             <param name="operator">The <see cref="T:rainbowedit.Operator"/> that was targeted despite the <paramref name="value"/> not belonging to them.</param>
@@ -848,7 +848,7 @@
         </member>
         <member name="M:rainbowedit.Operator.#ctor(System.String,System.Collections.Generic.IEnumerable{rainbowedit.Weapon},System.Collections.Generic.IEnumerable{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Operator"/> object.
+            Initializes a new <see cref="T:rainbowedit.Operator"/> object.
             </summary>
             <param name="nickname">The nickname of the <see cref="T:rainbowedit.Operator"/>.</param>
             <param name="primaries">A collection of <see cref="T:rainbowedit.Weapon"/> objects, containing information about the primary weapons the <see cref="T:rainbowedit.Operator"/> may use.</param>
@@ -876,34 +876,23 @@
         <member name="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})">
             <summary>
             Returns a copy of a collection of <see cref="T:rainbowedit.Operator"/> objects sorted in the order they appear in-game.
+            The collection may be immutable.
             </summary>
             <param name="sequence">The collection to sort.</param>
             <returns>The sorted collection as described.</returns>
         </member>
-        <member name="M:rainbowedit.Operator.Sort(System.Collections.Generic.ICollection{rainbowedit.Operator})">
+        <member name="M:rainbowedit.Operator.Sort(System.Collections.Generic.IEnumerable{rainbowedit.Operator})">
             <summary>
-            Sorts the contents of an <see cref="T:System.Collections.Generic.ICollection`1"/> of <see cref="T:rainbowedit.Operator"/> objects in the order they appear in-game.
+            Sorts a sequence of <see cref="T:rainbowedit.Operator"/> objects in the order they appear in-game.
+            The collection must be mutable.
             </summary>
-            <param name="sequence">The <see cref="T:System.Collections.Generic.ICollection`1"/> to sort.</param>
-            <exception cref="T:System.ArgumentException">Thrown if this method is called on an instance of a fixed-size <see cref="T:System.Collections.Generic.ICollection`1"/>-implementing Type such as <see cref="T:System.Array"/>.</exception>
-        </member>
-        <member name="M:rainbowedit.Operator.Sort(System.Collections.Generic.List{rainbowedit.Operator})">
-            <summary>
-            Sorts the contents of a <see cref="T:System.Collections.Generic.List`1"/> of <see cref="T:rainbowedit.Operator"/> objects in the order they appear in-game.
-            </summary>
-            <param name="list">The <see cref="T:System.Collections.Generic.List`1"/> to sort.</param>
-        </member>
-        <member name="M:rainbowedit.Operator.Sort(rainbowedit.Operator[])">
-            <summary>
-            Sorts the contents of an <see cref="T:System.Array"/> of <see cref="T:rainbowedit.Operator"/> objects in the order they appear in-game.
-            </summary>
-            <param name="array">The <see cref="T:System.Array"/> to sort.</param>
+            <param name="sequence">The collection to sort.</param>
         </member>
         <member name="P:rainbowedit.Operator.Comparer">
             <summary>
             An <see cref="T:System.Collections.Generic.IComparer`1"/> implementation for <see cref="T:rainbowedit.Operator"/> objects that may be used to sort a collection of <see cref="T:rainbowedit.Operator"/> objects by the order they appear in-game.
             </summary>
-            <remarks>You may use this directly for custom implementations or use the <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/> method.</remarks>
+            <remarks>You may use this directly for custom implementations or use <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/> or <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>.</remarks>
         </member>
         <member name="M:rainbowedit.Operator.op_Implicit(rainbowedit.Operator)~System.String">
             <summary>
@@ -982,9 +971,14 @@
         <member name="M:rainbowedit.Operator.CompareTo(rainbowedit.Operator)">
             <inheritdoc/>
         </member>
+        <member name="T:rainbowedit.Attacker">
+            <summary>
+            Represents a single Attacker in Siege.
+            </summary>
+        </member>
         <member name="M:rainbowedit.Attacker.#ctor(System.String,System.Collections.Generic.IEnumerable{rainbowedit.Weapon},System.Collections.Generic.IEnumerable{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Attacker"/> object.
+            Initializes a new <see cref="T:rainbowedit.Attacker"/> object.
             </summary>
             <param name="nickname">The nickname of the <see cref="T:rainbowedit.Attacker"/>.</param>
             <param name="primaries">A collection of <see cref="T:rainbowedit.Weapon"/> objects, containing information about the primary weapons the <see cref="T:rainbowedit.Attacker"/> may use.</param>
@@ -1000,9 +994,14 @@
             <param name="age">An <see cref="T:rainbowedit.OperatorAge"/> instance specifying the <see cref="T:rainbowedit.Attacker"/>'s day and month of birth and their age.</param>
             <param name="speed">The <see cref="T:rainbowedit.Attacker"/>'s speed rating.</param>
         </member>
+        <member name="T:rainbowedit.Defender">
+            <summary>
+            Represents a single Defender in Siege.
+            </summary>
+        </member>
         <member name="M:rainbowedit.Defender.#ctor(System.String,System.Collections.Generic.IEnumerable{rainbowedit.Weapon},System.Collections.Generic.IEnumerable{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Defender"/> object.
+            Initializes a new <see cref="T:rainbowedit.Defender"/> object.
             </summary>
             <param name="nickname">The nickname of the <see cref="T:rainbowedit.Defender"/>.</param>
             <param name="primaries">A collection of <see cref="T:rainbowedit.Weapon"/> objects, containing information about the primary weapons the <see cref="T:rainbowedit.Defender"/> may use.</param>
@@ -1040,7 +1039,7 @@
         </member>
         <member name="M:rainbowedit.OperatorAge.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
-            Instantiates an <see cref="T:rainbowedit.OperatorAge"/> instance for the given data.
+            Initializes an <see cref="T:rainbowedit.OperatorAge"/> instance for the given data.
             </summary>
             <param name="day">The day of birth of the <see cref="T:rainbowedit.Operator"/>.</param>
             <param name="month">The month of birth of the <see cref="T:rainbowedit.Operator"/>.</param>
@@ -1090,14 +1089,14 @@
         </member>
         <member name="M:rainbowedit.LoadoutConfiguration.#ctor(rainbowedit.Operator)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.LoadoutConfiguration"/> object from just an <see cref="T:rainbowedit.Operator"/> to gather values from.
+            Initializes a new <see cref="T:rainbowedit.LoadoutConfiguration"/> object from just an <see cref="T:rainbowedit.Operator"/> to gather values from.
             </summary>
             <param name="source">The <see cref="T:rainbowedit.Defender"/> to gather random values for this <see cref="T:rainbowedit.LoadoutConfiguration"/> instance's properties from.</param>
         </member>
         <member name="M:rainbowedit.LoadoutConfiguration.#ctor(rainbowedit.Operator,rainbowedit.Weapon.Gadget,rainbowedit.Weapon,rainbowedit.Weapon)">
             <summary>
             <para>
-            Instantiates a new <see cref="T:rainbowedit.LoadoutConfiguration"/> object from an <see cref="T:rainbowedit.Operator"/> and one each of their <see cref="P:rainbowedit.Operator.Gadgets"/>, <see cref="P:rainbowedit.Operator.Primaries"/> and <see cref="P:rainbowedit.Operator.Secondaries"/>, the latter two of which are used to instantiate randomized <see cref="T:rainbowedit.WeaponConfiguration"/>s.
+            Initializes a new <see cref="T:rainbowedit.LoadoutConfiguration"/> object from an <see cref="T:rainbowedit.Operator"/> and one each of their <see cref="P:rainbowedit.Operator.Gadgets"/>, <see cref="P:rainbowedit.Operator.Primaries"/> and <see cref="P:rainbowedit.Operator.Secondaries"/>, the latter two of which are used to instantiate randomized <see cref="T:rainbowedit.WeaponConfiguration"/>s.
             </para>
             <para>
             A <see cref="T:rainbowedit.Exceptions.LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="T:rainbowedit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:rainbowedit.Operator"/>.
@@ -1112,7 +1111,7 @@
         <member name="M:rainbowedit.LoadoutConfiguration.#ctor(rainbowedit.Operator,rainbowedit.Weapon.Gadget,rainbowedit.WeaponConfiguration,rainbowedit.WeaponConfiguration)">
             <summary>
             <para>
-            Instantiates a new fully customized <see cref="T:rainbowedit.LoadoutConfiguration"/> object from an <see cref="T:rainbowedit.Operator"/>, one of their <see cref="P:rainbowedit.Operator.Gadgets"/> and one <see cref="T:rainbowedit.WeaponConfiguration"/> identifying the <see cref="P:rainbowedit.LoadoutConfiguration.Primary"/> and <see cref="P:rainbowedit.LoadoutConfiguration.Secondary"/> respectively.
+            Initializes a new fully customized <see cref="T:rainbowedit.LoadoutConfiguration"/> object from an <see cref="T:rainbowedit.Operator"/>, one of their <see cref="P:rainbowedit.Operator.Gadgets"/> and one <see cref="T:rainbowedit.WeaponConfiguration"/> identifying the <see cref="P:rainbowedit.LoadoutConfiguration.Primary"/> and <see cref="P:rainbowedit.LoadoutConfiguration.Secondary"/> respectively.
             </para>
             <para>
             A <see cref="T:rainbowedit.Exceptions.LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="T:rainbowedit.WeaponConfiguration"/>'s source <see cref="T:rainbowedit.Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="T:rainbowedit.Operator"/>.
@@ -1186,13 +1185,13 @@
         </member>
         <member name="M:rainbowedit.WeaponConfiguration.#ctor(rainbowedit.Weapon)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.WeaponConfiguration"/> object from just a <see cref="T:rainbowedit.Weapon"/> to gather values from.
+            Initializes a new <see cref="T:rainbowedit.WeaponConfiguration"/> object from just a <see cref="T:rainbowedit.Weapon"/> to gather values from.
             </summary>
             <param name="source">The <see cref="T:rainbowedit.Weapon"/> to gather random values for this <see cref="T:rainbowedit.WeaponConfiguration"/> instance's properties from.</param>
         </member>
         <member name="M:rainbowedit.WeaponConfiguration.#ctor(rainbowedit.Weapon,rainbowedit.Weapon.Sight,rainbowedit.Weapon.Barrel,rainbowedit.Weapon.Grip,System.Boolean)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.WeaponConfiguration"/> object from and one each of their <see cref="T:rainbowedit.Weapon.Sight"/>s, <see cref="T:rainbowedit.Weapon.Barrel"/>s and <see cref="T:rainbowedit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:rainbowedit.Weapon.Underbarrel"/> laser.
+            Initializes a new <see cref="T:rainbowedit.WeaponConfiguration"/> object from and one each of their <see cref="T:rainbowedit.Weapon.Sight"/>s, <see cref="T:rainbowedit.Weapon.Barrel"/>s and <see cref="T:rainbowedit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:rainbowedit.Weapon.Underbarrel"/> laser.
             </summary>
             <param name="source">The <see cref="T:rainbowedit.Weapon"/> to gather random values for this <see cref="T:rainbowedit.WeaponConfiguration"/> instance's properties from.</param>
             <param name="sight">A <see cref="T:rainbowedit.Weapon.Sight"/> enum value detailing the sight to use. If this is <see cref="F:rainbowedit.Weapon.Sight.NonMagnifying"/> or <see cref="F:rainbowedit.Weapon.Sight.Magnifying"/>, a random one of its variants is chosen.</param>
@@ -1203,7 +1202,7 @@
         <member name="M:rainbowedit.WeaponConfiguration.#ctor(rainbowedit.Weapon,System.String,System.String,System.String,System.Boolean)">
             <summary>
             <para>
-            Instantiates a new fully customized <see cref="T:rainbowedit.WeaponConfiguration"/> object from a <see cref="T:rainbowedit.Weapon"/> and string representations of one each of their <see cref="T:rainbowedit.Weapon.Sight"/>s, <see cref="T:rainbowedit.Weapon.Barrel"/>s and <see cref="T:rainbowedit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:rainbowedit.Weapon.Underbarrel"/> laser.
+            Initializes a new fully customized <see cref="T:rainbowedit.WeaponConfiguration"/> object from a <see cref="T:rainbowedit.Weapon"/> and string representations of one each of their <see cref="T:rainbowedit.Weapon.Sight"/>s, <see cref="T:rainbowedit.Weapon.Barrel"/>s and <see cref="T:rainbowedit.Weapon.Grip"/>s and a value indicating whether to use a <see cref="P:rainbowedit.Weapon.Underbarrel"/> laser.
             </para>
             <para>
             An <see cref="T:rainbowedit.Exceptions.EnumStringificationException`1"/> is thrown if one of the strings passed does not match any possible string representations for that enum.
@@ -1316,7 +1315,7 @@
         </member>
         <member name="M:rainbowedit.Models.Specialty.#ctor(System.String,rainbowedit.Operator,System.Collections.Generic.List{rainbowedit.Models.Specialty.Challenge})">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Models.Specialty"/> with a specified name, <see cref="T:rainbowedit.Operator"/> reward, and list of <see cref="P:rainbowedit.Models.Specialty.Challenges"/>.
+            Initializes a new <see cref="T:rainbowedit.Models.Specialty"/> with a specified name, <see cref="T:rainbowedit.Operator"/> reward, and list of <see cref="P:rainbowedit.Models.Specialty.Challenges"/>.
             </summary>
             <param name="name">The name of the <see cref="T:rainbowedit.Models.Specialty"/>.</param>
             <param name="reward">The <see cref="T:rainbowedit.Defender"/> reward for completing all three of this <see cref="T:rainbowedit.Models.Specialty"/>'s <paramref name="challenges"/>.</param>
@@ -1345,7 +1344,7 @@
         </member>
         <member name="M:rainbowedit.Models.Specialty.Challenge.#ctor(System.String,System.String)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Models.Specialty.Challenge" /> with the specified name, description, and reward.
+            Initializes a new <see cref="T:rainbowedit.Models.Specialty.Challenge" /> with the specified name, description, and reward.
             </summary>
             <param name="description">The description of the challenge.</param>
             <param name="reward">The reward for completing the challenge.</param>
@@ -1804,7 +1803,7 @@
         </member>
         <member name="M:rainbowedit.Weapon.#ctor(rainbowedit.Operator,System.String,rainbowedit.Weapon.WeaponType,rainbowedit.Weapon.FiringMode,System.Int32,System.Int32,System.Int32,rainbowedit.Weapon.Sight,rainbowedit.Weapon.Barrel,rainbowedit.Weapon.Grip,System.Boolean,System.Int32,System.Int32)">
             <summary>
-            Instantiates a new <see cref="T:rainbowedit.Weapon"/> object with the given data.
+            Initializes a new <see cref="T:rainbowedit.Weapon"/> object with the given data.
             </summary>
             <param name="source">The <see cref="T:rainbowedit.Defender"/> this <see cref="T:rainbowedit.Weapon"/> belongs to.</param>
             <param name="name">The in-game name of the <see cref="T:rainbowedit.Weapon"/>.</param>
@@ -1853,7 +1852,7 @@
         <member name="T:rainbowedit.Randomizers">
             <summary>
             A collection of methods that fetch random information or configurations from the model classes in <see cref="T:rainbowedit.Siege"/>.
-            <para/>Where a collection of <see cref="T:rainbowedit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:rainbowedit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="P:rainbowedit.Operator.Comparer"/> and <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>, <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.ICollection{rainbowedit.Operator})"/> and <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.List{rainbowedit.Operator})"/>.
+            <para/>Where a collection of <see cref="T:rainbowedit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:rainbowedit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="P:rainbowedit.Operator.Comparer"/> and <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>, <see cref="!:Operator.Sort(ICollection&lt;Operator&gt;)"/> and <see cref="!:Operator.Sort(List&lt;Operator&gt;)"/>.
             </summary>
         </member>
         <member name="T:rainbowedit.Randomizers.Challenges">

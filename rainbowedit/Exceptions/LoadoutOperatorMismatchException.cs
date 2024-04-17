@@ -19,7 +19,7 @@ internal class LoadoutOperatorMismatchException : Exception
     public object Value { get; }
 
     /// <summary>
-    /// Instantiates a new <see cref="LoadoutOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="value"/>.
+    /// Initializes a new <see cref="LoadoutOperatorMismatchException"/> with a given <paramref name="operator"/> and <paramref name="value"/>.
     /// </summary>
     /// <param name="value">The value that was attempted to be brought in connection with <paramref name="operator"/>.</param>
     /// <param name="operator">The <see cref="rainbowedit.Operator"/> that was targeted despite the <paramref name="value"/> not belonging to them.</param>

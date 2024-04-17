@@ -19,7 +19,7 @@ public class OperatorAge
     public int Age { get; }
 
     /// <summary>
-    /// Instantiates an <see cref="OperatorAge"/> instance for the given data.
+    /// Initializes an <see cref="OperatorAge"/> instance for the given data.
     /// </summary>
     /// <param name="day">The day of birth of the <see cref="Operator"/>.</param>
     /// <param name="month">The month of birth of the <see cref="Operator"/>.</param>

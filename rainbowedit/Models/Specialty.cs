@@ -19,7 +19,7 @@ public class Specialty
     public List<Challenge> Challenges { get; }
 
     /// <summary>
-    /// Instantiates a new <see cref="Specialty"/> with a specified name, <see cref="Operator"/> reward, and list of <see cref="Challenges"/>.
+    /// Initializes a new <see cref="Specialty"/> with a specified name, <see cref="Operator"/> reward, and list of <see cref="Challenges"/>.
     /// </summary>
     /// <param name="name">The name of the <see cref="Specialty"/>.</param>
     /// <param name="reward">The <see cref="Defender"/> reward for completing all three of this <see cref="Specialty"/>'s <paramref name="challenges"/>.</param>
@@ -53,7 +53,7 @@ public class Specialty
         public string Reward { get; }
 
         /// <summary>
-        /// Instantiates a new <see cref="Challenge" /> with the specified name, description, and reward.
+        /// Initializes a new <see cref="Challenge" /> with the specified name, description, and reward.
         /// </summary>
         /// <param name="description">The description of the challenge.</param>
         /// <param name="reward">The reward for completing the challenge.</param>

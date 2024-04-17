@@ -36,7 +36,7 @@ public class WeaponConfiguration
     public bool Underbarrel { get; }
 
     /// <summary>
-    /// Instantiates a new <see cref="WeaponConfiguration"/> object from just a <see cref="Weapon"/> to gather values from.
+    /// Initializes a new <see cref="WeaponConfiguration"/> object from just a <see cref="Weapon"/> to gather values from.
     /// </summary>
     /// <param name="source">The <see cref="Weapon"/> to gather random values for this <see cref="WeaponConfiguration"/> instance's properties from.</param>
     public WeaponConfiguration(Weapon source)
@@ -89,7 +89,7 @@ public class WeaponConfiguration
     }
 
     /// <summary>
-    /// Instantiates a new <see cref="WeaponConfiguration"/> object from and one each of their <see cref="Weapon.Sight"/>s, <see cref="Weapon.Barrel"/>s and <see cref="Weapon.Grip"/>s and a value indicating whether to use a <see cref="Weapon.Underbarrel"/> laser.
+    /// Initializes a new <see cref="WeaponConfiguration"/> object from and one each of their <see cref="Weapon.Sight"/>s, <see cref="Weapon.Barrel"/>s and <see cref="Weapon.Grip"/>s and a value indicating whether to use a <see cref="Weapon.Underbarrel"/> laser.
     /// </summary>
     /// <param name="source">The <see cref="Weapon"/> to gather random values for this <see cref="WeaponConfiguration"/> instance's properties from.</param>
     /// <param name="sight">A <see cref="Weapon.Sight"/> enum value detailing the sight to use. If this is <see cref="Weapon.Sight.NonMagnifying"/> or <see cref="Weapon.Sight.Magnifying"/>, a random one of its variants is chosen.</param>
@@ -113,7 +113,7 @@ public class WeaponConfiguration
 
     /// <summary>
     /// <para>
-    /// Instantiates a new fully customized <see cref="WeaponConfiguration"/> object from a <see cref="Weapon"/> and string representations of one each of their <see cref="Weapon.Sight"/>s, <see cref="Weapon.Barrel"/>s and <see cref="Weapon.Grip"/>s and a value indicating whether to use a <see cref="Weapon.Underbarrel"/> laser.
+    /// Initializes a new fully customized <see cref="WeaponConfiguration"/> object from a <see cref="Weapon"/> and string representations of one each of their <see cref="Weapon.Sight"/>s, <see cref="Weapon.Barrel"/>s and <see cref="Weapon.Grip"/>s and a value indicating whether to use a <see cref="Weapon.Underbarrel"/> laser.
     /// </para>
     /// <para>
     /// An <see cref="EnumStringificationException{TEnum}"/> is thrown if one of the strings passed does not match any possible string representations for that enum.

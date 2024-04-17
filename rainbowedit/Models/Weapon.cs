@@ -468,7 +468,7 @@ public class Weapon
     #endregion
 
     /// <summary>
-    /// Instantiates a new <see cref="Weapon"/> object with the given data.
+    /// Initializes a new <see cref="Weapon"/> object with the given data.
     /// </summary>
     /// <param name="source">The <see cref="Defender"/> this <see cref="Weapon"/> belongs to.</param>
     /// <param name="name">The in-game name of the <see cref="Weapon"/>.</param>

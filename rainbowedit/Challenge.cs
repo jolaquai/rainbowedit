@@ -23,7 +23,7 @@ public class Challenge
     public object? Extra { get; internal set; }
 
     /// <summary>
-    /// Instantiates a new <see cref="Challenge"/> from a series of <see cref="Operator"/>s. This implies the <see cref="Type"/> to be <see cref="ChallengeType.Operators"/> or <see cref="ChallengeType.Organization"/>, the latter only if the passed <paramref name="operators"/> have matching <see cref="Operator.Organization"/> values.
+    /// Initializes a new <see cref="Challenge"/> from a series of <see cref="Operator"/>s. This implies the <see cref="Type"/> to be <see cref="ChallengeType.Operators"/> or <see cref="ChallengeType.Organization"/>, the latter only if the passed <paramref name="operators"/> have matching <see cref="Operator.Organization"/> values.
     /// </summary>
     /// <param name="operators">Any number of further <see cref="Operator"/>s to associate with this <see cref="Challenge"/>.</param>
     public Challenge(params Operator[] operators)
@@ -47,7 +47,7 @@ public class Challenge
     }
 
     /// <summary>
-    /// Instantiates a new <see cref="Challenge"/> from a <see cref="ChallengeType"/> and <paramref name="extra"/> data, the nature of which depends on which <paramref name="challengeType"/> was passed:
+    /// Initializes a new <see cref="Challenge"/> from a <see cref="ChallengeType"/> and <paramref name="extra"/> data, the nature of which depends on which <paramref name="challengeType"/> was passed:
     /// <list type="bullet">
     /// <item><see cref="ChallengeType.Operators"/>: <paramref name="extra"/> must be a Type convertible to an <see cref="IEnumerable{T}"/> of <see cref="Operator"/>.</item>
     /// <item><see cref="ChallengeType.WeaponTypeKills"/>: <paramref name="extra"/> must be a <see cref="Weapon.WeaponType"/> enum value. The <see cref="Extra"/> property is set to the passed value.</item>

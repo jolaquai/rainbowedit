@@ -28,7 +28,7 @@ public class LoadoutConfiguration
     public Weapon.Gadget Gadget { get; set; }
 
     /// <summary>
-    /// Instantiates a new <see cref="LoadoutConfiguration"/> object from just an <see cref="Operator"/> to gather values from.
+    /// Initializes a new <see cref="LoadoutConfiguration"/> object from just an <see cref="Operator"/> to gather values from.
     /// </summary>
     /// <param name="source">The <see cref="Defender"/> to gather random values for this <see cref="LoadoutConfiguration"/> instance's properties from.</param>
     public LoadoutConfiguration(Operator source)
@@ -47,7 +47,7 @@ public class LoadoutConfiguration
 
     /// <summary>
     /// <para>
-    /// Instantiates a new <see cref="LoadoutConfiguration"/> object from an <see cref="Operator"/> and one each of their <see cref="Operator.Gadgets"/>, <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>, the latter two of which are used to instantiate randomized <see cref="WeaponConfiguration"/>s.
+    /// Initializes a new <see cref="LoadoutConfiguration"/> object from an <see cref="Operator"/> and one each of their <see cref="Operator.Gadgets"/>, <see cref="Operator.Primaries"/> and <see cref="Operator.Secondaries"/>, the latter two of which are used to instantiate randomized <see cref="WeaponConfiguration"/>s.
     /// </para>
     /// <para>
     /// A <see cref="LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
@@ -81,7 +81,7 @@ public class LoadoutConfiguration
 
     /// <summary>
     /// <para>
-    /// Instantiates a new fully customized <see cref="LoadoutConfiguration"/> object from an <see cref="Operator"/>, one of their <see cref="Operator.Gadgets"/> and one <see cref="WeaponConfiguration"/> identifying the <see cref="Primary"/> and <see cref="Secondary"/> respectively.
+    /// Initializes a new fully customized <see cref="LoadoutConfiguration"/> object from an <see cref="Operator"/>, one of their <see cref="Operator.Gadgets"/> and one <see cref="WeaponConfiguration"/> identifying the <see cref="Primary"/> and <see cref="Secondary"/> respectively.
     /// </para>
     /// <para>
     /// A <see cref="LoadoutOperatorMismatchException"/> is thrown if the passed <see cref="WeaponConfiguration"/>'s source <see cref="Weapon"/> objects do not belong to the <paramref name="source"/> <see cref="Operator"/>.
