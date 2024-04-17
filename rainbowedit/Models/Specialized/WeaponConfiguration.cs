@@ -45,11 +45,11 @@ public class WeaponConfiguration
 
         var ran = new Random();
 
-        var possibleSights = Source.Sights.GetSetFlags();
-        var possibleBarrels = Source.Barrels.GetSetFlags();
-        var possibleGrips = Source.Grips.GetSetFlags();
+        var possibleSights = Source.Sights.GetFlags();
+        var possibleBarrels = Source.Barrels.GetFlags();
+        var possibleGrips = Source.Grips.GetFlags();
 
-        if (possibleSights.Count != 0)
+        if (possibleSights.Length != 0)
         {
             var sight = possibleSights.Random(Siege.Internals._random);
             Sight = sight switch
@@ -64,7 +64,7 @@ public class WeaponConfiguration
             Sight = Weapon.Sight.Invalid.GetDescription();
         }
 
-        if (possibleBarrels.Count != 0)
+        if (possibleBarrels.Length != 0)
         {
             Barrel = possibleBarrels.Random(Siege.Internals._random).GetDescription();
         }
@@ -73,7 +73,7 @@ public class WeaponConfiguration
             Barrel = Weapon.Barrel.None.GetDescription();
         }
 
-        if (possibleGrips.Count != 0)
+        if (possibleGrips.Length != 0)
         {
             Grip = possibleGrips.Random(Siege.Internals._random).GetDescription();
         }

@@ -35,8 +35,8 @@ public class LoadoutConfiguration
     {
         Source = source;
 
-        var possibleGadgets = Source.Gadgets.GetSetFlags();
-        if (possibleGadgets.Count != 0)
+        var possibleGadgets = Source.Gadgets.GetFlags();
+        if (possibleGadgets.Length != 0)
         {
             Gadget = possibleGadgets.Random(Siege.Internals._random);
         }

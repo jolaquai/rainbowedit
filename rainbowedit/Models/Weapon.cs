@@ -12,34 +12,55 @@ public class Weapon
     ///<summary>
     /// The <see cref="Defender"/> this <see cref="Weapon"/> belongs to.
     ///</summary>
-    public Operator Source { get; internal set; }
+    public Operator Source
+    {
+        get; internal set;
+    }
     /// <summary>
     /// The in-game name of the <see cref="Weapon"/>.
     /// </summary>
-    public string Name { get; }
+    public string Name
+    {
+        get;
+    }
     /// <summary>
     /// The in-game <see cref="WeaponType"/> of the <see cref="Weapon"/>.
     /// </summary>
-    public WeaponType Type { get; }
+    public WeaponType Type
+    {
+        get;
+    }
     /// <summary>
     /// The in-game <see cref="FiringMode"/> the <see cref="Weapon"/> uses.
     /// </summary>
-    public FiringMode FireMode { get; }
+    public FiringMode FireMode
+    {
+        get;
+    }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when <i>not</i> equipped with a <see cref="Barrel.ExtendedBarrel"/>.
     /// </summary>
-    public int Damage { get; }
+    public int Damage
+    {
+        get;
+    }
     /// <summary>
     /// The rounds per minute this <see cref="Weapon"/> is capable of firing in-game.
     /// </summary>
-    public int RoundsPerMinute { get; }
+    public int RoundsPerMinute
+    {
+        get;
+    }
     /// <summary>
     /// The in-game magazine capacity of this <see cref="Weapon"/>.
     /// </summary>
     /// <remarks>
     /// This does not include the single round chambered after cocking the <see cref="Weapon"/>.
     /// </remarks>
-    public int Capacity { get; }
+    public int Capacity
+    {
+        get;
+    }
     private Sight _sights;
     /// <summary>
     /// A combination of <see cref="Sight"/> values that specifies which sights may be equipped on this <see cref="Weapon"/>.
@@ -56,18 +77,27 @@ public class Weapon
     /// <summary>
     /// A combination of <see cref="Barrel"/> values that specifies which barrel extensions may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Barrel Barrels { get; }
+    public Barrel Barrels
+    {
+        get;
+    }
     /// <summary>
     /// A combination of <see cref="Grip"/> values that specifies which grips may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Grip Grips { get; }
+    public Grip Grips
+    {
+        get;
+    }
     /// <summary>
     /// Whether an underbarrel laser may be equipped on this <see cref="Weapon"/>.
     /// </summary>
     /// <remarks>
     /// Usage of an underbarrel laser grants a 10% ADS speed bonus.
     /// </remarks>
-    public bool Underbarrel { get; }
+    public bool Underbarrel
+    {
+        get;
+    }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.Suppressor"/>.
     /// </summary>
@@ -76,29 +106,47 @@ public class Weapon
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.ExtendedBarrel"/>.
     /// </summary>
-    public int ExtendedBarrelDamage { get; }
+    public int ExtendedBarrelDamage
+    {
+        get;
+    }
     /// <summary>
     /// The theoretical damage per second output of this <see cref="Weapon"/> during sustained fire, including ideal (tactical) reloads.
     /// This is only technically relevant and not really meaningful in-game. Furthermore, it's entirely non-sensical for the <c>GONNE-6</c> or shields, for example.
     /// </summary>
-    public int DamagePerSecond { get; }
+    public int DamagePerSecond
+    {
+        get;
+    }
     /// <summary>
     /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="Weapon"/> (a reload when there is a round chambered). For weapons that cannot be in this state (such as revolvers), this is generally equal to <see cref="ReloadEmpty"/>.
     /// </summary>
-    public TimeSpan ReloadTactical { get; }
+    public TimeSpan ReloadTactical
+    {
+        get;
+    }
     /// <summary>
     /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform an empty reload with this <see cref="Weapon"/> (a reload when there is no round chambered).
     /// </summary>
-    public TimeSpan ReloadEmpty { get; }
+    public TimeSpan ReloadEmpty
+    {
+        get;
+    }
     /// <summary>
     /// Whether this <see cref="Weapon"/> is a secondary weapon.
     /// </summary>
-    public bool IsSecondary { get; }
+    public bool IsSecondary
+    {
+        get;
+    }
     /// <summary>
     /// The time it takes to transition from or to aiming down sights (ADS) with this <see cref="Weapon"/>.
     /// Note that this is only the base value and does not apply modifiers such as sight ADS speed multipliers.
     /// </summary>
-    public double AdsSpeed { get; }
+    public double AdsSpeed
+    {
+        get;
+    }
 
     /// <summary>
     /// Contains properties that return specific collections of <see cref="Weapon"/>s.
@@ -164,6 +212,10 @@ public class Weapon
     [Flags]
     public enum WeaponType
     {
+        /// <summary>
+        /// Generally unused. Indicates an invalid value in terms of a <see cref="WeaponConfiguration"/>.
+        /// </summary>
+        Invalid = 0,
         /// <summary>
         /// Identifies the Assault Rifle weapon type.
         /// </summary>
@@ -240,7 +292,7 @@ public class Weapon
         /// <summary>
         /// Generally unused. Indicates that a <see cref="Weapon"/> has no defined firing mode.
         /// </summary>
-        None = 0,
+        Invalid = 0,
         /// <summary>
         /// Indicates that a <see cref="Weapon"/> is fully automatic.
         /// </summary>
@@ -261,7 +313,7 @@ public class Weapon
     /// <para/>However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
     /// <para/>Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
     /// <para/>As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="Sights"/> flags have been redefined to act as maximums. Use <see cref="Enum.HasFlag(Enum)"/> for any look-ups.
-    /// <para/>Y9S1 introduces massive changes to the entire <see cref="Weapon"/> ecosystem, including the overall functionalities of sights, barrels, grips and underbarrel attachments. As such, the <see cref="Sights"/> enum has been redefined to reflect these changes. <see langword="None"/> has been renamed to <see cref="IronSight"/> and all options (excepting <see cref="VariableSniper"/> now also contain <see cref="IronSight"/>.
+    /// <para/>Y9S1 introduces massive changes to the entire <see cref="Weapon"/> ecosystem, including the overall functionalities of sights, barrels, grips and underbarrel attachments. As such, the <see cref="Sights"/> enum has been redefined to reflect these changes. <see langword="Invalid"/> has been renamed to <see cref="IronSight"/> and all options (excepting <see cref="VariableSniper"/> now also contain <see cref="IronSight"/>.
     /// </summary>
     /// <remarks>
     /// <para/><see cref="Sight"/> is semi-<see cref="FlagsAttribute"/>. and <see cref="Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
@@ -276,7 +328,7 @@ public class Weapon
         /// Indicates that no sights can be equipped on a <see cref="Weapon"/> or that there's something else weird going on with it.
         /// This is true for most <see cref="WeaponType.Handgun"/>s.
         /// </summary>
-        [Description("None/Other")]
+        [Description("Invalid/Other")]
         NoneOther = 0b000_0001,
         /// <summary>
         /// Indicates that a <see cref="Weapon"/>'s Iron Sight can be chosen.
@@ -393,6 +445,10 @@ public class Weapon
     [Flags]
     public enum Gadget
     {
+        /// <summary>
+        /// Generally unused. Indicates an invalid value in terms of a <see cref="WeaponConfiguration"/>.
+        /// </summary>
+        Invalid = 0,
         /// <summary>
         /// Indicates than an <see cref="Operator"/> may choose fragmentation grenades during loadout selection. This is unique to <see cref="Attackers" />.
         /// </summary>

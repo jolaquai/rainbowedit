@@ -1304,7 +1304,7 @@ public static class Defenders
                 ),
                 new Weapon(
                     null,
-                    "T-5 SMG",
+                    "TEnum-5 SMG",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
                     28,
@@ -1673,7 +1673,7 @@ public static class Defenders
                     null,
                     "CCE Shield",
                     Weapon.WeaponType.Shield,
-                    Weapon.FiringMode.None,
+                    Weapon.FiringMode.Invalid,
                     5,
                     20,
                     4,
@@ -2135,7 +2135,7 @@ public static class Defenders
             [
                 new Weapon(
                     null,
-                    "T-5 SMG",
+                    "TEnum-5 SMG",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
                     28,
