@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace rainbowedit.Extensions;
 
@@ -8,6 +9,22 @@ namespace rainbowedit.Extensions;
 /// </summary>
 public static partial class EnumExtensions
 {
+    /// <summary>
+    /// Gets all possible values a value of the specified <typeparamref name="TEnum"/> can have.
+    /// </summary>
+    /// <typeparam name="TEnum">The <see cref="Enum"/> type to retrieve the values for.</typeparam>
+    /// <returns>An array of all possible values a value of the specified <typeparamref name="TEnum"/> can have, excluding the zero value.</returns>
+    /// <exception cref="ArgumentException">Thrown when the specified <typeparamref name="TEnum"/> is not marked with the <see cref="FlagsAttribute"/>.</exception>
+    public static TEnum[] GetValues<TEnum>()
+        where TEnum : struct, Enum
+    {
+        if (typeof(TEnum).GetCustomAttribute<FlagsAttribute>() is null)
+        {
+            throw new ArgumentException($"The given Enum type '{typeof(TEnum).FullName}' is not marked with [FlagsAttribute].");
+        }
+        return Array.FindAll(Enum.GetValues<TEnum>(), field => Unsafe.BitCast<TEnum, int>(field) is not 0);
+    }
+
     /// <summary>
     /// Retrieves all flags that are currently set in the specified <typeparamref name="TEnum"/> value.
     /// Because this implicitly makes <paramref name="any"/> a bitwise-AND combination of the resulting flags, it is not included in the result set.
@@ -22,7 +39,7 @@ public static partial class EnumExtensions
         {
             throw new ArgumentException($"The given Enum type '{typeof(TEnum).FullName}' is not marked with [FlagsAttribute].", nameof(any));
         }
-        return Array.FindAll(Enum.GetValues<TEnum>(), field => any.HasFlag(field) && !field.Equals(any));
+        return Array.FindAll(Enum.GetValues<TEnum>(), field => any.HasFlag(field) && !field.Equals(any) && Unsafe.BitCast<TEnum, int>(field) is not 0);
     }
 
     /// <summary>

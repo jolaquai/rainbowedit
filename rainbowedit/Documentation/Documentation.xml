@@ -245,13 +245,22 @@
             Provides extensions for the <see cref="T:System.Enum"/> type and derived types.
             </summary>
         </member>
-        <member name="M:rainbowedit.Extensions.EnumExtensions.GetSetFlags``1(``0)">
+        <member name="M:rainbowedit.Extensions.EnumExtensions.GetValues``1">
             <summary>
-            Compiles a <see cref="T:System.Collections.Generic.List`1"/> of enum values typed <typeparamref name="T"/> that are set in a given <see cref="T:System.FlagsAttribute"/> enum instance.
+            Gets all possible values a value of the specified <typeparamref name="TEnum"/> can have.
             </summary>
-            <typeparam name="T">The type of the enum.</typeparam>
-            <param name="source">The enum value to extract the set flags on.</param>
-            <returns>A list of individual <typeparamref name="T"/> values that are set in <paramref name="source"/>.</returns>
+            <typeparam name="TEnum">The <see cref="T:System.Enum"/> type to retrieve the values for.</typeparam>
+            <returns>An array of all possible values a value of the specified <typeparamref name="TEnum"/> can have, excluding the zero value.</returns>
+            <exception cref="T:System.ArgumentException">Thrown when the specified <typeparamref name="TEnum"/> is not marked with the <see cref="T:System.FlagsAttribute"/>.</exception>
+        </member>
+        <member name="M:rainbowedit.Extensions.EnumExtensions.GetFlags``1(``0)">
+            <summary>
+            Retrieves all flags that are currently set in the specified <typeparamref name="TEnum"/> value.
+            Because this implicitly makes <paramref name="any"/> a bitwise-AND combination of the resulting flags, it is not included in the result set.
+            </summary>
+            <typeparam name="TEnum">The <see cref="T:System.Enum"/> type to retrieve the flags for.</typeparam>
+            <param name="any">The <typeparamref name="TEnum"/> value to retrieve the flags for.</param>
+            <returns>The flags that are currently set in the specified <typeparamref name="TEnum"/> value or an empty array if no flags are set.</returns>
         </member>
         <member name="M:rainbowedit.Extensions.EnumExtensions.HasValue``1(``0)">
             <summary>
@@ -1519,6 +1528,11 @@
             Identifies the type of a <see cref="T:rainbowedit.Weapon"/>.
             </summary>
         </member>
+        <member name="F:rainbowedit.Weapon.WeaponType.Invalid">
+            <summary>
+            Generally unused. Indicates an invalid value in terms of a <see cref="T:rainbowedit.WeaponConfiguration"/>.
+            </summary>
+        </member>
         <member name="F:rainbowedit.Weapon.WeaponType.AssaultRifle">
             <summary>
             Identifies the Assault Rifle weapon type.
@@ -1589,7 +1603,7 @@
             Indicates which firing mode a <see cref="T:rainbowedit.Weapon"/> uses.
             </summary>
         </member>
-        <member name="F:rainbowedit.Weapon.FiringMode.None">
+        <member name="F:rainbowedit.Weapon.FiringMode.Invalid">
             <summary>
             Generally unused. Indicates that a <see cref="T:rainbowedit.Weapon"/> has no defined firing mode.
             </summary>
@@ -1611,7 +1625,7 @@
             <para/>However, as mentioned above, exceptions such as Glaz's "OTs-03" DMR, which cannot be equipped with Reflex C, are not (yet?) handled differently.
             <para/>Additionally, since there are two 2.5x scope variants, the two options for  that magnification level have also been combined.
             <para/>As of Y7S3, all weapons that have access to scopes of a specific magnification level now automatically have access to all magnifications levels up to that level (excepting Kali's "CSRX 300"). Because of this, the <see cref="P:rainbowedit.Weapon.Sights"/> flags have been redefined to act as maximums. Use <see cref="M:System.Enum.HasFlag(System.Enum)"/> for any look-ups.
-            <para/>Y9S1 introduces massive changes to the entire <see cref="T:rainbowedit.Weapon"/> ecosystem, including the overall functionalities of sights, barrels, grips and underbarrel attachments. As such, the <see cref="P:rainbowedit.Weapon.Sights"/> enum has been redefined to reflect these changes. <see langword="None"/> has been renamed to <see cref="F:rainbowedit.Weapon.Sight.IronSight"/> and all options (excepting <see cref="F:rainbowedit.Weapon.Sight.VariableSniper"/> now also contain <see cref="F:rainbowedit.Weapon.Sight.IronSight"/>.
+            <para/>Y9S1 introduces massive changes to the entire <see cref="T:rainbowedit.Weapon"/> ecosystem, including the overall functionalities of sights, barrels, grips and underbarrel attachments. As such, the <see cref="P:rainbowedit.Weapon.Sights"/> enum has been redefined to reflect these changes. <see langword="Invalid"/> has been renamed to <see cref="F:rainbowedit.Weapon.Sight.IronSight"/> and all options (excepting <see cref="F:rainbowedit.Weapon.Sight.VariableSniper"/> now also contain <see cref="F:rainbowedit.Weapon.Sight.IronSight"/>.
             </summary>
             <remarks>
             <para/><see cref="T:rainbowedit.Weapon.Sight"/> is semi-<see cref="T:System.FlagsAttribute"/>. and <see cref="!:Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
@@ -1729,6 +1743,11 @@
         <member name="T:rainbowedit.Weapon.Gadget">
             <summary>
             Indicates which gadgets an <see cref="T:rainbowedit.Operator"/> may choose from.
+            </summary>
+        </member>
+        <member name="F:rainbowedit.Weapon.Gadget.Invalid">
+            <summary>
+            Generally unused. Indicates an invalid value in terms of a <see cref="T:rainbowedit.WeaponConfiguration"/>.
             </summary>
         </member>
         <member name="F:rainbowedit.Weapon.Gadget.FragGrenade">

@@ -1304,7 +1304,7 @@ public static class Defenders
                 ),
                 new Weapon(
                     null,
-                    "TEnum-5 SMG",
+                    "T-5 SMG",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
                     28,
@@ -2135,7 +2135,7 @@ public static class Defenders
             [
                 new Weapon(
                     null,
-                    "TEnum-5 SMG",
+                    "T-5 SMG",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
                     28,

@@ -1216,7 +1216,7 @@ public static class Attackers
             [
                 new Weapon(
                     null,
-                    "TEnum-95 LSW",
+                    "T-95 LSW",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
                     46,
