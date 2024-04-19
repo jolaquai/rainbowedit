@@ -13,19 +13,31 @@ public class LoadoutConfiguration
     /// <summary>
     /// The <see cref="Defender"/> this configuration applies to.
     /// </summary>
-    public Operator Source { get; }
+    public Operator Source
+    {
+        get;
+    }
     /// <summary>
     /// A <see cref="WeaponConfiguration"/> detailing the primary <see cref="Weapon"/> and the attachments to use.
     /// </summary>
-    public WeaponConfiguration Primary { get; }
+    public WeaponConfiguration Primary
+    {
+        get;
+    }
     /// <summary>
     /// A <see cref="WeaponConfiguration"/> detailing the secondary <see cref="Weapon"/> and the attachments to use.
     /// </summary>
-    public WeaponConfiguration Secondary { get; }
+    public WeaponConfiguration Secondary
+    {
+        get;
+    }
     /// <summary>
     /// A <see cref="Weapon.Gadget"/> enum value identifying the <see cref="Weapon.Gadget"/> to use.
     /// </summary>
-    public Weapon.Gadget Gadget { get; set; }
+    public Weapon.Gadget Gadget
+    {
+        get; set;
+    }
 
     /// <summary>
     /// Initializes a new <see cref="LoadoutConfiguration"/> object from just an <see cref="Operator"/> to gather values from.
@@ -38,11 +50,11 @@ public class LoadoutConfiguration
         var possibleGadgets = Source.Gadgets.GetFlags();
         if (possibleGadgets.Length != 0)
         {
-            Gadget = possibleGadgets.Random(Siege.Internals._random);
+            Gadget = possibleGadgets.Random(Core.Internals.Random);
         }
 
-        Primary = new WeaponConfiguration(Source.Primaries.Random(Siege.Internals._random));
-        Secondary = new WeaponConfiguration(Source.Secondaries.Random(Siege.Internals._random));
+        Primary = new WeaponConfiguration(Source.Primaries.Random(Core.Internals.Random));
+        Secondary = new WeaponConfiguration(Source.Secondaries.Random(Core.Internals.Random));
     }
 
     /// <summary>

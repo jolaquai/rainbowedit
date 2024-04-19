@@ -8,4 +8,8 @@
         <DocumentationFile>Documentation/Documentation.xml</DocumentationFile>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\rainbowedit.Core\rainbowedit.Core.csproj" />
+    </ItemGroup>
+
 </Project>

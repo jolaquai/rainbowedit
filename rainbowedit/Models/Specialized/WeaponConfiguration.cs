@@ -51,11 +51,11 @@ public class WeaponConfiguration
 
         if (possibleSights.Length != 0)
         {
-            var sight = possibleSights.Random(Siege.Internals._random);
+            var sight = possibleSights.Random(Core.Internals.Random);
             Sight = sight switch
             {
-                Weapon.Sight.NonMagnifying => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Siege.Internals._random),
-                Weapon.Sight.Magnifying => new List<string>() { "2.5x A", "2.5x B" }.Random(Siege.Internals._random),
+                Weapon.Sight.NonMagnifying => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Core.Internals.Random),
+                Weapon.Sight.Magnifying => new List<string>() { "2.5x A", "2.5x B" }.Random(Core.Internals.Random),
                 _ => sight.GetDescription()
             };
         }
@@ -66,7 +66,7 @@ public class WeaponConfiguration
 
         if (possibleBarrels.Length != 0)
         {
-            Barrel = possibleBarrels.Random(Siege.Internals._random).GetDescription();
+            Barrel = possibleBarrels.Random(Core.Internals.Random).GetDescription();
         }
         else
         {
@@ -75,7 +75,7 @@ public class WeaponConfiguration
 
         if (possibleGrips.Length != 0)
         {
-            Grip = possibleGrips.Random(Siege.Internals._random).GetDescription();
+            Grip = possibleGrips.Random(Core.Internals.Random).GetDescription();
         }
         else
         {
@@ -105,8 +105,8 @@ public class WeaponConfiguration
 
         Sight = sight switch
         {
-            Weapon.Sight.NonMagnifying => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Siege.Internals._random),
-            Weapon.Sight.Magnifying => new List<string>() { "2.5x A", "2.5x B" }.Random(Siege.Internals._random),
+            Weapon.Sight.NonMagnifying => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Core.Internals.Random),
+            Weapon.Sight.Magnifying => new List<string>() { "2.5x A", "2.5x B" }.Random(Core.Internals.Random),
             _ => sight.GetDescription()
         };
     }

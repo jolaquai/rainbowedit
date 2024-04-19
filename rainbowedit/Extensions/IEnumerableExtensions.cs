@@ -41,7 +41,7 @@ public static class IEnumerableExtensions
         {
             for (var i = 0; i < count; i++)
             {
-                yield return source.Random(random ?? Siege.Internals._random);
+                yield return source.Random(random ?? Core.Internals.Random);
             }
         }
         else
@@ -49,7 +49,7 @@ public static class IEnumerableExtensions
             var exclude = new List<T>();
             for (var i = 0; i < count; i++)
             {
-                var item = source.Except(exclude).Random(random ?? Siege.Internals._random);
+                var item = source.Except(exclude).Random(random ?? Core.Internals.Random);
                 exclude.Add(item);
                 yield return item;
             }

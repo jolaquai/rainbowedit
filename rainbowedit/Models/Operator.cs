@@ -2,6 +2,8 @@
 
 using rainbowedit.Models;
 
+using static rainbowedit.Weapon;
+
 namespace rainbowedit;
 
 /// <summary>
@@ -249,22 +251,7 @@ public abstract class Operator
     /// An <see cref="IComparer{T}"/> implementation for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
     /// </summary>
     /// <remarks>You may use this directly for custom implementations or use <see cref="Sort(IEnumerable{Operator})"/> or <see cref="Order(IEnumerable{Operator})"/>.</remarks>
-    public static IComparer<Operator> Comparer
-    {
-        get;
-    } = Comparer<Operator>.Create(
-        (Operator? left, Operator? right) =>
-        {
-            ArgumentNullException.ThrowIfNull(left);
-            ArgumentNullException.ThrowIfNull(right);
-            if (ReferenceEquals(left, right))
-            {
-                return 0;
-            }
-            var list = Siege.DefAtk.ToList();
-            return list.IndexOf(left) - list.IndexOf(right);
-        }
-    );
+    public static OperatorComparer Comparer => OperatorComparer.Instance;
 
     #region Comparisons / operators
     /// <summary>
@@ -421,6 +408,35 @@ public abstract class Operator
     /// <inheritdoc/>
     public int CompareTo(Operator? other) => Comparer.Compare(this, other);
     #endregion
+}
+
+/// <summary>
+/// Implements <see cref="IComparer{T}"/> for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
+/// </summary>
+public class OperatorComparer : IComparer<Operator>
+{
+    private static Operator[] allOps;
+    private static OperatorComparer instance;
+    /// <summary>
+    /// Gets an instance of the <see cref="OperatorComparer"/> class.
+    /// </summary>
+    public static OperatorComparer Instance => instance ??= new OperatorComparer();
+
+    private OperatorComparer()
+    {
+    }
+
+    public int Compare(Operator? left, Operator? right)
+    {
+        ArgumentNullException.ThrowIfNull(left);
+        ArgumentNullException.ThrowIfNull(right);
+        if (ReferenceEquals(left, right))
+        {
+            return 0;
+        }
+        allOps ??= Siege.DefAtk.ToArray();
+        return Array.IndexOf(allOps, left) - Array.IndexOf(allOps, right);
+    }
 }
 
 /// <summary>
