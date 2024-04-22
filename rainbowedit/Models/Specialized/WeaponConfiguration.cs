@@ -1,4 +1,6 @@
-﻿using rainbowedit.Exceptions;
+﻿using System.Collections.ObjectModel;
+
+using rainbowedit.Exceptions;
 using rainbowedit.Extensions;
 
 namespace rainbowedit;
@@ -8,32 +10,60 @@ namespace rainbowedit;
 /// </summary>
 public class WeaponConfiguration
 {
-    /// <summary>
-    /// A <see cref="System.Random"/> instance that is used by <see cref="WeaponConfiguration"/> instances to generate random values.
-    /// If calling code already possesses a <see cref="System.Random"/> instance, it should set this property to that instance.
-    /// </summary>
-    public static Random Random { get; set; } = new Random();
+    private static readonly ReadOnlyCollection<string> _nonMagSightNames = new ReadOnlyCollection<string>(
+    [
+        "Red Dot A",
+        "Red Dot B",
+        "Red Dot C",
+        "Holo A",
+        "Holo B",
+        "Holo C",
+        "Reflex B",
+        "Reflex A",
+        "Reflex C",
+    ]);
+    private static readonly ReadOnlyCollection<string> _magSightNames = new ReadOnlyCollection<string>(
+    [
+        "Magnifying A",
+        "Magnifying B",
+        "Magnifying C",
+    ]);
 
     ///<summary>
     /// The <see cref="Weapon"/> this configuration applies to.
     ///</summary>
-    public Weapon Source { get; }
+    public Weapon Source
+    {
+        get;
+    }
     /// <summary>
     /// A string detailing the sight to use.
     /// </summary>
-    public string Sight { get; }
+    public string Sight
+    {
+        get;
+    }
     /// <summary>
     /// A string detailing the barrel attachment to use.
     /// </summary>
-    public string Barrel { get; }
+    public string Barrel
+    {
+        get;
+    }
     /// <summary>
     /// A string detailing the grip to use.
     /// </summary>
-    public string Grip { get; }
+    public string Grip
+    {
+        get;
+    }
     /// <summary>
     /// Whether to use an underbarrel laser.
     /// </summary>
-    public bool Underbarrel { get; }
+    public bool Underbarrel
+    {
+        get;
+    }
 
     /// <summary>
     /// Initializes a new <see cref="WeaponConfiguration"/> object from just a <see cref="Weapon"/> to gather values from.
@@ -43,21 +73,29 @@ public class WeaponConfiguration
     {
         Source = source;
 
-        var ran = new Random();
-
         var possibleSights = Source.Sights.GetFlags();
         var possibleBarrels = Source.Barrels.GetFlags();
         var possibleGrips = Source.Grips.GetFlags();
 
         if (possibleSights.Length != 0)
         {
-            var sight = possibleSights.Random(Core.Internals.Random);
-            Sight = sight switch
+            List<string> actualSights = [];
+            foreach (var possibleSight in possibleSights)
             {
-                Weapon.Sight.NonMagnifying => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Core.Internals.Random),
-                Weapon.Sight.Magnifying => new List<string>() { "2.5x A", "2.5x B" }.Random(Core.Internals.Random),
-                _ => sight.GetDescription()
-            };
+                switch (possibleSight)
+                {
+                    case Weapon.Sight.NonMagnifying:
+                        actualSights.AddRange(_nonMagSightNames);
+                        break;
+                    case Weapon.Sight.Magnifying:
+                        actualSights.AddRange(_magSightNames);
+                        break;
+                    default:
+                        actualSights.Add(possibleSight.GetDescription());
+                        break;
+                }
+            }
+            Sight = actualSights.Random(Core.Internals.Random);
         }
         else
         {
@@ -84,7 +122,7 @@ public class WeaponConfiguration
 
         if (Source.Underbarrel)
         {
-            Underbarrel = ran.Next(2) == 0;
+            Underbarrel = Core.Internals.Random.Next(2) == 0;
         }
     }
 

@@ -16,6 +16,7 @@ public static class IEnumerableExtensions
 
     /// <summary>
     /// Returns a random item from an <see cref="IEnumerable{T}"/>.
+    /// An attempt is made to do this without enumerating the entire sequence. If this fails, the sequence will be enumerated.
     /// </summary>
     /// <typeparam name="T">The <see cref="Type"/> of the items in <paramref name="source"/>.</typeparam>
     /// <param name="source">The sequence to choose an item from.</param>
@@ -23,8 +24,15 @@ public static class IEnumerableExtensions
     /// <returns>A random item from <paramref name="source"/>.</returns>
     public static T Random<T>(this IEnumerable<T> source, Random? random = null)
     {
-        List<T> enumerated = [.. source];
-        return enumerated[(random ?? new Random()).Next(enumerated.Count)];
+        if (source.TryGetNonEnumeratedCount(out var count))
+        {
+            return source.ElementAt((random ?? Core.Internals.Random).Next(count));
+        }
+        else
+        {
+            T[] enumerated = [.. source];
+            return enumerated[(random ?? Core.Internals.Random).Next(enumerated.Length)];
+        }
     }
 
     /// <summary>

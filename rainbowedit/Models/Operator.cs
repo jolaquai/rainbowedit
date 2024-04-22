@@ -131,7 +131,7 @@ public abstract class Operator
         get;
     }
     /// <summary>
-    /// Indicates whether this <see cref="Operator"/> is one of the <see cref="Defenders"/>.
+    /// Indicates whether this <see cref="Operator"/> is one of the <see cref="Attackers"/>.
     /// </summary>
     public abstract bool IsAttacker
     {

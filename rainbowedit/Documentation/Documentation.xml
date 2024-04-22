@@ -303,6 +303,7 @@
         <member name="M:rainbowedit.Extensions.IEnumerableExtensions.Random``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
             <summary>
             Returns a random item from an <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            An attempt is made to do this without enumerating the entire sequence. If this fails, the sequence will be enumerated.
             </summary>
             <typeparam name="T">The <see cref="T:System.Type"/> of the items in <paramref name="source"/>.</typeparam>
             <param name="source">The sequence to choose an item from.</param>
@@ -852,7 +853,7 @@
         </member>
         <member name="P:rainbowedit.Operator.IsAttacker">
             <summary>
-            Indicates whether this <see cref="T:rainbowedit.Operator"/> is one of the <see cref="T:rainbowedit.Defenders"/>.
+            Indicates whether this <see cref="T:rainbowedit.Operator"/> is one of the <see cref="T:rainbowedit.Attackers"/>.
             </summary>
         </member>
         <member name="M:rainbowedit.Operator.#ctor(System.String,System.Collections.Generic.IEnumerable{rainbowedit.Weapon},System.Collections.Generic.IEnumerable{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
@@ -979,6 +980,16 @@
         </member>
         <member name="M:rainbowedit.Operator.CompareTo(rainbowedit.Operator)">
             <inheritdoc/>
+        </member>
+        <member name="T:rainbowedit.OperatorComparer">
+            <summary>
+            Implements <see cref="T:System.Collections.Generic.IComparer`1"/> for <see cref="T:rainbowedit.Operator"/> objects that may be used to sort a collection of <see cref="T:rainbowedit.Operator"/> objects by the order they appear in-game.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.OperatorComparer.Instance">
+            <summary>
+            Gets an instance of the <see cref="T:rainbowedit.OperatorComparer"/> class.
+            </summary>
         </member>
         <member name="T:rainbowedit.Attacker">
             <summary>
@@ -1159,12 +1170,6 @@
         <member name="T:rainbowedit.WeaponConfiguration">
             <summary>
             A single weapon configuration from all possible <see cref="P:rainbowedit.Weapon.Barrels"/>, <see cref="P:rainbowedit.Weapon.Grips"/>, <see cref="P:rainbowedit.Weapon.Sights"/> and <see cref="P:rainbowedit.Weapon.Underbarrel"/> combinations.
-            </summary>
-        </member>
-        <member name="P:rainbowedit.WeaponConfiguration.Random">
-            <summary>
-            A <see cref="T:System.Random"/> instance that is used by <see cref="T:rainbowedit.WeaponConfiguration"/> instances to generate random values.
-            If calling code already possesses a <see cref="T:System.Random"/> instance, it should set this property to that instance.
             </summary>
         </member>
         <member name="P:rainbowedit.WeaponConfiguration.Source">
@@ -2073,89 +2078,89 @@
         </member>
         <member name="M:rainbowedit.Randomizers.GetRandomDefender">
             <summary>
-            Gets a random <see cref="T:rainbowedit.Operator"/> from the <see cref="T:rainbowedit.Defenders"/>.
+            Gets a random <see cref="T:rainbowedit.Defender"/> from the <see cref="T:rainbowedit.Defenders"/>.
             </summary>
-            <returns>A random Defender's <see cref="T:rainbowedit.Operator"/>.</returns>
+            <returns>A random Defender's <see cref="T:rainbowedit.Defender"/>.</returns>
         </member>
-        <member name="M:rainbowedit.Randomizers.GetRandomDefender(System.Func{rainbowedit.Operator,System.Boolean})">
+        <member name="M:rainbowedit.Randomizers.GetRandomDefender(System.Func{rainbowedit.Defender,System.Boolean})">
             <summary>
-            Gets a random <see cref="T:rainbowedit.Operator"/> from a pool of <see cref="T:rainbowedit.Defenders"/> defined by a <paramref name="filter"/> function.
+            Gets a random <see cref="T:rainbowedit.Defender"/> from a pool of <see cref="T:rainbowedit.Defenders"/> defined by a <paramref name="filter"/> function.
             </summary>
-            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Operator"/>s are in the pool of <see cref="T:rainbowedit.Defenders"/> to choose from.</param>
-            <returns>A random Defender's <see cref="T:rainbowedit.Operator"/>.</returns>
+            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Defender"/>s are in the pool of <see cref="T:rainbowedit.Defenders"/> to choose from.</param>
+            <returns>A random Defender's <see cref="T:rainbowedit.Defender"/>.</returns>
         </member>
-        <member name="M:rainbowedit.Randomizers.GetRandomDefender(rainbowedit.Operator[])">
+        <member name="M:rainbowedit.Randomizers.GetRandomDefender(rainbowedit.Defender[])">
             <summary>
-            Gets a random <see cref="T:rainbowedit.Operator"/> from the <see cref="T:rainbowedit.Defenders"/> while excluding any number of them.
+            Gets a random <see cref="T:rainbowedit.Defender"/> from the <see cref="T:rainbowedit.Defenders"/> while excluding any number of them.
             </summary>
-            <param name="filter">The set of <see cref="T:rainbowedit.Operator"/>s to exclude from the selection.</param>
-            <returns>A random Defender's <see cref="T:rainbowedit.Operator"/>.</returns>
+            <param name="filter">The set of <see cref="T:rainbowedit.Defender"/>s to exclude from the selection.</param>
+            <returns>A random Defender's <see cref="T:rainbowedit.Defender"/>.</returns>
         </member>
         <member name="M:rainbowedit.Randomizers.GetRandomDefenders(System.Int32)">
             <summary>
-            Gets a number of random <see cref="T:rainbowedit.Operator"/>s from the <see cref="T:rainbowedit.Defenders"/>.
+            Gets a number of random <see cref="T:rainbowedit.Defender"/>s from the <see cref="T:rainbowedit.Defenders"/>.
             </summary>
-            <param name="count">The number of <see cref="T:rainbowedit.Operator"/>s to return.</param>
-            <returns>A collection of random Defenders' <see cref="T:rainbowedit.Operator"/>s.</returns>
+            <param name="count">The number of <see cref="T:rainbowedit.Defender"/>s to return.</param>
+            <returns>A collection of random Defenders' <see cref="T:rainbowedit.Defender"/>s.</returns>
         </member>
-        <member name="M:rainbowedit.Randomizers.GetRandomDefenders(System.Int32,System.Func{rainbowedit.Operator,System.Boolean})">
+        <member name="M:rainbowedit.Randomizers.GetRandomDefenders(System.Int32,System.Func{rainbowedit.Defender,System.Boolean})">
             <summary>
-            Gets a number of random <see cref="T:rainbowedit.Operator"/>s from a pool of <see cref="T:rainbowedit.Defenders"/> defined by a <paramref name="filter"/> function.
+            Gets a number of random <see cref="T:rainbowedit.Defender"/>s from a pool of <see cref="T:rainbowedit.Defenders"/> defined by a <paramref name="filter"/> function.
             </summary>
-            <param name="count">The number of <see cref="T:rainbowedit.Operator"/>s to return.</param>
-            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Operator"/>s are in the pool of <see cref="T:rainbowedit.Defenders"/> to choose from.</param>
-            <returns>A collection of random Defenders' <see cref="T:rainbowedit.Operator"/>s.</returns>
+            <param name="count">The number of <see cref="T:rainbowedit.Defender"/>s to return.</param>
+            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Defender"/>s are in the pool of <see cref="T:rainbowedit.Defenders"/> to choose from.</param>
+            <returns>A collection of random Defenders' <see cref="T:rainbowedit.Defender"/>s.</returns>
         </member>
         <member name="M:rainbowedit.Randomizers.GetRandomDefenders(System.Int32,rainbowedit.Operator[])">
             <summary>
             Gets a number of random <see cref="T:rainbowedit.Defenders"/>s while excluding any number of them.
             </summary>
-            <param name="count">The number of <see cref="T:rainbowedit.Operator"/>s to return.</param>
-            <param name="filter">The set of <see cref="T:rainbowedit.Operator"/>s to exclude from the selection.</param>
-            <returns>A collection of random Defenders' <see cref="T:rainbowedit.Operator"/>s.</returns>
+            <param name="count">The number of <see cref="T:rainbowedit.Defender"/>s to return.</param>
+            <param name="filter">The set of <see cref="T:rainbowedit.Defender"/>s to exclude from the selection.</param>
+            <returns>A collection of random Defenders' <see cref="T:rainbowedit.Defender"/>s.</returns>
         </member>
         <member name="M:rainbowedit.Randomizers.GetRandomAttacker">
             <summary>
-            Gets a random <see cref="T:rainbowedit.Operator"/> from the <see cref="T:rainbowedit.Attackers"/>.
+            Gets a random <see cref="T:rainbowedit.Attacker"/> from the <see cref="T:rainbowedit.Attackers"/>.
             </summary>
-            <returns>A random Attacker's <see cref="T:rainbowedit.Operator"/>.</returns>
+            <returns>A random Attacker's <see cref="T:rainbowedit.Attacker"/>.</returns>
         </member>
-        <member name="M:rainbowedit.Randomizers.GetRandomAttacker(System.Func{rainbowedit.Operator,System.Boolean})">
+        <member name="M:rainbowedit.Randomizers.GetRandomAttacker(System.Func{rainbowedit.Attacker,System.Boolean})">
             <summary>
-            Gets a random <see cref="T:rainbowedit.Operator"/> from a pool of <see cref="T:rainbowedit.Attackers"/> defined by a <paramref name="filter"/> function.
+            Gets a random <see cref="T:rainbowedit.Attacker"/> from a pool of <see cref="T:rainbowedit.Attackers"/> defined by a <paramref name="filter"/> function.
             </summary>
-            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Operator"/>s are in the pool of Attackers to choose from.</param>
-            <returns>A random Attacker's <see cref="T:rainbowedit.Operator"/>.</returns>
+            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Attacker"/>s are in the pool of <see cref="T:rainbowedit.Attackers"/> to choose from.</param>
+            <returns>A random Attacker's <see cref="T:rainbowedit.Attacker"/>.</returns>
         </member>
-        <member name="M:rainbowedit.Randomizers.GetRandomAttacker(rainbowedit.Operator[])">
+        <member name="M:rainbowedit.Randomizers.GetRandomAttacker(rainbowedit.Attacker[])">
             <summary>
-            Gets a random <see cref="T:rainbowedit.Operator"/> from the <see cref="T:rainbowedit.Attackers"/> while excluding any number of them.
+            Gets a random <see cref="T:rainbowedit.Attacker"/> from the <see cref="T:rainbowedit.Attackers"/> while excluding any number of them.
             </summary>
-            <param name="filter">The set of <see cref="T:rainbowedit.Operator"/>s to exclude from the selection.</param>
-            <returns>A random Attacker's <see cref="T:rainbowedit.Operator"/>.</returns>
+            <param name="filter">The set of <see cref="T:rainbowedit.Attacker"/>s to exclude from the selection.</param>
+            <returns>A random Attacker's <see cref="T:rainbowedit.Attacker"/>.</returns>
         </member>
         <member name="M:rainbowedit.Randomizers.GetRandomAttackers(System.Int32)">
             <summary>
-            Gets a number of random <see cref="T:rainbowedit.Operator"/>s from the <see cref="T:rainbowedit.Attackers"/>.
+            Gets a number of random <see cref="T:rainbowedit.Attacker"/>s from the <see cref="T:rainbowedit.Attackers"/>.
             </summary>
-            <param name="count">The number of <see cref="T:rainbowedit.Operator"/>s to return.</param>
-            <returns>A collection of random Attackers' <see cref="T:rainbowedit.Operator"/>s.</returns>
+            <param name="count">The number of <see cref="T:rainbowedit.Attacker"/>s to return.</param>
+            <returns>A collection of random Attackers' <see cref="T:rainbowedit.Attacker"/>s.</returns>
         </member>
-        <member name="M:rainbowedit.Randomizers.GetRandomAttackers(System.Int32,System.Func{rainbowedit.Operator,System.Boolean})">
+        <member name="M:rainbowedit.Randomizers.GetRandomAttackers(System.Int32,System.Func{rainbowedit.Attacker,System.Boolean})">
             <summary>
-            Gets a number of random <see cref="T:rainbowedit.Operator"/>s from a pool of <see cref="T:rainbowedit.Attackers"/> defined by a <paramref name="filter"/> function.
+            Gets a number of random <see cref="T:rainbowedit.Attacker"/>s from a pool of <see cref="T:rainbowedit.Attackers"/> defined by a <paramref name="filter"/> function.
             </summary>
-            <param name="count">The number of <see cref="T:rainbowedit.Operator"/>s to return.</param>
-            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Operator"/>s are in the pool of <see cref="T:rainbowedit.Attackers"/> to choose from.</param>
-            <returns>A collection of random Attackers' <see cref="T:rainbowedit.Operator"/>s.</returns>
+            <param name="count">The number of <see cref="T:rainbowedit.Attacker"/>s to return.</param>
+            <param name="filter">The function that dictates which <see cref="T:rainbowedit.Attacker"/>s are in the pool of <see cref="T:rainbowedit.Attackers"/> to choose from.</param>
+            <returns>A collection of random Attackers' <see cref="T:rainbowedit.Attacker"/>s.</returns>
         </member>
         <member name="M:rainbowedit.Randomizers.GetRandomAttackers(System.Int32,rainbowedit.Operator[])">
             <summary>
             Gets a number of random <see cref="T:rainbowedit.Attackers"/>s while excluding any number of them.
             </summary>
-            <param name="count">The number of <see cref="T:rainbowedit.Operator"/>s to return.</param>
-            <param name="filter">The set of <see cref="T:rainbowedit.Operator"/>s to exclude from the selection.</param>
-            <returns>A collection of random Attackers' <see cref="T:rainbowedit.Operator"/>s.</returns>
+            <param name="count">The number of <see cref="T:rainbowedit.Attacker"/>s to return.</param>
+            <param name="filter">The set of <see cref="T:rainbowedit.Attacker"/>s to exclude from the selection.</param>
+            <returns>A collection of random Attackers' <see cref="T:rainbowedit.Attacker"/>s.</returns>
         </member>
         <member name="T:rainbowedit.Siege">
             <summary>
