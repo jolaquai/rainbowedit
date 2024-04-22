@@ -2063,7 +2063,7 @@ public static class Attackers
                 new Weapon(
                     null,
                     "CSRX 300",
-                    Weapon.WeaponType.MarksmanRifle,
+                    Weapon.WeaponType.SniperRifle,
                     Weapon.FiringMode.SingleShot,
                     135,
                     50,

@@ -203,7 +203,7 @@ public class WeaponConfiguration
             return $"""
                 Name: {Source.Name}
                 Type: {Source.Type.GetDescription()}
-                Sight: {Sight}
+                Sight: {(Source.Sights.HasFlag(Weapon.Sight.NoneOther) || Source.Sights == Weapon.Sight.Invalid ? "\u2014" : Sight)}
                 Barrel: {Barrel}
                 Grip: {Grip}
                 Laser: {(Source.Underbarrel ? (Underbarrel ? "Yes" : "No") : "\u2014")}
@@ -214,7 +214,7 @@ public class WeaponConfiguration
             return $"""
                 Name: {Source.Name}
                 Type: {Source.Type.GetDescription()}
-                Sight: {(Source.Sights.HasFlag(Weapon.Sight.NoneOther) ? "\u2014" : Sight)}
+                Sight: {(Source.Sights.HasFlag(Weapon.Sight.NoneOther) || Source.Sights == Weapon.Sight.Invalid ? "\u2014" : Sight)}
                 Barrel: {Barrel}
                 Laser: {(Source.Underbarrel ? (Underbarrel ? "Yes" : "No") : "\u2014")}
                 """;
