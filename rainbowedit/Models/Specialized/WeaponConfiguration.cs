@@ -28,6 +28,12 @@ public class WeaponConfiguration
         "Magnifying B",
         "Magnifying C",
     ]);
+    private static readonly ReadOnlyCollection<string> _teleSightNames = new ReadOnlyCollection<string>(
+    [
+        "Telescopic A",
+        "Telescopic B",
+        "Telescopic C",
+    ]);
 
     ///<summary>
     /// The <see cref="Weapon"/> this configuration applies to.
@@ -76,7 +82,7 @@ public class WeaponConfiguration
         var possibleSights = Source.Sights.GetFlags();
         var possibleBarrels = Source.Barrels.GetFlags();
         var possibleGrips = Source.Grips.GetFlags();
-
+         
         if (possibleSights.Length != 0)
         {
             List<string> actualSights = [];
@@ -89,6 +95,9 @@ public class WeaponConfiguration
                         break;
                     case Weapon.Sight.Magnifying:
                         actualSights.AddRange(_magSightNames);
+                        break;
+                    case Weapon.Sight.Telescopic:
+                        actualSights.AddRange(_teleSightNames);
                         break;
                     default:
                         actualSights.Add(possibleSight.GetDescription());

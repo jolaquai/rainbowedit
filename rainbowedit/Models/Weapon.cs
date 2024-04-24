@@ -319,7 +319,7 @@ public class Weapon
     /// <para/><see cref="Sight"/> is semi-<see cref="FlagsAttribute"/>. and <see cref="Other"/> may be removed using bitwise NOT and AND, the other values stack (see the annotation about the flags representing maximums, not distinct values).
     /// </remarks>
     [Flags]
-    public enum Sight
+    public enum Sight : int
     {
         /// <summary>
         /// Generally unused. Indicates an invalid value in terms of a <see cref="WeaponConfiguration"/>.

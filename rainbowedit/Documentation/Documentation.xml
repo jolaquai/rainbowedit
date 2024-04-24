@@ -256,7 +256,7 @@
         <member name="M:rainbowedit.Extensions.EnumExtensions.GetFlags``1(``0)">
             <summary>
             Retrieves all flags that are currently set in the specified <typeparamref name="TEnum"/> value.
-            Because this implicitly makes <paramref name="any"/> a bitwise-AND combination of the resulting flags, it is not included in the result set.
+            Because this implicitly makes <paramref name="any"/> a bitwise-AND combination of the resulting flags, it is only included in the result set if its underlying value is a named <see langword="enum"/> value.
             </summary>
             <typeparam name="TEnum">The <see cref="T:System.Enum"/> type to retrieve the flags for.</typeparam>
             <param name="any">The <typeparamref name="TEnum"/> value to retrieve the flags for.</param>

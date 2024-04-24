@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Frozen;
+using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -25,9 +26,10 @@ public static partial class EnumExtensions
         return Array.FindAll(Enum.GetValues<TEnum>(), field => Unsafe.BitCast<TEnum, int>(field) is not 0);
     }
 
+    private static readonly Dictionary<Type, FrozenDictionary<Enum, int>> _flagsCache = [];
     /// <summary>
     /// Retrieves all flags that are currently set in the specified <typeparamref name="TEnum"/> value.
-    /// Because this implicitly makes <paramref name="any"/> a bitwise-AND combination of the resulting flags, it is not included in the result set.
+    /// Because this implicitly makes <paramref name="any"/> a bitwise-AND combination of the resulting flags, it is only included in the result set if its underlying value is a named <see langword="enum"/> value.
     /// </summary>
     /// <typeparam name="TEnum">The <see cref="Enum"/> type to retrieve the flags for.</typeparam>
     /// <param name="any">The <typeparamref name="TEnum"/> value to retrieve the flags for.</param>
@@ -35,11 +37,19 @@ public static partial class EnumExtensions
     public static TEnum[] GetFlags<TEnum>(this TEnum any)
         where TEnum : struct, Enum
     {
-        if (typeof(TEnum).GetCustomAttribute<FlagsAttribute>() is null)
+        var enumType = typeof(TEnum);
+        if (enumType.GetCustomAttribute<FlagsAttribute>() is null)
         {
-            throw new ArgumentException($"The given Enum type '{typeof(TEnum).FullName}' is not marked with [FlagsAttribute].", nameof(any));
+            throw new ArgumentException($"The given Enum type '{enumType.FullName}' is not marked with [FlagsAttribute].", nameof(any));
         }
-        return Array.FindAll(Enum.GetValues<TEnum>(), field => any.HasFlag(field) && !field.Equals(any) && Unsafe.BitCast<TEnum, int>(field) is not 0);
+        if (!_flagsCache.TryGetValue(enumType, out var currentFlags))
+        {
+            var flags = Enum.GetValues<TEnum>();
+            var values = Array.ConvertAll(flags, Unsafe.BitCast<TEnum, int>);
+            currentFlags = Enumerable.Range(0, flags.Length).Select(i => new KeyValuePair<Enum, int>(flags[i], values[i])).ToFrozenDictionary();
+            _flagsCache[enumType] = currentFlags;
+        }
+        return currentFlags.Where(kv => any.HasFlag(kv.Key) && kv.Value != 0).Select(kv => (TEnum)kv.Key).ToArray();
     }
 
     /// <summary>

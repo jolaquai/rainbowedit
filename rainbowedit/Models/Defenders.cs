@@ -2444,7 +2444,7 @@ public static class Defenders
                     36,
                     700,
                     22,
-                    Weapon.Sight.Magnifying,
+                    Weapon.Sight.NonMagnifying,
                     Weapon.Barrel.Suppressor
                         | Weapon.Barrel.FlashHider
                         | Weapon.Barrel.Compensator
