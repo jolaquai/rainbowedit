@@ -39,4 +39,16 @@ public static class Siege
     /// The longest <see cref="Weapon.Gadget"/> name there is.
     /// </summary>
     public static string LongestGadgetName => Enum.GetValues<Weapon.Gadget>().Select(val => val.GetDescription()).MaxBy(gadget => gadget.Length)!;
+
+    /// <summary>
+    /// A method that is registered to be called by the runtime when the assembly is loaded.
+    /// This forces the library to initialize most static classes present by accessing their properties.
+    /// </summary>
+    [System.Runtime.CompilerServices.ModuleInitializer]
+    internal static void LibInit()
+    {
+        // This forces Defenders and Attackers to be initialized
+        _ = Randomizers.GetRandomAttacker().GetRandomLoadout();
+        _ = Randomizers.GetRandomDefender().GetRandomLoadout();
+    }
 }
