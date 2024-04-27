@@ -32,7 +32,6 @@ public class WeaponConfiguration
     [
         "Telescopic A",
         "Telescopic B",
-        "Telescopic C",
     ]);
 
     ///<summary>
