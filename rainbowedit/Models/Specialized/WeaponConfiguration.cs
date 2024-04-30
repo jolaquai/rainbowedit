@@ -81,7 +81,7 @@ public class WeaponConfiguration
         var possibleSights = Source.Sights.GetFlags();
         var possibleBarrels = Source.Barrels.GetFlags();
         var possibleGrips = Source.Grips.GetFlags();
-         
+
         if (possibleSights.Length != 0)
         {
             List<string> actualSights = [];

@@ -1339,7 +1339,7 @@ public static class Defenders
                     1440
                 )
             ],
-            Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
+            Weapon.Gadget.ObservationBlocker | Weapon.Gadget.BulletproofCamera,
             "Gu Mines",
             [Specialties.AntiEntry, Specialties.Trapper],
             "SDU",

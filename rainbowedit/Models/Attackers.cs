@@ -2208,7 +2208,7 @@ public static class Attackers
                     0
                 )
             ],
-            Weapon.Gadget.StunGrenade | Weapon.Gadget.SmokeGrenade,
+            Weapon.Gadget.EmpGrenade | Weapon.Gadget.SmokeGrenade,
             "Gemini Replicator",
             [Specialties.FrontLine, Specialties.Intel],
             "REU",
