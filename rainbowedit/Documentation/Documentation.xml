@@ -558,7 +558,7 @@
             <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <param name="mapcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.MapControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <returns>A</returns>
+            <returns>An <see cref="T:System.Collections.Immutable.ImmutableDictionary`2"/> that maps <see cref="T:rainbowedit.Models.Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="T:rainbowedit.Models.Specialty.Challenge"/>s.</returns>
         </member>
         <member name="T:rainbowedit.Defenders">
             <summary>
@@ -760,7 +760,7 @@
             <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <param name="crowdcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:CrowdControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <returns>A</returns>
+            <returns>An <see cref="T:System.Collections.Immutable.ImmutableDictionary`2"/> that maps <see cref="T:rainbowedit.Models.Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="T:rainbowedit.Models.Specialty.Challenge"/>s.</returns>
         </member>
         <member name="T:rainbowedit.Operator">
             <summary>
@@ -856,7 +856,7 @@
             Indicates whether this <see cref="T:rainbowedit.Operator"/> is one of the <see cref="T:rainbowedit.Attackers"/>.
             </summary>
         </member>
-        <member name="M:rainbowedit.Operator.#ctor(System.String,System.Collections.Generic.IEnumerable{rainbowedit.Weapon},System.Collections.Generic.IEnumerable{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
+        <member name="M:rainbowedit.Operator.#ctor(System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
             Initializes a new <see cref="T:rainbowedit.Operator"/> object.
             </summary>
@@ -891,18 +891,18 @@
             <param name="sequence">The collection to sort.</param>
             <returns>The sorted collection as described.</returns>
         </member>
-        <member name="M:rainbowedit.Operator.Sort(System.Collections.Generic.IEnumerable{rainbowedit.Operator})">
+        <member name="M:rainbowedit.Operator.Sort(System.Collections.Generic.ICollection{rainbowedit.Operator})">
             <summary>
-            Sorts a sequence of <see cref="T:rainbowedit.Operator"/> objects in the order they appear in-game.
+            Sorts a collection of <see cref="T:rainbowedit.Operator"/> objects in the order they appear in-game.
             The collection must be mutable.
             </summary>
-            <param name="sequence">The collection to sort.</param>
+            <param name="collection">The collection to sort.</param>
         </member>
         <member name="P:rainbowedit.Operator.Comparer">
             <summary>
             An <see cref="T:System.Collections.Generic.IComparer`1"/> implementation for <see cref="T:rainbowedit.Operator"/> objects that may be used to sort a collection of <see cref="T:rainbowedit.Operator"/> objects by the order they appear in-game.
             </summary>
-            <remarks>You may use this directly for custom implementations or use <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/> or <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>.</remarks>
+            <remarks>You may use this directly for custom implementations or use <see cref="!:Sort(IEnumerable&lt;Operator&gt;)"/> or <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>.</remarks>
         </member>
         <member name="M:rainbowedit.Operator.op_Implicit(rainbowedit.Operator)~System.String">
             <summary>
@@ -983,7 +983,7 @@
         </member>
         <member name="T:rainbowedit.OperatorComparer">
             <summary>
-            Implements <see cref="T:System.Collections.Generic.IComparer`1"/> for <see cref="T:rainbowedit.Operator"/> objects that may be used to sort a collection of <see cref="T:rainbowedit.Operator"/> objects by the order they appear in-game.
+            Implements <see cref="T:System.Collections.Generic.IComparer`1"/> and <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> for <see cref="T:rainbowedit.Operator"/> objects that may be used to sort a collection of <see cref="T:rainbowedit.Operator"/> objects by the order they appear in-game.
             </summary>
         </member>
         <member name="P:rainbowedit.OperatorComparer.Instance">
@@ -996,7 +996,7 @@
             Represents a single Attacker in Siege.
             </summary>
         </member>
-        <member name="M:rainbowedit.Attacker.#ctor(System.String,System.Collections.Generic.IEnumerable{rainbowedit.Weapon},System.Collections.Generic.IEnumerable{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
+        <member name="M:rainbowedit.Attacker.#ctor(System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
             Initializes a new <see cref="T:rainbowedit.Attacker"/> object.
             </summary>
@@ -1019,7 +1019,7 @@
             Represents a single Defender in Siege.
             </summary>
         </member>
-        <member name="M:rainbowedit.Defender.#ctor(System.String,System.Collections.Generic.IEnumerable{rainbowedit.Weapon},System.Collections.Generic.IEnumerable{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Generic.IEnumerable{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
+        <member name="M:rainbowedit.Defender.#ctor(System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
             Initializes a new <see cref="T:rainbowedit.Defender"/> object.
             </summary>
@@ -1876,7 +1876,7 @@
         <member name="T:rainbowedit.Randomizers">
             <summary>
             A collection of methods that fetch random information or configurations from the model classes in <see cref="T:rainbowedit.Siege"/>.
-            <para/>Where a collection of <see cref="T:rainbowedit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:rainbowedit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="P:rainbowedit.Operator.Comparer"/> and <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>, <see cref="!:Operator.Sort(ICollection&lt;Operator&gt;)"/> and <see cref="!:Operator.Sort(List&lt;Operator&gt;)"/>.
+            <para/>Where a collection of <see cref="T:rainbowedit.Operator"/>s is returned, the collection is guaranteed to contain no duplicates and the contained <see cref="T:rainbowedit.Operator"/>s are sorted according to their in-game appearance; also see <see cref="P:rainbowedit.Operator.Comparer"/> and <see cref="M:rainbowedit.Operator.Order(System.Collections.Generic.IEnumerable{rainbowedit.Operator})"/>, <see cref="M:rainbowedit.Operator.Sort(System.Collections.Generic.ICollection{rainbowedit.Operator})"/> and <see cref="!:Operator.Sort(List&lt;Operator&gt;)"/>.
             </summary>
         </member>
         <member name="T:rainbowedit.Randomizers.Challenges">

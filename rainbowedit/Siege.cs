@@ -12,11 +12,11 @@ public static class Siege
     /// <summary>
     /// Contains all <see cref="rainbowedit.Attackers"/> from the game.
     /// </summary>
-    public static List<Attacker> Attackers => rainbowedit.Attackers.All;
+    public static ImmutableArray<Attacker> Attackers => rainbowedit.Attackers.All;
     /// <summary>
     /// Contains all <see cref="rainbowedit.Defenders"/> from the game.
     /// </summary>
-    public static List<Defender> Defenders => rainbowedit.Defenders.All;
+    public static ImmutableArray<Defender> Defenders => rainbowedit.Defenders.All;
 
     /// <summary>
     /// Contains all <see cref="Operator"/>s defined in <see cref="Attackers"/> and <see cref="Defenders"/>, concatenated in that order.

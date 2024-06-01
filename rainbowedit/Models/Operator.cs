@@ -1,6 +1,4 @@
-﻿using System.Collections.Immutable;
-
-using rainbowedit.Models;
+﻿using rainbowedit.Models;
 
 using static rainbowedit.Weapon;
 
@@ -27,21 +25,21 @@ public abstract class Operator
     /// <summary>
     /// A collection of <see cref="Weapon"/> objects, containing information about the primary weapons the <see cref="Operator"/> may use.
     /// </summary>
-    public IEnumerable<Weapon> Primaries
+    public ImmutableArray<Weapon> Primaries
     {
         get;
     }
     /// <summary>
     /// A collection of <see cref="Weapon"/> objects, containing information about the secondary weapons the <see cref="Operator"/> may use.
     /// </summary>
-    public IEnumerable<Weapon> Secondaries
+    public ImmutableArray<Weapon> Secondaries
     {
         get;
     }
     /// <summary>
     /// A combination of <see cref="Weapon.Gadget"/> values that specifies which gadgets the <see cref="Operator"/> may choose from.
     /// </summary>
-    public Weapon.Gadget Gadgets
+    public Gadget Gadgets
     {
         get;
     }
@@ -55,7 +53,7 @@ public abstract class Operator
     /// <summary>
     /// A collection of <see cref="Specialty"/> objects representing the <see cref="Operator"/>'s assigned specialties.
     /// </summary>
-    public IEnumerable<Specialty> Specialties
+    public ImmutableArray<Specialty> Specialties
     {
         get;
     }
@@ -154,7 +152,7 @@ public abstract class Operator
     /// <param name="realName">The in-game real name of the <see cref="Operator"/>.</param>
     /// <param name="age">An <see cref="OperatorAge"/> instance specifying the <see cref="Operator"/>'s day and month of birth and their age.</param>
     /// <param name="speed">The <see cref="Defender"/>'s speed rating.</param>
-    internal Operator(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, IEnumerable<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed)
+    internal Operator(string nickname, ImmutableArray<Weapon> primaries, ImmutableArray<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, ImmutableArray<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed)
     {
         Nickname = nickname;
         Primaries = primaries;
@@ -201,15 +199,19 @@ public abstract class Operator
         return sequence.Order(Comparer);
     }
     /// <summary>
-    /// Sorts a sequence of <see cref="Operator"/> objects in the order they appear in-game.
+    /// Sorts a collection of <see cref="Operator"/> objects in the order they appear in-game.
     /// The collection must be mutable.
     /// </summary>
-    /// <param name="sequence">The collection to sort.</param>
-    public static void Sort(IEnumerable<Operator> sequence)
+    /// <param name="collection">The collection to sort.</param>
+    public static void Sort(ICollection<Operator> collection)
     {
-        ArgumentNullException.ThrowIfNull(sequence);
+        ArgumentNullException.ThrowIfNull(collection);
+        if (collection.IsReadOnly)
+        {
+            throw new InvalidOperationException($"Collections passed to {nameof(Operator)}.{nameof(Sort)} must be mutable. Either use a mutable collection with this method, or call {nameof(Operator)}.{nameof(Order)} instead.");
+        }
         // Let's sort aware of the collection type for performance reasons
-        switch (sequence)
+        switch (collection)
         {
             case Operator[] array:
             {
@@ -226,8 +228,7 @@ public abstract class Operator
                 // Try to fall back to rewriting the IList's contents
                 try
                 {
-                    var array = new Operator[ilist.Count];
-                    ilist.CopyTo(array, 0);
+                    var array = ilist.ToArray();
                     Array.Sort(array, Comparer);
                     ilist.Clear();
                     foreach (var item in array)
@@ -406,16 +407,16 @@ public abstract class Operator
     public static bool operator >=(Operator left, Operator right) => !(left < right);
 
     /// <inheritdoc/>
-    public int CompareTo(Operator? other) => Comparer.Compare(this, other);
+    public int CompareTo(Operator? other) => ((IComparer<Operator>)Comparer).Compare(this, other);
     #endregion
 }
 
 /// <summary>
-/// Implements <see cref="IComparer{T}"/> for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
+/// Implements <see cref="IComparer{T}"/> and <see cref="IEqualityComparer{T}"/> for <see cref="Operator"/> objects that may be used to sort a collection of <see cref="Operator"/> objects by the order they appear in-game.
 /// </summary>
-public class OperatorComparer : IComparer<Operator>
+public sealed class OperatorComparer : IComparer<Operator>, IEqualityComparer<Operator>
 {
-    private static Operator[] allOps;
+    private static ImmutableArray<Operator> allOps;
     private static OperatorComparer instance;
     /// <summary>
     /// Gets an instance of the <see cref="OperatorComparer"/> class.
@@ -424,19 +425,26 @@ public class OperatorComparer : IComparer<Operator>
 
     private OperatorComparer()
     {
+        allOps = Siege.DefAtk.ToImmutableArray();
     }
 
-    public int Compare(Operator? left, Operator? right)
+    int IComparer<Operator>.Compare(Operator? left, Operator? right)
     {
         ArgumentNullException.ThrowIfNull(left);
         ArgumentNullException.ThrowIfNull(right);
-        if (ReferenceEquals(left, right))
+        if (ReferenceEquals(left, right) || left.Equals(right))
         {
             return 0;
         }
-        allOps ??= Siege.DefAtk.ToArray();
-        return Array.IndexOf(allOps, left) - Array.IndexOf(allOps, right);
+        return allOps.IndexOf(left) - allOps.IndexOf(right);
     }
+    bool IEqualityComparer<Operator>.Equals(Operator? left, Operator? right)
+    {
+        ArgumentNullException.ThrowIfNull(left);
+        ArgumentNullException.ThrowIfNull(right);
+        return left.Equals(right);
+    }
+    int IEqualityComparer<Operator>.GetHashCode(Operator obj) => obj.GetHashCode();
 }
 
 /// <summary>
@@ -460,7 +468,7 @@ public class Attacker : Operator
     /// <param name="realName">The in-game real name of the <see cref="Attacker"/>.</param>
     /// <param name="age">An <see cref="rainbowedit.OperatorAge"/> instance specifying the <see cref="Attacker"/>'s day and month of birth and their age.</param>
     /// <param name="speed">The <see cref="Attacker"/>'s speed rating.</param>
-    internal Attacker(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, IEnumerable<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed) : base(nickname, primaries, secondaries, gadgets, specialAbility, specialties, organization, birthplace, height, weight, realName, age, speed)
+    internal Attacker(string nickname, ImmutableArray<Weapon> primaries, ImmutableArray<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, ImmutableArray<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed) : base(nickname, primaries, secondaries, gadgets, specialAbility, specialties, organization, birthplace, height, weight, realName, age, speed)
     {
 
     }
@@ -489,7 +497,7 @@ public class Defender : Operator
     /// <param name="realName">The in-game real name of the <see cref="Defender"/>.</param>
     /// <param name="age">An <see cref="rainbowedit.OperatorAge"/> instance specifying the <see cref="Defender"/>'s day and month of birth and their age.</param>
     /// <param name="speed">The <see cref="Defender"/>'s speed rating.</param>
-    internal Defender(string nickname, IEnumerable<Weapon> primaries, IEnumerable<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, IEnumerable<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed) : base(nickname, primaries, secondaries, gadgets, specialAbility, specialties, organization, birthplace, height, weight, realName, age, speed)
+    internal Defender(string nickname, ImmutableArray<Weapon> primaries, ImmutableArray<Weapon> secondaries, Weapon.Gadget gadgets, string specialAbility, ImmutableArray<Specialty> specialties, string organization, string birthplace, decimal height, decimal weight, string realName, OperatorAge age, int speed) : base(nickname, primaries, secondaries, gadgets, specialAbility, specialties, organization, birthplace, height, weight, realName, age, speed)
     {
 
     }

@@ -7,20 +7,21 @@ namespace rainbowedit;
 /// </summary>
 public static class Attackers
 {
-    private readonly static IEnumerable<Attacker> _attackers;
+    private readonly static ImmutableArray<Attacker> _attackers;
     /// <summary>
     /// Retrieves a <see cref="List{T}"/> of all <see cref="Attacker"/>s.
     /// </summary>
-    public static List<Attacker> All => _attackers.ToList();
+    public static ImmutableArray<Attacker> All => _attackers;
 
     static Attackers()
     {
         #region Attacker instances
+        #region Sledge
         Sledge = new Attacker(
             "Sledge",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M590A1",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -35,7 +36,7 @@ public static class Attackers
                     4510
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "L85A2",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -55,7 +56,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P226 MK 25",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -81,12 +82,13 @@ public static class Attackers
             new OperatorAge(2, 4, 35),
             1
         );
-
+        #endregion
+        #region Thatcher
         Thatcher = new Attacker(
             "Thatcher",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AR33",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -104,7 +106,7 @@ public static class Attackers
                     2310
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "L85A2",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -122,7 +124,7 @@ public static class Attackers
                     2360
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M590A1",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -139,7 +141,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P226 MK 25",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -165,12 +167,13 @@ public static class Attackers
             new OperatorAge(22, 6, 56),
             1
         );
-
+        #endregion
+        #region Ash
         Ash = new Attacker(
             "Ash",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "G36C",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -189,7 +192,7 @@ public static class Attackers
                     2340
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "R4-C",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -210,7 +213,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M45 Meusoc",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -225,7 +228,7 @@ public static class Attackers
                     1300
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "5.7 USG",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -251,12 +254,13 @@ public static class Attackers
             new OperatorAge(24, 12, 33),
             3
         );
-
+        #endregion
+        #region Thermite
         Thermite = new Attacker(
             "Thermite",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M1014",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -271,7 +275,7 @@ public static class Attackers
                     5330
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "556XI",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -291,7 +295,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M45 Meusoc",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -306,7 +310,7 @@ public static class Attackers
                     1300
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "5.7 USG",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -332,12 +336,13 @@ public static class Attackers
             new OperatorAge(14, 3, 35),
             2
         );
-
+        #endregion
+        #region Twitch
         Twitch = new Attacker(
             "Twitch",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "F2",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -356,7 +361,7 @@ public static class Attackers
                     2320
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "417",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -371,7 +376,7 @@ public static class Attackers
                     2190
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SG-CQB",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -388,7 +393,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P9",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -403,7 +408,7 @@ public static class Attackers
                     1440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "LFP586",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -429,12 +434,13 @@ public static class Attackers
             new OperatorAge(12, 10, 28),
             2
         );
-
+        #endregion
+        #region Montagne
         Montagne = new Attacker(
             "Montagne",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Le Roc",
                     Weapon.WeaponType.Shield,
                     Weapon.FiringMode.Invalid,
@@ -451,7 +457,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P9",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -466,7 +472,7 @@ public static class Attackers
                     1440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "LFP586",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -492,12 +498,13 @@ public static class Attackers
             new OperatorAge(11, 10, 48),
             1
         );
-
+        #endregion
+        #region Glaz
         Glaz = new Attacker(
             "Glaz",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "OTs-03",
                     Weapon.WeaponType.SniperRifle,
                     Weapon.FiringMode.SingleShot,
@@ -514,7 +521,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PMM",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -529,7 +536,7 @@ public static class Attackers
                     1280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -544,7 +551,7 @@ public static class Attackers
                     0
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Bearing 9",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -570,12 +577,13 @@ public static class Attackers
             new OperatorAge(2, 7, 30),
             3
         );
-
+        #endregion
+        #region Fuze
         Fuze = new Attacker(
             "Fuze",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Ballistic Shield",
                     Weapon.WeaponType.Shield,
                     Weapon.FiringMode.Invalid,
@@ -590,7 +598,7 @@ public static class Attackers
                     0
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "6P41",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -605,7 +613,7 @@ public static class Attackers
                     7160
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "AK-12",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -625,7 +633,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PMM",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -640,7 +648,7 @@ public static class Attackers
                     1280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GSH-18",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -668,12 +676,13 @@ public static class Attackers
             new OperatorAge(12, 10, 34),
             1
         );
-
+        #endregion
+        #region Blitz
         Blitz = new Attacker(
             "Blitz",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "G52-Tactical Shield",
                     Weapon.WeaponType.Shield,
                     Weapon.FiringMode.Invalid,
@@ -690,7 +699,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P12",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -716,12 +725,13 @@ public static class Attackers
             new OperatorAge(2, 4, 37),
             2
         );
-
+        #endregion
+        #region IQ
         IQ = new Attacker(
             "IQ",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AUG A2",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -736,7 +746,7 @@ public static class Attackers
                     2340
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "552 Commando",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -755,7 +765,7 @@ public static class Attackers
                     2170
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "G8A1",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -772,7 +782,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P12",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -798,12 +808,13 @@ public static class Attackers
             new OperatorAge(1, 8, 38),
             3
         );
-
+        #endregion
+        #region Buck
         Buck = new Attacker(
             "Buck",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "C8-SFW",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -822,7 +833,7 @@ public static class Attackers
                     1540
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "CAMRS",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -839,7 +850,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MK1 9mm",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -854,7 +865,7 @@ public static class Attackers
                     1320
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -880,12 +891,13 @@ public static class Attackers
             new OperatorAge(20, 8, 36),
             2
         );
-
+        #endregion
+        #region Blackbeard
         Blackbeard = new Attacker(
             "Blackbeard",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MK17 CQB",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -904,7 +916,7 @@ public static class Attackers
                     2230
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SR-25",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -921,7 +933,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "D-50",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -947,12 +959,13 @@ public static class Attackers
             new OperatorAge(12, 2, 32),
             2
         );
-
+        #endregion
+        #region Capitao
         Capitao = new Attacker(
             "Capitão",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PARA-308",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -971,7 +984,7 @@ public static class Attackers
                     2300
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M249",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -988,7 +1001,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PRB92",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1003,7 +1016,7 @@ public static class Attackers
                     1590
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -1029,12 +1042,13 @@ public static class Attackers
             new OperatorAge(17, 11, 49),
             3
         );
-
+        #endregion
+        #region Hibana
         Hibana = new Attacker(
             "Hibana",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "TYPE-89",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1052,7 +1066,7 @@ public static class Attackers
                     2320
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Supernova",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1069,7 +1083,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P229",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1084,7 +1098,7 @@ public static class Attackers
                     1450
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Bearing 9",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -1110,12 +1124,13 @@ public static class Attackers
             new OperatorAge(12, 7, 34),
             3
         );
-
+        #endregion
+        #region Jackal
         Jackal = new Attacker(
             "Jackal",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "C7E",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1133,7 +1148,7 @@ public static class Attackers
                     2010
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "PDW9",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1152,7 +1167,7 @@ public static class Attackers
                     2440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12L",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1169,7 +1184,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "USP40",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1184,7 +1199,7 @@ public static class Attackers
                     1410
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12S",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1210,12 +1225,13 @@ public static class Attackers
             new OperatorAge(1, 3, 49),
             2
         );
-
+        #endregion
+        #region Ying
         Ying = new Attacker(
             "Ying",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "T-95 LSW",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1233,7 +1249,7 @@ public static class Attackers
                     2180
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SIX12",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1250,7 +1266,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Q-929",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1276,12 +1292,13 @@ public static class Attackers
             new OperatorAge(12, 5, 33),
             2
         );
-
+        #endregion
+        #region Zofia
         Zofia = new Attacker(
             "Zofia",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "LMG-E",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1299,7 +1316,7 @@ public static class Attackers
                     5430
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M762",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1319,7 +1336,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "RG15",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1345,12 +1362,13 @@ public static class Attackers
             new OperatorAge(28, 1, 36),
             1
         );
-
+        #endregion
+        #region Dokkaebi
         Dokkaebi = new Attacker(
             "Dokkaebi",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Mk 14 EBR",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -1365,7 +1383,7 @@ public static class Attackers
                     2440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "BOSG.12.2",
                     Weapon.WeaponType.ShotgunSlug,
                     Weapon.FiringMode.SingleShot,
@@ -1382,7 +1400,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SMG-12",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -1397,7 +1415,7 @@ public static class Attackers
                     2300
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -1412,7 +1430,7 @@ public static class Attackers
                     0
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "C75 Auto",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -1438,12 +1456,13 @@ public static class Attackers
             new OperatorAge(2, 2, 29),
             3
         );
-
+        #endregion
+        #region Lion
         Lion = new Attacker(
             "Lion",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "V308",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1461,7 +1480,7 @@ public static class Attackers
                     2330
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "417",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -1476,7 +1495,7 @@ public static class Attackers
                     2190
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SG-CQB",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1493,7 +1512,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "LFP586",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -1508,7 +1527,7 @@ public static class Attackers
                     2540
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "P9",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1534,12 +1553,13 @@ public static class Attackers
             new OperatorAge(29, 8, 31),
             2
         );
-
+        #endregion
+        #region Finka
         Finka = new Attacker(
             "Finka",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Spear .308",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1558,7 +1578,7 @@ public static class Attackers
                     2460
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "6P41",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1573,7 +1593,7 @@ public static class Attackers
                     7160
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SASG-12",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1590,7 +1610,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PMM",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1605,7 +1625,7 @@ public static class Attackers
                     1280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GSH-18",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1631,12 +1651,13 @@ public static class Attackers
             new OperatorAge(7, 6, 27),
             2
         );
-
+        #endregion
+        #region Maverick
         Maverick = new Attacker(
             "Maverick",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AR-15.50",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -1651,7 +1672,7 @@ public static class Attackers
                     2120
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M4",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1672,7 +1693,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "1911 TACOPS",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1698,12 +1719,13 @@ public static class Attackers
             new OperatorAge(20, 4, 36),
             3
         );
-
+        #endregion
+        #region Nomad
         Nomad = new Attacker(
             "Nomad",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AK-74M",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1721,7 +1743,7 @@ public static class Attackers
                     2440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ARX200",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1741,7 +1763,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     ".44 Mag Semi-Auto",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1756,7 +1778,7 @@ public static class Attackers
                     1280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "PRB92",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1782,12 +1804,13 @@ public static class Attackers
             new OperatorAge(27, 7, 39),
             2
         );
-
+        #endregion
+        #region Gridlock
         Gridlock = new Attacker(
             "Gridlock",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "F90",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1805,7 +1828,7 @@ public static class Attackers
                     2290
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M249 SAW",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1822,7 +1845,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Super Shorty",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1837,7 +1860,7 @@ public static class Attackers
                     2450
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -1852,7 +1875,7 @@ public static class Attackers
                     0
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SDP 9mm",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1878,12 +1901,13 @@ public static class Attackers
             new OperatorAge(5, 8, 36),
             1
         );
-
+        #endregion
+        #region Nokk
         Nokk = new Attacker(
             "Nøkk",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "FMG-9",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1902,7 +1926,7 @@ public static class Attackers
                     2210
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SIX12 SD",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1919,7 +1943,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "5.7 USG",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1934,7 +1958,7 @@ public static class Attackers
                     1490
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "D-50",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1960,12 +1984,13 @@ public static class Attackers
             OperatorAge.Redacted,
             2
         );
-
+        #endregion
+        #region Amaru
         Amaru = new Attacker(
             "Amaru",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "G8A1",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1980,7 +2005,7 @@ public static class Attackers
                     3220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Supernova",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1997,7 +2022,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SMG-11",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -2015,7 +2040,7 @@ public static class Attackers
                     2130
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -2030,7 +2055,7 @@ public static class Attackers
                     0
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12S",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2056,12 +2081,13 @@ public static class Attackers
             new OperatorAge(6, 5, 48),
             2
         );
-
+        #endregion
+        #region Kali
         Kali = new Attacker(
             "Kali",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "CSRX 300",
                     Weapon.WeaponType.SniperRifle,
                     Weapon.FiringMode.SingleShot,
@@ -2078,7 +2104,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SPSMG9",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -2093,7 +2119,7 @@ public static class Attackers
                     1590
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "C75 Auto",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -2108,7 +2134,7 @@ public static class Attackers
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "P226 MK 25",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2134,12 +2160,13 @@ public static class Attackers
             new OperatorAge(21, 8, 34),
             2
         );
-
+        #endregion
+        #region Iana
         Iana = new Attacker(
             "Iana",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "ARX200",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2157,7 +2184,7 @@ public static class Attackers
                     2350
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "G36C",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2178,7 +2205,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MK1 9mm",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2193,7 +2220,7 @@ public static class Attackers
                     1320
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -2219,12 +2246,13 @@ public static class Attackers
             new OperatorAge(27, 8, 35),
             2
         );
-
+        #endregion
+        #region Ace
         Ace = new Attacker(
             "Ace",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AK-12",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2242,7 +2270,7 @@ public static class Attackers
                     2260
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M1014",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2259,7 +2287,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P9",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2285,12 +2313,13 @@ public static class Attackers
             new OperatorAge(15, 3, 33),
             2
         );
-
+        #endregion
+        #region Zero
         Zero = new Attacker(
             "Zero",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SC3000K",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2309,7 +2338,7 @@ public static class Attackers
                     2470
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "MP7",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2330,7 +2359,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "5.7 USG",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2345,7 +2374,7 @@ public static class Attackers
                     1490
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GONNE-6",
                     Weapon.WeaponType.HandCannon,
                     Weapon.FiringMode.SingleShot,
@@ -2371,12 +2400,13 @@ public static class Attackers
             new OperatorAge(8, 8, 63),
             3
         );
-
+        #endregion
+        #region Flores
         Flores = new Attacker(
             "Flores",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AR33",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2394,7 +2424,7 @@ public static class Attackers
                     2310
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SR-25",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -2411,7 +2441,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "GSH-18",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2437,12 +2467,13 @@ public static class Attackers
             new OperatorAge(2, 10, 28),
             2
         );
-
+        #endregion
+        #region Osa
         Osa = new Attacker(
             "Osa",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "556XI",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2460,7 +2491,7 @@ public static class Attackers
                     2410
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "PDW9",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2481,7 +2512,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PMM",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2507,12 +2538,13 @@ public static class Attackers
             new OperatorAge(29, 4, 27),
             1
         );
-
+        #endregion
+        #region Sens
         Sens = new Attacker(
             "Sens",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "POF-9",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2531,7 +2563,7 @@ public static class Attackers
                     2240
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "417",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -2548,7 +2580,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SDP 9mm",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2574,12 +2606,13 @@ public static class Attackers
             new OperatorAge(3, 3, 30),
             3
         );
-
+        #endregion
+        #region Grim
         Grim = new Attacker(
             "Grim",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "552 Commando",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2598,7 +2631,7 @@ public static class Attackers
                     2170
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SG-CQB",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2615,7 +2648,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P229",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2630,7 +2663,7 @@ public static class Attackers
                     1450
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Bailiff 410",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -2656,12 +2689,13 @@ public static class Attackers
             new OperatorAge(5, 4, 39),
             3
         );
-
+        #endregion
+        #region Brava
         Brava = new Attacker(
             "Brava",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PARA-308",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2680,7 +2714,7 @@ public static class Attackers
                     2300
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "CAMRS",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -2697,7 +2731,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Super Shorty",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2712,7 +2746,7 @@ public static class Attackers
                     2450
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "USP40",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2738,12 +2772,13 @@ public static class Attackers
             new OperatorAge(10, 1, 40),
             3
         );
-
+        #endregion
+        #region Ram
         Ram = new Attacker(
             "Ram",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "R4-C",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2762,7 +2797,7 @@ public static class Attackers
                     2200
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "LMG-E",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2782,7 +2817,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MK1 9mm",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2797,7 +2832,7 @@ public static class Attackers
                     1320
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12S",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2823,12 +2858,13 @@ public static class Attackers
             new OperatorAge(25, 4, 37),
             1
         );
-
+        #endregion
+        #region Deimos
         Deimos = new Attacker(
             "Deimos",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AK-74M",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2846,7 +2882,7 @@ public static class Attackers
                     2440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M590A1",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2863,7 +2899,7 @@ public static class Attackers
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     ".44 Vendetta",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -2889,6 +2925,7 @@ public static class Attackers
             new OperatorAge(24, 12, 51),
             1
         );
+        #endregion
 
         _attackers =
         [
@@ -2954,186 +2991,259 @@ public static class Attackers
     /// </summary>
     public static AttackerSpecialties Specialties { get; } = new AttackerSpecialties();
 
-    #region Attacker instances
+    #region Attacker properties
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Sledge"/>.
     /// </summary>
-    public static Attacker Sledge { get; }
-
+    public static Attacker Sledge
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Thatcher"/>.
     /// </summary>
-    public static Attacker Thatcher { get; }
-
+    public static Attacker Thatcher
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ash"/>.
     /// </summary>
-    public static Attacker Ash { get; }
-
+    public static Attacker Ash
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Thermite"/>.
     /// </summary>
-    public static Attacker Thermite { get; }
-
+    public static Attacker Thermite
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Twitch"/>.
     /// </summary>
-    public static Attacker Twitch { get; }
-
+    public static Attacker Twitch
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Montagne"/>.
     /// </summary>
-    public static Attacker Montagne { get; }
-
+    public static Attacker Montagne
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Glaz"/>.
     /// </summary>
-    public static Attacker Glaz { get; }
-
+    public static Attacker Glaz
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Fuze"/>.
     /// </summary>
-    public static Attacker Fuze { get; }
-
+    public static Attacker Fuze
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Blitz"/>.
     /// </summary>
-    public static Attacker Blitz { get; }
-
+    public static Attacker Blitz
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="IQ"/>.
     /// </summary>
-    public static Attacker IQ { get; }
-
+    public static Attacker IQ
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Buck"/>.
     /// </summary>
-    public static Attacker Buck { get; }
-
+    public static Attacker Buck
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Blackbeard"/>.
     /// </summary>
-    public static Attacker Blackbeard { get; }
-
+    public static Attacker Blackbeard
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Capitao"/>.
     /// </summary>
-    public static Attacker Capitao { get; }
-
+    public static Attacker Capitao
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Hibana"/>.
     /// </summary>
-    public static Attacker Hibana { get; }
-
+    public static Attacker Hibana
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Jackal"/>.
     /// </summary>
-    public static Attacker Jackal { get; }
-
+    public static Attacker Jackal
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ying"/>.
     /// </summary>
-    public static Attacker Ying { get; }
-
+    public static Attacker Ying
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Zofia"/>.
     /// </summary>
-    public static Attacker Zofia { get; }
-
+    public static Attacker Zofia
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Dokkaebi"/>.
     /// </summary>
-    public static Attacker Dokkaebi { get; }
-
+    public static Attacker Dokkaebi
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Lion"/>.
     /// </summary>
-    public static Attacker Lion { get; }
-
+    public static Attacker Lion
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Finka"/>.
     /// </summary>
-    public static Attacker Finka { get; }
-
+    public static Attacker Finka
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Maverick"/>.
     /// </summary>
-    public static Attacker Maverick { get; }
-
+    public static Attacker Maverick
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Nomad"/>.
     /// </summary>
-    public static Attacker Nomad { get; }
-
+    public static Attacker Nomad
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Gridlock"/>.
     /// </summary>
-    public static Attacker Gridlock { get; }
-
+    public static Attacker Gridlock
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Nokk"/>.
     /// </summary>
-    public static Attacker Nokk { get; }
-
+    public static Attacker Nokk
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Amaru"/>.
     /// </summary>
-    public static Attacker Amaru { get; }
-
+    public static Attacker Amaru
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Kali"/>.
     /// </summary>
-    public static Attacker Kali { get; }
-
+    public static Attacker Kali
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Iana"/>.
     /// </summary>
-    public static Attacker Iana { get; }
-
+    public static Attacker Iana
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ace"/>.
     /// </summary>
-    public static Attacker Ace { get; }
-
+    public static Attacker Ace
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Zero"/>.
     /// </summary>
-    public static Attacker Zero { get; }
-
+    public static Attacker Zero
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Flores"/>.
     /// </summary>
-    public static Attacker Flores { get; }
-
+    public static Attacker Flores
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Osa"/>.
     /// </summary>
-    public static Attacker Osa { get; }
-
+    public static Attacker Osa
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Sens"/>.
     /// </summary>
-    public static Attacker Sens { get; }
-
+    public static Attacker Sens
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Grim"/>.
     /// </summary>
-    public static Attacker Grim { get; }
-
+    public static Attacker Grim
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Brava"/>.
     /// </summary>
-    public static Attacker Brava { get; }
-
+    public static Attacker Brava
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ram"/>.
     /// </summary>
-    public static Attacker Ram { get; }
-
+    public static Attacker Ram
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Deimos"/>.
     /// </summary>
-    public static Attacker Deimos { get; }
+    public static Attacker Deimos
+    {
+        get;
+    }
     #endregion
 
     /// <summary>
@@ -3145,8 +3255,8 @@ public static class Attackers
     /// <param name="intel">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.Intel" /> <see cref="Specialty" />.</param>
     /// <param name="antigadget">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.AntiGadget" /> <see cref="Specialty" />.</param>
     /// <param name="mapcontrol">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.MapControl" /> <see cref="Specialty" />.</param>
-    /// <returns>A</returns>
-    public static Dictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(
+    /// <returns>An <see cref="ImmutableDictionary{TKey, TValue}"/> that maps <see cref="Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="Specialty.Challenge"/>s.</returns>
+    public static ImmutableDictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(
         int breach,
         int support,
         int frontline,
@@ -3200,6 +3310,6 @@ public static class Attackers
             );
         }
 
-        return challenges;
+        return challenges.ToImmutableDictionary();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Diagnostics;
 
 namespace rainbowedit.Models;
 
@@ -8,10 +7,8 @@ namespace rainbowedit.Models;
 /// </summary>
 public abstract class SpecialtyCollection : IEnumerable<Specialty>
 {
-    protected List<Specialty> specialties;
-
-    public virtual IEnumerator<Specialty> GetEnumerator() => specialties.GetEnumerator();
-
+    protected ImmutableArray<Specialty> specialties;
+    public virtual IEnumerator<Specialty> GetEnumerator() => ((IEnumerable<Specialty>)specialties).GetEnumerator();
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
 
@@ -23,8 +20,10 @@ public sealed class DefenderSpecialties : SpecialtyCollection
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Trapper"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty Trapper { get; } =
-        new Specialty(
+    public Specialty Trapper
+    {
+        get;
+    } = new Specialty(
             "Trapper",
             null,
             [
@@ -39,12 +38,13 @@ public sealed class DefenderSpecialties : SpecialtyCollection
                 )
             ]
         );
-
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Support"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty Support { get; } =
-        new Specialty(
+    public Specialty Support
+    {
+        get;
+    } = new Specialty(
             "Support",
             null,
             [
@@ -59,12 +59,13 @@ public sealed class DefenderSpecialties : SpecialtyCollection
                 new Specialty.Challenge("Heal 2 teammates.", "7-Days Renown Booster")
             ]
         );
-
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="AntiEntry"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty AntiEntry { get; } =
-        new Specialty(
+    public Specialty AntiEntry
+    {
+        get;
+    } = new Specialty(
             "Anti-Entry",
             null,
             [
@@ -76,12 +77,13 @@ public sealed class DefenderSpecialties : SpecialtyCollection
                 )
             ]
         );
-
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="Intel"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty Intel { get; } =
-        new Specialty(
+    public Specialty Intel
+    {
+        get;
+    } = new Specialty(
             "Intel",
             null,
             [
@@ -96,12 +98,13 @@ public sealed class DefenderSpecialties : SpecialtyCollection
                 )
             ]
         );
-
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty AntiGadget { get; } =
-        new Specialty(
+    public Specialty AntiGadget
+    {
+        get;
+    } = new Specialty(
             "Anti-Gadget",
             null,
             [
@@ -113,12 +116,13 @@ public sealed class DefenderSpecialties : SpecialtyCollection
                 new Specialty.Challenge("Deactivate or hack 1 Attacker drones.", "Beginner Pack 3x")
             ]
         );
-
     /// <summary>
     /// The <see cref="Defenders"/>' <see cref="CrowdControl"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty CrowdControl { get; } =
-        new Specialty(
+    public Specialty CrowdControl
+    {
+        get;
+    } = new Specialty(
             "Crowd Control",
             null,
             [
@@ -145,8 +149,10 @@ public sealed class AttackerSpecialties : SpecialtyCollection
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="Breach"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty Breach { get; } =
-        new Specialty(
+    public Specialty Breach
+    {
+        get;
+    } = new Specialty(
             "Breach",
             null,
             [
@@ -161,12 +167,13 @@ public sealed class AttackerSpecialties : SpecialtyCollection
                 )
             ]
         );
-
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="Support"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty Support { get; } =
-        new Specialty(
+    public Specialty Support
+    {
+        get;
+    } = new Specialty(
             "Support",
             null,
             [
@@ -175,12 +182,13 @@ public sealed class AttackerSpecialties : SpecialtyCollection
                 new Specialty.Challenge("Win by defusing bombs 1 times.", "Beginner Pack 3x")
             ]
         );
-
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="FrontLine"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty FrontLine { get; } =
-        new Specialty(
+    public Specialty FrontLine
+    {
+        get;
+    } = new Specialty(
             "Front-Line",
             null,
             [
@@ -192,12 +200,13 @@ public sealed class AttackerSpecialties : SpecialtyCollection
                 )
             ]
         );
-
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="Intel"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty Intel { get; } =
-        new Specialty(
+    public Specialty Intel
+    {
+        get;
+    } = new Specialty(
             "Intel",
             null,
             [
@@ -212,12 +221,13 @@ public sealed class AttackerSpecialties : SpecialtyCollection
                 new Specialty.Challenge("Get 5 Opponents Scan Assists.", "Renown 750")
             ]
         );
-
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="AntiGadget"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty AntiGadget { get; } =
-        new Specialty(
+    public Specialty AntiGadget
+    {
+        get;
+    } = new Specialty(
             "Anti-Gadget",
             null,
             [
@@ -235,12 +245,13 @@ public sealed class AttackerSpecialties : SpecialtyCollection
                 )
             ]
         );
-
     /// <summary>
     /// The <see cref="Attackers"/>' <see cref="MapControl"/> <see cref="Specialty"/>.
     /// </summary>
-    public Specialty MapControl { get; } =
-        new Specialty(
+    public Specialty MapControl
+    {
+        get;
+    } = new Specialty(
             "Map Control",
             null,
             [

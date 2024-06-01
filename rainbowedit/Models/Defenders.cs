@@ -7,15 +7,16 @@ namespace rainbowedit;
 /// </summary>
 public static class Defenders
 {
-    private static readonly IEnumerable<Defender> _defenders;
+    private static readonly ImmutableArray<Defender> _defenders;
     /// <summary>
     /// Retrieves a <see cref="List{T}"/> of all <see cref="Defender"/>s.
     /// </summary>
-    public static List<Defender> All => _defenders.ToList();
+    public static ImmutableArray<Defender> All => _defenders;
 
     static Defenders()
     {
         #region Defender instances
+        #region Smoke
         Smoke = new Defender(
             "Smoke",
             [
@@ -100,7 +101,8 @@ public static class Defenders
             new OperatorAge(14, 5, 36),
             2
         );
-
+        #endregion
+        #region Mute
         Mute = new Defender(
             "Mute",
             [
@@ -185,7 +187,8 @@ public static class Defenders
             new OperatorAge(11, 10, 25),
             1
         );
-
+        #endregion
+        #region Castle
         Castle = new Defender(
             "Castle",
             [
@@ -282,7 +285,8 @@ public static class Defenders
             new OperatorAge(20, 9, 36),
             2
         );
-
+        #endregion
+        #region Pulse
         Pulse = new Defender(
             "Pulse",
             [
@@ -366,7 +370,8 @@ public static class Defenders
             new OperatorAge(11, 10, 32),
             3
         );
-
+        #endregion
+        #region Doc
         Doc = new Defender(
             "Doc",
             [
@@ -482,7 +487,8 @@ public static class Defenders
             new OperatorAge(16, 9, 39),
             1
         );
-
+        #endregion
+        #region Rook
         Rook = new Defender(
             "Rook",
             [
@@ -585,7 +591,8 @@ public static class Defenders
             new OperatorAge(6, 1, 27),
             1
         );
-
+        #endregion
+        #region Kapkan
         Kapkan = new Defender(
             "Kapkan",
             [
@@ -667,7 +674,8 @@ public static class Defenders
             new OperatorAge(14, 5, 38),
             2
         );
-
+        #endregion
+        #region Tachanka
         Tachanka = new Defender(
             "Tachanka",
             [
@@ -769,7 +777,8 @@ public static class Defenders
             new OperatorAge(3, 11, 48),
             1
         );
-
+        #endregion
+        #region Jäger
         Jäger = new Defender(
             "Jäger",
             [
@@ -836,7 +845,8 @@ public static class Defenders
             new OperatorAge(9, 3, 39),
             2
         );
-
+        #endregion
+        #region Bandit
         Bandit = new Defender(
             "Bandit",
             [
@@ -903,7 +913,8 @@ public static class Defenders
             new OperatorAge(13, 8, 42),
             3
         );
-
+        #endregion
+        #region Frost
         Frost = new Defender(
             "Frost",
             [
@@ -984,7 +995,8 @@ public static class Defenders
             new OperatorAge(4, 5, 32),
             2
         );
-
+        #endregion
+        #region Valkyrie
         Valkyrie = new Defender(
             "Valkyrie",
             [
@@ -1051,7 +1063,8 @@ public static class Defenders
             new OperatorAge(21, 7, 31),
             2
         );
-
+        #endregion
+        #region Caveira
         Caveira = new Defender(
             "Caveira",
             [
@@ -1120,7 +1133,8 @@ public static class Defenders
             new OperatorAge(15, 10, 27),
             3
         );
-
+        #endregion
+        #region Echo
         Echo = new Defender(
             "Echo",
             [
@@ -1201,7 +1215,8 @@ public static class Defenders
             new OperatorAge(31, 10, 36),
             2
         );
-
+        #endregion
+        #region Mira
         Mira = new Defender(
             "Mira",
             [
@@ -1283,7 +1298,8 @@ public static class Defenders
             new OperatorAge(18, 11, 39),
             1
         );
-
+        #endregion
+        #region Lesion
         Lesion = new Defender(
             "Lesion",
             [
@@ -1350,7 +1366,8 @@ public static class Defenders
             new OperatorAge(2, 7, 44),
             2
         );
-
+        #endregion
+        #region Ela
         Ela = new Defender(
             "Ela",
             [
@@ -1418,7 +1435,8 @@ public static class Defenders
             new OperatorAge(8, 11, 31),
             2
         );
-
+        #endregion
+        #region Vigil
         Vigil = new Defender(
             "Vigil",
             [
@@ -1500,7 +1518,8 @@ public static class Defenders
             new OperatorAge(17, 1, 34),
             3
         );
-
+        #endregion
+        #region Maestro
         Maestro = new Defender(
             "Maestro",
             [
@@ -1583,7 +1602,8 @@ public static class Defenders
             new OperatorAge(13, 4, 45),
             1
         );
-
+        #endregion
+        #region Alibi
         Alibi = new Defender(
             "Alibi",
             [
@@ -1665,7 +1685,8 @@ public static class Defenders
             new OperatorAge(15, 12, 37),
             3
         );
-
+        #endregion
+        #region Clash
         Clash = new Defender(
             "Clash",
             [
@@ -1743,7 +1764,8 @@ public static class Defenders
             new OperatorAge(7, 6, 35),
             1
         );
-
+        #endregion
+        #region Kaid
         Kaid = new Defender(
             "Kaid",
             [
@@ -1824,7 +1846,8 @@ public static class Defenders
             new OperatorAge(26, 6, 58),
             1
         );
-
+        #endregion
+        #region Mozzie
         Mozzie = new Defender(
             "Mozzie",
             [
@@ -1894,7 +1917,8 @@ public static class Defenders
             new OperatorAge(15, 2, 35),
             2
         );
-
+        #endregion
+        #region Warden
         Warden = new Defender(
             "Warden",
             [
@@ -1978,7 +2002,8 @@ public static class Defenders
             new OperatorAge(18, 3, 48),
             1
         );
-
+        #endregion
+        #region Goyo
         Goyo = new Defender(
             "Goyo",
             [
@@ -2047,7 +2072,8 @@ public static class Defenders
             new OperatorAge(20, 6, 31),
             2
         );
-
+        #endregion
+        #region Wamai
         Wamai = new Defender(
             "Wamai",
             [
@@ -2129,7 +2155,8 @@ public static class Defenders
             new OperatorAge(1, 6, 28),
             2
         );
-
+        #endregion
+        #region Oryx
         Oryx = new Defender(
             "Oryx",
             [
@@ -2211,7 +2238,8 @@ public static class Defenders
             new OperatorAge(3, 7, 45),
             2
         );
-
+        #endregion
+        #region Melusi
         Melusi = new Defender(
             "Melusi",
             [
@@ -2278,7 +2306,8 @@ public static class Defenders
             new OperatorAge(16, 6, 32),
             1
         );
-
+        #endregion
+        #region Aruni
         Aruni = new Defender(
             "Aruni",
             [
@@ -2345,7 +2374,8 @@ public static class Defenders
             new OperatorAge(9, 8, 42),
             1
         );
-
+        #endregion
+        #region Thunderbird
         Thunderbird = new Defender(
             "Thunderbird",
             [
@@ -2432,7 +2462,8 @@ public static class Defenders
             new OperatorAge(1, 4, 36),
             2
         );
-
+        #endregion
+        #region Thorn
         Thorn = new Defender(
             "Thorn",
             [
@@ -2513,7 +2544,8 @@ public static class Defenders
             new OperatorAge(18, 6, 28),
             2
         );
-
+        #endregion
+        #region Azami
         Azami = new Defender(
             "Azami",
             [
@@ -2580,7 +2612,8 @@ public static class Defenders
             new OperatorAge(6, 9, 28),
             2
         );
-
+        #endregion
+        #region Solis
         Solis = new Defender(
             "Solis",
             [
@@ -2651,7 +2684,8 @@ public static class Defenders
             new OperatorAge(18, 9, 37),
             2
         );
-
+        #endregion
+        #region Fenrir
         Fenrir = new Defender(
             "Fenrir",
             [
@@ -2718,7 +2752,8 @@ public static class Defenders
             new OperatorAge(3, 12, 34),
             2
         );
-
+        #endregion
+        #region Tubarao
         Tubarao = new Defender(
             "Tubarão",
             [
@@ -2785,7 +2820,7 @@ public static class Defenders
             new OperatorAge(24, 11, 35),
             2
         );
-
+        #endregion
         _defenders =
         [
             Smoke,
@@ -2851,143 +2886,248 @@ public static class Defenders
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Smoke"/>.
     /// </summary>
-    public static Defender Smoke { get; }
+    public static Defender Smoke
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Mute"/>.
     /// </summary>
-    public static Defender Mute { get; }
+    public static Defender Mute
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Castle"/>.
     /// </summary>
-    public static Defender Castle { get; }
+    public static Defender Castle
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Pulse"/>.
     /// </summary>
-    public static Defender Pulse { get; }
+    public static Defender Pulse
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Doc"/>.
     /// </summary>
-    public static Defender Doc { get; }
+    public static Defender Doc
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Rook"/>.
     /// </summary>
-    public static Defender Rook { get; }
+    public static Defender Rook
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Kapkan"/>.
     /// </summary>
-    public static Defender Kapkan { get; }
+    public static Defender Kapkan
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Tachanka"/>.
     /// </summary>
-    public static Defender Tachanka { get; }
+    public static Defender Tachanka
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Jäger"/>.
     /// </summary>
-    public static Defender Jäger { get; }
+    public static Defender Jäger
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Bandit"/>.
     /// </summary>
-    public static Defender Bandit { get; }
+    public static Defender Bandit
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Frost"/>.
     /// </summary>
-    public static Defender Frost { get; }
+    public static Defender Frost
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Valkyrie"/>.
     /// </summary>
-    public static Defender Valkyrie { get; }
+    public static Defender Valkyrie
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Caveira"/>.
     /// </summary>
-    public static Defender Caveira { get; }
+    public static Defender Caveira
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Echo"/>.
     /// </summary>
-    public static Defender Echo { get; }
+    public static Defender Echo
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Mira"/>.
     /// </summary>
-    public static Defender Mira { get; }
+    public static Defender Mira
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Lesion"/>.
     /// </summary>
-    public static Defender Lesion { get; }
+    public static Defender Lesion
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Ela"/>.
     /// </summary>
-    public static Defender Ela { get; }
+    public static Defender Ela
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Vigil"/>.
     /// </summary>
-    public static Defender Vigil { get; }
+    public static Defender Vigil
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Maestro"/>.
     /// </summary>
-    public static Defender Maestro { get; }
+    public static Defender Maestro
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Alibi"/>.
     /// </summary>
-    public static Defender Alibi { get; }
+    public static Defender Alibi
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Clash"/>.
     /// </summary>
-    public static Defender Clash { get; }
+    public static Defender Clash
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Kaid"/>.
     /// </summary>
-    public static Defender Kaid { get; }
+    public static Defender Kaid
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Mozzie"/>.
     /// </summary>
-    public static Defender Mozzie { get; }
+    public static Defender Mozzie
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Warden"/>.
     /// </summary>
-    public static Defender Warden { get; }
+    public static Defender Warden
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Goyo"/>.
     /// </summary>
-    public static Defender Goyo { get; }
+    public static Defender Goyo
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Wamai"/>.
     /// </summary>
-    public static Defender Wamai { get; }
+    public static Defender Wamai
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Oryx"/>.
     /// </summary>
-    public static Defender Oryx { get; }
+    public static Defender Oryx
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Melusi"/>.
     /// </summary>
-    public static Defender Melusi { get; }
+    public static Defender Melusi
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Aruni"/>.
     /// </summary>
-    public static Defender Aruni { get; }
+    public static Defender Aruni
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Thunderbird"/>.
     /// </summary>
-    public static Defender Thunderbird { get; }
+    public static Defender Thunderbird
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Thorn"/>.
     /// </summary>
-    public static Defender Thorn { get; }
+    public static Defender Thorn
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Azami"/>.
     /// </summary>
-    public static Defender Azami { get; }
+    public static Defender Azami
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Solis"/>.
     /// </summary>
-    public static Defender Solis { get; }
+    public static Defender Solis
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Fenrir"/>.
     /// </summary>
-    public static Defender Fenrir { get; }
+    public static Defender Fenrir
+    {
+        get;
+    }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Tubarao"/>.
     /// </summary>
-    public static Defender Tubarao { get; }
+    public static Defender Tubarao
+    {
+        get;
+    }
     #endregion
 
     /// <summary>
@@ -2999,8 +3139,8 @@ public static class Defenders
     /// <param name="intel">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Intel" /> <see cref="Specialty" />.</param>
     /// <param name="antigadget">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AntiGadget" /> <see cref="Specialty" />.</param>
     /// <param name="crowdcontrol">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="CrowdControl" /> <see cref="Specialty" />.</param>
-    /// <returns>A</returns>
-    public static Dictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(
+    /// <returns>An <see cref="ImmutableDictionary{TKey, TValue}"/> that maps <see cref="Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="Specialty.Challenge"/>s.</returns>
+    public static ImmutableDictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(
         int trapper,
         int support,
         int antientry,
@@ -3054,6 +3194,6 @@ public static class Defenders
             );
         }
 
-        return challenges;
+        return challenges.ToImmutableDictionary();
     }
 }
