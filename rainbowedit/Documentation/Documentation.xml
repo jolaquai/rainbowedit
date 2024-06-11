@@ -368,6 +368,11 @@
             Gets a <see cref="T:rainbowedit.Models.AttackerSpecialties"/> instance that contains the <see cref="T:rainbowedit.Models.Specialty"/> instances for <see cref="T:rainbowedit.Attacker"/>s.
             </summary>
         </member>
+        <member name="P:rainbowedit.Attackers.Striker">
+            <summary>
+            The <see cref="T:rainbowedit.Attacker"/> Recruit <see cref="P:rainbowedit.Attackers.Striker"/>.
+            </summary>
+        </member>
         <member name="P:rainbowedit.Attackers.Sledge">
             <summary>
             The <see cref="T:rainbowedit.Attacker"/> <see cref="P:rainbowedit.Attackers.Sledge"/>.
@@ -552,12 +557,12 @@
             <summary>
             Compiles specific challenges from all <see cref="T:rainbowedit.Attackers"/>' specialties into a collection.
             </summary>
-            <param name="breach">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.Breach" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="frontline">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.FrontLine" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="mapcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Specialties.MapControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="breach">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.AttackerSpecialties.Breach" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.AttackerSpecialties.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="frontline">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.AttackerSpecialties.FrontLine" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.AttackerSpecialties.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.AttackerSpecialties.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="mapcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.AttackerSpecialties.MapControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <returns>An <see cref="T:System.Collections.Immutable.ImmutableDictionary`2"/> that maps <see cref="T:rainbowedit.Models.Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="T:rainbowedit.Models.Specialty.Challenge"/>s.</returns>
         </member>
         <member name="T:rainbowedit.Defenders">
@@ -573,6 +578,11 @@
         <member name="P:rainbowedit.Defenders.Specialties">
             <summary>
             Gets a <see cref="T:rainbowedit.Models.DefenderSpecialties"/> instance that contains the <see cref="T:rainbowedit.Models.Specialty"/> instances for <see cref="T:rainbowedit.Defender"/>s.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.Defenders.Sentry">
+            <summary>
+            The <see cref="T:rainbowedit.Defender"/> Recruit <see cref="P:rainbowedit.Defenders.Sentry"/>.
             </summary>
         </member>
         <member name="P:rainbowedit.Defenders.Smoke">
@@ -754,12 +764,12 @@
             <summary>
             Compiles specific challenges from all <see cref="T:rainbowedit.Defenders"/>' specialties into a collection.
             </summary>
-            <param name="trapper">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Trapper" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="antientry">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:AntiEntry" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
-            <param name="crowdcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="!:CrowdControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="trapper">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.DefenderSpecialties.Trapper" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="support">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.DefenderSpecialties.Support" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antientry">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.DefenderSpecialties.AntiEntry" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="intel">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.DefenderSpecialties.Intel" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="antigadget">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.DefenderSpecialties.AntiGadget" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
+            <param name="crowdcontrol">The <see cref="T:rainbowedit.Models.Specialty.Challenge" /> to retrieve for the <see cref="P:rainbowedit.Models.DefenderSpecialties.CrowdControl" /> <see cref="T:rainbowedit.Models.Specialty" />.</param>
             <returns>An <see cref="T:System.Collections.Immutable.ImmutableDictionary`2"/> that maps <see cref="T:rainbowedit.Models.Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="T:rainbowedit.Models.Specialty.Challenge"/>s.</returns>
         </member>
         <member name="T:rainbowedit.Operator">
