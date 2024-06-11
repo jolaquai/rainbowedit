@@ -97,4 +97,7 @@ public static class IEnumerableExtensions
         var chunkSize = (int)Math.Ceiling((double)sourceList.Count / count);
         return source.Chunk(chunkSize);
     }
+
+    /// <inheritdoc cref="Enumerable.Concat{TSource}(IEnumerable{TSource}, IEnumerable{TSource})"/>
+    public static IEnumerable<T> Concat<T>(this IEnumerable<T> first, params IEnumerable<T> second) => [.. first, .. second];
 }

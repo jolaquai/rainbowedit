@@ -1,4 +1,5 @@
-﻿using rainbowedit.Models;
+﻿using rainbowedit;
+using rainbowedit.Models;
 
 namespace rainbowedit;
 
@@ -7,15 +8,98 @@ namespace rainbowedit;
 /// </summary>
 public static class Attackers
 {
-    private readonly static ImmutableArray<Attacker> _attackers;
     /// <summary>
     /// Retrieves a <see cref="List{T}"/> of all <see cref="Attacker"/>s.
     /// </summary>
-    public static ImmutableArray<Attacker> All => _attackers;
+    public static ImmutableArray<Attacker> All { get; private set; }
 
     static Attackers()
     {
         #region Attacker instances
+        #region Recruit/Striker
+        Striker = new Attacker(
+            "Striker",
+            [
+                new Weapon(
+                    null!,
+                    "M4",
+                    Weapon.WeaponType.AssaultRifle,
+                    Weapon.FiringMode.FullAuto,
+                    44,
+                    750,
+                    30,
+                    Weapon.Sight.Magnifying,
+                    Weapon.Barrel.Suppressor
+                        | Weapon.Barrel.FlashHider
+                        | Weapon.Barrel.Compensator
+                        | Weapon.Barrel.MuzzleBrake
+                        | Weapon.Barrel.ExtendedBarrel,
+                    Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                    true,
+                    1530,
+                    2400
+                ),
+                new Weapon(
+                    null!,
+                    "M249",
+                    Weapon.WeaponType.LightMachineGun,
+                    Weapon.FiringMode.FullAuto,
+                    48,
+                    650,
+                    100,
+                    Weapon.Sight.Magnifying,
+                    Weapon.Barrel.FlashHider | Weapon.Barrel.Compensator,
+                    Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                    true,
+                    6320,
+                    6320
+                )
+            ],
+            [
+                new Weapon(
+                    null!,
+                    "5.7 USG",
+                    Weapon.WeaponType.Handgun,
+                    Weapon.FiringMode.SingleShot,
+                    42,
+                    550,
+                    20,
+                    Weapon.Sight.NoneOther,
+                    Weapon.Barrel.Suppressor | Weapon.Barrel.MuzzleBrake,
+                    Weapon.Grip.HorizontalGrip,
+                    true,
+                    1260,
+                    1490
+                ),
+                new Weapon(
+                    null!,
+                    "ITA12S",
+                    Weapon.WeaponType.ShotgunShot,
+                    Weapon.FiringMode.SingleShot,
+                    70,
+                    85,
+                    5,
+                    Weapon.Sight.NonMagnifying,
+                    Weapon.Barrel.None,
+                    Weapon.Grip.HorizontalGrip,
+                    true,
+                    3200,
+                    4580
+                )
+            ],
+            Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore | Weapon.Gadget.FragGrenade | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade,
+            null,
+            [],
+            "",
+            "",
+            0,
+            0,
+            "",
+            new OperatorAge(2, 4, 35),
+            2
+        );
+        #endregion
+
         #region Sledge
         Sledge = new Attacker(
             "Sledge",
@@ -2927,7 +3011,7 @@ public static class Attackers
         );
         #endregion
 
-        _attackers =
+        All =
         [
             Sledge,
             Thatcher,
@@ -2967,8 +3051,7 @@ public static class Attackers
             Deimos
         ];
 
-        // Needed because even though every Weapon object is instantiated using a reference to the containing Operator instance, at the time of instantiation, those Operator references are null
-        foreach (var op in _attackers)
+        foreach (var op in All.Concat([Striker]))
         {
             foreach (var wep in op.Primaries.Concat(op.Secondaries))
             {
@@ -2993,268 +3076,165 @@ public static class Attackers
 
     #region Attacker properties
     /// <summary>
+    /// The <see cref="Attacker"/> Recruit <see cref="Striker"/>.
+    /// </summary>
+    public static Attacker Striker { get; }
+
+    /// <summary>
     /// The <see cref="Attacker"/> <see cref="Sledge"/>.
     /// </summary>
-    public static Attacker Sledge
-    {
-        get;
-    }
+    public static Attacker Sledge { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Thatcher"/>.
     /// </summary>
-    public static Attacker Thatcher
-    {
-        get;
-    }
+    public static Attacker Thatcher { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ash"/>.
     /// </summary>
-    public static Attacker Ash
-    {
-        get;
-    }
+    public static Attacker Ash { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Thermite"/>.
     /// </summary>
-    public static Attacker Thermite
-    {
-        get;
-    }
+    public static Attacker Thermite { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Twitch"/>.
     /// </summary>
-    public static Attacker Twitch
-    {
-        get;
-    }
+    public static Attacker Twitch { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Montagne"/>.
     /// </summary>
-    public static Attacker Montagne
-    {
-        get;
-    }
+    public static Attacker Montagne { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Glaz"/>.
     /// </summary>
-    public static Attacker Glaz
-    {
-        get;
-    }
+    public static Attacker Glaz { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Fuze"/>.
     /// </summary>
-    public static Attacker Fuze
-    {
-        get;
-    }
+    public static Attacker Fuze { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Blitz"/>.
     /// </summary>
-    public static Attacker Blitz
-    {
-        get;
-    }
+    public static Attacker Blitz { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="IQ"/>.
     /// </summary>
-    public static Attacker IQ
-    {
-        get;
-    }
+    public static Attacker IQ { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Buck"/>.
     /// </summary>
-    public static Attacker Buck
-    {
-        get;
-    }
+    public static Attacker Buck { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Blackbeard"/>.
     /// </summary>
-    public static Attacker Blackbeard
-    {
-        get;
-    }
+    public static Attacker Blackbeard { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Capitao"/>.
     /// </summary>
-    public static Attacker Capitao
-    {
-        get;
-    }
+    public static Attacker Capitao { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Hibana"/>.
     /// </summary>
-    public static Attacker Hibana
-    {
-        get;
-    }
+    public static Attacker Hibana { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Jackal"/>.
     /// </summary>
-    public static Attacker Jackal
-    {
-        get;
-    }
+    public static Attacker Jackal { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ying"/>.
     /// </summary>
-    public static Attacker Ying
-    {
-        get;
-    }
+    public static Attacker Ying { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Zofia"/>.
     /// </summary>
-    public static Attacker Zofia
-    {
-        get;
-    }
+    public static Attacker Zofia { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Dokkaebi"/>.
     /// </summary>
-    public static Attacker Dokkaebi
-    {
-        get;
-    }
+    public static Attacker Dokkaebi { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Lion"/>.
     /// </summary>
-    public static Attacker Lion
-    {
-        get;
-    }
+    public static Attacker Lion { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Finka"/>.
     /// </summary>
-    public static Attacker Finka
-    {
-        get;
-    }
+    public static Attacker Finka { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Maverick"/>.
     /// </summary>
-    public static Attacker Maverick
-    {
-        get;
-    }
+    public static Attacker Maverick { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Nomad"/>.
     /// </summary>
-    public static Attacker Nomad
-    {
-        get;
-    }
+    public static Attacker Nomad { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Gridlock"/>.
     /// </summary>
-    public static Attacker Gridlock
-    {
-        get;
-    }
+    public static Attacker Gridlock { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Nokk"/>.
     /// </summary>
-    public static Attacker Nokk
-    {
-        get;
-    }
+    public static Attacker Nokk { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Amaru"/>.
     /// </summary>
-    public static Attacker Amaru
-    {
-        get;
-    }
+    public static Attacker Amaru { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Kali"/>.
     /// </summary>
-    public static Attacker Kali
-    {
-        get;
-    }
+    public static Attacker Kali { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Iana"/>.
     /// </summary>
-    public static Attacker Iana
-    {
-        get;
-    }
+    public static Attacker Iana { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ace"/>.
     /// </summary>
-    public static Attacker Ace
-    {
-        get;
-    }
+    public static Attacker Ace { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Zero"/>.
     /// </summary>
-    public static Attacker Zero
-    {
-        get;
-    }
+    public static Attacker Zero { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Flores"/>.
     /// </summary>
-    public static Attacker Flores
-    {
-        get;
-    }
+    public static Attacker Flores { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Osa"/>.
     /// </summary>
-    public static Attacker Osa
-    {
-        get;
-    }
+    public static Attacker Osa { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Sens"/>.
     /// </summary>
-    public static Attacker Sens
-    {
-        get;
-    }
+    public static Attacker Sens { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Grim"/>.
     /// </summary>
-    public static Attacker Grim
-    {
-        get;
-    }
+    public static Attacker Grim { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Brava"/>.
     /// </summary>
-    public static Attacker Brava
-    {
-        get;
-    }
+    public static Attacker Brava { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Ram"/>.
     /// </summary>
-    public static Attacker Ram
-    {
-        get;
-    }
+    public static Attacker Ram { get; }
     /// <summary>
     /// The <see cref="Attacker"/> <see cref="Deimos"/>.
     /// </summary>
-    public static Attacker Deimos
-    {
-        get;
-    }
+    public static Attacker Deimos { get; }
     #endregion
 
     /// <summary>
     /// Compiles specific challenges from all <see cref="Attackers"/>' specialties into a collection.
     /// </summary>
-    /// <param name="breach">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.Breach" /> <see cref="Specialty" />.</param>
-    /// <param name="support">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.Support" /> <see cref="Specialty" />.</param>
-    /// <param name="frontline">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.FrontLine" /> <see cref="Specialty" />.</param>
-    /// <param name="intel">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.Intel" /> <see cref="Specialty" />.</param>
-    /// <param name="antigadget">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.AntiGadget" /> <see cref="Specialty" />.</param>
-    /// <param name="mapcontrol">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Specialties.MapControl" /> <see cref="Specialty" />.</param>
+    /// <param name="breach">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AttackerSpecialties.Breach" /> <see cref="Specialty" />.</param>
+    /// <param name="support">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AttackerSpecialties.Support" /> <see cref="Specialty" />.</param>
+    /// <param name="frontline">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AttackerSpecialties.FrontLine" /> <see cref="Specialty" />.</param>
+    /// <param name="intel">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AttackerSpecialties.Intel" /> <see cref="Specialty" />.</param>
+    /// <param name="antigadget">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AttackerSpecialties.AntiGadget" /> <see cref="Specialty" />.</param>
+    /// <param name="mapcontrol">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AttackerSpecialties.MapControl" /> <see cref="Specialty" />.</param>
     /// <returns>An <see cref="ImmutableDictionary{TKey, TValue}"/> that maps <see cref="Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="Specialty.Challenge"/>s.</returns>
     public static ImmutableDictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(
         int breach,

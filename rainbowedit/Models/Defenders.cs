@@ -7,15 +7,97 @@ namespace rainbowedit;
 /// </summary>
 public static class Defenders
 {
-    private static readonly ImmutableArray<Defender> _defenders;
     /// <summary>
     /// Retrieves a <see cref="List{T}"/> of all <see cref="Defender"/>s.
     /// </summary>
-    public static ImmutableArray<Defender> All => _defenders;
+    public static ImmutableArray<Defender> All { get; private set; }
 
     static Defenders()
     {
         #region Defender instances
+        #region Recruit/Sentry
+        Sentry = new Defender(
+            "Sentry",
+            [
+                new Weapon(
+                    null,
+                    "Commando 9",
+                    Weapon.WeaponType.AssaultRifle,
+                    Weapon.FiringMode.FullAuto,
+                    36,
+                    780,
+                    25,
+                    Weapon.Sight.NonMagnifying,
+                    Weapon.Barrel.Suppressor
+                        | Weapon.Barrel.FlashHider
+                        | Weapon.Barrel.Compensator
+                        | Weapon.Barrel.MuzzleBrake,
+                    Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
+                    true,
+                    1200,
+                    1540
+                ),
+                new Weapon(
+                    null,
+                    "M870",
+                    Weapon.WeaponType.ShotgunShot,
+                    Weapon.FiringMode.SingleShot,
+                    60,
+                    100,
+                    7,
+                    Weapon.Sight.NonMagnifying,
+                    Weapon.Barrel.None,
+                    Weapon.Grip.HorizontalGrip,
+                    true,
+                    3410,
+                    4360
+                ),
+            ],
+            [
+                new Weapon(
+                    null,
+                    "C75 Auto",
+                    Weapon.WeaponType.MachinePistol,
+                    Weapon.FiringMode.FullAuto,
+                    35,
+                    1000,
+                    26,
+                    Weapon.Sight.NoneOther,
+                    Weapon.Barrel.Suppressor,
+                    Weapon.Grip.HorizontalGrip,
+                    true,
+                    1320,
+                    2220
+                ),
+                new Weapon(
+                    null,
+                    "Super Shorty",
+                    Weapon.WeaponType.ShotgunShot,
+                    Weapon.FiringMode.SingleShot,
+                    35,
+                    85,
+                    3,
+                    Weapon.Sight.NonMagnifying,
+                    Weapon.Barrel.None,
+                    Weapon.Grip.HorizontalGrip,
+                    true,
+                    1300,
+                    2450
+                ),
+            ],
+            Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell | Weapon.Gadget.ProximityAlarm,
+            null,
+            [],
+            "",
+            "",
+            0,
+            0,
+            "",
+            new OperatorAge(14, 5, 36),
+            2
+        );
+        #endregion
+
         #region Smoke
         Smoke = new Defender(
             "Smoke",
@@ -2673,7 +2755,7 @@ public static class Defenders
                     2130
                 )
             ],
-            Weapon.Gadget.ImpactGrenade | Weapon.Gadget.BulletproofCamera,
+            Weapon.Gadget.ProximityAlarm | Weapon.Gadget.BulletproofCamera,
             "SPEC-IO Electro-Sensor",
             [Specialties.Intel, Specialties.Support],
             "AFEAU",
@@ -2741,7 +2823,7 @@ public static class Defenders
                     3370
                 )
             ],
-            Weapon.Gadget.BulletproofCamera | Weapon.Gadget.BarbedWire,
+            Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ObservationBlocker,
             "F-NATT Dread Mine",
             [Specialties.CrowdControl, Specialties.Trapper],
             "[UNAFFILIATED]",
@@ -2821,7 +2903,7 @@ public static class Defenders
             2
         );
         #endregion
-        _defenders =
+        All =
         [
             Smoke,
             Mute,
@@ -2859,7 +2941,7 @@ public static class Defenders
             Tubarao
         ];
 
-        foreach (var op in _defenders)
+        foreach (var op in All.Concat([Sentry]))
         {
             foreach (var wep in op.Primaries.Concat(op.Secondaries))
             {
@@ -2884,261 +2966,161 @@ public static class Defenders
 
     #region Defender instances
     /// <summary>
+    /// The <see cref="Defender"/> Recruit <see cref="Sentry"/>.
+    /// </summary>
+    public static Defender Sentry { get; }
+
+    /// <summary>
     /// The <see cref="Defender"/> <see cref="Smoke"/>.
     /// </summary>
-    public static Defender Smoke
-    {
-        get;
-    }
+    public static Defender Smoke { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Mute"/>.
     /// </summary>
-    public static Defender Mute
-    {
-        get;
-    }
+    public static Defender Mute { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Castle"/>.
     /// </summary>
-    public static Defender Castle
-    {
-        get;
-    }
+    public static Defender Castle { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Pulse"/>.
     /// </summary>
-    public static Defender Pulse
-    {
-        get;
-    }
+    public static Defender Pulse { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Doc"/>.
     /// </summary>
-    public static Defender Doc
-    {
-        get;
-    }
+    public static Defender Doc { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Rook"/>.
     /// </summary>
-    public static Defender Rook
-    {
-        get;
-    }
+    public static Defender Rook { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Kapkan"/>.
     /// </summary>
-    public static Defender Kapkan
-    {
-        get;
-    }
+    public static Defender Kapkan { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Tachanka"/>.
     /// </summary>
-    public static Defender Tachanka
-    {
-        get;
-    }
+    public static Defender Tachanka { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Jäger"/>.
     /// </summary>
-    public static Defender Jäger
-    {
-        get;
-    }
+    public static Defender Jäger { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Bandit"/>.
     /// </summary>
-    public static Defender Bandit
-    {
-        get;
-    }
+    public static Defender Bandit { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Frost"/>.
     /// </summary>
-    public static Defender Frost
-    {
-        get;
-    }
+    public static Defender Frost { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Valkyrie"/>.
     /// </summary>
-    public static Defender Valkyrie
-    {
-        get;
-    }
+    public static Defender Valkyrie { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Caveira"/>.
     /// </summary>
-    public static Defender Caveira
-    {
-        get;
-    }
+    public static Defender Caveira { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Echo"/>.
     /// </summary>
-    public static Defender Echo
-    {
-        get;
-    }
+    public static Defender Echo { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Mira"/>.
     /// </summary>
-    public static Defender Mira
-    {
-        get;
-    }
+    public static Defender Mira { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Lesion"/>.
     /// </summary>
-    public static Defender Lesion
-    {
-        get;
-    }
+    public static Defender Lesion { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Ela"/>.
     /// </summary>
-    public static Defender Ela
-    {
-        get;
-    }
+    public static Defender Ela { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Vigil"/>.
     /// </summary>
-    public static Defender Vigil
-    {
-        get;
-    }
+    public static Defender Vigil { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Maestro"/>.
     /// </summary>
-    public static Defender Maestro
-    {
-        get;
-    }
+    public static Defender Maestro { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Alibi"/>.
     /// </summary>
-    public static Defender Alibi
-    {
-        get;
-    }
+    public static Defender Alibi { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Clash"/>.
     /// </summary>
-    public static Defender Clash
-    {
-        get;
-    }
+    public static Defender Clash { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Kaid"/>.
     /// </summary>
-    public static Defender Kaid
-    {
-        get;
-    }
+    public static Defender Kaid { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Mozzie"/>.
     /// </summary>
-    public static Defender Mozzie
-    {
-        get;
-    }
+    public static Defender Mozzie { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Warden"/>.
     /// </summary>
-    public static Defender Warden
-    {
-        get;
-    }
+    public static Defender Warden { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Goyo"/>.
     /// </summary>
-    public static Defender Goyo
-    {
-        get;
-    }
+    public static Defender Goyo { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Wamai"/>.
     /// </summary>
-    public static Defender Wamai
-    {
-        get;
-    }
+    public static Defender Wamai { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Oryx"/>.
     /// </summary>
-    public static Defender Oryx
-    {
-        get;
-    }
+    public static Defender Oryx { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Melusi"/>.
     /// </summary>
-    public static Defender Melusi
-    {
-        get;
-    }
+    public static Defender Melusi { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Aruni"/>.
     /// </summary>
-    public static Defender Aruni
-    {
-        get;
-    }
+    public static Defender Aruni { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Thunderbird"/>.
     /// </summary>
-    public static Defender Thunderbird
-    {
-        get;
-    }
+    public static Defender Thunderbird { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Thorn"/>.
     /// </summary>
-    public static Defender Thorn
-    {
-        get;
-    }
+    public static Defender Thorn { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Azami"/>.
     /// </summary>
-    public static Defender Azami
-    {
-        get;
-    }
+    public static Defender Azami { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Solis"/>.
     /// </summary>
-    public static Defender Solis
-    {
-        get;
-    }
+    public static Defender Solis { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Fenrir"/>.
     /// </summary>
-    public static Defender Fenrir
-    {
-        get;
-    }
+    public static Defender Fenrir { get; }
     /// <summary>
     /// The <see cref="Defender"/> <see cref="Tubarao"/>.
     /// </summary>
-    public static Defender Tubarao
-    {
-        get;
-    }
+    public static Defender Tubarao { get; }
     #endregion
 
     /// <summary>
     /// Compiles specific challenges from all <see cref="Defenders"/>' specialties into a collection.
     /// </summary>
-    /// <param name="trapper">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Trapper" /> <see cref="Specialty" />.</param>
-    /// <param name="support">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Support" /> <see cref="Specialty" />.</param>
-    /// <param name="antientry">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AntiEntry" /> <see cref="Specialty" />.</param>
-    /// <param name="intel">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="Intel" /> <see cref="Specialty" />.</param>
-    /// <param name="antigadget">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="AntiGadget" /> <see cref="Specialty" />.</param>
-    /// <param name="crowdcontrol">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="CrowdControl" /> <see cref="Specialty" />.</param>
+    /// <param name="trapper">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="DefenderSpecialties.Trapper" /> <see cref="Specialty" />.</param>
+    /// <param name="support">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="DefenderSpecialties.Support" /> <see cref="Specialty" />.</param>
+    /// <param name="antientry">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="DefenderSpecialties.AntiEntry" /> <see cref="Specialty" />.</param>
+    /// <param name="intel">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="DefenderSpecialties.Intel" /> <see cref="Specialty" />.</param>
+    /// <param name="antigadget">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="DefenderSpecialties.AntiGadget" /> <see cref="Specialty" />.</param>
+    /// <param name="crowdcontrol">The <see cref="Specialty.Challenge" /> to retrieve for the <see cref="DefenderSpecialties.CrowdControl" /> <see cref="Specialty" />.</param>
     /// <returns>An <see cref="ImmutableDictionary{TKey, TValue}"/> that maps <see cref="Specialty"/> instances corresponding to the supplied progress values to their respective next <see cref="Specialty.Challenge"/>s.</returns>
     public static ImmutableDictionary<Specialty, string> GetPersonalSpecialtyChallengeSet(
         int trapper,
