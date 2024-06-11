@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="rainbowedit.Core\rainbowedit.Core.csproj" />
+  <Project Path="rainbowedit\rainbowedit.csproj" />
+  <Project Path="TestConsole\TestConsole.csproj">
+    <BuildDependency Project="rainbowedit\rainbowedit.csproj" />
+  </Project>
+  <Project Path="TestWpf\TestWpf.csproj" />
+</Solution>
