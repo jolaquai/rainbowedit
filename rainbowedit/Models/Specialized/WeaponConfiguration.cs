@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-using rainbowedit.Exceptions;
+﻿using rainbowedit.Exceptions;
 using rainbowedit.Extensions;
 
 namespace rainbowedit;
@@ -10,7 +8,7 @@ namespace rainbowedit;
 /// </summary>
 public class WeaponConfiguration
 {
-    private static readonly ReadOnlyCollection<string> _nonMagSightNames = new ReadOnlyCollection<string>(
+    internal static readonly ImmutableArray<string> _nonMagSightNames =
     [
         "Red Dot A",
         "Red Dot B",
@@ -18,57 +16,48 @@ public class WeaponConfiguration
         "Holo A",
         "Holo B",
         "Holo C",
+        "Holo D",
         "Reflex B",
         "Reflex A",
         "Reflex C",
-    ]);
-    private static readonly ReadOnlyCollection<string> _magSightNames = new ReadOnlyCollection<string>(
+    ];
+    internal static readonly ImmutableArray<string> _magSightNames =
     [
         "Magnifying A",
         "Magnifying B",
         "Magnifying C",
-    ]);
-    private static readonly ReadOnlyCollection<string> _teleSightNames = new ReadOnlyCollection<string>(
+    ];
+    internal static readonly ImmutableArray<string> _teleSightNames =
     [
         "Telescopic A",
         "Telescopic B",
-    ]);
+    ];
+
+    // Need these for calculations
+    private Weapon.Sight sourceSight;
+    private Weapon.Barrel sourceBarrel;
+    private Weapon.Grip sourceGrip;
 
     ///<summary>
     /// The <see cref="Weapon"/> this configuration applies to.
     ///</summary>
-    public Weapon Source
-    {
-        get;
-    }
+    public Weapon Source { get; }
     /// <summary>
     /// A string detailing the sight to use.
     /// </summary>
-    public string Sight
-    {
-        get;
-    }
+    public string Sight { get; }
     /// <summary>
     /// A string detailing the barrel attachment to use.
     /// </summary>
-    public string Barrel
-    {
-        get;
-    }
+    public string Barrel { get; }
     /// <summary>
     /// A string detailing the grip to use.
     /// </summary>
-    public string Grip
-    {
-        get;
-    }
+    public string Grip { get; }
     /// <summary>
     /// Whether to use an underbarrel laser.
     /// </summary>
-    public bool Underbarrel
-    {
-        get;
-    }
+    public bool Underbarrel { get; }
 
     /// <summary>
     /// Initializes a new <see cref="WeaponConfiguration"/> object from just a <see cref="Weapon"/> to gather values from.
@@ -145,14 +134,21 @@ public class WeaponConfiguration
     public WeaponConfiguration(Weapon source, Weapon.Sight sight, Weapon.Barrel barrel, Weapon.Grip grip, bool underbarrel)
     {
         Source = source;
+        sourceBarrel = barrel;
+        sourceGrip = grip;
+        sourceSight = sight;
+
         Barrel = barrel.GetDescription();
         Grip = grip.GetDescription();
         Underbarrel = underbarrel;
 
         Sight = sight switch
         {
-            Weapon.Sight.NonMagnifying => new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" }.Random(Core.Internals.Random),
-            Weapon.Sight.Magnifying => new List<string>() { "2.5x A", "2.5x B" }.Random(Core.Internals.Random),
+            Weapon.Sight.NonMagnifying => _nonMagSightNames.Random(Core.Internals.Random),
+            Weapon.Sight.Magnifying => _magSightNames.Random(Core.Internals.Random),
+            Weapon.Sight.Telescopic => _teleSightNames.Random(Core.Internals.Random),
+            Weapon.Sight.FlipSight => source.Source == Attackers.Glaz ? sight.GetDescription() : throw new LoadoutOperatorMismatchException(source.Source, Weapon.Sight.FlipSight),
+            Weapon.Sight.VariableSniper => source.Source == Attackers.Kali ? sight.GetDescription() : throw new LoadoutOperatorMismatchException(source.Source, Weapon.Sight.VariableSniper),
             _ => sight.GetDescription()
         };
     }
@@ -176,31 +172,55 @@ public class WeaponConfiguration
         Source = source;
         Underbarrel = underbarrel;
 
-        if (!Enum.GetValues<Weapon.Barrel>().Select(@enum => @enum.GetDescription()).Contains(barrel)
-            || !Enum.GetNames<Weapon.Barrel>().Contains(barrel))
+        // Had to rewrite this into actual parsing logic to get at the actual enum values
+        if (!EnumExtensions.TryGetValue<Weapon.Barrel>(barrel, out var barrelEnum))
         {
             throw new EnumStringificationException<Weapon.Barrel>(barrel);
         }
+        sourceBarrel = barrelEnum;
         Barrel = barrel;
 
-        if (!Enum.GetValues<Weapon.Grip>().Select(@enum => @enum.GetDescription()).Contains(grip)
-            || !Enum.GetNames<Weapon.Grip>().Contains(grip))
+        if (!EnumExtensions.TryGetValue<Weapon.Grip>(grip, out var gripEnum))
         {
             throw new EnumStringificationException<Weapon.Grip>(grip);
         }
+        sourceGrip = gripEnum;
         Grip = grip;
 
-        if (!Enum.GetValues<Weapon.Sight>()
-                 .Select(@enum => @enum.GetDescription())
-                 .Concat(Enum.GetNames<Weapon.Sight>())
-                 .Concat(new List<string>() { "Red Dot A", "Red Dot B", "Red Dot C", "Holo A", "Holo B", "Holo C", "Holo D", "Reflex B", "Reflex A", "Reflex C" })
-                 .Concat(new List<string>() { "2.5x A", "2.5x B" }
-            ).Contains(sight)
-        )
+        // We'll really try hard to recognize the sight value cause there's a TON
+        // Double helper method for this, so we can just pass the sight string and get the enum value back
+        // It's gonna take days for this constructor to return...
+        if (!TryFindSight(sight, out var sightEnum))
         {
             throw new EnumStringificationException<Weapon.Sight>(sight);
         }
+        sourceSight = sightEnum;
         Sight = sight;
+    }
+
+    private static bool TryFindSight(string s, out Weapon.Sight parsed)
+    {
+        if (EnumExtensions.TryGetValue(s, out parsed))
+        {
+            return true;
+        }
+        if (_nonMagSightNames.Contains(s.Trim(), StringComparer.OrdinalIgnoreCase))
+        {
+            parsed = Weapon.Sight.NonMagnifying;
+        }
+        else if (_magSightNames.Contains(s.Trim(), StringComparer.OrdinalIgnoreCase))
+        {
+            parsed = Weapon.Sight.Magnifying;
+        }
+        else if (_teleSightNames.Contains(s.Trim(), StringComparer.OrdinalIgnoreCase))
+        {
+            parsed = Weapon.Sight.Telescopic;
+        }
+        else
+        {
+            return false;
+        }
+        return true;
     }
 
     /// <inheritdoc/>
@@ -226,6 +246,46 @@ public class WeaponConfiguration
                 Barrel: {Barrel}
                 Laser: {(Source.Underbarrel ? (Underbarrel ? "Yes" : "No") : "\u2014")}
                 """;
+        }
+    }
+
+    /// <summary>
+    /// Gets the actual damage the <see cref="Source"/> <see cref="Weapon"/> would deal with this configuration.
+    /// </summary>
+    public int Damage => sourceBarrel is Weapon.Barrel.ExtendedBarrel ? Source.ExtendedBarrelDamage : Source.Damage;
+    /// <summary>
+    /// Gets a <see cref="TimeSpan"/> instance that represents the actual amount of time it takes to perform a tactical reload with the <see cref="Source"/> <see cref="Weapon"/> (a reload when there is a round chambered).
+    /// </summary>
+    public TimeSpan ReloadTactical => sourceGrip is Weapon.Grip.AngledGrip ? Source.ReloadTactical * 0.8 : Source.ReloadTactical;
+    /// <summary>
+    /// Gets a <see cref="TimeSpan"/> instance that represents the actual amount of time it takes to perform an empty reload with the <see cref="Source"/> <see cref="Weapon"/> (a reload when there is no round chambered).
+    /// </summary>
+    public TimeSpan ReloadEmpty => sourceGrip is Weapon.Grip.AngledGrip ? Source.ReloadEmpty * 0.8 : Source.ReloadEmpty;
+    /// <summary>
+    /// Gets a actual time it takes to transition from or to aiming down sights (ADS) with this <see cref="Weapon"/>.
+    /// Note that this is only the base value (with no positive or negative modifiers from attachments applied). To calculate that, use a <see cref="WeaponConfiguration"/>.
+    /// </summary>
+    public TimeSpan AdsSpeed
+    {
+        get
+        {
+            var baseSpeed = Source.AdsSpeed;
+            var factor = 1d;
+            switch (sourceSight)
+            {
+                case Weapon.Sight.NonMagnifying:
+                    factor *= 1.05;
+                    break;
+                case Weapon.Sight.Magnifying:
+                case Weapon.Sight.Telescopic:
+                    factor *= 1.10;
+                    break;
+            }
+            if (Underbarrel)
+            {
+                factor *= 0.9d;
+            }
+            return baseSpeed * factor;
         }
     }
 }

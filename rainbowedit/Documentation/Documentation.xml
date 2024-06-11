@@ -286,6 +286,15 @@
             <param name="any">The <see cref="T:System.Enum"/> value to retrieve the description for.</param>
             <returns>The value of the <see cref="P:System.ComponentModel.DescriptionAttribute.Description"/> for the given <see cref="T:System.Enum"/> value or its default <see cref="T:System.String"/> representation.</returns>
         </member>
+        <member name="M:rainbowedit.Extensions.EnumExtensions.TryGetValue``1(System.String,``0@)">
+            <summary>
+            Attempts to reverse-engineer a <see langword="string"/> value to an <see cref="T:System.Enum"/> value of the specified <typeparamref name="TEnum"/> type.
+            </summary>
+            <typeparam name="TEnum">The <see cref="T:System.Enum"/> type to reverse-engineer the value to.</typeparam>
+            <param name="value">The <see langword="string"/> value to reverse-engineer.</param>
+            <param name="enum">An <see langword="out"/> variable that receives the <see cref="T:System.Enum"/> value if the reverse-engineering was successful.</param>
+            <returns><see langword="true"/> if the reverse-engineering was successful, otherwise <see langword="false"/>.</returns>
+        </member>
         <member name="T:rainbowedit.Extensions.IEnumerableExtensions">
             <summary>
             Provides extensions for the <see cref="T:System.Collections.Generic.IEnumerable`1"/> type and derived types.
@@ -1092,6 +1101,11 @@
             Represents an <see cref="T:rainbowedit.Operator"/>'s age when it is "redacted" or unavailable in-game for any other reason.
             </summary>
         </member>
+        <member name="P:rainbowedit.OperatorAge.Undefined">
+            <summary>
+            Represents an <see cref="T:rainbowedit.Operator"/>'s age when it is "undefined" (for <see cref="P:rainbowedit.Attackers.Striker"/> and <see cref="P:rainbowedit.Defenders.Sentry"/>).
+            </summary>
+        </member>
         <member name="T:rainbowedit.LoadoutConfiguration">
             <summary>
             A single loadout configuration from all possible <see cref="P:rainbowedit.Operator.Primaries"/>, <see cref="P:rainbowedit.Operator.Secondaries"/> (and those two's respective <see cref="P:rainbowedit.Weapon.Barrels"/>, <see cref="P:rainbowedit.Weapon.Grips"/>, <see cref="P:rainbowedit.Weapon.Sights"/> and <see cref="P:rainbowedit.Weapon.Underbarrel"/> options) and <see cref="T:rainbowedit.Weapon.Gadget"/> combinations.
@@ -1241,6 +1255,27 @@
         </member>
         <member name="M:rainbowedit.WeaponConfiguration.ToString">
             <inheritdoc/>
+        </member>
+        <member name="P:rainbowedit.WeaponConfiguration.Damage">
+            <summary>
+            Gets the actual damage the <see cref="P:rainbowedit.WeaponConfiguration.Source"/> <see cref="T:rainbowedit.Weapon"/> would deal with this configuration.
+            </summary>
+        </member>
+        <member name="P:rainbowedit.WeaponConfiguration.ReloadTactical">
+            <summary>
+            Gets a <see cref="T:System.TimeSpan"/> instance that represents the actual amount of time it takes to perform a tactical reload with the <see cref="P:rainbowedit.WeaponConfiguration.Source"/> <see cref="T:rainbowedit.Weapon"/> (a reload when there is a round chambered).
+            </summary>
+        </member>
+        <member name="P:rainbowedit.WeaponConfiguration.ReloadEmpty">
+            <summary>
+            Gets a <see cref="T:System.TimeSpan"/> instance that represents the actual amount of time it takes to perform an empty reload with the <see cref="P:rainbowedit.WeaponConfiguration.Source"/> <see cref="T:rainbowedit.Weapon"/> (a reload when there is no round chambered).
+            </summary>
+        </member>
+        <member name="P:rainbowedit.WeaponConfiguration.AdsSpeed">
+            <summary>
+            Gets a actual time it takes to transition from or to aiming down sights (ADS) with this <see cref="T:rainbowedit.Weapon"/>.
+            Note that this is only the base value (with no positive or negative modifiers from attachments applied). To calculate that, use a <see cref="T:rainbowedit.WeaponConfiguration"/>.
+            </summary>
         </member>
         <member name="T:rainbowedit.Models.SpecialtyCollection">
             <summary>
@@ -1473,7 +1508,7 @@
         <member name="P:rainbowedit.Weapon.AdsSpeed">
             <summary>
             The time it takes to transition from or to aiming down sights (ADS) with this <see cref="T:rainbowedit.Weapon"/>.
-            Note that this is only the base value and does not apply modifiers such as sight ADS speed multipliers.
+            Note that this is only the base value (with no positive or negative modifiers from attachments applied). To calculate that, use a <see cref="T:rainbowedit.WeaponConfiguration"/>.
             </summary>
         </member>
         <member name="T:rainbowedit.Weapon.Collections">

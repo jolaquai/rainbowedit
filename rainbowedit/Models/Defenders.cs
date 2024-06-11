@@ -31,7 +31,8 @@ public static class Defenders
                     Weapon.Barrel.Suppressor
                         | Weapon.Barrel.FlashHider
                         | Weapon.Barrel.Compensator
-                        | Weapon.Barrel.MuzzleBrake,
+                        | Weapon.Barrel.MuzzleBrake
+                        | Weapon.Barrel.ExtendedBarrel,
                     Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                     true,
                     1200,
@@ -86,14 +87,14 @@ public static class Defenders
                 ),
             ],
             Weapon.Gadget.BarbedWire | Weapon.Gadget.BulletproofCamera | Weapon.Gadget.DeployableShield | Weapon.Gadget.ObservationBlocker | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.NitroCell | Weapon.Gadget.ProximityAlarm,
-            null,
-            [],
-            "",
-            "",
-            0,
-            0,
-            "",
-            new OperatorAge(14, 5, 36),
+            "Gadget Kit",
+            [Specialties.Support],
+            "ROS",
+            "Undefined",
+            -1,
+            -1,
+            "Undefined",
+            OperatorAge.Undefined,
             2
         );
         #endregion

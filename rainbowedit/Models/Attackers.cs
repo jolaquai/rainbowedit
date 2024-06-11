@@ -1,5 +1,4 @@
-﻿using rainbowedit;
-using rainbowedit.Models;
+﻿using rainbowedit.Models;
 
 namespace rainbowedit;
 
@@ -87,15 +86,15 @@ public static class Attackers
                     4580
                 )
             ],
-            Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore | Weapon.Gadget.FragGrenade | Weapon.Gadget.ImpactGrenade | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade,
-            null,
-            [],
-            "",
-            "",
-            0,
-            0,
-            "",
-            new OperatorAge(2, 4, 35),
+            Weapon.Gadget.BreachCharge | Weapon.Gadget.Claymore | Weapon.Gadget.EmpGrenade | Weapon.Gadget.FragGrenade | Weapon.Gadget.HardBreachCharge | Weapon.Gadget.SmokeGrenade | Weapon.Gadget.StunGrenade,
+            "Gadget Kit",
+            [Specialties.Support],
+            "ROS",
+            "Undefined",
+            -1,
+            -1,
+            "Undefined",
+            OperatorAge.Undefined,
             2
         );
         #endregion

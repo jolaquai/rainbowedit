@@ -46,4 +46,8 @@ public class OperatorAge
     /// Represents an <see cref="Operator"/>'s age when it is "redacted" or unavailable in-game for any other reason.
     /// </summary>
     public static OperatorAge Redacted { get; } = new OperatorAge(-1, -1, -1);
+    /// <summary>
+    /// Represents an <see cref="Operator"/>'s age when it is "undefined" (for <see cref="Attackers.Striker"/> and <see cref="Defenders.Sentry"/>).
+    /// </summary>
+    public static OperatorAge Undefined { get; } = new OperatorAge(-1, -1, -1);
 }

@@ -19,48 +19,30 @@ public class Weapon
     /// <summary>
     /// The in-game name of the <see cref="Weapon"/>.
     /// </summary>
-    public string Name
-    {
-        get;
-    }
+    public string Name { get; }
     /// <summary>
     /// The in-game <see cref="WeaponType"/> of the <see cref="Weapon"/>.
     /// </summary>
-    public WeaponType Type
-    {
-        get;
-    }
+    public WeaponType Type { get; }
     /// <summary>
     /// The in-game <see cref="FiringMode"/> the <see cref="Weapon"/> uses.
     /// </summary>
-    public FiringMode FireMode
-    {
-        get;
-    }
+    public FiringMode FireMode { get; }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when <i>not</i> equipped with a <see cref="Barrel.ExtendedBarrel"/>.
     /// </summary>
-    public int Damage
-    {
-        get;
-    }
+    public int Damage { get; }
     /// <summary>
     /// The rounds per minute this <see cref="Weapon"/> is capable of firing in-game.
     /// </summary>
-    public int RoundsPerMinute
-    {
-        get;
-    }
+    public int RoundsPerMinute { get; }
     /// <summary>
     /// The in-game magazine capacity of this <see cref="Weapon"/>.
     /// </summary>
     /// <remarks>
     /// This does not include the single round chambered after cocking the <see cref="Weapon"/>.
     /// </remarks>
-    public int Capacity
-    {
-        get;
-    }
+    public int Capacity { get; }
     private Sight _sights;
     /// <summary>
     /// A combination of <see cref="Sight"/> values that specifies which sights may be equipped on this <see cref="Weapon"/>.
@@ -77,27 +59,18 @@ public class Weapon
     /// <summary>
     /// A combination of <see cref="Barrel"/> values that specifies which barrel extensions may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Barrel Barrels
-    {
-        get;
-    }
+    public Barrel Barrels { get; }
     /// <summary>
     /// A combination of <see cref="Grip"/> values that specifies which grips may be equipped on this <see cref="Weapon"/>.
     /// </summary>
-    public Grip Grips
-    {
-        get;
-    }
+    public Grip Grips { get; }
     /// <summary>
     /// Whether an underbarrel laser may be equipped on this <see cref="Weapon"/>.
     /// </summary>
     /// <remarks>
     /// Usage of an underbarrel laser grants a 10% ADS speed bonus.
     /// </remarks>
-    public bool Underbarrel
-    {
-        get;
-    }
+    public bool Underbarrel { get; }
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.Suppressor"/>.
     /// </summary>
@@ -106,47 +79,29 @@ public class Weapon
     /// <summary>
     /// The damage this <see cref="Weapon"/> deals when equipped with a <see cref="Barrel.ExtendedBarrel"/>.
     /// </summary>
-    public int ExtendedBarrelDamage
-    {
-        get;
-    }
+    public int ExtendedBarrelDamage { get; }
     /// <summary>
     /// The theoretical damage per second output of this <see cref="Weapon"/> during sustained fire, including ideal (tactical) reloads.
     /// This is only technically relevant and not really meaningful in-game. Furthermore, it's entirely non-sensical for the <c>GONNE-6</c> or shields, for example.
     /// </summary>
-    public int DamagePerSecond
-    {
-        get;
-    }
+    public int DamagePerSecond { get; }
     /// <summary>
     /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform a tactical reload with this <see cref="Weapon"/> (a reload when there is a round chambered). For weapons that cannot be in this state (such as revolvers), this is generally equal to <see cref="ReloadEmpty"/>.
     /// </summary>
-    public TimeSpan ReloadTactical
-    {
-        get;
-    }
+    public TimeSpan ReloadTactical { get; }
     /// <summary>
     /// A <see cref="TimeSpan"/> instance that represents the amount of time it takes to perform an empty reload with this <see cref="Weapon"/> (a reload when there is no round chambered).
     /// </summary>
-    public TimeSpan ReloadEmpty
-    {
-        get;
-    }
+    public TimeSpan ReloadEmpty { get; }
     /// <summary>
     /// Whether this <see cref="Weapon"/> is a secondary weapon.
     /// </summary>
-    public bool IsSecondary
-    {
-        get;
-    }
+    public bool IsSecondary { get; }
     /// <summary>
     /// The time it takes to transition from or to aiming down sights (ADS) with this <see cref="Weapon"/>.
-    /// Note that this is only the base value and does not apply modifiers such as sight ADS speed multipliers.
+    /// Note that this is only the base value (with no positive or negative modifiers from attachments applied). To calculate that, use a <see cref="WeaponConfiguration"/>.
     /// </summary>
-    public double AdsSpeed
-    {
-        get;
-    }
+    public TimeSpan AdsSpeed { get; }
 
     /// <summary>
     /// Contains properties that return specific collections of <see cref="Weapon"/>s.
@@ -579,13 +534,14 @@ public class Weapon
 
         AdsSpeed = Type switch
         {
-            WeaponType.Handgun or WeaponType.Revolver or WeaponType.HandCannon => 0.24,
-            WeaponType.MachinePistol => 0.38,
-            WeaponType.SubmachineGun => 0.46,
-            WeaponType.AssaultRifle or WeaponType.MarksmanRifle or WeaponType.SniperRifle => 0.52,
-            WeaponType.LightMachineGun => 0.56,
-            WeaponType.ShotgunShot or WeaponType.ShotgunSlug => 0.34,
-            WeaponType.Shield or WeaponType.Shotgun => 0,
+            WeaponType.Handgun or WeaponType.Revolver or WeaponType.HandCannon => TimeSpan.FromMilliseconds(2200),
+            WeaponType.MachinePistol => TimeSpan.FromMilliseconds(3400),
+            WeaponType.SubmachineGun => TimeSpan.FromMilliseconds(4100),
+            WeaponType.AssaultRifle or WeaponType.MarksmanRifle or WeaponType.ShotgunSlug => TimeSpan.FromMilliseconds(4700),
+            WeaponType.SniperRifle => TimeSpan.FromMilliseconds(4500),
+            WeaponType.LightMachineGun => TimeSpan.FromMilliseconds(5000),
+            WeaponType.ShotgunShot => TimeSpan.FromMilliseconds(3100),
+            WeaponType.Shield or WeaponType.Shotgun => TimeSpan.FromMilliseconds(0),
             _ => throw new InvalidEnumArgumentException(nameof(Type), (int)Type, typeof(WeaponType))
         };
     }

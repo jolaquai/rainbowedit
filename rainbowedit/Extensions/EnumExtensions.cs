@@ -1,4 +1,5 @@
-﻿using System.Collections.Frozen;
+﻿using System.Collections.Concurrent;
+using System.Collections.Frozen;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -59,7 +60,6 @@ public static partial class EnumExtensions
     /// <param name="source">The enum value to test.</param>
     /// <returns>A value indicating whether <paramref name="source"/> has a non-zero value.</returns>
     public static bool HasValue<T>(this T source) where T : struct, Enum => source.GetFlags().Length != 0;
-
     /// <summary>
     /// Determines if an enum value <paramref name="source"/> of <typeparamref name="T"/> has at least one value that another <paramref name="value"/> also has. May not work correctly with non-<see cref="FlagsAttribute"/> enums.
     /// </summary>
@@ -88,5 +88,22 @@ public static partial class EnumExtensions
         {
             return fallback;
         }
+    }
+
+    /// <summary>
+    /// Attempts to reverse-engineer a <see langword="string"/> value to an <see cref="Enum"/> value of the specified <typeparamref name="TEnum"/> type.
+    /// </summary>
+    /// <typeparam name="TEnum">The <see cref="Enum"/> type to reverse-engineer the value to.</typeparam>
+    /// <param name="value">The <see langword="string"/> value to reverse-engineer.</param>
+    /// <param name="enum">An <see langword="out"/> variable that receives the <see cref="Enum"/> value if the reverse-engineering was successful.</param>
+    /// <returns><see langword="true"/> if the reverse-engineering was successful, otherwise <see langword="false"/>.</returns>
+    public static bool TryGetValue<TEnum>(string value, out TEnum @enum)
+        where TEnum : struct, Enum
+    {
+        var mapping = Enum.GetValues<TEnum>().Select(e => new KeyValuePair<string, TEnum>(e.GetDescription(), e))
+            .Concat(Enum.GetNames<TEnum>().Select(name => new KeyValuePair<string, TEnum>(name, Enum.Parse<TEnum>(name))))
+            .ToDictionary(StringComparer.OrdinalIgnoreCase);
+
+        return mapping.TryGetValue(value, out @enum);
     }
 }
