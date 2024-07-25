@@ -881,7 +881,7 @@
             Indicates whether this <see cref="T:rainbowedit.Operator"/> is one of the <see cref="T:rainbowedit.Attackers"/>.
             </summary>
         </member>
-        <member name="M:rainbowedit.Operator.#ctor(System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
+        <member name="M:rainbowedit.Operator.#ctor(System.String,rainbowedit.Weapon[],rainbowedit.Weapon[],rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
             Initializes a new <see cref="T:rainbowedit.Operator"/> object.
             </summary>
@@ -1021,7 +1021,7 @@
             Represents a single Attacker in Siege.
             </summary>
         </member>
-        <member name="M:rainbowedit.Attacker.#ctor(System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
+        <member name="M:rainbowedit.Attacker.#ctor(System.String,rainbowedit.Weapon[],rainbowedit.Weapon[],rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
             Initializes a new <see cref="T:rainbowedit.Attacker"/> object.
             </summary>
@@ -1044,7 +1044,7 @@
             Represents a single Defender in Siege.
             </summary>
         </member>
-        <member name="M:rainbowedit.Defender.#ctor(System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},System.Collections.Immutable.ImmutableArray{rainbowedit.Weapon},rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
+        <member name="M:rainbowedit.Defender.#ctor(System.String,rainbowedit.Weapon[],rainbowedit.Weapon[],rainbowedit.Weapon.Gadget,System.String,System.Collections.Immutable.ImmutableArray{rainbowedit.Models.Specialty},System.String,System.String,System.Decimal,System.Decimal,System.String,rainbowedit.OperatorAge,System.Int32)">
             <summary>
             Initializes a new <see cref="T:rainbowedit.Defender"/> object.
             </summary>
