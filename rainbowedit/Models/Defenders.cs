@@ -8,9 +8,59 @@ namespace rainbowedit;
 public static class Defenders
 {
     /// <summary>
-    /// Retrieves a <see cref="List{T}"/> of all <see cref="Defender"/>s.
+    /// Retrieves an <see cref="ImmutableArray{T}"/> of all <see cref="Defender"/>s.
     /// </summary>
-    public static ImmutableArray<Defender> All { get; private set; }
+    public static ImmutableArray<Defender> All
+    {
+        get
+        {
+            ImmutableArray<Defender> baseCollection =
+            [
+                Smoke,
+                Mute,
+                Castle,
+                Pulse,
+                Doc,
+                Rook,
+                Kapkan,
+                Tachanka,
+                Jäger,
+                Bandit,
+                Frost,
+                Valkyrie,
+                Caveira,
+                Echo,
+                Mira,
+                Lesion,
+                Ela,
+                Vigil,
+                Maestro,
+                Alibi,
+                Clash,
+                Kaid,
+                Mozzie,
+                Warden,
+                Goyo,
+                Wamai,
+                Oryx,
+                Melusi,
+                Aruni,
+                Thunderbird,
+                Thorn,
+                Azami,
+                Solis,
+                Tubarao
+            ];
+            if (Operator.RecruitsAreNormalOperators)
+            {
+                return baseCollection.Insert(0, Sentry);
+            }
+            else
+            {
+                return baseCollection;
+            }
+        }
+    }
 
     static Defenders()
     {
@@ -20,7 +70,7 @@ public static class Defenders
             "Sentry",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Commando 9",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -39,7 +89,7 @@ public static class Defenders
                     1540
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M870",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -56,7 +106,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "C75 Auto",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -71,7 +121,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Super Shorty",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -104,7 +154,7 @@ public static class Defenders
             "Smoke",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "FMG-9",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -123,7 +173,7 @@ public static class Defenders
                     2210
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M590A1",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -140,7 +190,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P226 MK 25",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -155,7 +205,7 @@ public static class Defenders
                     1430
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SMG-11",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -190,7 +240,7 @@ public static class Defenders
             "Mute",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MP5K",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -209,7 +259,7 @@ public static class Defenders
                     2150
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M590A1",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -226,7 +276,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P226 MK 25",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -241,7 +291,7 @@ public static class Defenders
                     1430
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SMG-11",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -276,7 +326,7 @@ public static class Defenders
             "Castle",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "UMP45",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -295,7 +345,7 @@ public static class Defenders
                     2190
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M1014",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -312,7 +362,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "5.7 USG",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -327,7 +377,7 @@ public static class Defenders
                     1490
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Super Shorty",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -342,7 +392,7 @@ public static class Defenders
                     2450
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M45 Meusoc",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -374,7 +424,7 @@ public static class Defenders
             "Pulse",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M1014",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -389,7 +439,7 @@ public static class Defenders
                     5330
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "UMP45",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -410,7 +460,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M45 Meusoc",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -425,7 +475,7 @@ public static class Defenders
                     1300
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "5.7 USG",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -459,7 +509,7 @@ public static class Defenders
             "Doc",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SG-CQB",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -474,7 +524,7 @@ public static class Defenders
                     4580
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "MP5",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -493,7 +543,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "P90",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -514,7 +564,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P9",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -529,7 +579,7 @@ public static class Defenders
                     1440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "LFP586",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -544,7 +594,7 @@ public static class Defenders
                     2540
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Bailiff 410",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -576,7 +626,7 @@ public static class Defenders
             "Rook",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P90",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -595,7 +645,7 @@ public static class Defenders
                     2190
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "MP5",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -614,7 +664,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SG-CQB",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -631,7 +681,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "LFP586",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -646,7 +696,7 @@ public static class Defenders
                     2540
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "P9",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -680,7 +730,7 @@ public static class Defenders
             "Kapkan",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "9x19VSN",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -699,7 +749,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SASG-12",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -716,7 +766,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PMM",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -731,7 +781,7 @@ public static class Defenders
                     1280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "GSH-18",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -763,7 +813,7 @@ public static class Defenders
             "Tachanka",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "DP27",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -778,7 +828,7 @@ public static class Defenders
                     3340
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "9x19VSN",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -799,7 +849,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "GSH-18",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -814,7 +864,7 @@ public static class Defenders
                     1470
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "PMM",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -829,7 +879,7 @@ public static class Defenders
                     1280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Bearing 9",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -866,7 +916,7 @@ public static class Defenders
             "Jäger",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M870",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -881,7 +931,7 @@ public static class Defenders
                     4360
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "416-C Carbine",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -902,7 +952,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P12",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -934,7 +984,7 @@ public static class Defenders
             "Bandit",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MP7",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -953,7 +1003,7 @@ public static class Defenders
                     2250
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M870",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -970,7 +1020,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P12",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1002,7 +1052,7 @@ public static class Defenders
             "Frost",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Super 90",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1017,7 +1067,7 @@ public static class Defenders
                     5180
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "9mm C1",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1037,7 +1087,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MK1 9mm",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1052,7 +1102,7 @@ public static class Defenders
                     1320
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12S",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1084,7 +1134,7 @@ public static class Defenders
             "Valkyrie",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MPX",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1103,7 +1153,7 @@ public static class Defenders
                     2040
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SPAS-12",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1120,7 +1170,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "D-50",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1152,7 +1202,7 @@ public static class Defenders
             "Caveira",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M12",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1171,7 +1221,7 @@ public static class Defenders
                     2170
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SPAS-15",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1188,7 +1238,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Luison",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1222,7 +1272,7 @@ public static class Defenders
             "Echo",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Supernova",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1237,14 +1287,14 @@ public static class Defenders
                     4560
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "MP5SD",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
                     30,
                     800,
                     30,
-                    Weapon.Sight.NonMagnifying,
+                    Weapon.Sight.Magnifying,
                     Weapon.Barrel.None,
                     Weapon.Grip.VerticalGrip | Weapon.Grip.AngledGrip,
                     true,
@@ -1254,7 +1304,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P229",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1269,7 +1319,7 @@ public static class Defenders
                     1450
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Bearing 9",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -1296,7 +1346,7 @@ public static class Defenders
             72,
             "Masaru Enatsu",
             new OperatorAge(31, 10, 36),
-            2
+            1
         );
         #endregion
         #region Mira
@@ -1304,7 +1354,7 @@ public static class Defenders
             "Mira",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Vector .45 ACP",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1323,7 +1373,7 @@ public static class Defenders
                     2170
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12L",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1340,7 +1390,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "USP40",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1355,7 +1405,7 @@ public static class Defenders
                     1410
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12S",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1387,7 +1437,7 @@ public static class Defenders
             "Lesion",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SIX12 SD",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1402,7 +1452,7 @@ public static class Defenders
                     1400
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "T-5 SMG",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1423,7 +1473,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Q-929",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1455,7 +1505,7 @@ public static class Defenders
             "Ela",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Scorpion Evo 3 A1",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1473,7 +1523,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "FO-12",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1490,7 +1540,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "RG15",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1507,7 +1557,7 @@ public static class Defenders
             ],
             Weapon.Gadget.BarbedWire
                 | Weapon.Gadget.DeployableShield
-                | Weapon.Gadget.ObservationBlocker,
+                | Weapon.Gadget.ImpactGrenade,
             "GRZMOT Mine",
             [Specialties.CrowdControl, Specialties.Trapper],
             "GROM",
@@ -1524,7 +1574,7 @@ public static class Defenders
             "Vigil",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "K1A",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1543,7 +1593,7 @@ public static class Defenders
                     2280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "BOSG.12.2",
                     Weapon.WeaponType.ShotgunSlug,
                     Weapon.FiringMode.SingleShot,
@@ -1560,7 +1610,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "C75 Auto",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -1575,7 +1625,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SMG-12",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -1607,7 +1657,7 @@ public static class Defenders
             "Maestro",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "ALDA 5.56",
                     Weapon.WeaponType.LightMachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1625,7 +1675,7 @@ public static class Defenders
                     4480
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ACS12",
                     Weapon.WeaponType.ShotgunSlug,
                     Weapon.FiringMode.FullAuto,
@@ -1642,7 +1692,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Bailiff 410",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -1657,7 +1707,7 @@ public static class Defenders
                     3370
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Keratos .357",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1691,7 +1741,7 @@ public static class Defenders
             "Alibi",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Mx4 Storm",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1710,7 +1760,7 @@ public static class Defenders
                     2200
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ACS12",
                     Weapon.WeaponType.ShotgunSlug,
                     Weapon.FiringMode.FullAuto,
@@ -1727,7 +1777,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Keratos .357",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1742,7 +1792,7 @@ public static class Defenders
                     3020
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Bailiff 410",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -1774,7 +1824,7 @@ public static class Defenders
             "Clash",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "CCE Shield",
                     Weapon.WeaponType.Shield,
                     Weapon.FiringMode.Invalid,
@@ -1791,7 +1841,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Super Shorty",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -1806,7 +1856,7 @@ public static class Defenders
                     2450
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SPSMG9",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -1821,7 +1871,7 @@ public static class Defenders
                     1590
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "P-10C",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1853,7 +1903,7 @@ public static class Defenders
             "Kaid",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AUG A3",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1871,7 +1921,7 @@ public static class Defenders
                     2310
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "TCSG12",
                     Weapon.WeaponType.ShotgunSlug,
                     Weapon.FiringMode.SingleShot,
@@ -1888,7 +1938,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     ".44 Mag Semi-Auto",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1903,7 +1953,7 @@ public static class Defenders
                     1280
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "LFP586",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -1935,7 +1985,7 @@ public static class Defenders
             "Mozzie",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Commando 9",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -1953,7 +2003,7 @@ public static class Defenders
                     1540
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "P10 RONI",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -1974,7 +2024,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SDP 9mm",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2006,7 +2056,7 @@ public static class Defenders
             "Warden",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "M590A1",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2021,7 +2071,7 @@ public static class Defenders
                     4510
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "MPX",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2042,7 +2092,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P-10C",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2057,7 +2107,7 @@ public static class Defenders
                     1380
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SMG-12",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -2091,7 +2141,7 @@ public static class Defenders
             "Goyo",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Vector .45 ACP",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2110,7 +2160,7 @@ public static class Defenders
                     2170
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "TCSG12",
                     Weapon.WeaponType.ShotgunSlug,
                     Weapon.FiringMode.SingleShot,
@@ -2127,7 +2177,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P229",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2161,7 +2211,7 @@ public static class Defenders
             "Wamai",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "AUG A2",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2176,14 +2226,14 @@ public static class Defenders
                     2340
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "MP5K",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
                     30,
                     800,
                     30,
-                    Weapon.Sight.Magnifying,
+                    Weapon.Sight.NonMagnifying,
                     Weapon.Barrel.Suppressor
                         | Weapon.Barrel.FlashHider
                         | Weapon.Barrel.Compensator
@@ -2197,7 +2247,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Keratos .357",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2212,7 +2262,7 @@ public static class Defenders
                     3020
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "P12",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2244,7 +2294,7 @@ public static class Defenders
             "Oryx",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "T-5 SMG",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2263,7 +2313,7 @@ public static class Defenders
                     2180
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SPAS-12",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2280,7 +2330,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Bailiff 410",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -2295,7 +2345,7 @@ public static class Defenders
                     3370
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "USP40",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2327,14 +2377,14 @@ public static class Defenders
             "Melusi",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MP5",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
                     27,
                     800,
                     30,
-                    Weapon.Sight.Magnifying,
+                    Weapon.Sight.NonMagnifying,
                     Weapon.Barrel.Suppressor
                         | Weapon.Barrel.FlashHider
                         | Weapon.Barrel.Compensator
@@ -2346,7 +2396,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Super 90",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2363,7 +2413,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "RG15",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2376,6 +2426,21 @@ public static class Defenders
                     true,
                     1200,
                     1370
+                ),
+                new Weapon(
+                    null!,
+                    "ITA12S",
+                    Weapon.WeaponType.ShotgunShot,
+                    Weapon.FiringMode.SingleShot,
+                    70,
+                    85,
+                    5,
+                    Weapon.Sight.NonMagnifying,
+                    Weapon.Barrel.None,
+                    Weapon.Grip.HorizontalGrip,
+                    true,
+                    3200,
+                    4580
                 )
             ],
             Weapon.Gadget.BulletproofCamera | Weapon.Gadget.ImpactGrenade,
@@ -2395,7 +2460,7 @@ public static class Defenders
             "Aruni",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P10 RONI",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2414,7 +2479,7 @@ public static class Defenders
                     2200
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Mk 14 EBR",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -2431,7 +2496,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "PRB92",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2463,7 +2528,7 @@ public static class Defenders
             "Thunderbird",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Spear .308",
                     Weapon.WeaponType.AssaultRifle,
                     Weapon.FiringMode.FullAuto,
@@ -2482,7 +2547,7 @@ public static class Defenders
                     2460
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SPAS-15",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2499,7 +2564,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Bearing 9",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -2517,7 +2582,7 @@ public static class Defenders
                     2210
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "Q-929",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2551,7 +2616,7 @@ public static class Defenders
             "Thorn",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "UZK50GI",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2569,7 +2634,7 @@ public static class Defenders
                     2300
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "M870",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2586,7 +2651,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "1911 TACOPS",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2601,7 +2666,7 @@ public static class Defenders
                     1440
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "C75 Auto",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -2633,7 +2698,7 @@ public static class Defenders
             "Azami",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "9x19VSN",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2652,7 +2717,7 @@ public static class Defenders
                     2220
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ACS12",
                     Weapon.WeaponType.ShotgunSlug,
                     Weapon.FiringMode.FullAuto,
@@ -2669,7 +2734,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "D-50",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2701,7 +2766,7 @@ public static class Defenders
             "Solis",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P90",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2720,7 +2785,7 @@ public static class Defenders
                     2190
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "ITA12L",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2737,7 +2802,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "SMG-11",
                     Weapon.WeaponType.MachinePistol,
                     Weapon.FiringMode.FullAuto,
@@ -2773,7 +2838,7 @@ public static class Defenders
             "Fenrir",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MP7",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2792,7 +2857,7 @@ public static class Defenders
                     2250
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "SASG-12",
                     Weapon.WeaponType.ShotgunShot,
                     Weapon.FiringMode.SingleShot,
@@ -2809,7 +2874,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "Bailiff 410",
                     Weapon.WeaponType.Revolver,
                     Weapon.FiringMode.SingleShot,
@@ -2841,7 +2906,7 @@ public static class Defenders
             "Tubarão",
             [
                 new Weapon(
-                    null,
+                    null!,
                     "MPX",
                     Weapon.WeaponType.SubmachineGun,
                     Weapon.FiringMode.FullAuto,
@@ -2860,7 +2925,7 @@ public static class Defenders
                     2040
                 ),
                 new Weapon(
-                    null,
+                    null!,
                     "AR-15.50",
                     Weapon.WeaponType.MarksmanRifle,
                     Weapon.FiringMode.SingleShot,
@@ -2877,7 +2942,7 @@ public static class Defenders
             ],
             [
                 new Weapon(
-                    null,
+                    null!,
                     "P226 MK 25",
                     Weapon.WeaponType.Handgun,
                     Weapon.FiringMode.SingleShot,
@@ -2904,43 +2969,6 @@ public static class Defenders
             2
         );
         #endregion
-        All =
-        [
-            Smoke,
-            Mute,
-            Castle,
-            Pulse,
-            Doc,
-            Rook,
-            Kapkan,
-            Tachanka,
-            Jäger,
-            Bandit,
-            Frost,
-            Valkyrie,
-            Caveira,
-            Echo,
-            Mira,
-            Lesion,
-            Ela,
-            Vigil,
-            Maestro,
-            Alibi,
-            Clash,
-            Kaid,
-            Mozzie,
-            Warden,
-            Goyo,
-            Wamai,
-            Oryx,
-            Melusi,
-            Aruni,
-            Thunderbird,
-            Thorn,
-            Azami,
-            Solis,
-            Tubarao
-        ];
 
         foreach (var op in All.Concat([Sentry]))
         {

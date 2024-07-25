@@ -16,6 +16,12 @@ public abstract class Operator
       IComparable<Operator>
 {
     /// <summary>
+    /// Controls whether the two Recruits <see cref="Attackers.Striker"/> and <see cref="Defenders.Sentry"/> are considered normal <see cref="Operator"/>s, meaning whether <see cref="Collections"/> that return <see cref="IEnumerable{T}"/>s of <see cref="Operator"/>s will include them.
+    /// May be freely changed at runtime, at which point the next retrieval of one such mentioned collection will reflect the change.
+    /// </summary>
+    public static bool RecruitsAreNormalOperators { get; set; } = false;
+
+    /// <summary>
     /// The nickname of the <see cref="Operator"/>.
     /// </summary>
     public string Nickname

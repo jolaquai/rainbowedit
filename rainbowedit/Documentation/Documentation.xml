@@ -369,7 +369,7 @@
         </member>
         <member name="P:rainbowedit.Attackers.All">
             <summary>
-            Retrieves a <see cref="T:System.Collections.Generic.List`1"/> of all <see cref="T:rainbowedit.Attacker"/>s.
+            Retrieves an <see cref="T:System.Collections.Immutable.ImmutableArray`1"/> of all <see cref="T:rainbowedit.Attacker"/>s.
             </summary>
         </member>
         <member name="P:rainbowedit.Attackers.Specialties">
@@ -581,7 +581,7 @@
         </member>
         <member name="P:rainbowedit.Defenders.All">
             <summary>
-            Retrieves a <see cref="T:System.Collections.Generic.List`1"/> of all <see cref="T:rainbowedit.Defender"/>s.
+            Retrieves an <see cref="T:System.Collections.Immutable.ImmutableArray`1"/> of all <see cref="T:rainbowedit.Defender"/>s.
             </summary>
         </member>
         <member name="P:rainbowedit.Defenders.Specialties">
@@ -789,6 +789,12 @@
             <para/>Implements <see cref="T:System.IEquatable`1"/> of <see cref="T:rainbowedit.Operator"/> which enables compares <see cref="T:rainbowedit.Operator"/>s by their <see cref="P:rainbowedit.Operator.Nickname"/>.
             <para/>Implements <see cref="T:System.IComparable`1"/> of <see cref="T:rainbowedit.Operator"/> which enables sorting <see cref="T:rainbowedit.Operator"/>s according to their in-game sorting order.
             </remarks>
+        </member>
+        <member name="P:rainbowedit.Operator.RecruitsAreNormalOperators">
+            <summary>
+            Controls whether the two Recruits <see cref="P:rainbowedit.Attackers.Striker"/> and <see cref="P:rainbowedit.Defenders.Sentry"/> are considered normal <see cref="T:rainbowedit.Operator"/>s, meaning whether <see cref="T:rainbowedit.Weapon.Collections"/> that return <see cref="T:System.Collections.Generic.IEnumerable`1"/>s of <see cref="T:rainbowedit.Operator"/>s will include them.
+            May be freely changed at runtime, at which point the next retrieval of one such mentioned collection will reflect the change.
+            </summary>
         </member>
         <member name="P:rainbowedit.Operator.Nickname">
             <summary>

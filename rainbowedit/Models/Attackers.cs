@@ -7,10 +7,64 @@ namespace rainbowedit;
 /// </summary>
 public static class Attackers
 {
+    private static readonly ImmutableArray<Attacker> _withoutRecruit;
+    private static readonly ImmutableArray<Attacker> _withRecruit;
     /// <summary>
-    /// Retrieves a <see cref="List{T}"/> of all <see cref="Attacker"/>s.
+    /// Retrieves an <see cref="ImmutableArray{T}"/> of all <see cref="Attacker"/>s.
     /// </summary>
-    public static ImmutableArray<Attacker> All { get; private set; }
+    public static ImmutableArray<Attacker> All
+    {
+        get
+        {
+            ImmutableArray<Attacker> baseCollection =
+            [
+                Sledge,
+                Thatcher,
+                Ash,
+                Thermite,
+                Twitch,
+                Montagne,
+                Glaz,
+                Fuze,
+                Blitz,
+                IQ,
+                Buck,
+                Blackbeard,
+                Capitao,
+                Hibana,
+                Jackal,
+                Ying,
+                Zofia,
+                Dokkaebi,
+                Lion,
+                Finka,
+                Maverick,
+                Nomad,
+                Gridlock,
+                Nokk,
+                Amaru,
+                Kali,
+                Iana,
+                Ace,
+                Zero,
+                Flores,
+                Osa,
+                Sens,
+                Grim,
+                Brava,
+                Ram,
+                Deimos
+            ];
+            if (Operator.RecruitsAreNormalOperators)
+            {
+                return baseCollection.Insert(0, Striker);
+            }
+            else
+            {
+                return baseCollection;
+            }
+        }
+    }
 
     static Attackers()
     {
@@ -946,21 +1000,6 @@ public static class Attackers
                     true,
                     1110,
                     1320
-                ),
-                new Weapon(
-                    null!,
-                    "GONNE-6",
-                    Weapon.WeaponType.HandCannon,
-                    Weapon.FiringMode.SingleShot,
-                    10,
-                    0,
-                    1,
-                    Weapon.Sight.NoneOther,
-                    Weapon.Barrel.None,
-                    Weapon.Grip.HorizontalGrip,
-                    false,
-                    0,
-                    0
                 )
             ],
             Weapon.Gadget.StunGrenade | Weapon.Gadget.HardBreachCharge,
@@ -3009,46 +3048,6 @@ public static class Attackers
             1
         );
         #endregion
-
-        All =
-        [
-            Sledge,
-            Thatcher,
-            Ash,
-            Thermite,
-            Twitch,
-            Montagne,
-            Glaz,
-            Fuze,
-            Blitz,
-            IQ,
-            Buck,
-            Blackbeard,
-            Capitao,
-            Hibana,
-            Jackal,
-            Ying,
-            Zofia,
-            Dokkaebi,
-            Lion,
-            Finka,
-            Maverick,
-            Nomad,
-            Gridlock,
-            Nokk,
-            Amaru,
-            Kali,
-            Iana,
-            Ace,
-            Zero,
-            Flores,
-            Osa,
-            Sens,
-            Grim,
-            Brava,
-            Ram,
-            Deimos
-        ];
 
         foreach (var op in All.Concat([Striker]))
         {

@@ -34,9 +34,9 @@ public class WeaponConfiguration
     ];
 
     // Need these for calculations
-    private Weapon.Sight sourceSight;
-    private Weapon.Barrel sourceBarrel;
-    private Weapon.Grip sourceGrip;
+    private readonly Weapon.Sight sourceSight;
+    private readonly Weapon.Barrel sourceBarrel;
+    private readonly Weapon.Grip sourceGrip;
 
     ///<summary>
     /// The <see cref="Weapon"/> this configuration applies to.
